@@ -9,7 +9,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #1c2122ff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,8 +17,6 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
-
 
 body {
   margin: 0;
@@ -28,5 +26,8 @@ body {
   min-width: 100vw;
 }
 
-
-
+input{
+  border: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}
