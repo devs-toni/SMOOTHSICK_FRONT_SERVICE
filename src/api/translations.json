@@ -2,9 +2,10 @@
   "es": {
     "register": {
       "title": "Crea tu Cuenta Gratuita",
-      "name": "Name",
-      "lastname": "Lastname",
+      "name": "Nombre",
+      "lastname": "Apellidos",
       "email": "Email",
+      "username": "Nombre de Usuario",
       "password": "Contraseña",
       "repeat": "Repetir Contraseña",
       "forget": "Has olvidado la contraseña?",
@@ -16,7 +17,10 @@
   "en": {
     "register": {
       "title": "Create your Free Account",
+      "name": "Name",
+      "lastname": "Lastname",
       "email": "Email",
+      "username": "Username",
       "password": "Password",
       "repeat": "Repeat Password",
       "forget": "Forgot your password?",
