@@ -273,7 +273,7 @@
         "liked": false
       }
     ],
-    "user": [
+    "users": [
       {
         "id": 1,
         "first_name": "Assembler",
