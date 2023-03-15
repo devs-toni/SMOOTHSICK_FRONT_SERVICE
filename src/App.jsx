@@ -1,4 +1,5 @@
 import { Badge } from 'flowbite-react'
+import { Layout } from './pages/Layout'
 
 
 
@@ -8,7 +9,7 @@ function App() {
 
 
     <div className="App">
-     
+      <Layout/>
     </div>
   )
 }

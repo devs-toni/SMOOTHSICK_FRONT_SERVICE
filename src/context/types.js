@@ -13,3 +13,4 @@ export const TYPES = {
   LOGOUT: "LOGOUT",
   RESET_ERROR: "RESET_ERROR",
 };
+
