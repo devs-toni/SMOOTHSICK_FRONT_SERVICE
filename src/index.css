@@ -19,15 +19,17 @@
 
 }
 
-
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-height: 100vh;
 
+  min-width: 100vw;
 }
 
-
-
+input{
+  border: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}

@@ -1,0 +1,32 @@
+{
+  "es": {
+    "register": {
+      "title": "Crea tu Cuenta Gratuita",
+      "name": "Nombre",
+      "lastname": "Apellidos",
+      "email": "Email",
+      "username": "Nombre de Usuario",
+      "password": "Contraseña",
+      "repeat": "Repetir Contraseña",
+      "forget": "Has olvidado la contraseña?",
+      "submit": "Registrarse",
+      "already": "Ya tienes una cuenta?",
+      "login": "Iniciar Sesión"
+    }
+  },
+  "en": {
+    "register": {
+      "title": "Create your Free Account",
+      "name": "Name",
+      "lastname": "Lastname",
+      "email": "Email",
+      "username": "Username",
+      "password": "Password",
+      "repeat": "Repeat Password",
+      "forget": "Forgot your password?",
+      "submit": "Register",
+      "already": "Already have an account?",
+      "login": "Sign in here"
+    }
+  }
+}

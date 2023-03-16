@@ -1,4 +1,3 @@
-import { Badge } from 'flowbite-react'
 import { Layout } from './pages/Layout'
 
 
