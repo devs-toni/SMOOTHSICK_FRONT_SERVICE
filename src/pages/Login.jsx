@@ -28,10 +28,9 @@ const Login = () => {
     if(isValidated) { 
       login(isValidated);
       console.log("Estas logueado")
-    }else{console.log ("Credenciales no validas")}
+    }else{
+      alert("Credenciales no validas")}
     
-
-   
   };
   
  
@@ -77,7 +76,7 @@ const Login = () => {
 
         <button
           href="#"
-          type="submit"
+          
           className="bg-white text-black only: transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  font-bold py-2 px-4 rounded-full"
         >
           {text.login.singingoogle}
