@@ -1,12 +1,9 @@
-import { Layout } from './pages/Layout'
-
-
+import { Layout } from './pages/Layout';
 
 function App() {
 
   return (
       <Layout/>
-
   )
 }
 
