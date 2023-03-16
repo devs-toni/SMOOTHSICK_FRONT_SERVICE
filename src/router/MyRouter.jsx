@@ -1,8 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
+import { CategoriesPage } from '../pages/CategoriesPage'
 import { HomePage } from '../pages/HomePage'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
-import { LOGIN, SIGNUP } from './paths'
+import { CATEGORIES, RADIO, SIGNUP,LOGIN, VIDEO } from './paths'
+import { RadioPage } from '../pages/RadioPage'
+import { VideoPage } from '../pages/VideoPage'
 
 
 export const MyRouter = () => {
@@ -11,8 +14,6 @@ export const MyRouter = () => {
         <Route path='/'>
             <Route index element={<HomePage/>}/>
             <Route path={`/${SIGNUP}`} element={<Register />} />
-            <Route path={`/${LOGIN}`} element={<Login />} />
-
         </Route>
     </Routes>
   )
