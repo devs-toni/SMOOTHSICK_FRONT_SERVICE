@@ -18,7 +18,6 @@ export const MyRouter = () => {
             <Route path={`/${CATEGORIES}`} element={<CategoriesPage />} />
             <Route path={`/${VIDEO}`} element={<VideoPage />} />
             <Route path={`/${RADIO}`} element={<RadioPage />} />
-
         </Route>
     </Routes>
   )

@@ -12,6 +12,15 @@
       "submit": "Registrarse",
       "already": "Ya tienes una cuenta?",
       "login": "Iniciar Sesión"
+    },
+    "navbar": {
+      "home": "HOME",
+      "categories": "CATEGORIAS",
+      "radio": "RADIO",
+      "video": "VIDEO",
+      "login": "INICIAR SESIÓN",
+      "logout": "CERRAR SESIÓN",
+      "input_p_holder": "Encuentra nueva música..."
     }
   },
   "en": {
@@ -27,6 +36,15 @@
       "submit": "Register",
       "already": "Already have an account?",
       "login": "Sign in here"
+    },
+    "navbar": {
+      "home": "HOME",
+      "categories": "CATEGORIES",
+      "radio": "RADIO",
+      "video": "VIDEO",
+      "login": "LOG IN",
+      "logout": "LOG OUT",
+      "input_p_holder": "Find new music..."
     }
   }
 }
