@@ -25,17 +25,11 @@ export const NavBar = () => {
 	const [otherCountryImg2, setOtherCountryImg2] = useState(flagFrance)
 	const [otherCountryName2, setOtherCountryName2] = useState("france")
 
+	const [visible, setVisible] = useState()
+
 	const currentRef = useRef()
 	const dropDown = useRef()
 
-
-	// useEffect(() => {
-	// 	const getCurrentImage = async () => {
-	// 		await import(`../../assets/imgs/flags/${currentCountryName}.png`)
-	// 			.then(img => setCurrentCountryImg(img.default))
-	// 	}
-	// 	getCurrentImage()
-	// }, [])
 
 
 
@@ -55,9 +49,10 @@ export const NavBar = () => {
 			setCurrentCountryImg(src)
 		}
 
-		dropDown.current.classList.remove("block")
-		dropDown.current.classList.add("hidden")
+		// dropDown.current.classList.remove("block")
+		// dropDown.current.classList.add("hidden")
 	}
+
 
 
 
@@ -87,7 +82,7 @@ export const NavBar = () => {
 							<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 								<svg aria-hidden="true" className="w-5 h-5 text-gray-500 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
 							</div>
-							<input type="search" className=" bg-neutral-800 text-white block w-80  p-4 pl-10 text-sm text-gray-900 border border-none focus:ring-0 rounded-lg bg-gray-50" placeholder={text.navbar.input_p_holder} required />
+							<input type="search" className=" bg-neutral-800 block w-80 text-white p-4 pl-10 text-sm border border-none focus:ring-0 rounded-lg" placeholder={text.navbar.input_p_holder} required />
 						</div>
 
 						<div className="flex items-center">
@@ -169,15 +164,15 @@ export const NavBar = () => {
 						</div>
 					</ul>
 
-					<img src={currentCountryImg} ref={currentRef} alt="" id="dropdownRightButton" data-dropdown-toggle="dropdownTop" data-dropdown-placement="top" className=" h-14 text-white hover:scale-125 font-medium rounded-full text-sm px-4 py-2.5  lg:h-14 	" />
+					<img src={currentCountryImg} ref={currentRef} alt="" id="dropdownRightBotton" data-dropdown-toggle="dropdownBottom" data-dropdown-placement="bottom" className="h-8 hover:scale-110 rounded-full text-sm px-4 py-2.5 lg:h-14 " />
 
-					<div id="dropdownTop" ref={dropDown} className="z-10 hidden bg-transparent rounded-lg shadow w-14 dark:bg-gray-700">
-						<ul className="py-2 text-sm text-gray-700 flex items-center flex-col gap-3" aria-labelledby="dropdownRightButton">
+					<div id="dropdownBottom" ref={dropDown} className="z-10 hidden">
+						<ul className=" text-sm text-gray-700 flex items-center flex-col gap-3">
 							<li>
-								<img name={otherCountryName1} src={otherCountryImg1} alt="" className='md:h-14' data-position="1" onClick={handleSwitchImg} />
+								<img name={otherCountryName1} src={otherCountryImg1} alt={`${otherCountryName1} flag`} className='h-8' data-position="1" onClick={handleSwitchImg} />
 							</li>
 							<li>
-								<img name={otherCountryName2} src={otherCountryImg2} alt="" className='md:h-14' data-position="2" onClick={handleSwitchImg} />
+								<img name={otherCountryName2} src={otherCountryImg2} alt={`${otherCountryName2} flag`} className='h-8' data-position="2" onClick={handleSwitchImg} />
 							</li>
 						</ul>
 					</div>
