@@ -25,7 +25,6 @@ export const NavBar = () => {
 	const [otherCountryImg2, setOtherCountryImg2] = useState(flagFrance)
 	const [otherCountryName2, setOtherCountryName2] = useState("france")
 
-	const [visible, setVisible] = useState()
 
 	const currentRef = useRef()
 	const dropDown = useRef()
@@ -48,9 +47,6 @@ export const NavBar = () => {
 			setCurrentCountryName(name)
 			setCurrentCountryImg(src)
 		}
-
-		// dropDown.current.classList.remove("block")
-		// dropDown.current.classList.add("hidden")
 	}
 
 
@@ -164,7 +160,7 @@ export const NavBar = () => {
 						</div>
 					</ul>
 
-					<img src={currentCountryImg} ref={currentRef} alt="" id="dropdownRightBotton" data-dropdown-toggle="dropdownBottom" data-dropdown-placement="bottom" className="h-8 hover:scale-110 rounded-full text-sm px-4 py-2.5 lg:h-14 " />
+					<img src={currentCountryImg} ref={currentRef} alt={currentCountryName} id="dropdownRightBotton" data-dropdown-toggle="dropdownBottom" data-dropdown-placement="bottom" className="h-8 hover:scale-110 rounded-full text-sm px-4 py-2.5 lg:h-14 " />
 
 					<div id="dropdownBottom" ref={dropDown} className="z-10 hidden">
 						<ul className=" text-sm text-gray-700 flex items-center flex-col gap-3">
