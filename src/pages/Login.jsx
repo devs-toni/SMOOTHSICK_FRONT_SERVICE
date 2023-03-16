@@ -28,7 +28,7 @@ const Login = () => {
     if(isValidated) { 
       login(isValidated);
       console.log("Estas logueado")
-    }else{console.log ("Email/Contraseña incorrectos!")}
+    }else{console.log ("Credenciales no validas")}
     
 
    
