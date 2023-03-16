@@ -97,10 +97,14 @@ export const NavBar = () => {
 						<div className='flex flex-col gap-6 md:bg-zinc-700 md:rounded-full md:p-4  lg:rounded-full lg:bg-neutral-800 md:border-2 md:border-neutral-800 lg:p-4 '>
 							{
 								!authState.isAuthenticated ?
-									<li className='inline-flex gap-3 items-center hover:scale-125 '>
-										<AiOutlineUser color="slateblue" className="h-8 w-8 " />
-										<span className=' md:hidden lg:hidden'>SIGN IN</span>
-									</li>
+									<NavLink to="/login"
+										className={({ isActive }) => (
+											isActive ? isInPage : isNotInPage
+										)}>
+										<li className='inline-flex gap-3 items-center hover:scale-125 '>
+											<AiOutlineUser color="slateblue" className="h-8 w-8 " />
+											<span className=' md:hidden lg:hidden'>SIGN IN</span>
+										</li></NavLink>
 
 									: <li className='inline-flex gap-3 items-center hover:scale-125'>
 										<FiLogOut color="slateblue" className="h-8 w-8  " />
