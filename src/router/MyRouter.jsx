@@ -14,6 +14,11 @@ export const MyRouter = () => {
         <Route path='/'>
             <Route index element={<HomePage/>}/>
             <Route path={`/${SIGNUP}`} element={<Register />} />
+            <Route path={`/${LOGIN}`} element={<Login />} />
+            <Route path={`/${CATEGORIES}`} element={<CategoriesPage />} />
+            <Route path={`/${VIDEO}`} element={<VideoPage />} />
+            <Route path={`/${RADIO}`} element={<RadioPage />} />
+
         </Route>
     </Routes>
   )
