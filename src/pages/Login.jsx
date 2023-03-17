@@ -76,7 +76,7 @@ const Login = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md "
+        className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md image-z "
         style={{ backgroundColor: "#333a44" }}
       >
         <p className="text-2xl font-bol align-content:center;">
@@ -107,7 +107,7 @@ const Login = () => {
 
         <p>
           {text.login.dontHaveAnAccount} <br />
-          <Link to={`/${SIGNUP}`}className="ml-2 text-pink-300 hover:underline" >{text.login.register}</Link>
+          <Link to={`/${SIGNUP}`} className="ml-2 text-pink-300 hover:underline" >{text.login.register}</Link>
         </p>
 
         <div id="login_google_button" className="py-2 px-4 rounded-full">

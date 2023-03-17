@@ -44,7 +44,7 @@ const Register = () => {
       <div className="headphones-image">
       </div>
       <div className="flex items-center justify-center h-full pt-20 w-full">
-        <form className="flex item-center flex-col gap-4 max-w-xl w-full px-10 pb-8 pt-7 m-auto rounded-md register"
+        <form className="flex item-center flex-col gap-4 max-w-xl w-full px-10 pb-8 pt-7 m-auto rounded-md register image-z"
           style={{ backgroundColor: "#333a44" }} onSubmit={handleSubmit}>
           <p className="text-2xl font-semibold">{text.register.title}</p>
           <div>
