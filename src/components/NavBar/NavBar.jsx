@@ -137,7 +137,7 @@ export const NavBar = () => {
                   isActive ? isInPage : isNotInPage
                 )}>
                 <li className='inline-flex gap-3 items-center hover:scale-125' >
-                  <AiFillHome color="slateblue" className="h-6 w-6 " />
+                  <AiFillHome color="rgb(131 24 67)" className="h-6 w-6" />
                   <span className=' md:hidden lg:hidden'>{text.navbar.home}</span>
                 </li></NavLink>
 
@@ -146,7 +146,7 @@ export const NavBar = () => {
                   isActive ? isInPage : isNotInPage
                 )}>
                 <li className='inline-flex gap-3 items-center hover:scale-125'>
-                  <RiFolderMusicFill color="slateblue" className="h-6 w-6 " />
+                  <RiFolderMusicFill color="rgb(131 24 67)" className="h-6 w-6 " />
                   <span className=' md:hidden lg:hidden'>{text.navbar.categories}</span>
                 </li></NavLink>
 
@@ -155,7 +155,7 @@ export const NavBar = () => {
                   isActive ? isInPage : isNotInPage
                 )}>
                 <li className='inline-flex gap-3 items-center hover:scale-125'>
-                  <BiRadio color="slateblue" className="h-6 w-6 " />
+                  <BiRadio color="rgb(131 24 67)" className="h-6 w-6 " />
                   <span className=' md:hidden lg:hidden' >{text.navbar.radio}</span>
                 </li></NavLink>
 
@@ -164,7 +164,7 @@ export const NavBar = () => {
                   isActive ? isInPage : isNotInPage
                 )}>
                 <li className='inline-flex gap-3 items-center hover:scale-125'>
-                  <FaPhotoVideo color="slateblue" className="h-6 w-6 " />
+                  <FaPhotoVideo color="rgb(131 24 67)" className="h-6 w-6 " />
                   <span className=' md:hidden lg:hidden'> {text.navbar.video}</span>
                 </li ></NavLink>
             </div>
@@ -178,7 +178,7 @@ export const NavBar = () => {
                         isActive ? isInPage : isNotInPage
                       )}>
                       <li className='inline-flex gap-3 items-center hover:scale-125 '>
-                        <FaUserShield color="slateblue" className="h-6 w-6 " />
+                        <FaUserShield color="rgb(131 24 67)" className="h-6 w-6 " />
                         <span className=' md:hidden lg:hidden' > {text.navbar.login}</span>
                       </li></NavLink>
                     <NavLink to="/signup"
@@ -186,13 +186,13 @@ export const NavBar = () => {
                         isActive ? isInPage : isNotInPage
                       )}>
                       <li className='inline-flex gap-3 items-center hover:scale-125 '>
-                        <FaUserPlus color="slateblue" className="h-6 w-6 " />
+                        <FaUserPlus color="rgb(131 24 67)" className="h-6 w-6 " />
                         <span className=' md:hidden lg:hidden' > {text.navbar.register}</span>
                       </li></NavLink>
                   </>
                   :
                   <li className='inline-flex gap-3 items-center hover:scale-125' onClick={handleLogout}>
-                    <FiLogOut color="slateblue" className="h-6 w-6" />
+                    <FiLogOut color="rgb(131 24 67)" className="h-6 w-6" />
                     <span className=' md:hidden lg:hidden' > {text.navbar.logout}</span>
                   </li>
               }

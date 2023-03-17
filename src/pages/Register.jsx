@@ -43,8 +43,8 @@ const Register = () => {
 
   const styleInput = (err) => {
     return {
-      backgroundColor: !err ? "#4B5563" : "#fff",
-      border: err ? "1px solid red" : "1px solid #d0d0d025",
+      backgroundColor: !err ? "#00000000" : "#fff",
+      border: err ? "1px solid red" : "1px solid #d0d0d000",
       color: err ? 'red' : 'white'
     }
   };
@@ -58,18 +58,10 @@ const Register = () => {
             <RecoverModal open={open} setOpen={setOpen} />
             <div className="headphones-image">
             </div>
-            <div className="flex items-center justify-center h-full pt-20 w-full">
-              <form className="flex item-center flex-col gap-4 max-w-xl w-full px-10 pb-8 pt-7 m-auto rounded-md register image-z"
-                style={{ backgroundColor: "#333a44" }} onSubmit={handleSubmit}>
-                <p className="text-2xl font-semibold">{text.register.title}</p>
+            <div className="flex flex-col items-center justify-center h-full pt-20 w-full">
+              <p className="text-lg md:text-4xl font-semibold pt-20 mb-10">{text.register.title}</p>
+              <form className="flex item-center flex-col gap-4 max-w-xl w-full px-10 pb-8 -pt-2 m-auto rounded-md register image-z" onSubmit={handleSubmit}>
                 <div>
-                  <div className="mb-2 block">
-                    <Label
-                      color="white"
-                      htmlFor="registerName"
-                      value={`* ${text.register.name}`}
-                    />
-                  </div>
                   <TextInput
                     id="registerName"
                     type="text"
@@ -77,8 +69,9 @@ const Register = () => {
                     shadow={true}
                     color="#fff"
                     style={styleInput(errors?.name)}
-                    className={`border border-gray-500 rounded-lg ${errors.name && 'text-red-400 '}`}
+                    className={`border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500  ${errors.name && 'text-red-400 '}`}
                     name="name"
+                    placeholder={text.register.name}
                     value={form.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -86,13 +79,6 @@ const Register = () => {
                   <Error text={errors?.name} />
                 </div>
                 <div>
-                  <div className="mb-2 block">
-                    <Label
-                      color="white"
-                      htmlFor="registerLastname"
-                      value={text.register.lastname}
-                    />
-                  </div>
                   <TextInput
                     id="registerLastname"
                     type="text"
@@ -100,20 +86,14 @@ const Register = () => {
                     shadow={true}
                     color="white"
                     style={styleInput(errors?.lastname)}
-                    className="border border-gray-500 rounded-lg"
+                    className="border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
                     name="lastname"
                     value={form.lastname}
                     onChange={handleChange}
+                    placeholder={text.register.lastname}
                   />
                 </div>
                 <div>
-                  <div className="mb-2 block">
-                    <Label
-                      color="white"
-                      htmlFor="registerEmail"
-                      value={`* ${text.register.email}`}
-                    />
-                  </div>
                   <TextInput
                     id="registerEmail"
                     type="text"
@@ -121,22 +101,16 @@ const Register = () => {
                     shadow={true}
                     color="white"
                     style={styleInput(errors?.email)}
-                    className="border border-gray-500 rounded-lg"
+                    className="border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
                     name="email"
                     value={form.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    placeholder={text.register.email}
                   />
                   <Error text={errors?.email} />
                 </div>
                 <div>
-                  <div className="mb-2 block">
-                    <Label
-                      color="white"
-                      htmlFor="registerUsername"
-                      value={`* ${text.register.username}`}
-                    />
-                  </div>
                   <TextInput
                     id="registerUsername"
                     type="text"
@@ -144,22 +118,16 @@ const Register = () => {
                     shadow={true}
                     color="white"
                     style={styleInput(errors?.username)}
-                    className="border border-gray-500 rounded-lg"
+                    className="border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
                     name="username"
                     value={form.username}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    placeholder={text.register.username}
                   />
                   <Error text={errors?.username} />
                 </div>
                 <div className="relative">
-                  <div className="mb-2 block">
-                    <Label
-                      color='white'
-                      htmlFor="registerPassword"
-                      value={`* ${text.register.password}`}
-                    />
-                  </div>
                   <TextInput
                     id="registerPassword"
                     type="password"
@@ -167,23 +135,17 @@ const Register = () => {
                     shadow={true}
                     color="white"
                     style={styleInput(errors?.password)}
-                    className="border border-gray-500 rounded-lg"
+                    className="border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
                     name="password"
                     value={form.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    placeholder={text.register.password}
                   />
                   <Error text={errors?.password} />
-                  <FaEye className="absolute right-4 top-11 opacity-60 hover:opacity-100 cursor-pointer" />
+                  <FaEye className="absolute right-2 top-4 opacity-60 hover:opacity-100 cursor-pointer" />
                 </div>
                 <div>
-                  <div className="mb-2 block">
-                    <Label
-                      color='white'
-                      htmlFor="repeatPass"
-                      value={`* ${text.register.repeat}`}
-                    />
-                  </div>
                   <TextInput
                     id="repeatPass"
                     type="password"
@@ -191,15 +153,16 @@ const Register = () => {
                     shadow={true}
                     color="white"
                     style={styleInput(errors?.password)}
-                    className="border border-gray-500 rounded-lg"
+                    className="border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
                     name="repeatPassword"
                     value={form.repeatPassword}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    placeholder={text.register.repeat}
                   />
                 </div>
-                <div className="gap-2 text-left">
-                  <Label htmlFor="agree" color="white" className="w-full font-normal">
+                <div>
+                  <Label htmlFor="agree" color="white" className="w-full text-xs md:text-sm font-normal text-pink-300 mt-4  flex justify-left">
                     <button type="button" onClick={() => setOpen(true)}>
                       {text.register.forget}
                     </button>
@@ -208,9 +171,9 @@ const Register = () => {
                 <Button type="submit" className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                   {text.register.submit}
                 </Button>
-                <div className="flex text-sm mt-1">
+                <div className="flex flex-row justify-left text-xs md:text-sm mt-1">
                   <span className="w-fit">{text.register.already}</span>
-                  <Link to={`/${LOGIN}`} className="ml-2 text-pink-300 hover:underline">{text.register.login}</Link>
+                  <Link to={`/${LOGIN}`} className="ml-2 text-pink-300 hover:underline w-fit text-left">{text.register.login}</Link>
                 </div>
               </form>
             </div>
