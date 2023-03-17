@@ -26,7 +26,7 @@ const Login = () => {
 
         <p>
           Don't have an Smoothsic account? <br />
-          <Link to="/singup">Register free</Link>
+          <Link to="/signup">Register free</Link>
         </p>
 
         <button
