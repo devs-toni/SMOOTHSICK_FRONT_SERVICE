@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useGlobalContext } from "../context/GlobalContext";
+import {FcGoogle} from "react-icons/fc";
 
 
 
@@ -37,7 +38,7 @@ const Login = () => {
  
 
   return (
-    <>
+    <div className="w-3/12">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md"
@@ -69,9 +70,8 @@ const Login = () => {
           value={userData.password}
         />
 
-        <p>
-          {text.login.dontHaveAnAccount} <br />
-          <Link to="/signup">{text.login.register}</Link>
+        <p >{text.login.dontHaveAnAccount} <br />
+          <Link to="/signup" className="text-pink-300 hover:underline">{text.login.register}</Link>
         </p>
 
         <button
@@ -90,7 +90,7 @@ const Login = () => {
           {text.login.singin}
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
