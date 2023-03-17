@@ -28,10 +28,6 @@ export const GlobalProvider = ({ children }) => {
 
     const [dataState, dispatch] = useReducer(reducer, initialState)
 
-
-
-
-
     
     const globalData = {
         dataState

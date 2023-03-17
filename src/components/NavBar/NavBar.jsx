@@ -6,15 +6,14 @@ import { BiRadio } from "react-icons/bi"
 import { FiLogOut } from "react-icons/fi"
 import { NavLink } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
+import { useLanguage } from '../../context/LanguageContext';
+import { useRef, useState } from 'react';
+import { Toaster, toast } from "react-hot-toast";
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
 import flagFrance from '../../assets/imgs/flags/france.png'
-import { useLanguage } from '../../context/LanguageContext';
-import { useRef, useState } from 'react';
+import flagChina from '../../assets/imgs/flags/china.png'
 import exampleLogo from '../../assets/imgs/logo/logo-head.svg';
-import { Toaster, toast } from "react-hot-toast";
-
-
 
 export const NavBar = () => {
 
@@ -27,13 +26,16 @@ export const NavBar = () => {
 	const [otherCountryImg2, setOtherCountryImg2] = useState(flagFrance)
 	const [otherCountryName2, setOtherCountryName2] = useState("france")
 
+	const [otjerCountryImg3, setOtherCountryImg3] = useState(flagChina)
+	const [otherCountryName3, setOtherCountryName3] = useState("china")
 
 	const currentRef = useRef()
 	const dropDown = useRef()
 
+
 	const { logout, authState } = useAuthContext()
-
-
+	const { handleLanguage, text } = useLanguage()
+	
 	const handleLogout = () => {
 		logout(null)
 		toast.success('Log out successfully!',
@@ -51,33 +53,39 @@ export const NavBar = () => {
 	}
 
 
+
 	const handleSwitchImg = ({ target }) => {
 		const { name, dataset, src } = target
 		const { position } = dataset
-
+		handleLanguage(target)
 		if (position === "1") {
 			setOtherCountryImg1(currentRef.current.src)
 			setOtherCountryName1(currentRef.current.name)
 			setCurrentCountryName(name)
 			setCurrentCountryImg(src)
-		} else {
+			dropDown.current.classList.remove("block")
+			dropDown.current.classList.add("hidden")
+		} else if (position === "2") {
 			setOtherCountryImg2(currentRef.current.src)
 			setOtherCountryName2(currentRef.current.name)
 			setCurrentCountryName(name)
 			setCurrentCountryImg(src)
+			dropDown.current.classList.remove("block")
+			dropDown.current.classList.add("hidden")
+		}
+		else {
+			setOtherCountryImg3(currentRef.current.src)
+			setOtherCountryName3(currentRef.current.name)
+			setCurrentCountryName(name)
+			setCurrentCountryImg(src)
+			dropDown.current.classList.remove("block")
+			dropDown.current.classList.add("hidden")
 		}
 	}
 
 
-
-
-
-	const { text } = useLanguage()
-
 	const isInPage = "opacity-40"
 	const isNotInPage = ""
-
-
 
 	return (
 
@@ -102,8 +110,6 @@ export const NavBar = () => {
 								<input type="text" id="simple-search" className=" border bg-neutral-800 border-gray-300 text-white text-sm rounded-lg block w-full pl-10 p-2.5 " placeholder={text.navbar.input_p_holder} required />
 							</div>
 						</form>
-
-
 						<div className="flex items-center">
 							<div className="flex items-center ml-3">
 								<div>
@@ -134,15 +140,16 @@ export const NavBar = () => {
 									<AiFillHome color="slateblue" className="h-8 w-8 " />
 									<span className=' md:hidden lg:hidden'>{text.navbar.home}</span>
 								</li></NavLink>
+
 							<NavLink to='/categories'
 								className={({ isActive }) => (
 									isActive ? isInPage : isNotInPage
 								)}>
 								<li className='inline-flex gap-3 items-center hover:scale-125'>
-
 									<RiFolderMusicFill color="slateblue" className="h-8 w-8 " />
 									<span className=' md:hidden lg:hidden'>{text.navbar.categories}</span>
 								</li></NavLink>
+
 							<NavLink to='/radio'
 								className={({ isActive }) => (
 									isActive ? isInPage : isNotInPage
@@ -160,7 +167,6 @@ export const NavBar = () => {
 									<FaPhotoVideo color="slateblue" className="h-8 w-8 " />
 									<span className=' md:hidden lg:hidden'> {text.navbar.video}</span>
 								</li ></NavLink>
-
 						</div>
 
 						<div className='flex flex-col gap-6 md:bg-zinc-700 md:rounded-full md:p-4 lg:rounded-full lg:bg-neutral-800 md:border-2 md:border-neutral-800 lg:p-4 '>
@@ -180,31 +186,29 @@ export const NavBar = () => {
 										<span className=' md:hidden lg:hidden' > {text.navbar.logout}</span>
 									</li>
 							}
-
 						</div>
 					</ul>
 
-					<img src={currentCountryImg} ref={currentRef} alt={currentCountryName} id="dropdownRightBotton" data-dropdown-toggle="dropdownBottom" data-dropdown-placement="bottom" className="h-16 hover:scale-110 rounded-full text-sm px-4 py-2.5 md:h-14 lg:h-12 " />
+					<img name={currentCountryName} src={currentCountryImg} alt={currentCountryName} ref={currentRef}  id="dropdownRightBotton" data-dropdown-toggle="dropdownBottom" data-dropdown-placement="bottom" className="h-16 rounded-full text-sm px-4 py-2.5 md:h-14 lg:h-12 hover:scale-110 cursor-pointer" />
 
 					<div id="dropdownBottom" ref={dropDown} className="z-10 hidden">
 						<ul className=" text-sm text-gray-700 flex items-center flex-col gap-3">
 							<li>
-								<img name={otherCountryName1} src={otherCountryImg1} alt={`${otherCountryName1} flag`} className='h-8' data-position="1" onClick={handleSwitchImg} />
+								<img name={otherCountryName1} src={otherCountryImg1} alt={`${otherCountryName1} flag`} className='h-8 cursor-pointer hover:scale-110' data-position="1" onClick={handleSwitchImg} />
 							</li>
 							<li>
-								<img name={otherCountryName2} src={otherCountryImg2} alt={`${otherCountryName2} flag`} className='h-8' data-position="2" onClick={handleSwitchImg} />
+								<img name={otherCountryName2} src={otherCountryImg2} alt={`${otherCountryName2} flag`} className='h-8 cursor-pointer hover:scale-110' data-position="2" onClick={handleSwitchImg} />
+							</li>
+							<li>
+								<img name={otherCountryName2} src={otjerCountryImg3} alt={`${otherCountryName3} flag`} className='h-8 cursor-pointer hover:scale-110' data-position="3" onClick={handleSwitchImg} />
 							</li>
 						</ul>
 					</div>
+
 				</div>
 			</aside>
 
 		</>
-
-
-
-
-
 
 	)
 };

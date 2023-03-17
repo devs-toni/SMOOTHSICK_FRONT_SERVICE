@@ -64,5 +64,38 @@
       "logout": "LOG OUT",
       "input_p_holder": "Find new music..."
     }
+  },
+  "chn": {
+    "register": {
+      "title": "Create your Free Account",
+      "name": "Name",
+      "lastname": "Lastname",
+      "email": "Email",
+      "username": "Username",
+      "password": "Password",
+      "repeat": "Repeat Password",
+      "forget": "Forgot your password?",
+      "submit": "Register",
+      "already": "Already have an account?",
+      "login": "Sign in here"
+    },
+    "login": {
+      "title": "To continue, log in to Smoothsic",
+      "email": "Email",
+      "password": "Password",
+      "dontHaveAnAccount": "Don't have a Smoothsic account?",
+      "register": "Register",
+      "singingoogle": "Sign in with Google",
+      "singin": "Sing In"
+    },
+    "navbar": {
+      "home": "HOME",
+      "categories": "CATEGORIES",
+      "radio": "RADIO",
+      "video": "VIDEO",
+      "login": "LOG IN",
+      "logout": "LOG OUT",
+      "input_p_holder": "Find new music..."
+    }
   }
 }

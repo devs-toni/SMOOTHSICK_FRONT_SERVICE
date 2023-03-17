@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useContext, createContext, useState } from "react";
 import translations from '../api/translations.json';
 
@@ -12,12 +11,27 @@ export const LanguageProvider = ({ children }) => {
   const [text, setText] = useState(translations["es"]);
 
   
-  const handleLanguage = () => {
+  const handleLanguage = (target) => {
+    const { name } = target
+    if (name === "spain") {
+      setLang("es")
+      setText(translations.es)
+    }
+    else if (name === "united-kingdom") {
+      setLang("en")
+      setText(translations.en)
+    }
+    else {
+      setLang("chn")
+      setText(translations.chn)
+    }
   }
   
 
   const data = {
-    text
+    text,
+    lang,
+    handleLanguage
   }
   return (
     <LanguageContext.Provider value={data}>{children}</LanguageContext.Provider>

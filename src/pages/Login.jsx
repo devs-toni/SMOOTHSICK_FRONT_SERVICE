@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useGlobalContext } from "../context/GlobalContext";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { SIGNUP } from "../router/paths";
 
 
@@ -72,7 +72,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center h-full">
-       <div className="headphones-image">
+      <div className="headphones-image">
       </div>
       <form
         onSubmit={handleSubmit}
