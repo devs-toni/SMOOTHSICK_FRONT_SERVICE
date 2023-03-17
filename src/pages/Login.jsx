@@ -64,12 +64,12 @@ const Login = () => {
 
     google.accounts.id.renderButton(
       document.getElementById("login_google_button"),
-      { theme: "outline"   }
+      { theme: "outline" }
     );
   }, []);
 
   return (
-    <>
+    <div className="flex items-center justify-center h-full">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md "
@@ -106,7 +106,9 @@ const Login = () => {
           <Link to="/signup">{text.login.register}</Link>
         </p>
 
-        <div id="login_google_button" className="py-2 px-4 rounded-full">{text.login.singingoogle}</div>
+        <div id="login_google_button" className="py-2 px-4 rounded-full">
+          {text.login.singingoogle}
+        </div>
 
         <button
           href="#"
@@ -116,7 +118,7 @@ const Login = () => {
           {text.login.singin}
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
