@@ -39,8 +39,8 @@ const Register = () => {
   };
 
   return (
-    <div className="w-3/12">
-      <form className="flex flex-col gap-4 max-w-lg min-w-full px-10 pb-8 pt-7 m-auto rounded-md"
+    <div className="flex items-center justify-center h-full pt-20 ">
+      <form className="flex item-center flex-col gap-4 max-w-lg w-full px-10 pb-8 pt-7 m-auto rounded-md"
         style={{ backgroundColor: "#333a44" }} onSubmit={handleSubmit}>
         <p className="text-2xl font-semibold">{text.register.title}</p>
         <div>

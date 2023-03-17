@@ -19,8 +19,6 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-height: 100vh;
-  min-width: 100vw;
 }
 
 input{
@@ -30,12 +28,12 @@ input{
 }
 
 #root {
-  width: 100vw;
   height: 100vh;
-  display: flex;
+  width: 100vw;
+  /* display: flex;
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   padding-left: 96px;
-  padding-top: 76px;
+  padding-top: 76px;  */
 }
