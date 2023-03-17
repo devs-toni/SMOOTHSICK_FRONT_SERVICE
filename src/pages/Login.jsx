@@ -71,7 +71,7 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center h-full">
+    <div className="h-full flex justify-center items-center">
        <div className="headphones-image">
       </div>
       <form
