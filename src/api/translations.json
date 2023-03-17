@@ -11,7 +11,9 @@
       "forget": "Has olvidado la contraseña?",
       "submit": "Registrarse",
       "already": "Ya tienes una cuenta?",
-      "login": "Iniciar Sesión"
+      "login": "Iniciar Sesión",
+      "recover": "Recuperar contraseña",
+      "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password"
     },
     "login": {
       "title": "Para continuar, inicia sesión en Smoothsic",
@@ -44,7 +46,9 @@
       "forget": "Forgot your password?",
       "submit": "Register",
       "already": "Already have an account?",
-      "login": "Sign in here"
+      "login": "Sign in here",
+      "recover": "Recover password",
+      "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password"
     },
     "login": {
       "title": "To continue, log in to Smoothsic",
