@@ -6,6 +6,8 @@ import { useGlobalContext } from "../context/GlobalContext";
 import { Toaster, toast } from "react-hot-toast";
 import { SIGNUP } from "../router/paths";
 import { useNavigate } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 const Login = () => {
   const { text } = useLanguage();
@@ -23,7 +25,7 @@ const Login = () => {
     reset();
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     const isValidated = dataState.users.find(
       (user) =>
@@ -43,25 +45,44 @@ const Login = () => {
           duration: 2000,
         },
       });
-    }
+    } 
   };
+const setProfileOAuthGoogle = (profile) => {
+  const { email, id  } = profile;
+  const isValid = (email, id);
+  isValid && login(isValid.id, isValid.email);
+  localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, password: isValid.password, email: email }));
+  const userG = { email:email, password }
+  console.log(userG)
+  
+} 
 
-  const handleCallbackResponse = (response) => {
-    console.log("Encoded JWT ID token:" + response.credential);
-  };
-  useEffect(() => {
-    google.accounts.id.initialize({
-      client_id:
-        "1028595791747-g35j211ljte5olsej2jmvugv4uk0rbtc.apps.googleusercontent.com",
-      casllback: handleCallbackResponse,
-    });
 
-    google.accounts.id.renderButton(
-      document.getElementById("login_google_button"),
-      { theme: "outline" }
-    );
-  }, []);
+  const loginG = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      axios
+      .get(
+        `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${codeResponse.access_token}`,
+        {
+          headers: {
+            Authorization: `Bearer ${codeResponse.access_token}`,
+            Accept: "application/json",
+          },
+        }
+        )
+        
+      .then((res) => {
+        setProfileOAuthGoogle(res.data);
+        navigate('/')
+      })
+      .catch((err) => console.log(err));
+    },
+    onError: (error) => console.log("Login Failed:", error),
+  });
+  
 
+  
+ 
   return (
     <div className="h-full flex justify-center items-center">
       <div className="headphones-image"></div>
@@ -106,10 +127,14 @@ const Login = () => {
           </Link>
         </p>
 
-        <div id="login_google_button" className="py-2 px-4 rounded-full">
+         <button
+          onClick={loginG}
+          type="submit"
+          className="bg-slate-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  text-black font-bold py-2 px-4 rounded-full"
+        >
           {text.login.singingoogle}
-        </div>
-
+        </button>
+ 
         <button
           href="#"
           type="submit"
