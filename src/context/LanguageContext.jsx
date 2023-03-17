@@ -11,8 +11,8 @@ export const LanguageProvider = ({ children }) => {
   const [lang, setLang] = useState('es');
   const [text, setText] = useState(translations["es"]);
 
+  
   const handleLanguage = () => {
-
   }
   
 

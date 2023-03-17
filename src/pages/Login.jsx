@@ -1,46 +1,78 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useGlobalContext } from "../context/GlobalContext";
-
-
+import { Toaster, toast } from "react-hot-toast";
 
 const Login = () => {
   const { text } = useLanguage();
-  const { dataState }= useGlobalContext();
-  const { reset, login} = useAuthContext();
+  const { dataState } = useGlobalContext();
+  const { reset, login } = useAuthContext();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
 
-
   const handleInput = ({ target }) => {
     const { name, value } = target;
     setUserData({ ...userData, [name]: value });
     reset();
-  }; 
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const isValidated= dataState.users.find((user) => user.email === userData.email && user.password === userData.password);
-    if(isValidated) { 
+    const isValidated = dataState.users.find(
+      (user) =>
+        user.email === userData.email && user.password === userData.password
+    );
+    if (isValidated) {
       login(isValidated);
-      console.log("Estas logueado")
-    }else{
-      alert("Credenciales no validas")}
-    
+      toast.success("Logged in successfully!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+        success: {
+          duration: 2000,
+        },
+      });
+    } else {
+      toast.error("Something Wrong...!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+        error: {
+          duration: 2000,
+        },
+      });
+    }
   };
-  
- 
- 
+
+  const handleCallbackResponse = (response) => {
+    console.log("Encoded JWT ID token:" + response.credential);
+  };
+  useEffect(() => {
+    google.accounts.id.initialize({
+      client_id:
+        "1028595791747-g35j211ljte5olsej2jmvugv4uk0rbtc.apps.googleusercontent.com",
+      casllback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("login_google_button"),
+      { theme: "outline" }
+    );
+  }, []);
 
   return (
-    <>
+    <div className="flex items-center justify-center h-full">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md"
+        className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md "
         style={{ backgroundColor: "#333a44" }}
       >
         <p className="text-2xl font-bol align-content:center;">
@@ -74,13 +106,9 @@ const Login = () => {
           <Link to="/signup">{text.login.register}</Link>
         </p>
 
-        <button
-          href="#"
-          
-          className="bg-white text-black only: transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  font-bold py-2 px-4 rounded-full"
-        >
+        <div id="login_google_button" className="py-2 px-4 rounded-full">
           {text.login.singingoogle}
-        </button>
+        </div>
 
         <button
           href="#"
@@ -90,7 +118,7 @@ const Login = () => {
           {text.login.singin}
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
