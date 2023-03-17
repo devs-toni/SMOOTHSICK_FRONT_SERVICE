@@ -5,12 +5,13 @@ import { useAuthContext } from "../context/AuthContext";
 import { useGlobalContext } from "../context/GlobalContext";
 import { Toaster, toast } from "react-hot-toast";
 import { SIGNUP } from "../router/paths";
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { text } = useLanguage();
   const { dataState } = useGlobalContext();
   const { reset, login } = useAuthContext();
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -30,16 +31,7 @@ const Login = () => {
     );
     if (isValidated) {
       login(isValidated);
-      toast.success("Logged in successfully!", {
-        style: {
-          borderRadius: "10px",
-          background: "#333",
-          color: "#fff",
-        },
-        success: {
-          duration: 2000,
-        },
-      });
+      navigate("/");
     } else {
       toast.error("Something Wrong...!", {
         style: {
@@ -72,8 +64,7 @@ const Login = () => {
 
   return (
     <div className="h-full flex justify-center items-center">
-       <div className="headphones-image">
-      </div>
+      <div className="headphones-image"></div>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md image-z "
@@ -107,7 +98,12 @@ const Login = () => {
 
         <p>
           {text.login.dontHaveAnAccount} <br />
-          <Link to={`/${SIGNUP}`} className="ml-2 text-pink-300 hover:underline" >{text.login.register}</Link>
+          <Link
+            to={`/${SIGNUP}`}
+            className="ml-2 text-pink-300 hover:underline"
+          >
+            {text.login.register}
+          </Link>
         </p>
 
         <div id="login_google_button" className="py-2 px-4 rounded-full">
