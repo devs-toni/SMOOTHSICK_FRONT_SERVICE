@@ -12,6 +12,24 @@
       "submit": "Registrarse",
       "already": "Ya tienes una cuenta?",
       "login": "Iniciar Sesión"
+    },
+    "login": {
+      "title": "Para continuar, inicia sesión en Smoothsic",
+      "email": "Email",
+      "password": "Contraseña",
+      "dontHaveAnAccount": "¿No tienes una cuenta de Smoothsic?",
+      "register": "Registrate Gratis",
+      "singingoogle": "Iniciar sesión con Google",
+      "singin": "Iniciar Sesión"
+    },
+    "navbar": {
+      "home": "HOME",
+      "categories": "CATEGORIAS",
+      "radio": "RADIO",
+      "video": "VIDEO",
+      "login": "INICIAR SESIÓN",
+      "logout": "CERRAR SESIÓN",
+      "input_p_holder": "Encuentra nueva música..."
     }
   },
   "en": {
@@ -27,6 +45,24 @@
       "submit": "Register",
       "already": "Already have an account?",
       "login": "Sign in here"
+    },
+    "login": {
+      "title": "To continue, log in to Smoothsic",
+      "email": "Email",
+      "password": "Password",
+      "dontHaveAnAccount": "Don't have a Smoothsic account?",
+      "register": "Register",
+      "singingoogle": "Sign in with Google",
+      "singin": "Sing In"
+    },
+    "navbar": {
+      "home": "HOME",
+      "categories": "CATEGORIES",
+      "radio": "RADIO",
+      "video": "VIDEO",
+      "login": "LOG IN",
+      "logout": "LOG OUT",
+      "input_p_holder": "Find new music..."
     }
   }
 }

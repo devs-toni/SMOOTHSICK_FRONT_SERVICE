@@ -40,11 +40,11 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center mi-clase">
-      <div className="register-image">
+    <div className="h-full flex justify-center items-center">
+      <div className="headphones-image">
       </div>
-      <div className="w-3/12">
-        <form className="flex flex-col gap-4 max-w-lg min-w-full px-10 pb-8 pt-7 m-auto rounded-md register"
+      <div className="flex items-center justify-center h-full pt-20 w-full">
+        <form className="flex item-center flex-col gap-4 max-w-xl w-full px-10 pb-8 pt-7 m-auto rounded-md register"
           style={{ backgroundColor: "#333a44" }} onSubmit={handleSubmit}>
           <p className="text-2xl font-semibold">{text.register.title}</p>
           <div>

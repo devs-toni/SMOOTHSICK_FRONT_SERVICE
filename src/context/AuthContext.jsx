@@ -1,5 +1,13 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useCallback } from "react";
 import { TYPES } from "./types";
+
+const init = () => {
+  const auth = JSON.parse(localStorage.getItem('auth'));
+  return {
+    isAuthenticated: !!auth,
+    auth
+  }
+}
 
 const AuthContext = createContext();
 
@@ -10,7 +18,7 @@ export const useAuthContext = () => {
 export const AuthProvider = ({ children }) => {
   const initialState = {
     isAuthenticated: false,
-    id:-1,
+    id: -1,
     user: {
       firstName: "",
       lastName: "",
@@ -27,7 +35,7 @@ export const AuthProvider = ({ children }) => {
           isAuthenticated: true,
           id: action.payload.id,
           user: action.payload.user,
-          error: "",
+          error: ""
         };
       case TYPES.LOGIN_UNSUCCESS:
         return {
@@ -52,10 +60,35 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const [authState, dispatch] = useReducer(reducer, initialState);
+  const [authState, dispatch] = useReducer(reducer, initialState, init);
+
+  const login = useCallback((id, user, error) => {
+    if (!error) {
+      dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { id, user } })
+      localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, id, user }));
+
+    } else
+      dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
+  }, [])
+
+  const logout = useCallback(() => {
+    localStorage.removeItem('auth');
+    dispatch({ type: TYPES.LOGOUT })
+  }, []);
+
+  const reset = useCallback(() => {
+    dispatch({ type: TYPES.RESET_ERROR })
+  }, [])
+
+
 
   const authData = {
     authState,
+    login,
+    logout,
+    reset
+
+
   };
   return (
     <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>

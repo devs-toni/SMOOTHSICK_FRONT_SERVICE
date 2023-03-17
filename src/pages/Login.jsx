@@ -1,51 +1,124 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
+import { useAuthContext } from "../context/AuthContext";
+import { useGlobalContext } from "../context/GlobalContext";
+import { Toaster, toast } from "react-hot-toast";
 
 const Login = () => {
+  const { text } = useLanguage();
+  const { dataState } = useGlobalContext();
+  const { reset, login } = useAuthContext();
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
 
+  const handleInput = ({ target }) => {
+    const { name, value } = target;
+    setUserData({ ...userData, [name]: value });
+    reset();
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const isValidated = dataState.users.find(
+      (user) =>
+        user.email === userData.email && user.password === userData.password
+    );
+    if (isValidated) {
+      login(isValidated);
+      toast.success("Logged in successfully!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+        success: {
+          duration: 2000,
+        },
+      });
+    } else {
+      toast.error("Something Wrong...!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+        error: {
+          duration: 2000,
+        },
+      });
+    }
+  };
+
+  const handleCallbackResponse = (response) => {
+    console.log("Encoded JWT ID token:" + response.credential);
+  };
+  useEffect(() => {
+    google.accounts.id.initialize({
+      client_id:
+        "1028595791747-g35j211ljte5olsej2jmvugv4uk0rbtc.apps.googleusercontent.com",
+      casllback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("login_google_button"),
+      { theme: "outline" }
+    );
+  }, []);
 
   return (
-    <>
-      <form        className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md">
-        <p className="text-2xl font-bol align-content:center;">To continue, sign in to Smoothsic </p>
+    <div className="flex items-center justify-center h-full">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md "
+        style={{ backgroundColor: "#333a44" }}
+      >
+        <p className="text-2xl font-bol align-content:center;">
+          {text.login.title}{" "}
+        </p>
+
         <input
           type="text"
-          placeholder="email"
           id="email"
           name="email"
-          className="text-black"
+          placeholder={text.login.email}
+          className="border border-gray-500 rounded-lg text-black"
+          onChange={handleInput}
           required={true}
+          value={userData.email}
         />
+
         <input
           type="password"
-          placeholder="password"
           id="password"
           name="password"
-          className="text-black"
+          placeholder={text.login.password}
+          className="border border-gray-500 rounded-lg text-black"
+          onChange={handleInput}
           required={true}
+          value={userData.password}
         />
 
         <p>
-          Don't have an Smoothsic account? <br />
-          <Link to="/signup">Register free</Link>
+          {text.login.dontHaveAnAccount} <br />
+          <Link to="/signup">{text.login.register}</Link>
         </p>
+
+        <div id="login_google_button" className="py-2 px-4 rounded-full">
+          {text.login.singingoogle}
+        </div>
 
         <button
           href="#"
           type="submit"
-          className="bg-white text-black only: transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  font-bold py-2 px-4 rounded-full"
+          className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  text-white font-bold py-2 px-4 rounded-full"
         >
-         Sign in with Google
-        </button>
-       
-        <button
-          href="#"
-          type="submit"
-          className="bg-green-400 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  text-white font-bold py-2 px-4 rounded-full"
-        >
-          Sign in
+          {text.login.singin}
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
