@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router'
+import { useAuthContext } from '../context/AuthContext'
 
 const PrivateRoute = ({children}) => {
     const {authState} = useAuthContext()

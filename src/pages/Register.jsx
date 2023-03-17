@@ -23,9 +23,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const currentErrors = validate();
-    /*     console.log(Object.keys(currentErrors))
-        console.log(Object.keys(currentErrors).map(v => currentErrors[v].length))
-        console.log(Object.keys(currentErrors).map(v => currentErrors[v].length).filter(e => e !== 0).length) */
+    
     if (Object.keys(currentErrors).map(v => currentErrors[v].length).filter(e => e !== 0).length === 0) {
       console.log('Registrando usuario');
     }
