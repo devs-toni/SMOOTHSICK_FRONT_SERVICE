@@ -4,6 +4,8 @@ import { useLanguage } from "../context/LanguageContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useGlobalContext } from "../context/GlobalContext";
 import { Toaster, toast } from "react-hot-toast";
+import { SIGNUP } from "../router/paths";
+
 
 const Login = () => {
   const { text } = useLanguage();
@@ -103,7 +105,7 @@ const Login = () => {
 
         <p>
           {text.login.dontHaveAnAccount} <br />
-          <Link to="/signup">{text.login.register}</Link>
+          <Link to={`/${SIGNUP}`}className="ml-2 text-pink-300 hover:underline" >{text.login.register}</Link>
         </p>
 
         <div id="login_google_button" className="py-2 px-4 rounded-full">
