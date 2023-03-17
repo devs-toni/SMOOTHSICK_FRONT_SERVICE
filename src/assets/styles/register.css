@@ -1,15 +1,33 @@
-.image-z {
+/* .image-z {
   position: relative;
   z-index: 10;
 }
 
 .headphones-image {
-  background-image: url('../imgs/register.jpg');
+  background-image: url("../imgs/register.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
   position: absolute;
   right: 0;
-  filter: opacity(.1) grayscale(5);
+  filter: opacity(0.1) grayscale(5);
+} */
+
+.bg-primary-color {
+  background-color: var(--primary-color);
 }
+
+.text-primary-color {
+  color: var(--primary-color);
+}
+
+.bg-box-icons {
+  background-color: var(--bg-box-icons) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .bg-box-icons {
+    background-color: #3f3f46 !important;
+  }
+} ;
