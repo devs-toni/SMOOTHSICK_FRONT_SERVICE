@@ -80,13 +80,15 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: TYPES.RESET_ERROR })
   }, [])
 
+  
+
 
 
   const authData = {
     authState,
     login,
     logout,
-    reset
+    reset,
 
 
   };
