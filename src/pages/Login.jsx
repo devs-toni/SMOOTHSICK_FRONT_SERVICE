@@ -1,44 +1,71 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useGlobalContext } from "../context/GlobalContext";
-import {FcGoogle} from "react-icons/fc";
+import { Toaster, toast } from "react-hot-toast";
+
 
 
 
 const Login = () => {
   const { text } = useLanguage();
-  const { dataState }= useGlobalContext();
-  const { reset, login} = useAuthContext();
+  const { dataState } = useGlobalContext();
+  const { reset, login } = useAuthContext();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
 
 
+
   const handleInput = ({ target }) => {
     const { name, value } = target;
     setUserData({ ...userData, [name]: value });
     reset();
-  }; 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const isValidated= dataState.users.find((user) => user.email === userData.email && user.password === userData.password);
-    if(isValidated) { 
-      login(isValidated);
-      console.log("Estas logueado")
-    }else{
-      alert("Credenciales no validas")}
-    
   };
+
   
- 
- 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const isValidated = dataState.users.find((user) => user.email === userData.email && user.password === userData.password);
+    if (isValidated) {
+      login(isValidated);
+      toast.success('Logged in successfully!',
+        {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+          success: {
+            duration: 2000
+          }
+        }
+      )
+
+    } else {
+      toast.error('Something Wrong...!',
+        {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+          error: {
+            duration: 2000
+          }
+        }
+      )
+    }
+
+  };
+
+
+
 
   return (
-    <div className="w-3/12">
+    <>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md"
@@ -48,39 +75,39 @@ const Login = () => {
           {text.login.title}{" "}
         </p>
 
-        <input
-          type="text"
-          id="email"
-          name="email"
-          placeholder={text.login.email}
-          className="border border-gray-500 rounded-lg text-black"
-          onChange={handleInput}
-          required={true}
-          value={userData.email}
-        />
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder={text.login.email}
+            className="border border-gray-500 rounded-lg text-black"
+            onChange={handleInput}
+            required={true}
+            value={userData.email}
+          />
 
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder={text.login.password}
-          className="border border-gray-500 rounded-lg text-black"
-          onChange={handleInput}
-          required={true}
-          value={userData.password}
-        />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder={text.login.password}
+            className="border border-gray-500 rounded-lg text-black"
+            onChange={handleInput}
+            required={true}
+            value={userData.password}
+          />
 
-        <p >{text.login.dontHaveAnAccount} <br />
-          <Link to="/signup" className="text-pink-300 hover:underline">{text.login.register}</Link>
+        <p>
+          {text.login.dontHaveAnAccount} <br />
+          <Link to="/signup">{text.login.register}</Link>
         </p>
 
-        <button
-          href="#"
-          
-          className="bg-white text-black only: transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  font-bold py-2 px-4 rounded-full"
-        >
-          {text.login.singingoogle}
-        </button>
+          <button
+            href="#"
+            className="bg-white text-black only: transition duration-500 w-60 ease-in-out transform hover:-translate-y-1 hover:scale-110  font-bold py-2 px-4 rounded-full"
+          >
+            {text.login.singingoogle}
+          </button>
 
         <button
           href="#"
@@ -90,7 +117,7 @@ const Login = () => {
           {text.login.singin}
         </button>
       </form>
-    </div>
+    </>
   );
 };
 

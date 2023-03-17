@@ -3,9 +3,9 @@ import { TYPES } from "./types";
 
 const init = () => {
   const auth = JSON.parse(localStorage.getItem('auth'));
-  return  {
-    isAuthenticated:!!auth,
-      auth 
+  return {
+    isAuthenticated: !!auth,
+    auth
   }
 }
 
@@ -18,7 +18,7 @@ export const useAuthContext = () => {
 export const AuthProvider = ({ children }) => {
   const initialState = {
     isAuthenticated: false,
-    id:-1,
+    id: -1,
     user: {
       firstName: "",
       lastName: "",
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
           isAuthenticated: true,
           id: action.payload.id,
           user: action.payload.user,
-          error: "",
+          error: ""
         };
       case TYPES.LOGIN_UNSUCCESS:
         return {
@@ -66,6 +66,7 @@ export const AuthProvider = ({ children }) => {
     if (!error) {
       dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { id, user } })
       localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, id, user }));
+
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
   }, [])
@@ -83,10 +84,10 @@ export const AuthProvider = ({ children }) => {
 
   const authData = {
     authState,
-    login, 
+    login,
     logout,
     reset
-    
+
 
   };
   return (
