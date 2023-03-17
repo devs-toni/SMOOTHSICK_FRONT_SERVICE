@@ -72,6 +72,8 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center h-full">
+       <div className="headphones-image">
+      </div>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 max-w-md px-10 pb-8 pt-7 m-auto bg-neutral-700 rounded-md "
