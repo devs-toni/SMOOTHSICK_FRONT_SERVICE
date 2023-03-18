@@ -1,4 +1,5 @@
-import Accountsettings from "../components/config/Accountsettings"
+import Accountsettings from "../components/AccountSettings/Accountsettings"
+
 
 
 export const AccountSettingsPage = () => {
