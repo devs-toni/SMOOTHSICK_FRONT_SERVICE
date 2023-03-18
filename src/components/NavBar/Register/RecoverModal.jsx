@@ -7,8 +7,9 @@ const RecoverModal = ({ open, setOpen }) => {
   const { text } = useLanguage();
 
   const style = {
-    backgroundColor: "#4B5563",
-    border: "1px solid #616161ff",
+    backgroundColor: "#18181800",
+    border: "1px solid #61616100",
+    borderBottom: "1px solid gray",
     color: 'white'
   }
   return (
@@ -38,34 +39,26 @@ const RecoverModal = ({ open, setOpen }) => {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-sm text-left text-white shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg bg-zinc-700">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-md text-left text-white shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg bg-zinc-900 z-auto">
                   <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div className="sm:flex sm:items-start">
-                      <div className="mt-3 text-center sm:mt-0 sm:mx-4 sm:text-left">
-                        <Dialog.Title as="h3" className="text-base font-semibold leading-6 mt-2 mb-4">
+                      <div className="mt-3 text-center sm:mt-0 sm:mx-4 sm:text-left w-full">
+                        <Dialog.Title as="h3" className="font-semibold leading-6 mt-2 mb-10 text-center text-2xl">
                           {text.register.recover}
                         </Dialog.Title>
-                        <div className="mt-2 flex flex-col">
-                          <label className='text-sm w-full mb-3'>{text.register.recover_text}</label>
-                          <input type="text" className='border-solid rounded border-black' style={style} />
+                        <div className="mt-2">
+                          <input type="text" className='border-solid rounded border-black w-full' placeholder={text.register.email} style={style} />
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="px-10 py-6 sm:flex sm:flex-row-reverse sm:px-10">
+                  <div className="px-10 py-6 sm:flex sm:flex-row-reverse sm:px-10 w-full justify-center">
                     <button
                       type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                      className="inline-flex w-full justify-center rounded-md bg-purple-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-300 sm:ml-3 sm:w-auto"
                       onClick={() => setOpen(false)}
                     >
-                      Deactivate
-                    </button>
-                    <button
-                      type="button"
-                      className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                      onClick={() => setOpen(false)}
-                    >
-                      Cancel
+                      {text.register.send}
                     </button>
                   </div>
                 </Dialog.Panel>
