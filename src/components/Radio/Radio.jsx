@@ -1,6 +1,8 @@
 import { useGlobalContext } from '../../context/GlobalContext';
 import { useLanguage } from '../../context/LanguageContext';
 import Song from '../Categories/Song';
+import { v4 as uuidv4 } from 'uuid';
+
 
 export const Radio = () => {
 
@@ -16,7 +18,7 @@ export const Radio = () => {
           dataState.tracks.map(({ id, name, artist, url, thumbnail, genre }) => {
             return (
               <Song
-                key={id}
+                key={uuidv4()}
                 id={id}
                 name={name}
                 artist={artist}

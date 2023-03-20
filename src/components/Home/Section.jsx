@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Chart from "./Chart";
+import { v4 as uuidv4 } from 'uuid';
 
 const Section = ({ tracks, loaded }) => {
 
@@ -11,7 +12,7 @@ const Section = ({ tracks, loaded }) => {
           tracks.map(({ id, name, artist, thumbnail, liked }) => {
             return (
               <Chart
-                key={id}
+                key={uuidv4()}
                 img={thumbnail}
                 title={name}
                 artist={artist}
