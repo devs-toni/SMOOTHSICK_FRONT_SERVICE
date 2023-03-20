@@ -1,4 +1,4 @@
-import { RadioComponent } from "../components/RadioComponent/RadioComponent"
+import { RadioComponent } from "../components/Radio/Radio"
 
 
 export const RadioPage = () => {

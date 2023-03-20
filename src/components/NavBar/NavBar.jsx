@@ -7,7 +7,6 @@ import { FiLogOut } from "react-icons/fi"
 import { NavLink } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { useRef, useState } from 'react';
 import { Toaster, toast } from "react-hot-toast";
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'

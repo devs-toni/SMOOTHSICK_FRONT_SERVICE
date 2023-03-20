@@ -1,4 +1,4 @@
-import { CategoriesComponent } from "../components/CategoriesComponent/CategoriesComponent"
+import { CategoriesComponent } from "../components/Categories/Categories"
 
 
 export const CategoriesPage = () => {

@@ -6,7 +6,11 @@ module.exports = {
     'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      minHeight: {
+        "100": "350px",
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
