@@ -1,18 +1,61 @@
+import { useEffect, useState } from "react";
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 
-const Cover = () => {
+
+const Cover = ({ artists, autoPlay, showButtons, selectedIndex, setSelectedIndex, setSelectedTracks, loaded, setLoaded, tracks }) => {
+
+
+  const [selectedImage, setSelectedImage] = useState(artists[0].photoUrl);
+
+  const previous = () => {
+    selectNewImage(selectedIndex, artists, false);
+  }
+
+  const next = () => {
+    selectNewImage(selectedIndex, artists);
+  }
+
+  const selectNewImage = (index, images, next = true) => {
+    setLoaded(false);
+    setTimeout(() => {
+      const condition = next ? index < images.length - 1 : index > 0;
+      const nextIndex = next ?
+        (condition ? index + 1 : 0)
+        : (condition ? index - 1 : images.length - 1);
+      setSelectedImage(artists[nextIndex].photoUrl);
+      setSelectedIndex(nextIndex);
+      setSelectedTracks(tracks[nextIndex]);
+    }, 500)
+  }
+
+  useEffect(() => {
+    if (autoPlay || !showButtons) {
+      const interval = setInterval(() => {
+        selectNewImage(selectedIndex, artists);
+      }, 10000);
+      return () => clearInterval(interval);
+    }
+  }, [selectNewImage])
+
+
   return (
-    <div className="w-full mr-6">
-      <div className="bg-home-pattern bg-no-repeat bg-cover px-4 py-3 rounded-3xl flex flex-col justify-between h-full">
-        <div className="mb-20">
-          <p className="italic font-thin text-xs pt-1">Current playlist</p>
+    <div className="carousel">
+      {showButtons &&
+        <div className="nav">
+          <AiOutlineLeft onClick={previous} className="nav-icon" />
+          <AiOutlineRight onClick={next} className="nav-icon" />
         </div>
-        <div className="flex flex-col">
-          <p className="font-bold">R & B Hits</p>
-          <p className="italic text-xs pb-4">Album pepito de los mejores exitos del exito mundial prueba</p>
-          <div className="flex">
-            <FaHeart className="mr-3"/>
-            <p className="italic text-sm">2351</p>
+      }
+      <div className="carousel-images relative">
+        <img src={selectedImage} alt='Cover' onLoad={() => setLoaded(true)} className={`carousel-image ${loaded ? 'loaded' : ''}`} />
+        <div className={`px-6 py-6 rounded-3xl w-full flex flex-row justify-between absolute top-0 data ${loaded ? 'loaded' : ''}`}>
+          <div className="flex flex-col">
+            <p className="text-sm md:text-2xl font-bold">{artists[selectedIndex].name}</p>
+          </div>
+          <div className="flex text-sm">
+            <FaHeart className="mr-3 mt-1" />
+            <p className="italic">{artists[selectedIndex].popularity}</p>
           </div>
         </div>
       </div>

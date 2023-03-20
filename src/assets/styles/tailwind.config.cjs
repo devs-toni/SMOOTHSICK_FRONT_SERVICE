@@ -10,11 +10,14 @@ module.exports = {
       minHeight: {
         "100": "350px",
       },
+      minWidth: {
+        "400": "500px"
+      },
+      maxWidth: {
+        "80": "80%"
+      },
       backgroundColor: {
         "chart": "#1a1e1f"
-      },
-      backgroundImage: {
-        "home-pattern": "url('src/assets/imgs/try.png')",
       }
     },
   },

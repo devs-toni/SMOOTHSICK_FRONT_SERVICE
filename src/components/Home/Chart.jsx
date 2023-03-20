@@ -4,21 +4,25 @@ import { FaHeart } from 'react-icons/fa'
 const Chart = ({ img, title, artist, isLike }) => {
 
   return (
-    <div className='flex my-4 bg-chart p-3 rounded-xl'>
-      <div className='w-1/3 mr-5'>
-        <img src={img} alt={title} className="rounded-lg" />
+    <div className='flex mt-4 bg-chart p-5 rounded-xl md:min-w-400 lg:min-w-400 xl:min-w-400'>
+
+      <div className='w-1/3 mr-5 max-img'>
+        <img src={img} alt={title} className="rounded-lg w-full max-img" />
       </div>
-      <div className='flex flex-row justify-between items-center w-full'>
+
+      <div className='flex flex-row justify-between w-full grow text-left'>
         <div className='text-xs'>
-          <p>{title}</p>
-          <p>{artist}</p>
+          <p className='sm:text-xl pr-4'>{title}</p>
+          <p className='text-xs sm:text-md mt-2'>{artist}</p>
         </div>
-        <div className={`${isLike ? "border-red-500" : "border-gray-400"} mr-5 text-xs md:text-xl border p-3 rounded-full `}>
-          <FaHeart className={isLike ? "text-red-500" : "text-gray-400"} />
+
+        <div className={`${isLike ? "border-red-500" : "border-gray-400"} sm:mr-5 text-xs md:text-2xl rounded-full my-auto cursor-pointer`}>
+          <FaHeart className={isLike ? "text-red-500" : "text-gray-600"} />
         </div>
       </div>
+
     </div>
   )
 }
 
-export default Chart
+export default Chart;
