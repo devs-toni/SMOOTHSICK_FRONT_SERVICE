@@ -42,7 +42,10 @@
       "password": "Change password",
       "edit": "Edit Profile",
       "plan": "Plan details",
-      "subscription": "Type subscription"
+      "subscription": "Type subscription",
+      "name": "Name:",
+      "email": "Email:",
+      "password2": "Password"
 
 
       

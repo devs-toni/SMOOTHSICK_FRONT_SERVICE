@@ -1,9 +1,13 @@
 import React, { useContext } from 'react'
+import { useAuthContext } from '../../context/AuthContext'
 import { useLanguage } from '../../context/LanguageContext'
 
 
 const Accountsettings = () => {
     const { text } = useLanguage()
+    const {authState} = useAuthContext()
+    
+
     return (
 
 
@@ -16,9 +20,9 @@ const Accountsettings = () => {
                 <div className='flex flex-col'>
                     <h1> {text.account.user}</h1>
                     <div className='text-sm pt-3'>
-                        <p className='font-bold'>Name: <span className='font-thin italic'>Antonio</span> </p>
-                        <p className='font-bold'>Email: <span className='font-thin italic'>rufigo@gmail.com</span></p>
-                        <p className='font-bold'>Password: <span className='font-thin italic'>******</span></p>
+                        <p className='font-bold'> {text.account.name}  <span className='font-thin italic'> {authState.user.firstName} {authState.user.lastName} </span> </p>
+                        <p className='font-bold'>{text.account.email} <span className='font-thin italic'>rufigo@gmail.com</span></p>
+                        <p className='font-bold'>{text.account.password2} <span className='font-thin italic'>******</span></p>
                         
                     </div>
                 </div>
