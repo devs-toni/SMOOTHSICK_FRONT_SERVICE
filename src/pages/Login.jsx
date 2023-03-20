@@ -31,7 +31,6 @@ const Login = () => {
     e.preventDefault();
     const userFound = dataState.users.find((user) => user.email === userData.email && user.password === userData.password);
     if (userFound) {
-    
       login({
         id: userFound.id,
         firstName: userFound.first_name,
@@ -40,16 +39,7 @@ const Login = () => {
         profilePicture: defaultUserPicture,
       });
       navigate("/");
-    } else if (!userFound) {
-      login({
-        id: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        profilePicture: defaultUserPicture,
-      });
-    }
-    
+    } 
     else {
       toast.error("Something Wrong...!", {
         style: {
