@@ -13,7 +13,8 @@
       "already": "Ya tienes una cuenta?",
       "login": "Iniciar Sesión",
       "recover": "Recuperar contraseña",
-      "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password"
+      "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password",
+      "send": "Enviar correo de recuperación"
     },
     "login": {
       "title": "Para continuar, inicia sesión en Smoothsic",
@@ -61,7 +62,8 @@
       "already": "Already have an account?",
       "login": "Sign in here",
       "recover": "Recover password",
-      "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password"
+      "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password",
+      "send": "Send recover email"
     },
     "login": {
       "title": "To continue, log in to Smoothsic",
