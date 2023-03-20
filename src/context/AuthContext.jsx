@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
   const login = useCallback((user, error) => {
     if (!error) {
       dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { user } })
-      localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, user }));
+      localStorage.setItem('auth', JSON.stringify({ user }));
 
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
