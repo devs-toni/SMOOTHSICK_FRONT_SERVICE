@@ -6,7 +6,8 @@ const init = () => {
   const auth = JSON.parse(localStorage.getItem('auth'));
   return {
     isAuthenticated: !!auth,
-    user: auth
+    user: auth,
+    error:""
   }
 }
 
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children }) => {
       case TYPES.LOGIN_SUCCESS:
         return {
           isAuthenticated: true,
-          user: action.payload.user,
+          user: action.payload,
           error: ""
         };
       case TYPES.LOGIN_UNSUCCESS:
@@ -64,8 +65,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = useCallback((user, error) => {
     if (!error) {
-      dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { user } })
-      localStorage.setItem('auth', JSON.stringify({ user }));
+      dispatch({ type: TYPES.LOGIN_SUCCESS, payload: user })
+      localStorage.setItem('auth', JSON.stringify( user ));
 
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
