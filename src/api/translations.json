@@ -35,6 +35,20 @@
       "register": "Registrate",
       "input_p_holder": "Encuentra nueva música...",
       "dashboard": "Perfil"
+    },
+    "account":{
+      "account": "Account settings",
+      "user": "User",
+      "password": "Change password",
+      "edit": "Edit Profile",
+      "plan": "Plan details",
+      "subscription": "Type subscription",
+      "name": "Name:",
+      "email": "Email:",
+      "password2": "Password"
+
+
+      
     }
   },
   "en": {

@@ -6,7 +6,7 @@ const init = () => {
   const auth = JSON.parse(localStorage.getItem('auth'));
   return {
     isAuthenticated: !!auth,
-    auth
+    user: auth
   }
 }
 
@@ -19,12 +19,12 @@ export const useAuthContext = () => {
 export const AuthProvider = ({ children }) => {
   const initialState = {
     isAuthenticated: false,
-    id: -1,
     user: {
+      id: "",
       firstName: "",
       lastName: "",
       email: "",
-      profilePicture: defaultUserPicture,
+      profilePicture: "",
     },
     error: "",
   };
@@ -34,7 +34,6 @@ export const AuthProvider = ({ children }) => {
       case TYPES.LOGIN_SUCCESS:
         return {
           isAuthenticated: true,
-          id: action.payload.id,
           user: action.payload.user,
           error: ""
         };
@@ -63,13 +62,14 @@ export const AuthProvider = ({ children }) => {
 
   const [authState, dispatch] = useReducer(reducer, initialState, init);
 
-  const login = useCallback((id, user, error) => {
+  const login = useCallback((user, error) => {
     if (!error) {
-      dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { id, user } })
-      localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, id, user }));
+      dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { user } })
+      localStorage.setItem('auth', JSON.stringify({ user }));
 
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
+    
   }, [])
 
   const logout = useCallback(() => {
@@ -82,8 +82,6 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   
-
-
 
   const authData = {
     authState,

@@ -7,7 +7,7 @@ import { CATEGORIES, RADIO, SIGNUP, LOGIN, VIDEO, ACCOUNT } from './paths'
 import { RadioPage } from '../pages/RadioPage'
 import { VideoPage } from '../pages/VideoPage'
 import { AccountSettingsPage } from '../pages/AccountSettingsPage'
-import PrivateRoute from './PrivateRoute.routes'
+import PrivateRoute from './PrivateRoute'
 
 
 export const MyRouter = () => {
