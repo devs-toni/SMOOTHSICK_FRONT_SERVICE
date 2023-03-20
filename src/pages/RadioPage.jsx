@@ -1,8 +1,8 @@
-import { RadioComponent } from "../components/Radio/Radio"
+import { Radio } from "../components/Radio/Radio"
 
 
 export const RadioPage = () => {
   return (
-    <RadioComponent />
+    <Radio />
   )
 }

@@ -36,19 +36,20 @@
       "input_p_holder": "Encuentra nueva música...",
       "dashboard": "Perfil"
     },
-    "account":{
-      "account": "Account settings",
-      "user": "User",
-      "password": "Change password",
-      "edit": "Edit Profile",
-      "plan": "Plan details",
-      "subscription": "Type subscription",
-      "name": "Name:",
+    "account": {
+      "account": "Ajustes de la Cuenta",
+      "user": "Usuario",
+      "password": "Cambiar Contraseña",
+      "edit": "Editar Perfil",
+      "plan": "Detalles del Plan",
+      "subscription": "Tipo de Suscripción",
+      "name": "Nombre:",
       "email": "Email:",
-      "password2": "Password"
-
-
-      
+      "password2": "Contraseña"
+    },
+    "liked": {
+      "title": "Canciones Favoritas",
+      "total": "canciones"
     }
   },
   "en": {
@@ -87,6 +88,21 @@
       "register": "Sign up",
       "input_p_holder": "Find new music...",
       "dashboard": "Profile"
+    },
+    "account": {
+      "account": "Account settings",
+      "user": "User",
+      "password": "Change password",
+      "edit": "Edit Profile",
+      "plan": "Plan details",
+      "subscription": "Type subscription",
+      "name": "Name:",
+      "email": "Email:",
+      "password2": "Password"
+    },
+    "liked": {
+      "title": "Liked Songs",
+      "total": "songs"
     }
   },
   "fr": {
@@ -122,6 +138,21 @@
       "register": "Sign up",
       "input_p_holder": "Find new music...",
       "dashboard": "Profile"
+    },
+    "account": {
+      "account": "Account settings",
+      "user": "User",
+      "password": "Change password",
+      "edit": "Edit Profile",
+      "plan": "Plan details",
+      "subscription": "Type subscription",
+      "name": "Name:",
+      "email": "Email:",
+      "password2": "Password"
+    },
+    "liked": {
+      "title": "Canciones Favoritas",
+      "total": "canciones"
     }
   },
   "chn": {
@@ -157,6 +188,21 @@
       "register": "Sign up",
       "input_p_holder": "Find new music...",
       "dashboard": "Profile"
+    },
+    "account": {
+      "account": "Account settings",
+      "user": "User",
+      "password": "Change password",
+      "edit": "Edit Profile",
+      "plan": "Plan details",
+      "subscription": "Type subscription",
+      "name": "Name:",
+      "email": "Email:",
+      "password2": "Password"
+    },
+    "liked": {
+      "title": "Canciones Favoritas",
+      "total": "canciones"
     }
   }
 }
