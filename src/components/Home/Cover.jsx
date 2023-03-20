@@ -2,8 +2,8 @@ import { FaHeart } from "react-icons/fa";
 
 const Cover = () => {
   return (
-    <div className="w-full sm:w-3/5 sm:max-w-3xl p-6 h-full">
-      <div className="bg-red-500 px-4 py-3 rounded-xl min-h-100 flex flex-col justify-between">
+    <div className="w-full mr-6">
+      <div className="bg-home-pattern bg-no-repeat bg-cover px-4 py-3 rounded-3xl flex flex-col justify-between h-full">
         <div className="mb-20">
           <p className="italic font-thin text-xs pt-1">Current playlist</p>
         </div>

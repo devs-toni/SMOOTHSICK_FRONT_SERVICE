@@ -22,6 +22,10 @@
   color: var(--primary-color);
 }
 
+.border-pirmary-color {
+  border-color: var(--primary-color);
+}
+
 .bg-box-icons {
   background-color: var(--bg-box-icons) !important;
 }

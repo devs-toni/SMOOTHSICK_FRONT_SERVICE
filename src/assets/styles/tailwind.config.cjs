@@ -9,6 +9,12 @@ module.exports = {
     extend: {
       minHeight: {
         "100": "350px",
+      },
+      backgroundColor: {
+        "chart": "#1a1e1f"
+      },
+      backgroundImage: {
+        "home-pattern": "url('src/assets/imgs/try.png')",
       }
     },
   },
