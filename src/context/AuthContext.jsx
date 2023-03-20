@@ -19,7 +19,6 @@ export const useAuthContext = () => {
 export const AuthProvider = ({ children }) => {
   const initialState = {
     isAuthenticated: false,
-    // id: -1,
     user: {
       id: "",
       firstName: "",
@@ -35,7 +34,6 @@ export const AuthProvider = ({ children }) => {
       case TYPES.LOGIN_SUCCESS:
         return {
           isAuthenticated: true,
-          // id: action.payload.id,
           user: action.payload.user,
           error: ""
         };
