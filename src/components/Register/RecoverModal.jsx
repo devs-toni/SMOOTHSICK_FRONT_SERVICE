@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { useLanguage } from '../../../context/LanguageContext'
+import { useLanguage } from '../../context/LanguageContext'
 
 const RecoverModal = ({ open, setOpen }) => {
 
@@ -46,6 +46,7 @@ const RecoverModal = ({ open, setOpen }) => {
                         <Dialog.Title as="h3" className="font-semibold leading-6 mt-2 mb-10 text-center text-2xl">
                           {text.register.recover}
                         </Dialog.Title>
+                      
                         <div className="mt-2">
                           <input type="text" className='border-solid rounded border-black w-full' placeholder={text.register.email} style={style} />
                         </div>
@@ -55,7 +56,7 @@ const RecoverModal = ({ open, setOpen }) => {
                   <div className="px-10 py-6 sm:flex sm:flex-row-reverse sm:px-10 w-full justify-center">
                     <button
                       type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-purple-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-300 sm:ml-3 sm:w-auto"
+                      className="inline-flex w-full justify-center rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto"
                       onClick={() => setOpen(false)}
                     >
                       {text.register.send}

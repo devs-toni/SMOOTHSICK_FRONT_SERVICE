@@ -4,22 +4,33 @@ import { FaEye } from 'react-icons/fa';
 import { useForm } from "../hooks/useForm";
 import { Link, useNavigate } from "react-router-dom";
 import { LOGIN } from "../router/paths";
-import Error from "../components/NavBar/Register/Error";
+import Error from "../components/Register/Error";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
-import RecoverModal from "../components/NavBar/Register/RecoverModal";
+import RecoverModal from "../components/Register/RecoverModal";
 
 
 const Register = () => {
 
   const { authState } = useAuthContext();
   const navigate = useNavigate();
+  const [eyeClicked, setEyeClicked] = useState(false);
 
 
   useEffect(() => {
     authState.isAuthenticated &&
       navigate('/');
   }, [])
+
+  useEffect(() => {
+    if (eyeClicked) {
+      setTimeout(() => {
+        setEyeClicked(false)
+      }, 3000);
+    }
+
+  }, [eyeClicked])
+
 
   const { text } = useLanguage();
   const { form, handleChange, handleBlur, validate, errors } = useForm({
@@ -130,7 +141,7 @@ const Register = () => {
                 <div className="relative">
                   <TextInput
                     id="registerPassword"
-                    type="password"
+                    type={eyeClicked ? "text" : "password"}
                     required={true}
                     shadow={true}
                     color="white"
@@ -143,7 +154,7 @@ const Register = () => {
                     placeholder={text.register.password}
                   />
                   <Error text={errors?.password} />
-                  <FaEye className="absolute right-2 top-4 opacity-60 hover:opacity-100 cursor-pointer" />
+                  <FaEye className={`absolute right-2 top-4 opacity-60 hover:opacity-100 cursor-pointer ${errors?.password ? "text-black" : "text-white"}`} onClick={() => setEyeClicked(!eyeClicked)} />
                 </div>
                 <div>
                   <TextInput
