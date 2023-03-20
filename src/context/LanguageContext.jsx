@@ -21,6 +21,10 @@ export const LanguageProvider = ({ children }) => {
       setLang("en")
       setText(translations.en)
     }
+    else if (name === "france") {
+      setLang("fr")
+      setText(translations.fr)
+    }
     else {
       setLang("chn")
       setText(translations.chn)

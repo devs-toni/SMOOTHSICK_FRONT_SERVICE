@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useCallback } from "react";
 import { TYPES } from "./types";
+import defaultUserPicture from "../assets/imgs/default_pictures/default_user_img.png"
 
 const init = () => {
   const auth = JSON.parse(localStorage.getItem('auth'));
@@ -23,7 +24,7 @@ export const AuthProvider = ({ children }) => {
       firstName: "",
       lastName: "",
       email: "",
-      profilePicture: "",
+      profilePicture: defaultUserPicture,
     },
     error: "",
   };
@@ -89,8 +90,6 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     reset,
-
-
   };
   return (
     <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>
