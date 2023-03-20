@@ -8,16 +8,18 @@ const Accountsettings = () => {
 
 
         <div className="flex justify-around items-center flex-col pt-56 gap-7 max-w-5xl	m-auto mt-10 p-10 md:max-w-xl lg:max-w-3xl xl:max-w-6xl ">
-            <div className='grid grid-cols-3 justify-start items-center gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500  w-full'>
+            <div className='grid grid-cols-3 justify-start items-start py-4 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500  w-full'>
                 <div className='flex flex-col'>
                     <span> {text.account.account} </span>
                     <button type="button" className="text-white h-16 w-32 bg-gradient-to-r from-purple-500 to-pink-500  hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Cancel Subscription</button>
                 </div>
                 <div className='flex flex-col'>
                     <h1> {text.account.user}</h1>
-                    <div>
-                        <p>Name: <span>Antonio</span> </p>
-                        <p>Email: <span>rufigo@gmail.com</span></p>
+                    <div className='text-sm pt-3'>
+                        <p className='font-bold'>Name: <span className='font-thin italic'>Antonio</span> </p>
+                        <p className='font-bold'>Email: <span className='font-thin italic'>rufigo@gmail.com</span></p>
+                        <p className='font-bold'>Password: <span className='font-thin italic'>******</span></p>
+                        
                     </div>
                 </div>
                 <div className='flex flex-col'>
