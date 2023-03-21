@@ -31,7 +31,7 @@ const Login = () => {
     e.preventDefault();
     const userFound = dataState.users.find((user) => user.email === userData.email && user.password === userData.password);
     if (userFound) {
-      login({
+      login(userFound.id, {
         id: userFound.id,
         firstName: userFound.first_name,
         lastName: userFound.last_name,
@@ -39,7 +39,7 @@ const Login = () => {
         profilePicture: defaultUserPicture,
       });
       navigate("/");
-    } 
+    }
     else {
       toast.error("Something Wrong...!", {
         style: {
@@ -90,66 +90,67 @@ const Login = () => {
 
 
   return (
-    <div className="flex items-center flex-col justify-center h-full">
-      {/* <div className="headphones-image">
-      </div> */}
-      <form
-        onSubmit={handleSubmit}
-        className="flex item-center flex-col gap-4 max-w-xl w-full m-4 register image-z"
-
-      >
-        <p className="text-2xl font-bol align-content:center;">
-          {text.login.title}{" "}
-        </p>
-        <div>
-          <TextInput
-            type="text"
-            id="email"
-            name="email"
-            placeholder={text.login.email}
-            className="border focus:ring-0 border-t-transparent border-l-transparent border-r-transparent focus:border-transparent border-b-1 border-neutral-500 "
-            onChange={handleInput}
-            required={true}
-            value={userData.email}
-          />
+    <div className="h-full flex justify-center items-center">
+      <>
+        <div className="headphones-image">
         </div>
-        <div>
-          <TextInput
-            type="password"
-            id="password"
-            name="password"
-            placeholder={text.login.password}
-            className=" border focus:ring-0 border-t-transparent border-l-transparent border-r-transparent focus:border-transparent border-b-1 border-neutral-500 "
-            onChange={handleInput}
-            required={true}
-            value={userData.password}
-          />
-        </div>
-        <p>
-          {text.login.dontHaveAnAccount} <br />
-          <Link
-            to={`/${SIGNUP}`}
-            className="ml-2 text-pink-300 hover:underline"
+        <div className="flex flex-col items-center justify-center h-full pt-20 w-full">
+          <p className="text-lg md:text-4xl font-semibold pt-20 mb-10">{text.login.title}</p>
+          <form
+            onSubmit={handleSubmit}
+            className="flex item-center flex-col gap-4 max-w-xl w-full px-10 pt-10 m-4 rounded-md register image-z"
           >
-            {text.login.register}
-          </Link>
-        </p>
+            <div>
+              <TextInput
+                type="text"
+                id="email"
+                name="email"
+                placeholder={text.login.email}
+                className="border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
+                onChange={handleInput}
+                required={true}
+                value={userData.email}
+              />
+            </div>
+            <div>
+              <TextInput
+                type="password"
+                id="password"
+                name="password"
+                placeholder={text.login.password}
+                className=" border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
+                onChange={handleInput}
+                required={true}
+                value={userData.password}
+              />
+            </div>
+            <p>
+              {text.login.dontHaveAnAccount} <br />
+              <Link
+                to={`/${SIGNUP}`}
+                className="ml-2 text-pink-300 hover:underline"
+              >
+                {text.login.register}
+              </Link>
+            </p>
 
 
-        <button
-          className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  text-white font-bold py-2 px-4 rounded-md"
-        >
-          {text.login.singin}
-        </button>
-      </form>
-      <div className="flex item-center flex-row w-96">
-        <button
-          onClick={() => loginG()}
-          className="bg-slate-50 transition duration-500 ease-in-out transform hover:-translate-y-1 text-black hover:scale-110 font-bold py-2 px-4 rounded-md "
-        >
-          {text.login.singingoogle}
-        </button>
-      </div>
+            <button
+              className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  text-white font-bold py-2 px-4 rounded-md"
+            >
+              {text.login.singin}
+            </button>
+          </form>
+          <div className="flex item-center w-3/12 ">
+            <button
+              onClick={() => loginG()}
+              className="bg-slate-50 transition duration-500 w-full ease-in-out transform hover:-translate-y-1 text-black hover:scale-110 font-bold py-2 px-4 rounded-md"
+            >
+              {text.login.singingoogle}
+            </button>
+          </div>
+        </div>
+      </>
     </div>
   );
 };

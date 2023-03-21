@@ -1,13 +1,13 @@
 import { Avatar } from 'flowbite-react';
 import { FaPhotoVideo, FaUserShield, FaUserPlus } from "react-icons/fa";
-import { AiFillHome, AiOutlineUser } from "react-icons/ai"
+import { AiFillHome } from "react-icons/ai"
 import { RiFolderMusicFill, RiMenu4Fill } from "react-icons/ri"
 import { BiRadio } from "react-icons/bi"
 import { FiLogOut } from "react-icons/fi"
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Toaster, toast } from "react-hot-toast";
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
@@ -15,12 +15,33 @@ import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import exampleLogo from '../../assets/imgs/logo/logo-head.svg';
 import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png"
+import { SIGNUP, LOGIN } from '../../router/paths'
 
 
 export const NavBar = () => {
 
+	console.log("0");
+	
 	const { logout, authState } = useAuthContext();
 	const { handleLanguage, text } = useLanguage();
+
+	const [toggleBar, setToggleBar] = useState(false)
+
+	const location = useLocation()
+
+
+	useEffect(() => {
+		if (location.pathname == `/${LOGIN}` || location.pathname == `/${SIGNUP}`) {
+			setToggleBar(false)
+		} else {
+			setToggleBar(true)
+		}
+
+	}, [location])
+
+
+	const { user } = authState
+
 
 	const lenguageSelected = [
 		{ key: 1, name: "spain", country: flagSpain },
@@ -54,53 +75,6 @@ export const NavBar = () => {
 		)
 	}
 
-
-	// const [currentCountryImg, setCurrentCountryImg] = useState(flagSpain)
-	// const [currentCountryName, setCurrentCountryName] = useState("spain")
-
-	// const [otherCountryImg1, setOtherCountryImg1] = useState(flagEngland)
-	// const [otherCountryName1, setOtherCountryName1] = useState("united-kingdom")
-
-	// const [otherCountryImg2, setOtherCountryImg2] = useState(flagFrance)
-	// const [otherCountryName2, setOtherCountryName2] = useState("france")
-
-	// const [otjerCountryImg3, setOtherCountryImg3] = useState(flagChina)
-	// const [otherCountryName3, setOtherCountryName3] = useState("china")
-
-	// const currentRef = useRef()
-	// const dropDown = useRef()
-
-	// const handleSwitchImg = ({ target }) => {
-	// 	const { name, dataset, src } = target
-	// 	const { position } = dataset
-	// 	handleLanguage(target)
-	// 	if (position === "1") {
-	// 		setOtherCountryImg1(currentRef.current.src)
-	// 		setOtherCountryName1(currentRef.current.name)
-	// 		setCurrentCountryName(name)
-	// 		setCurrentCountryImg(src)
-	// 		dropDown.current.classList.remove("block")
-	// 		dropDown.current.classList.add("hidden")
-	// 	} else if (position === "2") {
-	// 		setOtherCountryImg2(currentRef.current.src)
-	// 		setOtherCountryName2(currentRef.current.name)
-	// 		setCurrentCountryName(name)
-	// 		setCurrentCountryImg(src)
-	// 		dropDown.current.classList.remove("block")
-	// 		dropDown.current.classList.add("hidden")
-	// 	}
-	// 	else {
-	// 		setOtherCountryImg3(currentRef.current.src)
-	// 		setOtherCountryName3(currentRef.current.name)
-	// 		setCurrentCountryName(name)
-	// 		setCurrentCountryImg(src)
-	// 		dropDown.current.classList.remove("block")
-	// 		dropDown.current.classList.add("hidden")
-	// 	}
-
-
-	// }
-
 	const handleApplyLenguage = ({ target }) => {
 		if (target.name === "spain") {
 			handleLanguage(target)
@@ -115,29 +89,31 @@ export const NavBar = () => {
 	}
 
 
-
-
 	return (
-
+		
 		<>
+		{console.log("3")}
 			<Toaster />
-			<div className="fixed top-0 z-50 w-full bg-transparent">
-				<nav className="flex flex-row items-center justify-between pr-4 pl-4 pt-3  md:pr-8 md:pl-11    lg:pr-5 lg:pl-5       " >
+			<div className="fixed top-0 z-50 w-full rounded-b-lg shadow-lg shadow-cyan-500/50 bg-primary-color md:bg-transparent md:shadow-none">
+				<nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 " >
 					<img className='h-12 w-14' src={exampleLogo} alt="" />
 					<button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 bg-neutral-800 rounded-lg md:hidden focus:outline-none">
 						<RiMenu4Fill className='h-6 w-6' />
 					</button>
-					<div className="relative ">
+
+
+					<div className={toggleBar === true ? "relative" : "hidden"} >
 						<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 							<svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
 						</div>
 						<input type="text" id="search" className=" border bg-box-icons border-gray-300 text-white text-sm rounded-lg block pl-10 p-2.5 " placeholder={text.navbar.input_p_holder} required />
 					</div>
 
+
+
 					<div className="flex justify-center items-center flex-wrap">
 						<div>
 							{
-
 								authState.isAuthenticated
 									?
 									<>
@@ -146,7 +122,6 @@ export const NavBar = () => {
 											rounded={true}
 											id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
 										/>
-
 										<div id="dropdownDots" className="z-10 hidden bg-zinc-700 divide-y divide-gray-100 rounded-lg shadow w-44">
 											<ul className="py-2 text-sm text-white  dark:text-gray-200" aria-labelledby="dropdownMenuIconButton" >
 												<NavLink to='/account' className={({ isActive }) => (isActive ? "opacity-40" : "")}>
@@ -181,7 +156,6 @@ export const NavBar = () => {
 											rounded={true}
 											id="dropdownMenuIconButton2" data-dropdown-toggle="dropdownDots2"
 										/>
-
 										<div id="dropdownDots2" className="z-10 hidden bg-zinc-700 divide-y divide-gray-100 rounded-lg shadow w-44">
 											<ul className="py-2 text-sm text-white  dark:text-gray-200" aria-labelledby="dropdownMenuIconButton" >
 												<NavLink to='/login'>
@@ -204,14 +178,10 @@ export const NavBar = () => {
 													}
 												</div>
 											</ul>
-											
 										</div>
-
 									</>
 							}
-
 						</div>
-
 					</div>
 				</nav>
 			</div>
@@ -261,25 +231,8 @@ export const NavBar = () => {
 						</div>
 					</ul>
 
-					{/* <img name={currentCountryName} src={currentCountryImg} alt={currentCountryName} ref={currentRef} id="dropdownRightBotton" data-dropdown-toggle="dropdownBottom" data-dropdown-placement="top" className="h-16 rounded-full text-sm px-4 py-2.5 md:h-14 lg:h-12 hover:scale-110 cursor-pointer" />
-
-					<div id="dropdownBottom" ref={dropDown} className="z-10 hidden">
-						<ul className=" text-sm text-gray-700 flex items-center flex-col gap-3">
-							<li>
-								<img name={otherCountryName1} src={otherCountryImg1} alt={`${otherCountryName1} flag`} className='h-8 cursor-pointer hover:scale-110' data-position="1" onClick={handleSwitchImg} />
-							</li>
-							<li>
-								<img name={otherCountryName2} src={otherCountryImg2} alt={`${otherCountryName2} flag`} className='h-8 cursor-pointer hover:scale-110' data-position="2" onClick={handleSwitchImg} />
-							</li>
-							<li>
-								<img name={otherCountryName2} src={otjerCountryImg3} alt={`${otherCountryName3} flag`} className='h-8 cursor-pointer hover:scale-110' data-position="3" onClick={handleSwitchImg} />
-							</li>
-						</ul>
-					</div> */}
-
 				</div>
 			</aside>
-
 		</>
 
 	)
