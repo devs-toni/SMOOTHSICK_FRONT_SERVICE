@@ -48,7 +48,9 @@
       "password2": "Contraseña"
     },
     "liked": {
-      "title": "Canciones Favoritas",
+      "title": "Canciones que te gustan",
+      "title_table": "TÍTULO",
+      "album_table": "ÁLBUM",
       "total": "canciones"
     }
   },
@@ -102,6 +104,8 @@
     },
     "liked": {
       "title": "Liked Songs",
+      "title_table": "TITLE",
+      "album_table": "ALBUM",
       "total": "songs"
     }
   },
@@ -152,6 +156,8 @@
     },
     "liked": {
       "title": "Canciones Favoritas",
+      "title_table": "TITLE",
+      "album_table": "ALBUM",
       "total": "canciones"
     }
   },
@@ -202,6 +208,8 @@
     },
     "liked": {
       "title": "Canciones Favoritas",
+      "title_table": "TITLE",
+      "album_table": "ALBUM",
       "total": "canciones"
     }
   }

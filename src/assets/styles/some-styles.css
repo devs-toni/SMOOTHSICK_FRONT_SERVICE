@@ -34,6 +34,13 @@
   max-height: 560px;
 }
 
+.user-profile-img {
+  min-height: 20px;
+  min-width: 20px;
+  max-height: 20px;
+  max-width: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .bg-box-icons {
     background-color: #3f3f46 !important;
