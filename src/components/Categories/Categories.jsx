@@ -1,4 +1,4 @@
-import { SongCard } from "../SongCard/SongCard";
+import { SongCard } from "../Categories/SongCard";
 import { useEffect, useState } from "react";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { useAuthContext } from "../../context/AuthContext";

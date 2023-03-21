@@ -124,13 +124,14 @@ export const HomePage = () => {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center h-full w-full mt-20">
+    <div className="h-full">
+      <img className={`z-auto fixed right-0 w-screen h-screen object-cover opacity-20`} src={artists[selectedIndex].photoUrl} alt="pepe"></img>
+      <div className="flex flex-col items-center justify-center w-full pt-32 z-10">
         <div className="w-5/6 xl:flex md:w-3/5 lg:w-10/12 home-carousel">
           <Cover
             artists={artists}
-            showButtons={true}
-            autoPlay={false}
+            showButtons={false}
+            autoPlay={true}
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
             tracks={tracks}
