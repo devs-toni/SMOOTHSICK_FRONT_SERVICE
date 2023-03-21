@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { useAuthContext } from "../../context/AuthContext";
 import { data } from "autoprefixer";
-import { useUser } from "../../context/userContext";
-;
+import { useUser } from "../../context/UserContext";
+
 export const Categories = () => {
 
 
