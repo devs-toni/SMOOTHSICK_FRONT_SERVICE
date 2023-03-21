@@ -9,7 +9,8 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './context/AuthContext';
 import 'flowbite';
 import './assets/styles/style.css';
-import { UserProvider } from './context/userContext'
+import { UserProvider } from './context/UserContext'
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -20,8 +20,6 @@ import { SIGNUP, LOGIN } from '../../router/paths'
 
 export const NavBar = () => {
 
-	console.log("0");
-	
 	const { logout, authState } = useAuthContext();
 	const { handleLanguage, text } = useLanguage();
 
@@ -92,7 +90,6 @@ export const NavBar = () => {
 	return (
 		
 		<>
-		{console.log("3")}
 			<Toaster />
 			<div className="fixed top-0 z-50 w-full rounded-b-lg shadow-lg shadow-cyan-500/50 bg-primary-color md:bg-transparent md:shadow-none">
 				<nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 " >

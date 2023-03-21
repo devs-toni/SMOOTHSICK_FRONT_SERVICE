@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { Button, TextInput } from "flowbite-react";
-import defaultUserPicture from "../assets/imgs/default_pictures/default_user_img.png"
+import defaultUserPicture from "../assets/imgs/default_pictures/default_user_img.png";
 
 const Login = () => {
   const { text } = useLanguage();
@@ -28,8 +28,12 @@ const Login = () => {
   };
 
   const handleSubmit = (e) => {
+    
     e.preventDefault();
-    const userFound = dataState.users.find((user) => user.email === userData.email && user.password === userData.password);
+    const userFound = dataState.users.find(
+      (user) =>
+        user.email === userData.email && user.password === userData.password
+    );
     if (userFound) {
       login(userFound.id, {
         id: userFound.id,
@@ -39,8 +43,7 @@ const Login = () => {
         profilePicture: defaultUserPicture,
       });
       navigate("/");
-    }
-    else {
+    } else {
       toast.error("Something Wrong...!", {
         style: {
           borderRadius: "10px",
@@ -54,17 +57,29 @@ const Login = () => {
     }
   };
   const setProfileOAuthGoogle = (profile) => {
-    const { email, id } = profile;
-    const isValid = (email, id);
-    isValid && login(isValid.id, isValid.email);
-    localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, password: isValid.password, email: email }));
-    const userG = { email: email, password }
-    console.log(userG)
-
-  }
-
-
+    const { email, id, given_name, family_name, picture } = profile;
+    console.log(email, id, given_name, family_name, picture);
+    const user = {
+      id,
+      firstName: given_name,
+      lastName: family_name,
+      email,
+      profilePicture: picture,
+    }
+    if (profile) {
+      login(id, user);
+      localStorage.setItem(
+        "auth",
+        JSON.stringify(
+          user
+        )
+      );
+    }
+    const userG = { email, password };
+    console.log(userG);
+  };
   const loginG = useGoogleLogin({
+    
     onSuccess: (codeResponse) => {
       axios
         .get(
@@ -79,7 +94,7 @@ const Login = () => {
 
         .then((res) => {
           setProfileOAuthGoogle(res.data);
-          navigate('/')
+          navigate("/");
         })
         .catch((err) => console.log(err));
     },
@@ -94,8 +109,7 @@ const Login = () => {
   return (
     <div className="h-full flex justify-center items-center">
       <>
-        <div className="headphones-image">
-        </div>
+        <div className="headphones-image"></div>
         <div className="flex flex-col items-center justify-center h-full pt-20 w-full">
           <p className="text-lg md:text-4xl font-semibold mb-12">{text.login.title}</p>
           <form
@@ -140,22 +154,24 @@ const Login = () => {
               </Link>
             </p>
 
-
             <Button
-              className="text-xs md:text-sm bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110  text-white font-bold"
+              className="text-xs md:text-sm bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out transform text-white font-bold"
+              type="submit"
             >
               {text.login.singin}
+
+            </Button>
+            <Button
+              onClick={loginG}
+              color="black"
+              className="text-xs md:text bg-slate-50  transition duration-500 ease-in-out transform text-black font-bold"
+            >
+              {text.login.singingoogle}
             </Button>
 
           </form>
           <div className="flex item-center w-3/12 ">
-            <Button
-              onClick={() => loginG()}
-              color="black"
-              className="text-xs md:text bg-slate-50  transition duration-500 ease-in-out transform hover:-translate-y-1 text-black hover:scale-110 font-bold"
-            >
-              {text.login.singingoogle}
-            </Button>
+            
           </div>
         </div>
       </>
