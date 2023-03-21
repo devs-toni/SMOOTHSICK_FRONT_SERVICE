@@ -17,10 +17,10 @@
       "send": "Enviar correo de recuperación"
     },
     "login": {
-      "title": "Para continuar, inicia sesión en Smoothsic",
+      "title": "Inicia sesión en Smoothsick",
       "email": "Email",
       "password": "Contraseña",
-      "dontHaveAnAccount": "¿No tienes una cuenta de Smoothsic?",
+      "dontHaveAnAccount": "¿No tienes una cuenta de Smoothsick?",
       "register": "Registrate Gratis",
       "singingoogle": "Iniciar sesión con Google 🚀",
       "singin": "Iniciar Sesión"
