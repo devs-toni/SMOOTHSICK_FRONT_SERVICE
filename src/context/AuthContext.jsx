@@ -6,7 +6,9 @@ const init = () => {
   const auth = JSON.parse(localStorage.getItem('auth'));
   return {
     isAuthenticated: !!auth,
-    user: auth
+    user: auth ? auth : {},
+    id: auth ? auth.id : -1,
+    error:""
   }
 }
 
@@ -21,7 +23,7 @@ export const AuthProvider = ({ children }) => {
     isAuthenticated: false,
     id: -1,
     user: {
-      id: "",
+      id: -1,
       firstName: "",
       lastName: "",
       email: "",
@@ -66,8 +68,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = useCallback((id, user, error) => {
     if (!error) {
-      dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { id, user } })
-      localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, id, user }));
+      dispatch({ type: TYPES.LOGIN_SUCCESS, payload: {id, user} })
+      localStorage.setItem('auth', JSON.stringify( user ));
 
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })

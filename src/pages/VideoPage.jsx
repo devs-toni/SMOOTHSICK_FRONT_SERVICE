@@ -1,5 +1,5 @@
 
-import { VideoComponent } from "../components/VideoComponent/VideoComponent"
+import { VideoComponent } from "../components/Video/Video"
 export const VideoPage = () => {
   return (
     <VideoComponent />

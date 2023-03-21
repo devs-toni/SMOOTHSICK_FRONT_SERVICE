@@ -22,12 +22,20 @@
   color: var(--primary-color);
 }
 
+.border-pirmary-color {
+  border-color: var(--primary-color);
+}
+
 .bg-box-icons {
   background-color: var(--bg-box-icons) !important;
+}
+
+.home-carousel {
+  max-height: 560px;
 }
 
 @media screen and (max-width: 768px) {
   .bg-box-icons {
     background-color: #3f3f46 !important;
   }
-} ;
+};

@@ -5,13 +5,14 @@ import { useAuthContext } from "../../context/AuthContext";
 import { data } from "autoprefixer";
 import { useUser } from "../../context/userContext";
 ;
-export const CategoriesComponent = () => {
+export const Categories = () => {
 
 
 	const [selectedList, setSelectedList] = useState([])
 	const [currentList, setCurrentList] = useState('')
 
 	const { userLists } = useUser();
+	
 	console.log(userLists);
 
 	const handleLists = (e) => {

@@ -1,8 +1,8 @@
-import { CategoriesComponent } from "../components/CategoriesComponent/CategoriesComponent"
+import { Categories } from "../components/Categories/Categories"
 
 
 export const CategoriesPage = () => {
     return (
-        <CategoriesComponent/>
+        <Categories/>
     )
 }
