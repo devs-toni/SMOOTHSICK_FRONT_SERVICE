@@ -1,25 +1,29 @@
-import React from "react"
+import React from 'react'
+import Soundbox from './Soundbox'
+import { v4 as uuidv4 } from 'uuid'
+const Category = ({ list, name}) => {
+    return (
+        <div className='mb-10'>
+            <h1 className="text-2xl"> {name} </h1>
+            <div className="flex flex-row  justify-around items-start  mt-8 ">
 
-const Category = ({id, name, imageUrl, artist}) => {
-  return (
-    <div className="mt-4 p-5 rounded-xl md:min-w-300">
+                {
+                    list.map(({ id, name, imageUrl, artist }) => {
+                        return (
+                            <Soundbox
+                                key={uuidv4()}
+                                id={id}
+                                name={name}
+                                image={imageUrl}
+                                artist={artist}
+                            />
+                        )
+                    })
+                }
 
-
-        <div className="flex flex-row justify-between w-11 text-center">
-        
-        <img src={imageUrl} alt={name} className="rounded-lg w-full max-img" />
+            </div>
         </div>
-
-
-        <div className="">{artist}</div>
-        
-
-
-
-    </div>
- 
-
-  )
+    )
 }
 
 export default Category

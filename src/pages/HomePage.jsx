@@ -1,8 +1,8 @@
-import Category from "../components/Home/Category";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Cover from "../components/Home/Cover"
 import Section from "../components/Home/Section"
-import { v4 as uuidv4 } from 'uuid';
+import Category from "../components/Home/Category";
+
 const tracks = [
   [
     {
@@ -211,23 +211,25 @@ export const HomePage = () => {
             loaded={loaded}
           />
         </div>
-        <div className="flex flex-row justify-around items-center h-5 w-32">
-          {
-            albums.map(({ id, name, imageUrl, artist }) => {
-              return (
-                <Category
-                  key={uuidv4()}
-                  id={id}
-                  name={name}
-                  image={imageUrl}
-                  artist={artist}
-                />
-              )
+
+        <div className="w-5/6 xl:flex xl:flex-col md:w-3/5 lg:w-10/12 z-10">
+          <Category
+            name="Top Rock songs"
+            list={albums}
+          />
+          <Category
+            name="Best Techno vibves"
+            list={albums}
+          />
+          <Category
+            name="Top Radio hits"
+            list={albums}
+          />
 
 
-            })
-          }
-        </div> */}
+
+
+        </div>
       </div>
     </div>
   )
