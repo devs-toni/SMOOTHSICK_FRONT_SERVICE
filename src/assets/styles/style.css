@@ -3,6 +3,8 @@
 @import './some-styles.css';
 @import './carousel.css';
 
+@import './slider-soundbox.css';
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
