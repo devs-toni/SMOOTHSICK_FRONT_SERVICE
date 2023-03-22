@@ -5,6 +5,8 @@ import { useAuthContext } from "../../context/AuthContext";
 import { data } from "autoprefixer";
 import { useUser } from "../../context/UserContext";
 import { useLanguage } from "../../context/LanguageContext";
+import { Link } from "react-router-dom";
+import { FAVOURITES } from '../../router/paths'
 
 export const Categories = () => {
   const { userLists } = useUser();
@@ -15,16 +17,24 @@ export const Categories = () => {
   const [selectedList, setSelectedList] = useState();
   const [currentList, setCurrentList] = useState();
   const [selectedListId, setSelectedListId] = useState();
-  const [selectedListImg, setSelectedListImg] = useState();
+  const [hoverList, setHoverList] = useState();
   const [changeImg, setChangeImg] = useState();
 
-  const handleSetBgImg = (e) => {
-    setSelectedListId(e.target.id);
-  };
+  const [imgs, setImgs] = useState([]);
+  const [currentImage, setCurrentImage] = useState('');
 
-  // const handleRemoveBgImg = () => {
-  // 	setChangeImg('')
-  // }
+
+  const handleSetBgImg = ({ target }) => {
+    const { id } = target;
+    const hoverList = userLists.find((i) => i.id === parseInt(id));
+    const newArray = hoverList.songs.slice(0, 4);
+    setImgs(newArray.map(img => img.thumbnail));
+  }
+
+
+  const handleRemoveBgImg = () => {
+    setImgs([])
+  }
 
   const handleLists = (e) => {
     setCurrentList(e.target.id);
@@ -33,52 +43,71 @@ export const Categories = () => {
   useEffect(() => {
     if (userLists) {
       setSelectedList(userLists.find((i) => i.id === parseInt(currentList)));
-      setSelectedListImg(
+      setHoverList(
         userLists.find((i) => i.id === parseInt(selectedListId))
       );
-      if (selectedListImg) {
-        setChangeImg(selectedListImg.songs[0].thumbnail);
+      if (hoverList) {
+        setChangeImg(hoverList.songs[0].thumbnail);
       }
     }
-  }, [currentList, selectedListId, selectedListImg]);
+  }, [currentList, selectedListId, hoverList]);
 
   return (
     <>
-      <img
-        src={changeImg}
-        alt="pruebaa"
-        className="z-auto right-0 fixed w-screen h-screen object-cover opacity-20"
-      />
+      <div className="absolute h-full w-full">
+        <div className="background-div" style={{
+          top: 0,
+          left: 0,
+          backgroundImage: `url(${imgs[0]})`
+        }}></div>
+        <div className="background-div" style={{
+          top: 0,
+          right: 0,
+          backgroundImage: `url(${imgs[1]})`
+        }}></div>
+        <div className="background-div" style={{
+          bottom: 0,
+          left: 0,
+          backgroundImage: `url(${imgs[2]})`
+        }}></div>
+        <div className="background-div" style={{
+          bottom: 0,
+          right: 0,
+          backgroundImage: `url(${imgs[3]})`
+        }}></div>
+      </div>
+
       <div className="grid grid-rows-2 gap-8 pt-24 pr-24 pl-24  h-full w-full">
-        <div className="z-10 flex center  flex-row gap-10 justify-center mt-4 rounded-xl md:min-w-400 lg:min-w-400 xl:min-w-400">
-          <a
-            href="/favorites"
-            className="flex flex-col items-center  border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl h-3/4 bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-200 transition duration-500 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+        <div className="z-10 flex items-center flex-row gap-10 justify-center mt-4 rounded-xl md:min-w-400 lg:min-w-400 xl:min-w-400">
+
+          <Link to={`/${FAVOURITES}`}
+            className="flex flex-col items-center w-full  border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl h-3/4 bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-200 transition duration-500 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
           >
             <div className="flex flex-col justify-between p-4 leading-normal">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
-                Your Favorites Songs
+              {text.categories.canciones_fav}
               </h5>
               
-              <p className="mr-3 text-xs capitalize font-bold">
+              <p className="mr-3 text-xs capitalize font-bold text-gray-800">
                 {authState.user.firstName}
               </p>
-              <p className="text-withe-500 my-2 text-xs">
+              <p className="text-withe-500 my-2 text-xs  text-gray-800">
                 49 {text.liked.total}
               </p>
             </div>
-          </a>
+          </Link>
 
-          <div className="flex flex-col gap-4 items-center justify-center m-10">
+          <div className="flex flex-col gap-4 items-center pt-4 h-full overflow-y-scroll">
             <h3 className="text-3xl ">{text.categories.lists}</h3>
-            <div className="grid grid-cols-2 gap-10 items-center justify-center">
+            <div className="flex flex-col gap-10 items-center justify-center">
               {userLists &&
-                userLists.map((element) => (
-                  <React.Fragment key={element.id}>
+                userLists.map((element, i) => (
+                  <React.Fragment key={i}>
                     <div
-                      className="rounded-lg grid grid-rows-2 grid-flow-col w-32 relative filter grayscale hover:grayscale-0"
+
+                      className="rounded-lg grid grid-rows-2 grid-flow-col w-24 relative filter grayscale hover:grayscale-0"
                       onMouseEnter={handleSetBgImg}
-                      // onMouseOut={handleRemoveBgImg}
+                      onMouseOut={handleRemoveBgImg}
                       onClick={handleLists}
                     >
                       <img
