@@ -1,7 +1,7 @@
 import { useGlobalContext } from '../../context/GlobalContext';
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
-import Song from '../Categories/Song';
+import Song from '../CategoriesComponents/Song';
 import { v4 as uuidv4 } from 'uuid';
 import { FaClock } from 'react-icons/fa';
 

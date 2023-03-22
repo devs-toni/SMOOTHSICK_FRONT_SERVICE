@@ -1,10 +1,10 @@
-import { Layout } from "./index"
+import { LayoutPage } from "./index"
 
 
 function App() {
 
   return (
-      <Layout />
+      <LayoutPage />
   )
 }
 

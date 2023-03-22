@@ -1,5 +1,4 @@
-import { useAuthContext } from '../../context/AuthContext'
-import { useLanguage } from '../../context/LanguageContext';
+import { useAuthContext, useLanguage } from '../../index';
 
 const Accountsettings = () => {
   const { text } = useLanguage()
