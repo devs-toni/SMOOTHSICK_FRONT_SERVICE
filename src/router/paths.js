@@ -4,3 +4,4 @@ export const CATEGORIES = 'categories';
 export const RADIO = 'radio';
 export const VIDEO = 'video'
 export const ACCOUNT = 'account'
+export const FAVORITES = 'favorites'
