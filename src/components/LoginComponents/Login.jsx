@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useLanguage } from "../context/LanguageContext";
-import { useAuthContext } from "../context/AuthContext";
-import { useGlobalContext } from "../context/GlobalContext";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { SIGNUP } from "../router/paths";
+import { SIGNUP } from "../../router/paths";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { Button, TextInput } from "flowbite-react";
-import defaultUserPicture from "../assets/imgs/default_pictures/default_user_img.png";
+import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png";
+import { useLanguage, useAuthContext, useGlobalContext } from '../../index';
 
 const Login = () => {
+
   const { text } = useLanguage();
   const { dataState } = useGlobalContext();
   const { reset, login } = useAuthContext();
@@ -28,7 +27,7 @@ const Login = () => {
   };
 
   const handleSubmit = (e) => {
-    
+
     e.preventDefault();
     const userFound = dataState.users.find(
       (user) =>
@@ -79,7 +78,7 @@ const Login = () => {
     console.log(userG);
   };
   const loginG = useGoogleLogin({
-    
+
     onSuccess: (codeResponse) => {
       axios
         .get(
@@ -171,12 +170,12 @@ const Login = () => {
 
           </form>
           <div className="flex item-center w-3/12 ">
-            
+
           </div>
         </div>
       </>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 
-
 const Cover = ({ artists, autoPlay, showButtons, selectedIndex, setSelectedIndex, setSelectedTracks, loaded, setLoaded, tracks }) => {
 
 

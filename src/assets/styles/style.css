@@ -2,11 +2,13 @@
 
 @import './some-styles.css';
 @import './carousel.css';
+@import './hide-scroll-categories.css';
 
 @import './slider-soundbox.css';
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
+
 
 /* Additional styles */
 /* @import 'additional-styles/utility-patterns.css';

@@ -1,14 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
-import { CategoriesPage } from '../pages/CategoriesPage'
-import { HomePage } from '../pages/HomePage'
-import Login from '../pages/Login'
-import Register from '../pages/Register'
-import { CATEGORIES, RADIO, SIGNUP, LOGIN, VIDEO, ACCOUNT, FAVOURITES } from './paths'
-import { RadioPage } from '../pages/RadioPage'
-import { VideoPage } from '../pages/VideoPage'
-import { AccountSettingsPage } from '../pages/AccountSettingsPage'
-import PrivateRoute from './PrivateRoute'
-import FavouritesPage from '../pages/FavouritesPage'
+import { CATEGORIES, RADIO, SIGNUP, LOGIN, VIDEO, ACCOUNT, FAVOURITES, SEARCH } from './paths'
+import { Register, Login, HomePage, CategoriesPage, VideoPage, RadioPage, FavouritesPage, Search, AccountSettingsPage, PrivateRoute } from '../index';
 
 
 export const MyRouter = () => {
@@ -22,13 +14,13 @@ export const MyRouter = () => {
         <Route path={`/${VIDEO}`} element={<VideoPage />} />
         <Route path={`/${RADIO}`} element={<RadioPage />} />
         <Route path={`/${FAVOURITES}`} element={<FavouritesPage />} />
-
+        <Route path={`/${SEARCH}`} element={<Search />} />
 
         <Route path={`/${ACCOUNT}`} element=
           {
             <PrivateRoute>
               <AccountSettingsPage />
-              
+
             </PrivateRoute>
           }
         />

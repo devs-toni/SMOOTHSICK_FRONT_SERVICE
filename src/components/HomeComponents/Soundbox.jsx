@@ -22,8 +22,6 @@ const Soundbox = ({ id, name, image, artist }) => {
 
 
     </div>
-
-
   )
 }
 

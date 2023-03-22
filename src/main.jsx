@@ -1,15 +1,10 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import { GlobalProvider } from './context/GlobalContext'
-import { LanguageProvider } from './context/LanguageContext'
+import { App, GlobalProvider, LanguageProvider, AuthProvider, UserProvider } from './index'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter } from "react-router-dom"
 import './index.css'
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import { AuthProvider } from './context/AuthContext';
 import 'flowbite';
 import './assets/styles/style.css';
-import { UserProvider } from './context/UserContext'
 
 
 

@@ -1,13 +1,9 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import { useLanguage } from "../context/LanguageContext";
 import { FaEye } from 'react-icons/fa';
-import { useForm } from "../hooks/useForm";
 import { Link, useNavigate } from "react-router-dom";
-import { LOGIN } from "../router/paths";
-import Error from "../components/Register/Error";
-import { useAuthContext } from "../context/AuthContext";
+import { LOGIN } from "../../router/paths";
 import { useEffect, useState } from "react";
-import RecoverModal from "../components/Register/RecoverModal";
+import { RecoverModal, Error, useLanguage, useAuthContext, useForm } from "../../index"
 
 
 const Register = () => {
