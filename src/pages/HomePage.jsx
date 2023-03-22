@@ -182,15 +182,9 @@ export const HomePage = () => {
   const [loaded, setLoaded] = useState(false);
 
   return (
-<<<<<<< HEAD
-
-    <div>
-      <div className="flex flex-col items-center justify-center h-full w-full mt-20">
-=======
     <div className="h-full">
       <img className={`z-auto fixed right-0 w-screen h-screen object-cover opacity-20 transition-img ${loaded ? 'loaded' : ''}`} src={loaded ? artists[selectedIndex].photoUrl : ''} alt="pepe"></img>
       <div className="flex flex-col items-center justify-center w-full pt-32 z-10">
->>>>>>> a8bdba4a36f666d180407c4b9cfc9ac3923de4c5
         <div className="w-5/6 xl:flex md:w-3/5 lg:w-10/12 home-carousel">
           <Cover
             artists={artists}
