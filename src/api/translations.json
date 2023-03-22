@@ -55,7 +55,8 @@
     },
     "categories": {
       "lists": "Tus listas de reproducción",
-      "favoritos": "Favoritos"
+      "favoritos": "Favoritos",
+      "canciones_fav" : "Tus canciones favoritas"
     }
   },
   "en": {
@@ -114,7 +115,8 @@
     },
     "categories": {
       "lists": "Your playlists",
-      "favoritos": "Favorites"
+      "favoritos": "Favorites",
+      "canciones_fav":  "Your Favorites Songs"
     }
   },
   "fr": {
