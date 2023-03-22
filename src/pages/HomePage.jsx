@@ -1,6 +1,8 @@
+import Category from "../components/Home/Category";
 import { useEffect, useState } from "react";
 import Cover from "../components/Home/Cover"
 import Section from "../components/Home/Section"
+import { v4 as uuidv4 } from 'uuid';
 const tracks = [
   [
     {
@@ -116,6 +118,62 @@ const artists = [
     "photoUrl": "https://i.scdn.co/image/ab6761610000e5eb8d683372296589f7c718dea6"
   }
 ]
+const albums = [
+  {
+    "id": 1,
+    "name": "Flyga",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cfb34a37cfed6297d8c18231",
+    "artist": "Kim Cesarion"
+  },
+  {
+    "id": 2,
+    "name": "XXX (Bow Wow Wow)",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273256e16efc88a39e4795d5f32",
+    "artist": "C.Gambino"
+  },
+  {
+    "id": 3,
+    "name": "Stay A Little Longer",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732cf9821eb5087702a63330b5",
+    "artist": "Nicky Romero"
+  },
+  {
+    "id": 4,
+    "name": "WTF",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730b7020f4bce3fc16f5370df3",
+    "artist": "Denz"
+  },
+  {
+    "id": 5,
+    "name": "Vivaldi",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a7fc8699c8a8c6dc4b90c948",
+    "artist": "Jesper Swärd"
+  },
+  {
+    "id": 6,
+    "name": "Velvet Pony Trax 11 part 2",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b27347d2bc41f459a0422c3dfff5",
+    "artist": "Axel Boman"
+  },
+  {
+    "id": 7,
+    "name": "PARTYPINGLA",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e467c6a0b070f390daa47693",
+    "artist": "Rasmus Hultgren"
+  },
+  {
+    "id": 8,
+    "name": "Someone To Love",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e9e5fbbde2d4147260db99bf",
+    "artist": "Dimitri Vangelis & Wyman"
+  },
+  {
+    "id": 9,
+    "name": "I samma bil",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b27349108981b176704992078242",
+    "artist": "Hemliga Klubben"
+  }
+]
 
 export const HomePage = () => {
 
@@ -124,6 +182,7 @@ export const HomePage = () => {
   const [loaded, setLoaded] = useState(false);
 
   return (
+
     <div>
       <div className="flex flex-col items-center justify-center h-full w-full mt-20">
         <div className="w-5/6 xl:flex md:w-3/5 lg:w-10/12 home-carousel">
@@ -142,6 +201,23 @@ export const HomePage = () => {
             tracks={selectedTracks}
             loaded={loaded}
           />
+        </div>
+        <div className="flex flex-row justify-around items-center w-32">
+          {
+            albums.map(({ id, name, imageUrl, artist }) => {
+              return (
+                <Category
+                  key={uuidv4()}
+                  id={id}
+                  name={name}
+                  image={imageUrl}
+                  artist={artist}
+                />
+              )
+
+
+            })
+          }
         </div>
       </div>
     </div>
