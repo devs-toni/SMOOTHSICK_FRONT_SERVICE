@@ -34,7 +34,8 @@
       "logout": "Cerrar sesión",
       "register": "Registrate",
       "input_p_holder": "Encuentra nueva música...",
-      "dashboard": "Perfil"
+      "dashboard": "Perfil",
+      "favourites": "Favoritos"
     },
     "account": {
       "account": "Ajustes de la Cuenta",
@@ -93,7 +94,8 @@
       "logout": "Log out",
       "register": "Sign up",
       "input_p_holder": "Find new music...",
-      "dashboard": "Profile"
+      "dashboard": "Profile",
+      "favourites": "Favourites"
     },
     "account": {
       "account": "Account settings",
@@ -114,7 +116,7 @@
     },
     "categories": {
       "lists": "Your playlists",
-      "favoritos": "Favorites"
+      "favoritos": "Favourites"
     }
   },
   "fr": {
@@ -149,7 +151,8 @@
       "logout": "Log out",
       "register": "Sign up",
       "input_p_holder": "Find new music...",
-      "dashboard": "Profile"
+      "dashboard": "Profile",
+      "favourites": "Favourites"
     },
     "account": {
       "account": "Account settings",
@@ -170,7 +173,7 @@
     },
     "categories": {
       "lists": "Your playlists",
-      "favoritos": "Favorites"
+      "favoritos": "Favourites"
     }
   },
   "chn": {
@@ -205,7 +208,8 @@
       "logout": "Log out",
       "register": "Sign up",
       "input_p_holder": "Find new music...",
-      "dashboard": "Profile"
+      "dashboard": "Profile",
+      "favourites": "Favourites"
     },
     "account": {
       "account": "Account settings",
@@ -226,7 +230,7 @@
     },
     "categories": {
       "lists": "Your playlists",
-      "favoritos": "Favorites"
+      "favoritos": "Favourites"
     }
   }
 }

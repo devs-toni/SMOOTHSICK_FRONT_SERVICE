@@ -15,7 +15,7 @@ import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import exampleLogo from '../../assets/imgs/logo/logo-head.svg';
 import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png"
-import { SIGNUP, LOGIN } from '../../router/paths'
+import { SIGNUP, LOGIN, FAVOURITES, ACCOUNT } from '../../router/paths'
 
 
 export const NavBar = () => {
@@ -123,9 +123,14 @@ export const NavBar = () => {
 										/>
 										<div id="dropdownDots" className="z-10 hidden bg-zinc-700 divide-y divide-gray-100 rounded-lg shadow w-44">
 											<ul className="py-2 text-sm text-white  dark:text-gray-200" aria-labelledby="dropdownMenuIconButton" >
-												<NavLink to='/account' className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+												<NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
 													<li className=' block px-4 py-2 hover:bg-gray-100'>
 														<span>{text.navbar.dashboard}</span>
+													</li>
+												</NavLink>
+												<NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+													<li className=' block px-4 py-2 hover:bg-gray-100'>
+														<span>{text.navbar.favourites}</span>
 													</li>
 												</NavLink>
 												<div className="py-2 flex flex-row justify-evenly">
@@ -157,7 +162,7 @@ export const NavBar = () => {
 										/>
 										<div id="dropdownDots2" className="z-10 hidden bg-zinc-700 divide-y divide-gray-100 rounded-lg shadow w-44">
 											<ul className="py-2 text-sm text-white  dark:text-gray-200" aria-labelledby="dropdownMenuIconButton" >
-												<NavLink to='/login'>
+												<NavLink to={`/${LOGIN}`}>
 													<li className=' block px-4 py-2 hover:bg-gray-100'>
 														<span>{text.navbar.login}</span>
 													</li>
@@ -189,7 +194,6 @@ export const NavBar = () => {
 				<div className="flex flex-col justify-around items-center h-full px-3 gap-3 overflow-y-auto">
 					<ul className="space-y-2 flex flex-col gap-7 mt-2 ">
 						<div className='flex flex-col gap-6 md:rounded-full md:p-4 lg:rounded-full lg:p-4 '>
-
 							{
 								asideLinks.map((item) => (
 									<NavLink key={item.key} to={item.path} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
@@ -207,14 +211,14 @@ export const NavBar = () => {
 								!authState.isAuthenticated
 									?
 									<>
-										<NavLink to="/login" className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
+										<NavLink to={`/${LOGIN}`} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
 											<li className='inline-flex gap-3 items-center hover:scale-110 '>
 												<FaUserShield color="#fff" className="h-6 w-6 " />
 												<span className=' md:hidden lg:hidden' > {text.navbar.login}</span>
 											</li>
 										</NavLink>
 
-										<NavLink to="/signup" className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
+										<NavLink to={`/${SIGNUP}`} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
 											<li className='inline-flex gap-3 items-center hover:scale-110 '>
 												<FaUserPlus color="#fff" className="h-6 w-6 " />
 												<span className=' md:hidden lg:hidden' > {text.navbar.register}</span>

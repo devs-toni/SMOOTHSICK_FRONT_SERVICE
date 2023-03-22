@@ -54,11 +54,6 @@ export const Categories = () => {
 
   return (
     <>
-      {/*       <img
-        src={changeImg}
-        alt="pruebaa"
-        className="z-auto right-0 fixed w-screen h-screen object-cover opacity-20"
-      /> */}
       <div className="absolute h-full w-full">
         <div className="background-div" style={{
           top: 0,
