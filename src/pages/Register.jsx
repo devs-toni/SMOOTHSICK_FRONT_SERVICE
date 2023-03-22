@@ -67,8 +67,7 @@ const Register = () => {
         (
           <>
             <RecoverModal open={open} setOpen={setOpen} />
-            <div className="headphones-image">
-            </div>
+            <div className="headphones-image"></div>
             <div className="flex flex-col items-center justify-center h-full pt-20 w-full">
               <p className="text-lg md:text-4xl font-semibold pt-20 mb-10">{text.register.title}</p>
               <form className="flex item-center flex-col gap-4 max-w-xl w-full px-10 pb-8 -pt-2 m-auto rounded-md register image-z" onSubmit={handleSubmit}>

@@ -17,10 +17,10 @@
       "send": "Enviar correo de recuperación"
     },
     "login": {
-      "title": "Para continuar, inicia sesión en Smoothsic",
+      "title": "Inicia sesión en Smoothsick",
       "email": "Email",
       "password": "Contraseña",
-      "dontHaveAnAccount": "¿No tienes una cuenta de Smoothsic?",
+      "dontHaveAnAccount": "¿No tienes una cuenta de Smoothsick?",
       "register": "Registrate Gratis",
       "singingoogle": "Iniciar sesión con Google 🚀",
       "singin": "Iniciar Sesión"
@@ -30,7 +30,7 @@
       "categories": "Categorias",
       "radio": "Radio",
       "video": "Video",
-      "login": "Iniciar sesión",
+      "login": "Login",
       "logout": "Cerrar sesión",
       "register": "Registrate",
       "input_p_holder": "Encuentra nueva música...",
@@ -48,8 +48,14 @@
       "password2": "Contraseña"
     },
     "liked": {
-      "title": "Canciones Favoritas",
+      "title": "Canciones que te gustan",
+      "title_table": "TÍTULO",
+      "album_table": "ÁLBUM",
       "total": "canciones"
+    },
+    "categories": {
+      "lists": "Tus listas de reproducción",
+      "favoritos": "Favoritos"
     }
   },
   "en": {
@@ -102,7 +108,13 @@
     },
     "liked": {
       "title": "Liked Songs",
+      "title_table": "TITLE",
+      "album_table": "ALBUM",
       "total": "songs"
+    },
+    "categories": {
+      "lists": "Your playlists",
+      "favoritos": "Favorites"
     }
   },
   "fr": {
@@ -152,7 +164,13 @@
     },
     "liked": {
       "title": "Canciones Favoritas",
+      "title_table": "TITLE",
+      "album_table": "ALBUM",
       "total": "canciones"
+    },
+    "categories": {
+      "lists": "Your playlists",
+      "favoritos": "Favorites"
     }
   },
   "chn": {
@@ -202,7 +220,13 @@
     },
     "liked": {
       "title": "Canciones Favoritas",
+      "title_table": "TITLE",
+      "album_table": "ALBUM",
       "total": "canciones"
+    },
+    "categories": {
+      "lists": "Your playlists",
+      "favoritos": "Favorites"
     }
   }
 }

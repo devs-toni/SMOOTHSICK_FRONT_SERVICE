@@ -7,7 +7,7 @@ import { FiLogOut } from "react-icons/fi"
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Toaster, toast } from "react-hot-toast";
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
@@ -20,10 +20,9 @@ import { SIGNUP, LOGIN } from '../../router/paths'
 
 export const NavBar = () => {
 
-	console.log("0");
-	
 	const { logout, authState } = useAuthContext();
 	const { handleLanguage, text } = useLanguage();
+	
 
 	const [toggleBar, setToggleBar] = useState(false)
 
@@ -52,10 +51,10 @@ export const NavBar = () => {
 
 
 	const asideLinks = [
-		{ key: 1, path: "/", icon: <AiFillHome color="rgb(131 24 67)" className="h-6 w-6 " />, text: text.navbar.home },
-		{ key: 2, path: "/categories", icon: <RiFolderMusicFill color="rgb(131 24 67)" className="h-6 w-6 " />, text: text.navbar.categories },
-		{ key: 3, path: "/radio", icon: <BiRadio color="rgb(131 24 67)" className="h-6 w-6 " />, text: text.navbar.radio },
-		{ key: 4, path: "/video", icon: <FaPhotoVideo color="rgb(131 24 67)" className="h-6 w-6 " />, text: text.navbar.video }
+		{ key: 1, path: "/", icon: <AiFillHome color="#fff" className="h-6 w-6 " />, text: text.navbar.home },
+		{ key: 2, path: "/categories", icon: <RiFolderMusicFill color="#fff" className="h-6 w-6 " />, text: text.navbar.categories },
+		{ key: 3, path: "/radio", icon: <BiRadio color="#fff" className="h-6 w-6 " />, text: text.navbar.radio },
+		{ key: 4, path: "/video", icon: <FaPhotoVideo color="#fff" className="h-6 w-6 " />, text: text.navbar.video }
 	]
 
 
@@ -85,28 +84,28 @@ export const NavBar = () => {
 		} else {
 			handleLanguage(target)
 		}
-
 	}
+
+	const asideRef = useRef();
 
 
 	return (
-		
+
 		<>
-		{console.log("3")}
 			<Toaster />
-			<div className="fixed top-0 z-50 w-full rounded-b-lg shadow-lg shadow-cyan-500/50 bg-primary-color md:bg-transparent md:shadow-none">
+			<div className="fixed top-0 z-50 w-full bg-primary-color md:bg-transparent md:shadow-none">
 				<nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 " >
-					<img className='h-12 w-14' src={exampleLogo} alt="" />
-					<button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 bg-neutral-800 rounded-lg md:hidden focus:outline-none">
+					<img className='h-12 w-14 hidden md:block' src={exampleLogo} alt="" />
+					<button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
 						<RiMenu4Fill className='h-6 w-6' />
 					</button>
 
 
-					<div className={toggleBar === true ? "relative" : "hidden"} >
+					<div className={`${toggleBar ? "relative" : "hidden"}`} >
 						<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 							<svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
 						</div>
-						<input type="text" id="search" className=" border bg-box-icons border-gray-300 text-white text-sm rounded-lg block pl-10 p-2.5 " placeholder={text.navbar.input_p_holder} required />
+						<input type="text" id="search" className="border bg-box-icons border-gray-300 text-white text-sm rounded-lg pl-10 p-2.5" placeholder={text.navbar.input_p_holder} required />
 					</div>
 
 
@@ -186,14 +185,14 @@ export const NavBar = () => {
 				</nav>
 			</div>
 
-			<aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-30 bg-zinc-700 md:bg-transparent h-screen transition-transform -translate-x-full md:translate-x-0 md:w-36 lg:w-24 max-h-100 min-h-max" aria-label="Sidebar">
+			<aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-full px-10 bg-primary-color md:bg-transparent h-screen transition-transform -translate-x-full md:translate-x-0 md:w-36 lg:w-24 max-h-100 min-h-max" aria-label="Sidebar">
 				<div className="flex flex-col justify-around items-center h-full px-3 gap-3 overflow-y-auto">
 					<ul className="space-y-2 flex flex-col gap-7 mt-2 ">
-						<div className='flex flex-col gap-6 bg-box-icons md:rounded-full md:p-4 lg:rounded-full lg:p-4 '>
+						<div className='flex flex-col gap-6 md:rounded-full md:p-4 lg:rounded-full lg:p-4 '>
 
 							{
 								asideLinks.map((item) => (
-									<NavLink key={item.key} to={item.path} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+									<NavLink key={item.key} to={item.path} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
 										<li className='inline-flex gap-3 items-center hover:scale-110'>
 											{item.icon}
 											<span className=' md:hidden lg:hidden'>{item.text}</span>
@@ -203,28 +202,28 @@ export const NavBar = () => {
 							}
 						</div>
 
-						<div className='flex flex-col gap-6 md:rounded-full md:p-4 lg:rounded-full bg-box-icons lg:p-4 '>
+						<div className='flex flex-col gap-6 md:rounded-full md:p-4 lg:rounded-full md:bg-box-icons lg:p-4 '>
 							{
 								!authState.isAuthenticated
 									?
 									<>
-										<NavLink to="/login" className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+										<NavLink to="/login" className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
 											<li className='inline-flex gap-3 items-center hover:scale-110 '>
-												<FaUserShield color="rgb(131 24 67)" className="h-6 w-6 " />
+												<FaUserShield color="#fff" className="h-6 w-6 " />
 												<span className=' md:hidden lg:hidden' > {text.navbar.login}</span>
 											</li>
 										</NavLink>
 
-										<NavLink to="/signup" className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+										<NavLink to="/signup" className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
 											<li className='inline-flex gap-3 items-center hover:scale-110 '>
-												<FaUserPlus color="rgb(131 24 67)" className="h-6 w-6 " />
+												<FaUserPlus color="#fff" className="h-6 w-6 " />
 												<span className=' md:hidden lg:hidden' > {text.navbar.register}</span>
 											</li>
 										</NavLink>
 									</>
 									:
 									<li className='inline-flex gap-3 items-center hover:scale-125 cursor-pointer' onClick={handleLogout}>
-										<FiLogOut color="rgb(131 24 67)" className="h-6 w-6" />
+										<FiLogOut color="#fff" className="h-6 w-6" />
 										<span className=' md:hidden lg:hidden' > {text.navbar.logout}</span>
 									</li>
 							}
