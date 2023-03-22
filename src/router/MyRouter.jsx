@@ -19,7 +19,6 @@ export const MyRouter = () => {
           {
             <PrivateRoute>
               <AccountSettingsPage />
-              <FavouritesPage />
             </PrivateRoute>
           }
         />
