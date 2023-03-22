@@ -8,7 +8,7 @@ import { RadioPage } from '../pages/RadioPage'
 import { VideoPage } from '../pages/VideoPage'
 import { AccountSettingsPage } from '../pages/AccountSettingsPage'
 import PrivateRoute from './PrivateRoute'
-import Favourites from '../pages/Favourites'
+import FavouritesPage from '../pages/FavouritesPage'
 
 
 export const MyRouter = () => {
@@ -21,7 +21,7 @@ export const MyRouter = () => {
         <Route path={`/${CATEGORIES}`} element={<CategoriesPage />} />
         <Route path={`/${VIDEO}`} element={<VideoPage />} />
         <Route path={`/${RADIO}`} element={<RadioPage />} />
-        <Route path={`/${FAVOURITES}`} element={<Favourites />} />
+        <Route path={`/${FAVOURITES}`} element={<FavouritesPage />} />
 
 
         <Route path={`/${ACCOUNT}`} element=
