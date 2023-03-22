@@ -5,7 +5,7 @@ const Category = ({ list, name}) => {
     return (
         <div className='mb-10'>
             <h1 className="text-2xl"> {name} </h1>
-            <div className="flex flex-row  justify-around items-start  mt-8 ">
+            <div className="flex flex-row  justify-around items-start  mt-8npm ">
 
                 {
                     list.map(({ id, name, imageUrl, artist }) => {

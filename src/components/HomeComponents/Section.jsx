@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import Chart from "./Chart";
 import { v4 as uuidv4 } from 'uuid';
+import { Chart } from '../../index';
 
 const Section = ({ tracks, loaded }) => {
 

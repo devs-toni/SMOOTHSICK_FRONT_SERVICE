@@ -4,6 +4,8 @@
 @import './carousel.css';
 @import './hide-scroll-categories.css';
 
+@import './slider-soundbox.css';
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 

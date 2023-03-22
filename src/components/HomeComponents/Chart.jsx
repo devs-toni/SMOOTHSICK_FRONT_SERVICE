@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaHeart } from 'react-icons/fa'
 
 const Chart = ({ img, title, artist, isLike }) => {
