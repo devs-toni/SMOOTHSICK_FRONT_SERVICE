@@ -202,7 +202,7 @@ export const HomePage = () => {
             loaded={loaded}
           />
         </div>
-        <div className="flex flex-row justify-around items-center w-32">
+        <div className="flex flex-row justify-around items-center h-5 w-32">
           {
             albums.map(({ id, name, imageUrl, artist }) => {
               return (
