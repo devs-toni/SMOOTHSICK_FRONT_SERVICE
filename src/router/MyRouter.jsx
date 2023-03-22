@@ -13,14 +13,20 @@ export const MyRouter = () => {
         <Route path={`/${CATEGORIES}`} element={<CategoriesPage />} />
         <Route path={`/${VIDEO}`} element={<VideoPage />} />
         <Route path={`/${RADIO}`} element={<RadioPage />} />
-        <Route path={`/${FAVOURITES}`} element={<FavouritesPage />} />
         <Route path={`/${SEARCH}`} element={<Search />} />
 
         <Route path={`/${ACCOUNT}`} element=
           {
             <PrivateRoute>
               <AccountSettingsPage />
-
+              <FavouritesPage />
+            </PrivateRoute>
+          }
+        />
+          <Route path={`/${FAVOURITES}`} element=
+          {
+            <PrivateRoute>
+              <FavouritesPage />
             </PrivateRoute>
           }
         />
