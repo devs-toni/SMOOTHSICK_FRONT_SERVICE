@@ -1,3 +1,10 @@
+/* CAROUSEL */
+
+.home-carousel {
+  max-height: 560px;
+  z-index: 10;
+}
+
 .carousel {
   width: 100%;
   overflow: hidden;

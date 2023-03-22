@@ -183,7 +183,16 @@ export const HomePage = () => {
 
   return (
     <div className="h-full">
-      <img className={`z-auto fixed right-0 w-screen h-screen object-cover opacity-20 transition-img ${loaded ? 'loaded' : ''}`} src={loaded ? artists[selectedIndex].photoUrl : ''} alt="pepe"></img>
+      <div className={`transition-img ${loaded ? 'loaded' : ''}`} style={{
+        maxWidth: "100vw",
+        maxHeight: "100vh",
+        position: "fixed",
+        zIndex: 0,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundImage: `url(${loaded ? artists[selectedIndex].photoUrl : ''})`
+      }}></div>
+
       <div className="flex flex-col items-center justify-center w-full pt-32 z-10">
         <div className="w-5/6 xl:flex md:w-3/5 lg:w-10/12 home-carousel">
           <Cover
@@ -218,7 +227,7 @@ export const HomePage = () => {
 
             })
           }
-        </div>
+        </div> */}
       </div>
     </div>
   )
