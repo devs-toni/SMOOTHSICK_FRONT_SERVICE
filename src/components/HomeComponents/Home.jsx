@@ -1,5 +1,5 @@
 import { Cover, Section, Category } from '../../index';
-import {useState, useEffect } from 'react';
+import {useState } from 'react';
 import {v4 as uuidv4 } from 'uuid';
 
 const tracks = [
