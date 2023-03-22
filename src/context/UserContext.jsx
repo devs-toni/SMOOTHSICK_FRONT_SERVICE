@@ -12,8 +12,6 @@ export const UserProvider = ({ children }) => {
 
   const { authState } = useAuthContext();
 
-  // const { user, isAuthenticated } = authState;
-
   const [currentUser, setCurrentUser] = useState({});
 
   const { dataState } = useGlobalContext();
