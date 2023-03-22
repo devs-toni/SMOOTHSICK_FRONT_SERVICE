@@ -1,8 +1,7 @@
-import Category from "../components/Home/Category";
-import { useEffect, useState } from "react";
-import Cover from "../components/Home/Cover"
-import Section from "../components/Home/Section"
+import { useState } from "react";
+import { Cover, Section, Category } from "../index"
 import { v4 as uuidv4 } from 'uuid';
+
 const tracks = [
   [
     {

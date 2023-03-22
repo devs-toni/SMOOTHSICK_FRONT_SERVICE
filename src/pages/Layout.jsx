@@ -1,5 +1,4 @@
-import { NavBar } from '../components/NavBar/NavBar'
-import { MyRouter } from '../router/MyRouter';
+import { NavBar, MyRouter } from "../index"
 
 export const Layout = () => {
   return (

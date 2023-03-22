@@ -1,6 +1,6 @@
-export const VideoComponent = () => {
+export const Video = () => {
 	return (
-		<div className="flex items-center justify-center h-full">VideoComponent</div>
+		<div className="flex items-center justify-center h-full">Video</div>
 	)
 	
 };

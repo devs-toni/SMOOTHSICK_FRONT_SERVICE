@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import { App } from './index'
 import { GlobalProvider } from './context/GlobalContext'
 import { LanguageProvider } from './context/LanguageContext'
 import { BrowserRouter } from "react-router-dom"

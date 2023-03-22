@@ -4,10 +4,9 @@ import { FaEye } from 'react-icons/fa';
 import { useForm } from "../hooks/useForm";
 import { Link, useNavigate } from "react-router-dom";
 import { LOGIN } from "../router/paths";
-import Error from "../components/Register/Error";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
-import RecoverModal from "../components/Register/RecoverModal";
+import { RecoverModal, Error } from "../index"
 
 
 const Register = () => {

@@ -1,4 +1,5 @@
-import { Layout } from './pages/Layout';
+import { Layout } from "./index"
+
 
 function App() {
 

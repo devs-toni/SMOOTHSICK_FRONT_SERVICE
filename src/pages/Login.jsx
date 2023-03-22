@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useGlobalContext } from "../context/GlobalContext";
