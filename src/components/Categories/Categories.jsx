@@ -5,6 +5,8 @@ import { useAuthContext } from "../../context/AuthContext";
 import { data } from "autoprefixer";
 import { useUser } from "../../context/UserContext";
 import { useLanguage } from "../../context/LanguageContext";
+import { Link } from "react-router-dom";
+import { FAVOURITES } from '../../router/paths'
 
 export const Categories = () => {
   const { userLists } = useUser();
@@ -51,8 +53,7 @@ export const Categories = () => {
       />
       <div className="grid grid-rows-2 gap-8 pt-24 pr-24 pl-24  h-full w-full">
         <div className="z-10 flex center  flex-row gap-10 justify-center mt-4 rounded-xl md:min-w-400 lg:min-w-400 xl:min-w-400">
-          <a
-            href="/favorites"
+          <Link to={`/${FAVOURITES}`}
             className="flex flex-col items-center  border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl h-3/4 bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-200 transition duration-500 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
           >
             <div className="flex flex-col justify-between p-4 leading-normal">
@@ -60,14 +61,14 @@ export const Categories = () => {
                 Your Favorites Songs
               </h5>
               
-              <p className="mr-3 text-xs capitalize font-bold">
+              <p className="mr-3 text-xs capitalize font-bold text-gray-800">
                 {authState.user.firstName}
               </p>
-              <p className="text-withe-500 my-2 text-xs">
+              <p className="text-withe-500 my-2 text-xs  text-gray-800">
                 49 {text.liked.total}
               </p>
             </div>
-          </a>
+          </Link>
 
           <div className="flex flex-col gap-4 items-center justify-center m-10">
             <h3 className="text-3xl ">{text.categories.lists}</h3>

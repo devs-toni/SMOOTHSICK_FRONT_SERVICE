@@ -1,7 +1,7 @@
 import React from 'react'
 import { Radio } from '../components/Radio/Radio'
 
-const Favorites = () => {
+const Favourites = () => {
   return (
     <> 
     <Radio/>
@@ -10,4 +10,4 @@ const Favorites = () => {
   )
 }
 
-export default Favorites
+export default Favourites
