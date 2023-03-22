@@ -2,10 +2,11 @@ import React from "react"
 
 const Category = ({id, name, imageUrl, artist}) => {
   return (
-    <div className="mt-4 p-5 rounded-xl md:min-w-400 lg:min-w-400 xl:min-w-400">
+    <div className="mt-4 p-5 rounded-xl md:min-w-300">
 
 
-        <div className="flex flex-row justify-between border border-red-400 w-11 h-11 grow text-center">img 1
+        <div className="flex flex-row justify-between w-11 text-center">
+        
         <img src={imageUrl} alt={name} className="rounded-lg w-full max-img" />
         </div>
 
