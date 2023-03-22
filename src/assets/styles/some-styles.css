@@ -40,13 +40,23 @@
   border: 1px solid rgba(0, 0, 0, 0.329);
 }
 
-/* LIKED SONGS SECTION */
+/* LIKED SONGS SECTION AND CATEGORIES */
 
 .user-profile-img {
   min-height: 20px;
   min-width: 20px;
   max-height: 20px;
   max-width: 20px;
+}
+
+.background-div {
+  min-width: 50vw;
+  min-height: 50vh;
+  position: absolute;
+  opacity: 0.1;
+  z-index: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* HOMEPAGE BACKGROUND SECTION */
@@ -56,7 +66,7 @@
   height: 100%;
   object-fit: cover;
   left: -100%;
-  transition: all .8s ease-in-out;
+  transition: all 0.8s ease-in-out;
   opacity: 0.1;
 }
 .transition-img.loaded {

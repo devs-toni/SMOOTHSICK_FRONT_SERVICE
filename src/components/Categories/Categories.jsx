@@ -17,16 +17,24 @@ export const Categories = () => {
   const [selectedList, setSelectedList] = useState();
   const [currentList, setCurrentList] = useState();
   const [selectedListId, setSelectedListId] = useState();
-  const [selectedListImg, setSelectedListImg] = useState();
+  const [hoverList, setHoverList] = useState();
   const [changeImg, setChangeImg] = useState();
 
-  const handleSetBgImg = (e) => {
-    setSelectedListId(e.target.id);
-  };
+  const [imgs, setImgs] = useState([]);
+  const [currentImage, setCurrentImage] = useState('');
 
-  // const handleRemoveBgImg = () => {
-  // 	setChangeImg('')
-  // }
+
+  const handleSetBgImg = ({ target }) => {
+    const { id } = target;
+    const hoverList = userLists.find((i) => i.id === parseInt(id));
+    const newArray = hoverList.songs.slice(0, 4);
+    setImgs(newArray.map(img => img.thumbnail));
+  }
+
+
+  const handleRemoveBgImg = () => {
+    setImgs([])
+  }
 
   const handleLists = (e) => {
     setCurrentList(e.target.id);
@@ -35,22 +43,45 @@ export const Categories = () => {
   useEffect(() => {
     if (userLists) {
       setSelectedList(userLists.find((i) => i.id === parseInt(currentList)));
-      setSelectedListImg(
+      setHoverList(
         userLists.find((i) => i.id === parseInt(selectedListId))
       );
-      if (selectedListImg) {
-        setChangeImg(selectedListImg.songs[0].thumbnail);
+      if (hoverList) {
+        setChangeImg(hoverList.songs[0].thumbnail);
       }
     }
-  }, [currentList, selectedListId, selectedListImg]);
+  }, [currentList, selectedListId, hoverList]);
 
   return (
     <>
-      <img
+      {/*       <img
         src={changeImg}
         alt="pruebaa"
         className="z-auto right-0 fixed w-screen h-screen object-cover opacity-20"
-      />
+      /> */}
+      <div className="absolute h-full w-full">
+        <div className="background-div" style={{
+          top: 0,
+          left: 0,
+          backgroundImage: `url(${imgs[0]})`
+        }}></div>
+        <div className="background-div" style={{
+          top: 0,
+          right: 0,
+          backgroundImage: `url(${imgs[1]})`
+        }}></div>
+        <div className="background-div" style={{
+          bottom: 0,
+          left: 0,
+          backgroundImage: `url(${imgs[2]})`
+        }}></div>
+        <div className="background-div" style={{
+          bottom: 0,
+          right: 0,
+          backgroundImage: `url(${imgs[3]})`
+        }}></div>
+      </div>
+
       <div className="grid grid-rows-2 gap-8 pt-24 pr-24 pl-24  h-full w-full">
         <div className="z-10 flex center  flex-row gap-10 justify-center mt-4 rounded-xl md:min-w-400 lg:min-w-400 xl:min-w-400">
           <Link to={`/${FAVOURITES}`}
@@ -77,9 +108,10 @@ export const Categories = () => {
                 userLists.map((element) => (
                   <React.Fragment key={element.id}>
                     <div
+
                       className="rounded-lg grid grid-rows-2 grid-flow-col w-32 relative filter grayscale hover:grayscale-0"
                       onMouseEnter={handleSetBgImg}
-                      // onMouseOut={handleRemoveBgImg}
+                      onMouseOut={handleRemoveBgImg}
                       onClick={handleLists}
                     >
                       <img
