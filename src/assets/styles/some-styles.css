@@ -43,6 +43,19 @@
   max-width: 20px;
 }
 
+.transition-img {
+  filter: blur(20px);
+  transition: all .6s ease-in-out;
+}
+.transition-img.loaded {
+  filter: blur(0);
+}
+
+.box-shadow {
+  box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.363);
+  border: 1px solid rgba(0, 0, 0, 0.329);
+}
+
 @media screen and (max-width: 768px) {
   .bg-box-icons {
     background-color: #3f3f46 !important;

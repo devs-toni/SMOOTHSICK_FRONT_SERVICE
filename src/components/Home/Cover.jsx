@@ -49,7 +49,7 @@ const Cover = ({ artists, autoPlay, showButtons, selectedIndex, setSelectedIndex
       }
       <div className="carousel-images relative">
         <img src={selectedImage} alt='Cover' onLoad={() => setLoaded(true)} className={`carousel-image ${loaded ? 'loaded' : ''}`} />
-        <div className={`px-6 py-6 rounded-3xl w-full flex flex-row justify-between absolute top-0 data ${loaded ? 'loaded' : ''}`}>
+        <div className={`px-6 py-6 w-full flex flex-row justify-between absolute top-0 data ${loaded ? 'loaded' : ''}`}>
           <div className="flex flex-col">
             <p className="text-sm md:text-2xl font-bold">{artists[selectedIndex].name}</p>
           </div>

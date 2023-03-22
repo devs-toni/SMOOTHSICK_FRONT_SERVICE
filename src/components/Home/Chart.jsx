@@ -4,10 +4,10 @@ import { FaHeart } from 'react-icons/fa'
 const Chart = ({ img, title, artist, isLike }) => {
 
   return (
-    <div className='flex mt-4 bg-chart p-5 rounded-xl md:min-w-400 lg:min-w-400 xl:min-w-400'>
+    <div className='flex mt-4 bg-chart p-5 rounded-md md:min-w-400 lg:min-w-400 box-shadow xl:min-w-400'>
 
       <div className='w-1/3 mr-5 max-img'>
-        <img src={img} alt={title} className="rounded-lg w-full max-img" />
+        <img src={img} alt={title} className="rounded-sm w-full max-img" />
       </div>
 
       <div className='flex flex-row justify-between w-full grow text-left'>
