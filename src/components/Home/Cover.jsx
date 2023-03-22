@@ -33,7 +33,7 @@ const Cover = ({ artists, autoPlay, showButtons, selectedIndex, setSelectedIndex
     if (autoPlay || !showButtons) {
       const interval = setInterval(() => {
         selectNewImage(selectedIndex, artists);
-      }, 10000);
+      }, 30000);
       return () => clearInterval(interval);
     }
   }, [selectNewImage])

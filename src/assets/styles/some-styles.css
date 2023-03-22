@@ -45,10 +45,11 @@
 
 .transition-img {
   filter: blur(20px);
-  transition: all .6s ease-in-out;
+  opacity: 0.1; 
+  transition: all .4s ease-in;
 }
 .transition-img.loaded {
-  filter: blur(0);
+  filter: blur(1px);
 }
 
 .box-shadow {
@@ -60,4 +61,4 @@
   .bg-box-icons {
     background-color: #3f3f46 !important;
   }
-};
+} ;

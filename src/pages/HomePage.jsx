@@ -130,7 +130,7 @@ export const HomePage = () => {
         <div className="w-5/6 xl:flex md:w-3/5 lg:w-10/12 home-carousel">
           <Cover
             artists={artists}
-            showButtons={false}
+            showButtons={true}
             autoPlay={true}
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
