@@ -52,6 +52,10 @@
       "title_table": "TÍTULO",
       "album_table": "ÁLBUM",
       "total": "canciones"
+    },
+    "categories": {
+      "lists": "Tus listas de reproducción",
+      "favoritos": "Favoritos"
     }
   },
   "en": {
@@ -107,6 +111,10 @@
       "title_table": "TITLE",
       "album_table": "ALBUM",
       "total": "songs"
+    },
+    "categories": {
+      "lists": "Your playlists",
+      "favoritos": "Favorites"
     }
   },
   "fr": {
@@ -159,6 +167,10 @@
       "title_table": "TITLE",
       "album_table": "ALBUM",
       "total": "canciones"
+    },
+    "categories": {
+      "lists": "Your playlists",
+      "favoritos": "Favorites"
     }
   },
   "chn": {
@@ -211,6 +223,10 @@
       "title_table": "TITLE",
       "album_table": "ALBUM",
       "total": "canciones"
+    },
+    "categories": {
+      "lists": "Your playlists",
+      "favoritos": "Favorites"
     }
   }
 }
