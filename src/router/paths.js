@@ -6,3 +6,4 @@ export const VIDEO = 'video';
 export const ACCOUNT = 'account';
 export const FAVOURITES = 'favourites';
 export const SEARCH = 'search';
+export const DETAILS = 'details';
