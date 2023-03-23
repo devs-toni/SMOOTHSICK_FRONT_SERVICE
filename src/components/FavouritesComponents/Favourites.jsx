@@ -30,6 +30,7 @@ export const Favourites = () => {
         </div>   
         {
           dataState.tracks.map(({ id, name, artist, url, thumbnail, genre }) => {
+            
             return (
               <Song
                 key={uuidv4()}
