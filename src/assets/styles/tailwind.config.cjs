@@ -8,18 +8,24 @@ module.exports = {
   theme: {
     extend: {
       minHeight: {
-        "100": "350px",
+        "80p": "80px",
+        "350": "350px",
+        "80": "80%"
       },
       minWidth: {
         "100": "100px",
         "150": "150px",
-        "400": "500px"
+        "180": "180px",
+        "400": "500px",
+        "95": "95%"
       },
       maxWidth: {
-        "80": "80%"
+        "80": "80%",
+        "180": "180px"
       },
       maxHeight: {
-        "100l": "150px",
+        "80p": "80px",
+        "270": "270px",
       },
       backgroundColor: {
         "chart": "#1a1e1f"

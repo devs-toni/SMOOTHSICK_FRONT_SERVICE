@@ -72,8 +72,54 @@
   opacity: 0.1;
 }
 
+/* SEARCH GRID SECTION */
+
+.search-grid {
+  padding: 20px;
+}
+
+.sound-box {
+}
+.sound-box .img-container {
+}
+.sound-box .img-container img {
+}
+
+@media screen and (min-width: 2300px) {
+  .search-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+  }
+}
+
+@media screen and (min-width: 1535px) and (max-width: 1850px) {
+  .search-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .bg-box-icons {
     background-color: #3f3f46 !important;
   }
-} ;
+}
+
+@media screen and (min-width: 250px) and (max-width: 510px) {
+  .sound-box {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  .sound-box .img-container {
+    width: 100%;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    min-height: 100% !important;
+  }
+  .sound-box .img-container img {
+    width: 100%;
+    min-width: 100% !important;
+    max-width: auto !important;
+    max-height: 220px !important;
+    min-height: 100% !important;
+  }
+}

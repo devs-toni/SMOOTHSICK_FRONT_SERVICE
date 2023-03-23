@@ -11,15 +11,18 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
       case FILTER_TYPES.ALL:
         setCurrentSearch(items.all);
         break;
+      case FILTER_TYPES.PLAYLISTS:
+        setCurrentSearch(items.playlists);
+        break;
       case FILTER_TYPES.ALBUMS:
         setCurrentSearch(items.albums);
         break;
       case FILTER_TYPES.ARTISTS:
         setCurrentSearch(items.artists);
         break;
-      case FILTER_TYPES.USERS:
-        setCurrentSearch(items.users);
-        break;
+      /*      case FILTER_TYPES.USERS:
+              setCurrentSearch(items.users);
+              break; */
       case FILTER_TYPES.GENRES:
         setCurrentSearch(items.genres);
         break;
@@ -35,24 +38,28 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
   const filters = [
     {
       id: 0,
-      name: "All",
+      name: FILTER_TYPES.ALL,
+    },
+    {
+      id: 4,
+      name: FILTER_TYPES.PLAYLISTS
     },
     {
       id: 1,
-      name: "Artists"
+      name: FILTER_TYPES.ARTISTS
     },
     {
       id: 2,
-      name: "Albums",
+      name: FILTER_TYPES.ALBUMS,
     },
     {
       id: 3,
-      name: "Tracks"
+      name: FILTER_TYPES.TRACKS
     },
-    {
-      id: 5,
-      name: "Users"
-    }
+    /*     {
+          id: 5,
+          name: "Users"
+        } */
   ]
 
   return (

@@ -10,8 +10,8 @@ const Search = () => {
   const initialState = {
     playlists: [],
     tracks: [],
-    users: [],
-    albums: [],
+/*     users: [],
+ */    albums: [],
     artists: [],
   }
 
@@ -21,16 +21,16 @@ const Search = () => {
     false,
     [...playlists],
     [...tracks],
-    [...users],
-    [...albums],
+/*     [...users],
+ */    [...albums],
     [...artists],
   ]
 
   const items = {
     playlists,
     tracks,
-    users,
-    albums,
+/*     users,
+ */    albums,
     artists,
     all
   }
@@ -59,7 +59,7 @@ const Search = () => {
         setAllResults({
           playlists: playlists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
           tracks: tracks.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-          users: users.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
+          /*           users: users.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())), */
           albums: albums.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
           artists: artists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
         })
@@ -93,15 +93,15 @@ const Search = () => {
               }
             })
             break;
-          case "users":
-            firstResults = firstResults.map(user => {
-              return {
-                name: user.name,
-                img: user.profilePicture,
-                artist: ""
-              }
-            })
-            break;
+          /*           case "users":
+                      firstResults = firstResults.map(user => {
+                        return {
+                          name: user.name,
+                          img: user.profilePicture,
+                          artist: ""
+                        }
+                      })
+                      break; */
           case "artists":
             firstResults = firstResults.map(artist => {
               return {
@@ -167,16 +167,16 @@ const Search = () => {
             }
           })
           break;
-        case "users":
-          firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
-          firstResults = firstResults.map(user => {
-            return {
-              name: user.name,
-              img: user.profilePicture,
-              artist: ""
-            }
-          })
-          break;
+        /*         case "users":
+                  firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
+                  firstResults = firstResults.map(user => {
+                    return {
+                      name: user.name,
+                      img: user.profilePicture,
+                      artist: ""
+                    }
+                  })
+                  break; */
         case "artists":
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
           firstResults = firstResults.map(artist => {
@@ -191,7 +191,7 @@ const Search = () => {
           setAllResults({
             playlists: playlists.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
             tracks: tracks.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
-            users: users.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
+            /*             users: users.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())), */
             albums: albums.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
             artists: artists.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
           })
@@ -203,8 +203,7 @@ const Search = () => {
 
   return (
     <div className='pb-20 flex w-full'>
-      <div className="headphones-image"></div>
-      <div className="w-3/4 flex flex-col items-center justify-center mt-24 overflow-hidden m-auto">
+      <div className="sm:w-3/4 flex flex-col items-center justify-center mt-24 overflow-hidden m-auto z-10">
         <form className='flex w-full justify-center mt-10'>
           <TextInput
             type="text"
@@ -223,7 +222,7 @@ const Search = () => {
           setCurrentSearch={setCurrentSearch}
           items={items}
         />
-        <div className='m-auto w-4/6'>
+        <div className='m-auto w-full'>
           {
             (allResults.length === 0 && results.length === 0)
               ?
@@ -236,11 +235,11 @@ const Search = () => {
                   ?
                   (
                     <>
+                      {allResults.tracks.length > 0 && <SearchSection name="Tracks" list={allResults.tracks} />}
                       {allResults.playlists.length > 0 && <SearchSection name="Playlists" list={allResults.playlists} />}
                       {allResults.artists.length > 0 && <SearchSection name="Artists" list={allResults.artists} />}
                       {allResults.albums.length > 0 && <SearchSection name="Albums" list={allResults.albums} />}
-                      {allResults.users.length > 0 && <SearchSection name="Users" list={allResults.users} />}
-                      {allResults.tracks.length > 0 && <SearchSection name="Tracks" list={allResults.tracks} />}
+                      {/*                       {allResults.users.length > 0 && <SearchSection name="Users" list={allResults.users} />} */}
                     </>
                   )
                   :
@@ -268,6 +267,7 @@ const Search = () => {
           }
         </div>
       </div>
+      <div className="headphones-image"></div>
     </div>
   )
 }
