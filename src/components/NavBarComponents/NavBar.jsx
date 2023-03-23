@@ -69,7 +69,7 @@ export const NavBar = () => {
 
     <>
       <Toaster />
-      <div className="fixed top-0 z-50 w-full bg-primary-color md:bg-transparent md:shadow-none">
+      <div className="fixed top-0 z-50 w-full md:bg-transparent md:shadow-none">
         <nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 " >
           <img className='h-12 w-14 hidden md:block' src={exampleLogo} alt="" />
           <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
@@ -83,6 +83,7 @@ export const NavBar = () => {
                   ?
                   <>
                     <Avatar
+                      className='cursor-pointer'
                       img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                       rounded={true}
                       id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"

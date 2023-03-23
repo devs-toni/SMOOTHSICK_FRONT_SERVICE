@@ -6,9 +6,9 @@ const Accountsettings = () => {
 
   return (
 
-    <div>
+    <div className='h-full flex max-w-5xl m-auto'>
       <div className="headphones-image"></div>
-      <div className="flex justify-around items-center flex-col pt-56 gap-7 max-w-5xl	m-auto mt-10 p-10 md:max-w-xl lg:max-w-3xl xl:max-w-6xl ">
+      <div className="flex justify-around items-center flex-col pt-56 gap-7 w-full m-auto mt-10 p-10 md:max-w-xl lg:max-w-3xl xl:max-w-6xl ">
         <div className='grid grid-cols-3 justify-start items-start py-4 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500  w-full'>
           <div className='flex flex-col'>
             {console.log(authState)}

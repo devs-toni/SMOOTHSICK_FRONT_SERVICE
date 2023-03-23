@@ -41,8 +41,6 @@ const Search = () => {
   const [results, setResults] = useState([]);
   const [allResults, setAllResults] = useState(initialState);
 
-
-
   const styleInput = {
     backgroundColor: "#00000000",
     color: 'white',
@@ -52,68 +50,73 @@ const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const strSearch = searchParams.get('q') ?? '';
 
+
   const handleSearch = ({ target }) => {
     const { value } = target;
     setSearchParams({ q: value });
-    if (active === FILTER_TYPES.ALL) {
-      setAllResults({
-        playlists: playlists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-        tracks: tracks.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-        users: users.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-        albums: albums.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-        artists: artists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-      })
-    } else {
-      let firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
-
-      switch (active.toLowerCase()) {
-        case "playlists":
-          firstResults = firstResults.map(playlist => {
-            return {
-              name: playlist.name,
-              img: playlist.thumbnail,
-              artist: ""
-            }
-          })
-          break;
-        case "albums":
-          firstResults = firstResults.map(album => {
-            return {
-              name: album.name,
-              img: album.imageUrl,
-              artist: album.artist
-            }
-          })
-          break;
-        case "tracks":
-          firstResults = firstResults.map(track => {
-            return {
-              name: track.name,
-              img: track.thumbnail,
-              artist: track.artist
-            }
-          })
-          break;
-        case "users":
-          firstResults = firstResults.map(user => {
-            return {
-              name: user.name,
-              img: user.profilePicture,
-              artist: ""
-            }
-          })
-          break;
-        case "artists":
-          firstResults = firstResults.map(artist => {
-            return {
-              name: artist.name,
-              img: artist.photoUrl,
-              artist: ""
-            }
-          })
-          break;
+    if (value.length !== 0) {
+      if (active === FILTER_TYPES.ALL) {
+        setAllResults({
+          playlists: playlists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
+          tracks: tracks.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
+          users: users.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
+          albums: albums.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
+          artists: artists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
+        })
+      } else {
+        let firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
+        switch (active.toLowerCase()) {
+          case "playlists":
+            firstResults = firstResults.map(playlist => {
+              return {
+                name: playlist.name,
+                img: playlist.thumbnail,
+                artist: ""
+              }
+            })
+            break;
+          case "albums":
+            firstResults = firstResults.map(album => {
+              return {
+                name: album.name,
+                img: album.imageUrl,
+                artist: album.artist
+              }
+            })
+            break;
+          case "tracks":
+            firstResults = firstResults.map(track => {
+              return {
+                name: track.name,
+                img: track.thumbnail,
+                artist: track.artist
+              }
+            })
+            break;
+          case "users":
+            firstResults = firstResults.map(user => {
+              return {
+                name: user.name,
+                img: user.profilePicture,
+                artist: ""
+              }
+            })
+            break;
+          case "artists":
+            firstResults = firstResults.map(artist => {
+              return {
+                name: artist.name,
+                img: artist.photoUrl,
+                artist: ""
+              }
+            })
+            break;
+        }
+        setResults(firstResults)
       }
-      setResults(firstResults)
+    } else {
+      setResults([]);
+      setAllResults(initialState);
     }
   };
 
@@ -124,8 +127,8 @@ const Search = () => {
 
   useEffect(() => {
     if (strSearch.length === 0) {
-      setResults([])
-      setAllResults(initialState)
+      setAllResults(initialState);
+      setResults([]);
     }
   }, [strSearch.length])
 
@@ -198,22 +201,22 @@ const Search = () => {
     }
   }, [active])
 
-
-
-
   return (
-    <div className='w-full pb-20'>
-      <div className="flex flex-col items-center justify-center mt-24 z-10">
-        <TextInput
-          type="text"
-          placeholder={text.navbar.input_p_holder}
-          autoFocus
-          style={styleInput}
-          color="white"
-          className="border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 w-2/6"
-          value={strSearch}
-          onChange={handleSearch}
-        />
+    <div className='pb-20 flex w-full'>
+      <div className="headphones-image"></div>
+      <div className="w-3/4 flex flex-col items-center justify-center mt-24 overflow-hidden m-auto">
+        <form className='flex w-full justify-center mt-10'>
+          <TextInput
+            type="text"
+            placeholder={text.navbar.input_p_holder}
+            autoFocus
+            style={styleInput}
+            color="white"
+            className="border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 "
+            value={strSearch}
+            onChange={handleSearch}
+          />
+        </form>
         <Filters
           active={active}
           setActive={setActive}
@@ -222,37 +225,45 @@ const Search = () => {
         />
         <div className='m-auto w-4/6'>
           {
-            active === FILTER_TYPES.ALL
+            (allResults.length === 0 && results.length === 0)
               ?
               (
-                <>
-                  {allResults.playlists.length > 0 && <SearchSection name="Playlists" list={allResults.playlists} />}
-                  {allResults.artists.length > 0 && <SearchSection name="Artists" list={allResults.artists} />}
-                  {allResults.albums.length > 0 && <SearchSection name="Albums" list={allResults.albums} />}
-                  {allResults.users.length > 0 && <SearchSection name="Users" list={allResults.users} />}
-                  {allResults.tracks.length > 0 && <SearchSection name="Tracks" list={allResults.tracks} />}
-                </>
+                <p>Mierda</p>
               )
               :
               (
-                <>
-                  <h1 className='text-2xl mt-24 mb-5 font-medium'>{name}</h1>
-                  <div className='grid grid-cols-6'>
-                    {
-                      results.map(({ name, img, artist }) => {
-                        return (
-                          <Soundbox
-                            key={uuidv4()}
-                            section="search"
-                            image={img}
-                            name={name}
-                            artist={artist}
-                          />
-                        )
-                      })
-                    }
-                  </div>
-                </>
+                active === FILTER_TYPES.ALL
+                  ?
+                  (
+                    <>
+                      {allResults.playlists.length > 0 && <SearchSection name="Playlists" list={allResults.playlists} />}
+                      {allResults.artists.length > 0 && <SearchSection name="Artists" list={allResults.artists} />}
+                      {allResults.albums.length > 0 && <SearchSection name="Albums" list={allResults.albums} />}
+                      {allResults.users.length > 0 && <SearchSection name="Users" list={allResults.users} />}
+                      {allResults.tracks.length > 0 && <SearchSection name="Tracks" list={allResults.tracks} />}
+                    </>
+                  )
+                  :
+                  (
+                    <>
+                      <h1 className='text-2xl mt-24 mb-5 font-medium'>{name}</h1>
+                      <div className='grid grid-cols-6'>
+                        {
+                          results.map(({ name, img, artist }) => {
+                            return (
+                              <Soundbox
+                                key={uuidv4()}
+                                section="search"
+                                image={img}
+                                name={name}
+                                artist={artist}
+                              />
+                            )
+                          })
+                        }
+                      </div>
+                    </>
+                  )
               )
           }
         </div>

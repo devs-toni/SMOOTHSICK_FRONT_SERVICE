@@ -56,7 +56,7 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
   ]
 
   return (
-    <div className='flex justify-around items-center mt-10'>
+    <div className='flex justify-around items-center mt-10 z-10'>
       {
         filters.map(({ id, name }) => {
           return (
