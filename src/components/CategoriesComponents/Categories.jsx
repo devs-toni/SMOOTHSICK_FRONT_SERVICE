@@ -1,4 +1,4 @@
-import { SongCard } from "./SongCard";
+import { SongCard } from "./CategoriesSongCard";
 import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { useAuthContext } from "../../context/AuthContext";
@@ -14,7 +14,6 @@ import { v4 as uuidv4 } from 'uuid';
 export const Categories = () => {
   const { userLists } = useUser();
   const { text } = useLanguage();
-  const { dataState } = useGlobalContext();
   const { authState } = useAuthContext();
 
 
@@ -65,9 +64,7 @@ export const Categories = () => {
     <>
       <div className="absolute h-full w-full">
         <div className="flex flex-col items-center justify-center pt-32 gap-12">
-
           <div className=" z-10 w-5/6 h-3/6 md:w-3/5 md:h5/6 lg:flex lg:justify-between lg:w-4/6 lg:h-full">
-
             <Link to={`/${FAVOURITES}`}
               className="flex mb-10 rounded-lg lg:flex-none lg:h-80 lg:w-2/4 lg:mr-6 bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-200"
             >
@@ -89,8 +86,6 @@ export const Categories = () => {
 
             <h3 className="text-1xl text-center font-bold sticky top-0 pb-7 lg:pt-0 lg:text-left lg:p-2 lg:hidden">{text.categories.lists}</h3>
             <div className=" flex flex-col h-80 rounded-lg overflow-y-scroll hide-scrollbar gap-3 lg:gap-2 lg:w-3/6 ">
-
-
               {userLists &&
                 userLists.map((element) => (
                   <React.Fragment key={uuidv4()}>
@@ -98,7 +93,6 @@ export const Categories = () => {
                       <div className="flex ml-6 h-full items-center">
                         <span className="text-md text-center">List title:{` ` + element.name}</span>
                       </div>
-
                       <div
                         className="rounded-lg grid grid-rows-2 grid-flow-col w-24 lg:w-28 relative filter grayscale hover:grayscale-0 cursor-pointer"
                         onClick={handleLists}
@@ -140,14 +134,11 @@ export const Categories = () => {
               <p className="w-3/12">TRACK</p>
               <p className="w-8/12">{text.liked.title_table}</p>
               <p className="w-4/12">{text.liked.album_table}</p>
-
             </div>
           </div>
           <div className="z-10 mb-20 flex flex-col h-34 text-center justify-center w-5/6 md:w-3/5 lg:min-w-[100%]">
             {selectedList?.songs &&
               selectedList.songs.map((data, index) => (
-
-
                 <SongCard
                   key={uuidv4()}
                   id={index}
@@ -156,10 +147,7 @@ export const Categories = () => {
                   name={data.name}
                   artist={data.artist}
                 />
-
-
               ))}
-
           </div>
         </div>
         <div className="background-div" style={{
@@ -183,10 +171,6 @@ export const Categories = () => {
           backgroundImage: `url(${imgs[3]})`
         }}></div>
       </div>
-
-
-
-
     </>
   );
 };

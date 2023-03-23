@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { SongCard } from '../CategoriesComponents/SongCard';
+
 import Soundbox from '../HomeComponents/Soundbox';
 
 const SearchSection = ({ name, list }) => {

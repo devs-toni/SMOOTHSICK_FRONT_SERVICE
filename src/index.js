@@ -2,7 +2,7 @@ export { default as App } from './App';
 export { default as AccountSettings } from './components/AccountSettingsComponents/AccountSettings';
 export * from './components/CategoriesComponents/Categories';
 export { default as Song } from './components/CategoriesComponents/Song';
-export * from './components/CategoriesComponents/SongCard';
+export * from './components/CategoriesComponents/CategoriesSongCard';
 export * from './components/FavouritesComponents/Favourites';
 export { default as Category } from './components/HomeComponents/Category';
 export { default as Chart } from './components/HomeComponents/Chart';

@@ -51,9 +51,12 @@
     },
     "liked": {
       "title": "Canciones que te gustan",
-      "title_table": "TÍTULO",
-      "album_table": "ÁLBUM",
-      "total": "canciones"
+      "title_table": "Título",
+      "album_table": "Álbum",
+      "gender": "Género",
+      "track": "Canción",
+      "options": "Opciones",
+      "total": "Canciones"
     },
     "categories": {
       "lists": "Tus listas de reproducción",
@@ -115,6 +118,9 @@
       "title": "Liked Songs",
       "title_table": "TITLE",
       "album_table": "ALBUM",
+      "gender": "Gender",
+      "track": "Track",
+      "options": "Options",
       "total": "songs"
     },
     "categories": {
@@ -174,6 +180,9 @@
       "title": "Canciones Favoritas",
       "title_table": "TITLE",
       "album_table": "ALBUM",
+      "gender": "Gender",
+      "track": "Canción",
+      "options": "Options",
       "total": "canciones"
     },
     "categories": {
@@ -232,7 +241,10 @@
       "title": "Canciones Favoritas",
       "title_table": "TITLE",
       "album_table": "ALBUM",
-      "total": "canciones"
+      "gender": "Gender",
+      "track": "Track",
+      "options": "Options", 
+      "total": "Canciones"
     },
     "categories": {
       "lists": "Your playlists",
