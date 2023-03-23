@@ -1,16 +1,25 @@
 import React from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 
 
-export const SongCard = ({ img, name, artist }) => {
+export const SongCard = ({ img, name, artist, id }) => {
+
+	console.log(id);
+
 	return (
 
-		<figure className=" flex items-center justify-center relative max-w-sm transition-all duration-300 cursor-pointer text-center hover:text-pink-700  filter grayscale hover:grayscale-0 w-44">
-			<img className="rounded-lg" src={img} alt="image description" />
-			<figcaption className="  absolute text-lg text-white  font-bold bottom-6">
-				<span className=" mb-2 text-md ">{name}</span>
-				<p className="text-sm mb-3 font-normal ">{artist}</p>
-			</figcaption>
-		</figure>
+		<div className='flex w-full items-center justify-center h-full'>
+			<div className='w-full md:max-w-2xl lg:max-w-3xl min-w-[75%] pt-5'>
+				<div className='flex items-center rounded-xl bg-box-icons h-24'>
+					<span className='w-1/12'>{id + 1}</span>
+					<div className=' flex w-3/12 items-center justify-center'>
+						<img className="rounded-lg w-16 " src={img} alt="image description" />
+					</div>
+					<span className="text-xs w-8/12 md:text-md grow">{name}</span>
+					<p className="text-xs font-normal w-4/12 md:text-md ">{artist}</p>
+				</div>
+			</div>
+		</div>
 
 	)
 };
