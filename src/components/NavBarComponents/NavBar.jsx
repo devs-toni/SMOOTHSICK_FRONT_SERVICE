@@ -13,13 +13,18 @@ import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
 import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import exampleLogo from '../../assets/imgs/logo/logo-head.svg';
-import { SIGNUP, LOGIN, SEARCH } from '../../router/paths'
+import { SIGNUP, LOGIN, SEARCH, ACCOUNT, FAVOURITES } from '../../router/paths'
+import { useEffect, useState } from 'react';
 
 
 export const NavBar = () => {
 
   const { logout, authState } = useAuthContext();
   const { handleLanguage, text } = useLanguage();
+  const [asideLinks, setAsideLinks] = useState([])
+
+  const { user } = authState
+  console.log(authState);
 
   const lenguageSelected = [
     { key: 1, name: "spain", country: flagSpain },
@@ -29,12 +34,31 @@ export const NavBar = () => {
   ];
 
 
-  const asideLinks = [
-    { key: 1, path: "/", icon: <AiFillHome color="#fff" className="h-6 w-6 " />, text: text.navbar.home },
-    { key: 2, path: "/categories", icon: <RiFolderMusicFill color="#fff" className="h-6 w-6 " />, text: text.navbar.categories },
-    { key: 3, path: "/radio", icon: <BiRadio color="#fff" className="h-6 w-6 " />, text: text.navbar.radio },
-    { key: 4, path: "/video", icon: <FaPhotoVideo color="#fff" className="h-6 w-6 " />, text: text.navbar.video }
-  ]
+
+  useEffect(() => {
+    authState.isAuthenticated
+      ? setAsideLinks(
+        [
+          { key: 1, path: "/", icon: <AiFillHome color="#fff" className="h-6 w-6 " />, text: text.navbar.home },
+          { key: 2, path: "/categories", icon: <RiFolderMusicFill color="#fff" className="h-6 w-6 " />, text: text.navbar.categories },
+          { key: 3, path: "/radio", icon: <BiRadio color="#fff" className="h-6 w-6 " />, text: text.navbar.radio },
+          { key: 4, path: "/video", icon: <FaPhotoVideo color="#fff" className="h-6 w-6 " />, text: text.navbar.video }
+        ]
+      )
+      : setAsideLinks([
+        { key: 1, path: "/", icon: <AiFillHome color="#fff" className="h-6 w-6 " />, text: text.navbar.home },
+      ]
+      )
+  }, [authState.isAuthenticated])
+
+
+  // [
+  //   { key: 1, path: "/", icon: <AiFillHome color="#fff" className="h-6 w-6 " />, text: text.navbar.home },
+  //   { key: 2, path: "/categories", icon: <RiFolderMusicFill color="#fff" className="h-6 w-6 " />, text: text.navbar.categories },
+  //   { key: 3, path: "/radio", icon: <BiRadio color="#fff" className="h-6 w-6 " />, text: text.navbar.radio },
+  //   { key: 4, path: "/video", icon: <FaPhotoVideo color="#fff" className="h-6 w-6 " />, text: text.navbar.video }
+  // ]
+
 
 
   const handleLogout = () => {
@@ -76,23 +100,33 @@ export const NavBar = () => {
             <RiMenu4Fill className='h-6 w-6' />
           </button>
 
-          <div className="flex justify-center items-center flex-wrap">
+          <div className="flex flex-row justify-center items-center flex-wrap">
             <div>
               {
                 authState.isAuthenticated
                   ?
                   <>
-                    <Avatar
-                      className='cursor-pointer'
-                      img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                      rounded={true}
-                      id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
-                    />
+                    <div className='flex flex-row gap-6 items-center'>
+                      <span>{text.navbar.welcome} {user.firstName}!</span>
+
+
+                      <Avatar
+                        className='cursor-pointer'
+                        img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                        rounded={true}
+                        id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
+                      />
+                    </div>
                     <div id="dropdownDots" className="z-10 hidden bg-zinc-700 divide-y divide-gray-100 rounded-lg shadow w-44">
                       <ul className="py-2 text-sm text-white  dark:text-gray-200" aria-labelledby="dropdownMenuIconButton" >
-                        <NavLink to='/account' className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                        <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
                           <li className=' block px-4 py-2 hover:bg-gray-100'>
                             <span>{text.navbar.dashboard}</span>
+                          </li>
+                        </NavLink>
+                        <NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                          <li className=' block px-4 py-2 hover:bg-gray-100'>
+                            <span>{text.liked.name}</span>
                           </li>
                         </NavLink>
                         <div className="py-2 flex flex-row justify-evenly">
@@ -124,9 +158,14 @@ export const NavBar = () => {
                     />
                     <div id="dropdownDots2" className="z-10 hidden bg-zinc-700 divide-y divide-gray-100 rounded-lg shadow w-44">
                       <ul className="py-2 text-sm text-white  dark:text-gray-200" aria-labelledby="dropdownMenuIconButton" >
-                        <NavLink to='/login'>
+                        <NavLink to={`/${LOGIN}`}>
                           <li className=' block px-4 py-2 hover:bg-gray-100'>
                             <span>{text.navbar.login}</span>
+                          </li>
+                        </NavLink>
+                        <NavLink to={`/${SIGNUP}`}>
+                          <li className=' block px-4 py-2 hover:bg-gray-100'>
+                            <span>{text.navbar.register}</span>
                           </li>
                         </NavLink>
                         <div className="py-2 flex flex-row justify-evenly">
@@ -181,14 +220,14 @@ export const NavBar = () => {
                 !authState.isAuthenticated
                   ?
                   <>
-                    <NavLink to="/login" className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
+                    <NavLink to={`/${LOGIN}`} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
                       <li className='inline-flex gap-3 items-center hover:scale-110 '>
                         <FaUserShield color="#fff" className="h-6 w-6 " />
                         <span className=' md:hidden lg:hidden' > {text.navbar.login}</span>
                       </li>
                     </NavLink>
 
-                    <NavLink to="/signup" className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
+                    <NavLink to={`/${SIGNUP}`} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
                       <li className='inline-flex gap-3 items-center hover:scale-110 '>
                         <FaUserPlus color="#fff" className="h-6 w-6 " />
                         <span className=' md:hidden lg:hidden' > {text.navbar.register}</span>

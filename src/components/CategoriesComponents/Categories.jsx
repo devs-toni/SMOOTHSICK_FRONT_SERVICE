@@ -84,7 +84,6 @@ export const Categories = () => {
             </Link>
 
 
-
             <h3 className="text-1xl text-center font-bold sticky top-0 pb-7 lg:pt-0 lg:text-left lg:p-2 lg:hidden">{text.categories.lists}</h3>
             <div className=" flex flex-col h-80 rounded-lg overflow-y-scroll hide-scrollbar gap-3 lg:gap-2 lg:w-3/6 ">
               {userLists &&

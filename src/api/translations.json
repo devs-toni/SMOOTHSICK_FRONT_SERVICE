@@ -30,13 +30,14 @@
       "categories": "Categorias",
       "radio": "Radio",
       "video": "Video",
-      "login": "Login",
+      "login": "Iniciar sesión",
       "logout": "Cerrar sesión",
       "register": "Registrate",
       "input_p_holder": "Encuentra nueva música...",
       "dashboard": "Perfil",
       "favourites": "Favoritos",
-      "search": "Buscar"
+      "search": "Buscar",
+      "welcome": "Hola"
     },
     "account": {
       "account": "Ajustes de la Cuenta",
@@ -50,6 +51,7 @@
       "password2": "Contraseña"
     },
     "liked": {
+      "name": "Favoritos",
       "title": "Canciones que te gustan",
       "title_table": "Título",
       "album_table": "Álbum",
@@ -101,7 +103,8 @@
       "input_p_holder": "Find new music...",
       "dashboard": "Profile",
       "favourites": "Favourites",
-      "search": "Search"
+      "search": "Search",
+      "welcome": "Welcome"
     },
     "account": {
       "account": "Account settings",
@@ -121,7 +124,8 @@
       "gender": "Gender",
       "track": "Track",
       "options": "Options",
-      "total": "songs"
+      "total": "songs",
+      "name": "Favourites"
     },
     "categories": {
       "lists": "Your playlists",
@@ -163,7 +167,8 @@
       "input_p_holder": "Find new music...",
       "dashboard": "Profile",
       "favourites": "Favourites",
-      "search": "Search"
+      "search": "Search",
+      "welcome": "Welcome"
     },
     "account": {
       "account": "Account settings",
@@ -183,7 +188,8 @@
       "gender": "Gender",
       "track": "Canción",
       "options": "Options",
-      "total": "canciones"
+      "total": "canciones",
+      "name": "Favourites"
     },
     "categories": {
       "lists": "Your playlists",
@@ -224,7 +230,8 @@
       "input_p_holder": "Find new music...",
       "dashboard": "Profile",
       "favourites": "Favourites",
-      "search": "Search"
+      "search": "Search",
+      "welcome": "Welcome"
     },
     "account": {
       "account": "Account settings",
@@ -244,7 +251,8 @@
       "gender": "Gender",
       "track": "Track",
       "options": "Options", 
-      "total": "Canciones"
+      "total": "Canciones",
+      "name": "Favourites"
     },
     "categories": {
       "lists": "Your playlists",
