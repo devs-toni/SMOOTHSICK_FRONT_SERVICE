@@ -35,7 +35,8 @@
       "register": "Registrate",
       "input_p_holder": "Encuentra nueva música...",
       "dashboard": "Perfil",
-      "favourites": "Favoritos"
+      "favourites": "Favoritos",
+      "search": "Buscar"
     },
     "account": {
       "account": "Ajustes de la Cuenta",
@@ -57,7 +58,7 @@
     "categories": {
       "lists": "Tus listas de reproducción",
       "favoritos": "Favoritos",
-      "canciones_fav" : "Tus canciones favoritas"
+      "canciones_fav": "Tus canciones favoritas"
     }
   },
   "en": {
@@ -96,7 +97,8 @@
       "register": "Sign up",
       "input_p_holder": "Find new music...",
       "dashboard": "Profile",
-      "favourites": "Favourites"
+      "favourites": "Favourites",
+      "search": "Search"
     },
     "account": {
       "account": "Account settings",
@@ -118,7 +120,7 @@
     "categories": {
       "lists": "Your playlists",
       "favoritos": "Favourites",
-      "canciones_fav":  "Your Favorites Songs"
+      "canciones_fav": "Your Favorites Songs"
     }
   },
   "fr": {
@@ -154,7 +156,8 @@
       "register": "Sign up",
       "input_p_holder": "Find new music...",
       "dashboard": "Profile",
-      "favourites": "Favourites"
+      "favourites": "Favourites",
+      "search": "Search"
     },
     "account": {
       "account": "Account settings",
@@ -211,7 +214,8 @@
       "register": "Sign up",
       "input_p_holder": "Find new music...",
       "dashboard": "Profile",
-      "favourites": "Favourites"
+      "favourites": "Favourites",
+      "search": "Search"
     },
     "account": {
       "account": "Account settings",

@@ -171,7 +171,7 @@ export const NavBar = () => {
               <NavLink to={`/${SEARCH}`} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar">
                 <li className='inline-flex gap-3 items-center hover:scale-110'>
                   <svg aria-hidden="true" className="w-5 h-5" fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
-                  <span className=' md:hidden lg:hidden'></span>
+                  <span className=' md:hidden lg:hidden'>{text.navbar.search}</span>
                 </li>
               </NavLink>
             </div>
@@ -196,7 +196,7 @@ export const NavBar = () => {
                     </NavLink>
                   </>
                   :
-                  <li className='inline-flex gap-3 items-center hover:scale-125 cursor-pointer' onClick={handleLogout}>
+                  <li className='inline-flex gap-3 items-center hover:scale-125 cursor-pointer' onClick={handleLogout} data-drawer-hide="logo-sidebar">
                     <FiLogOut color="#fff" className="h-6 w-6" />
                     <span className=' md:hidden lg:hidden' > {text.navbar.logout}</span>
                   </li>
