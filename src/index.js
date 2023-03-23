@@ -12,6 +12,7 @@ export { default as Section } from './components/HomeComponents/Section';
 export { default as Soundbox } from './components/HomeComponents/Soundbox';
 export { default as Login } from './components/LoginComponents/Login';
 export * from './components/NavBarComponents/NavBar';
+export { default as Player } from './components/Player';
 export * from './components/RadioComponents/Radio';
 export { default as Error } from './components/RegisterComponents/Error';
 export { default as RecoverModal } from './components/RegisterComponents/RecoverModal';
