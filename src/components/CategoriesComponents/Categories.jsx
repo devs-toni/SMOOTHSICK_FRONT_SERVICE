@@ -63,8 +63,9 @@ export const Categories = () => {
   return (
     <>
       <div className="absolute h-full w-full">
-        <div className="flex flex-col items-center justify-center pt-32 gap-12">
-          <div className=" z-10 w-5/6 h-3/6 md:w-3/5 md:h5/6 lg:flex lg:justify-between lg:w-4/6 lg:h-full">
+        <div className="flex flex-col items-center justify-center pt-32 gap-5">
+          <h1 className="text-center lg:text-left w-5/6 md:w-3/5 lg:w-4/6 text-5xl font-bold">Listas</h1>
+          <div className=" z-10 w-5/6 h-3/6 md:w-3/5 md:h5/6 lg:flex lg:justify-between lg:w-4/6 lg:h-full mb-4">
             <Link to={`/${FAVOURITES}`}
               className="flex mb-10 rounded-lg lg:flex-none lg:h-80 lg:w-2/4 lg:mr-6 bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-200"
             >
@@ -94,7 +95,7 @@ export const Categories = () => {
                         <span className="text-md text-center">List title:{` ` + element.name}</span>
                       </div>
                       <div
-                        className="rounded-lg grid grid-rows-2 grid-flow-col w-24 lg:w-28 relative filter grayscale hover:grayscale-0 cursor-pointer"
+                        className={`rounded-lg grid grid-rows-2 grid-flow-col w-24 lg:w-28 relative filter cursor-pointer grayscale brightness-50 hover:grayscale-0 ${(selectedList?.id === element.id) && 'grayscale-0 brightness-105'}`}
                         onClick={handleLists}
                       >
                         <img
@@ -128,28 +129,37 @@ export const Categories = () => {
                 ))}
             </div>
           </div>
-          <div className="z-10 flex flex-col h-34 text-center justify-center w-5/6 md:w-3/5 lg:min-w-[75%] ">
-            <div className='flex items-center justify-between border-b border-b-gray-300'>
-              <p className="w-1/12">#</p>
-              <p className="w-3/12">TRACK</p>
-              <p className="w-8/12">{text.liked.title_table}</p>
-              <p className="w-4/12">{text.liked.album_table}</p>
-            </div>
-          </div>
-          <div className="z-10 mb-20 flex flex-col h-34 text-center justify-center w-5/6 md:w-3/5 lg:min-w-[100%]">
-            {selectedList?.songs &&
-              selectedList.songs.map((data, index) => (
-                <SongCard
-                  key={uuidv4()}
-                  id={index}
-                  data={data}
-                  img={data.thumbnail}
-                  name={data.name}
-                  artist={data.artist}
-                />
-              ))}
-          </div>
+          {
+            selectedList
+            &&
+            (
+              <>
+                <div className="z-10 flex flex-col h-34 text-center justify-center w-5/6 md:w-3/5 lg:min-w-[75%] ">
+                  <div className='flex items-center justify-between border-b border-b-gray-300'>
+                    <p className="w-1/12">#</p>
+                    <p className="w-3/12">TRACK</p>
+                    <p className="w-8/12">{text.liked.title_table}</p>
+                    <p className="w-4/12">{text.liked.album_table}</p>
+                  </div>
+                </div>
+                <div className="z-10 mb-20 flex flex-col h-34 text-center justify-center w-5/6 md:w-3/5 lg:min-w-[100%]">
+                  {selectedList?.songs &&
+                    selectedList.songs.map((data, index) => (
+                      <SongCard
+                        key={uuidv4()}
+                        id={index}
+                        data={data}
+                        img={data.thumbnail}
+                        name={data.name}
+                        artist={data.artist}
+                      />
+                    ))}
+                </div>
+              </>
+            )
+          }
         </div>
+
         <div className="background-div" style={{
           top: 0,
           left: 0,

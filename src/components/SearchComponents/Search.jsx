@@ -224,45 +224,37 @@ const Search = () => {
         />
         <div className='m-auto w-full'>
           {
-            (allResults.length === 0 && results.length === 0)
+            active === FILTER_TYPES.ALL
               ?
               (
-                <p>Mierda</p>
+                <>
+                  {allResults.tracks.length > 0 && <SearchSection name="Tracks" list={allResults.tracks} />}
+                  {allResults.playlists.length > 0 && <SearchSection name="Playlists" list={allResults.playlists} />}
+                  {allResults.artists.length > 0 && <SearchSection name="Artists" list={allResults.artists} />}
+                  {allResults.albums.length > 0 && <SearchSection name="Albums" list={allResults.albums} />}
+                  {/*                       {allResults.users.length > 0 && <SearchSection name="Users" list={allResults.users} />} */}
+                </>
               )
               :
               (
-                active === FILTER_TYPES.ALL
-                  ?
-                  (
-                    <>
-                      {allResults.tracks.length > 0 && <SearchSection name="Tracks" list={allResults.tracks} />}
-                      {allResults.playlists.length > 0 && <SearchSection name="Playlists" list={allResults.playlists} />}
-                      {allResults.artists.length > 0 && <SearchSection name="Artists" list={allResults.artists} />}
-                      {allResults.albums.length > 0 && <SearchSection name="Albums" list={allResults.albums} />}
-                      {/*                       {allResults.users.length > 0 && <SearchSection name="Users" list={allResults.users} />} */}
-                    </>
-                  )
-                  :
-                  (
-                    <>
-                      <h1 className='text-2xl mt-24 mb-5 font-medium'>{name}</h1>
-                      <div className='grid grid-cols-6'>
-                        {
-                          results.map(({ name, img, artist }) => {
-                            return (
-                              <Soundbox
-                                key={uuidv4()}
-                                section="search"
-                                image={img}
-                                name={name}
-                                artist={artist}
-                              />
-                            )
-                          })
-                        }
-                      </div>
-                    </>
-                  )
+                <>
+                  {results.length > 0 && <h1 className='pl-10 text-2xl mt-10 font-medium'>{active}</h1>}
+                  <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 search-grid'>
+                    {
+                      results.map(({ name, img, artist }) => {
+                        return (
+                          <Soundbox
+                            key={uuidv4()}
+                            section="search"
+                            image={img}
+                            name={name}
+                            artist={artist}
+                          />
+                        )
+                      })
+                    }
+                  </div>
+                </>
               )
           }
         </div>

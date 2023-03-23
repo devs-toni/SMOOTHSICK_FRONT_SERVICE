@@ -63,11 +63,11 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
   ]
 
   return (
-    <div className='flex justify-around items-center mt-10 z-10'>
+    <div className='flex flex-row flex-wrap justify-center items-center mt-10 z-10'>
       {
         filters.map(({ id, name }) => {
           return (
-            <div key={uuidv4()} className="mr-5" onClick={handleClick}>
+            <div key={uuidv4()} className="mb-2 mr-5 min-w-100 text-center" onClick={handleClick}>
               <p id={id} className={`border border-gray-500 px-4 py-1 rounded-2xl cursor-pointer ${active === name ? 'bg-gray-500' : ''}`}>{name}</p>
             </div>
           )

@@ -3,6 +3,7 @@
 @import './some-styles.css';
 @import './carousel.css';
 @import './hide-scroll-categories.css';
+@import './player.css';
 
 
 @import 'tailwindcss/base';

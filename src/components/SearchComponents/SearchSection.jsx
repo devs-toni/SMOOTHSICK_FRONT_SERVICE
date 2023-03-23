@@ -54,7 +54,7 @@ const SearchSection = ({ name, list }) => {
 
   return (
     <>
-      <h1 className='text-2xl mt-10 mb-5 font-medium sm:pl-10'>{name}</h1>
+      <h1 className='pl-10 text-2xl mt-10 font-medium'>{name}</h1>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 search-grid'>
         {
           list.length > 0 &&

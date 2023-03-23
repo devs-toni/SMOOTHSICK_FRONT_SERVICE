@@ -52,7 +52,7 @@
 .background-div {
   min-width: 50vw;
   min-height: 50vh;
-  position: absolute;
+  position: fixed;
   opacity: 0.1;
   z-index: 0;
   background-size: cover;
@@ -84,6 +84,8 @@
 }
 .sound-box .img-container img {
 }
+.sound-box .data {
+}
 
 @media screen and (min-width: 2300px) {
   .search-grid {
@@ -103,23 +105,56 @@
   }
 }
 
-@media screen and (min-width: 250px) and (max-width: 510px) {
+@media screen and (min-width: 450px) and (max-width: 640px) {
   .sound-box {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap !important;
+    padding: 10px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 2px !important;
+    margin-top: 2px !important;
   }
   .sound-box .img-container {
     width: 100%;
-    min-width: 100% !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    min-height: 100% !important;
+    min-width: 80px !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
+    min-height: 80px !important;
   }
   .sound-box .img-container img {
+    min-width: 80px !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
+    min-height: 80px !important;
+  }
+}
+
+@media screen and (min-width: 250px) and (max-width: 450px) {
+  .sound-box {
+    display: flex;
+    flex-flow: column wrap !important;
+    padding: 10px !important;
+    padding-bottom: 20px !important;
+    min-width: 250px !important;
+    max-width: 250px !important;
+    justify-content: center;
+    align-items: center;
+  }
+  .sound-box .img-container {
     width: 100%;
-    min-width: 100% !important;
-    max-width: auto !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
     max-height: 220px !important;
-    min-height: 100% !important;
+    min-height: 220px !important;
+    margin-right: 0 !important;
+  }
+  .sound-box .img-container img {
+    min-width: 220px !important;
+    max-width: 220px !important;
+    max-height: 220px !important;
+    min-height: 220px !important;
+  }
+  .sound-box .data {
+    text-align: center;
   }
 }
