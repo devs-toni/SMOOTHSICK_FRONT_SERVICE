@@ -189,7 +189,7 @@ const Home = () => {
         zIndex: 0,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundImage: `url(${loaded ? artists[selectedIndex].photoUrl : ''})`
+        backgroundImage: `url(${artists[selectedIndex].photoUrl})`
       }}></div>
 
       <div className="flex flex-col items-center justify-center w-full pt-32 z-10">

@@ -276,6 +276,7 @@
   "users": [
     {
       "id": 1,
+      "name": "admin",
       "first_name": "admin",
       "last_name": "Institute",
       "email": "admin",
@@ -947,6 +948,7 @@
     },
     {
       "id": 2,
+      "name": "pepe",
       "first_name": "pepe",
       "last_name": "pepito",
       "email": "pepe",

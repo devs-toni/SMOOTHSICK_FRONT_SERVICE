@@ -1,20 +1,18 @@
 import { Avatar } from 'flowbite-react';
+import { Toaster, toast } from "react-hot-toast";
 import { FaPhotoVideo, FaUserShield, FaUserPlus } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi"
 import { AiFillHome } from "react-icons/ai"
 import { RiFolderMusicFill, RiMenu4Fill } from "react-icons/ri"
 import { BiRadio } from "react-icons/bi"
-import { FiLogOut } from "react-icons/fi"
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useAuthContext } from '../../context/AuthContext';
-import { useLanguage } from '../../context/LanguageContext';
-import { useEffect, useRef, useState } from 'react';
-import { Toaster, toast } from "react-hot-toast";
+import { useAuthContext, useLanguage } from '../../index';
+import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png"
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
 import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import exampleLogo from '../../assets/imgs/logo/logo-head.svg';
-import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png"
 import { SIGNUP, LOGIN, SEARCH } from '../../router/paths'
 
 
@@ -22,25 +20,6 @@ export const NavBar = () => {
 
   const { logout, authState } = useAuthContext();
   const { handleLanguage, text } = useLanguage();
-
-
-  const [toggleBar, setToggleBar] = useState(false)
-
-  const location = useLocation()
-
-
-  useEffect(() => {
-    if (location.pathname == `/${LOGIN}` || location.pathname == `/${SIGNUP}`) {
-      setToggleBar(false)
-    } else {
-      setToggleBar(true)
-    }
-
-  }, [location])
-
-
-  const { user } = authState
-
 
   const lenguageSelected = [
     { key: 1, name: "spain", country: flagSpain },
@@ -85,9 +64,6 @@ export const NavBar = () => {
       handleLanguage(target)
     }
   }
-
-  const asideRef = useRef();
-
 
   return (
 
@@ -191,9 +167,12 @@ export const NavBar = () => {
                 ))
               }
 
-              <Link to={`/${SEARCH}`}>
-                <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
-              </Link>
+              <NavLink to={`/${SEARCH}`} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar">
+                <li className='inline-flex gap-3 items-center hover:scale-110'>
+                  <svg aria-hidden="true" className="w-5 h-5" fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                  <span className=' md:hidden lg:hidden'></span>
+                </li>
+              </NavLink>
             </div>
 
             <div className='flex flex-col gap-6 md:rounded-full md:p-4 lg:rounded-full md:bg-box-icons lg:p-4 '>
