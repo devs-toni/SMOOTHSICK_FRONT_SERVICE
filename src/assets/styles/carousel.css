@@ -42,13 +42,13 @@
 .carousel .carousel-images {
   display: flex;
   flex-flow: row nowrap;
-  transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in-out;
   z-index: 0;
 }
 
 .carousel .carousel-images .data {
-  opacity: 0;
-  transition: all 0.5s ease-in;
+  opacity: 0.1;
+  transition: all 0.5s ease-in-out;
   top: 510px;
   padding: 0 50px;
 }
@@ -57,8 +57,8 @@
 }
 
 .carousel .carousel-images .carousel-image {
-  filter: blur(10px) opacity(0.4);
-  transition: 0.5s;
+  filter: opacity(0.1);
+  transition: all 0.5s ease-in-out;
   object-fit: cover;
   width: 100%;
   max-height: 800px;
@@ -66,15 +66,15 @@
   filter: saturate(1) contrast(1.3) blur(1);
 }
 .carousel .carousel-images .carousel-image.loaded {
-  filter: blur(0) opacity(1);
+  filter: opacity(1);
 }
 
 .top-charts {
-  filter: blur(10px) opacity(0.4);
-  transition: all 0.3s ease-in;
+  filter: opacity(0.1);
+  transition: all 0.5s ease-in-out;
 }
 .top-charts.loaded {
-  filter: blur(0) opacity(1);
+  filter: opacity(1);
 }
 
 .max-img {

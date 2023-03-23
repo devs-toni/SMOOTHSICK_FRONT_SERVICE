@@ -11,10 +11,15 @@ module.exports = {
         "100": "350px",
       },
       minWidth: {
+        "100": "100px",
+        "150": "150px",
         "400": "500px"
       },
       maxWidth: {
         "80": "80%"
+      },
+      maxHeight: {
+        "100l": "150px",
       },
       backgroundColor: {
         "chart": "#1a1e1f"
