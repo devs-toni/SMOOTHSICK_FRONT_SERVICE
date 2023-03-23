@@ -153,7 +153,7 @@ export const NavBar = () => {
       </div>
 
       <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-full px-10 bg-primary-color md:bg-transparent h-screen transition-transform -translate-x-full md:translate-x-0 md:w-36 lg:w-24 max-h-100 min-h-max" aria-label="Sidebar">
-        <div className="flex flex-col justify-around items-center h-full px-3 gap-3 overflow-y-auto">
+        <div className="flex flex-col justify-around items-center h-full px-3 gap-3">
           <ul className="space-y-2 flex flex-col gap-7 mt-2 ">
             <div className='flex flex-col gap-6 md:rounded-full md:p-4 lg:rounded-full lg:p-4 '>
 
