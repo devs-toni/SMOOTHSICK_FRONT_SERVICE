@@ -10,11 +10,10 @@ const Soundbox = ({ name, image, artist, section }) => {
       {
         `
         bg-chart box-shadow mt-2 p-5 pb-10 text-left sm:mr-5 mb-4 rounded-md m-auto 
-        ${search && "min-w-full pb-5 sm:pb-10 flex flex-row sm:flex-col sound-box"}
+        ${search && "min-w-full pb-5 sm:pb-14 flex flex-row sm:flex-col sound-box"}
         `
       }
     >
-
       <div
         className=
         {
@@ -31,13 +30,13 @@ const Soundbox = ({ name, image, artist, section }) => {
           {
             `
             rounded-lg w-full h-full max-h-270 object-cover
-            ${search && '!min-h-80p !max-h-80p max-w-xs'}
+            ${search && 'min-h-80p max-h-80p sm:max-h-max max-w-xs'}
             `
           }
         />
       </div>
 
-      <div className="mt-2 pl-1">
+      <div className="mt-2 pl-1 data">
         <p className="font-medium text-md mb-2">{name}</p>
         <p className="text-sm">{artist}</p>
       </div>
