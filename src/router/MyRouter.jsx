@@ -10,7 +10,14 @@ export const MyRouter = () => {
         <Route index element={<HomePage />} />
         <Route path={`/${SIGNUP}`} element={<Register />} />
         <Route path={`/${LOGIN}`} element={<Login />} />
-        <Route path={`/${CATEGORIES}`} element={<CategoriesPage />} />
+        <Route path={`/${CATEGORIES}`} element=
+          {
+            <PrivateRoute>
+              <CategoriesPage />
+            </PrivateRoute>
+          }
+        />
+
         <Route path={`/${VIDEO}`} element={<VideoPage />} />
         <Route path={`/${RADIO}`} element={<RadioPage />} />
         <Route path={`/${SEARCH}`} element={<Search />} />
@@ -22,7 +29,7 @@ export const MyRouter = () => {
             </PrivateRoute>
           }
         />
-          <Route path={`/${FAVOURITES}`} element=
+        <Route path={`/${FAVOURITES}`} element=
           {
             <PrivateRoute>
               <FavouritesPage />
