@@ -2,7 +2,6 @@
 
 @import './some-styles.css';
 @import './carousel.css';
-@import './hide-scroll-categories.css';
 @import './player.css';
 @import './category-slider.css';
 
@@ -30,5 +29,10 @@
 
 /* See Alpine.js: https://github.com/alpinejs/alpine#x-cloak */
 [x-cloak=""] {
+    display: none;
+}
+
+
+::-webkit-scrollbar {
     display: none;
 }
