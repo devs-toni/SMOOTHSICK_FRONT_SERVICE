@@ -98,14 +98,11 @@ export const NavBar = () => {
                 authState.isAuthenticated
                   ?
                   <>
-
-
-
                     <Dropdown
                       className='bg-zinc-700 border-none px-0 py-0'
                       inline
                       label={<img src={user.profilePicture} className="w-8 rounded-full" />}
-                      placement="bottom-start"
+                      placement="top-start"
                       arrowIcon={false}
                     >
                       <React.Fragment key=".0">
@@ -113,20 +110,16 @@ export const NavBar = () => {
                           <span>{text.navbar.welcome} {user.firstName}!</span>
                         </div>
                         <Dropdown.Divider />
-                        <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
-                          <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
-                            <li className=' block px-4 py-2'>
-                              <span className='text-center'>{text.navbar.dashboard}</span>
-                            </li>
-                          </NavLink>
-                        </Dropdown.Item>
-                        <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
-                          <NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
-                            <li className=' block px-4 py-2'>
-                              <span>{text.liked.name}</span>
-                            </li>
-                          </NavLink>
-                        </Dropdown.Item>
+                        <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
+                            <span className='text-center'>{text.navbar.dashboard}</span>
+                          </Dropdown.Item>
+                        </NavLink>
+                        <NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
+                            <span>{text.liked.name}</span>
+                          </Dropdown.Item>
+                        </NavLink>
                         <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
                           <div className=" flex flex-row justify-center pl-2 items-center">
                             {
@@ -153,7 +146,6 @@ export const NavBar = () => {
                     </Dropdown>
                   </>
                   :
-
                   <>
                     <Dropdown
                       className='bg-zinc-700 border-none px-0 py-0'
@@ -168,20 +160,16 @@ export const NavBar = () => {
                       arrowIcon={false}
                     >
                       <React.Fragment key=".0">
-                        <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white hover:text-black py-0 h-10'>
-                          <NavLink to={`/${LOGIN}`}>
-                            <li className=' block px-4 py-2 hover:bg-gray-100'>
-                              <span className='text-sm'>{text.navbar.login}</span>
-                            </li>
-                          </NavLink>
-                        </Dropdown.Item>
-                        <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black py-0 h-10'>
-                          <NavLink to={`/${SIGNUP}`}>
-                            <li className=' block px-4 py-2 hover:bg-gray-100'>
-                              <span>{text.navbar.register}</span>
-                            </li>
-                          </NavLink>
-                        </Dropdown.Item>
+                        <NavLink to={`/${LOGIN}`}>
+                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white hover:text-black py-0 h-10'>
+                            <span className='text-sm'>{text.navbar.login}</span>
+                          </Dropdown.Item>
+                        </NavLink>
+                        <NavLink to={`/${SIGNUP}`}>
+                          <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black py-0 h-10'>
+                            <span>{text.navbar.register}</span>
+                          </Dropdown.Item>
+                        </NavLink>
                         <Dropdown.Divider />
                         <div className="pl-2 flex flex-row justify-evenly">
                           {
@@ -198,9 +186,7 @@ export const NavBar = () => {
                           }
                         </div>
                       </React.Fragment>
-
                     </Dropdown>
-
                   </>
               }
             </div>
@@ -252,6 +238,7 @@ export const NavBar = () => {
                     </NavLink>
                   </>
                   :
+
                   <li className='inline-flex gap-3 items-center hover:scale-125 cursor-pointer' onClick={handleLogout} data-drawer-hide="logo-sidebar">
                     <FiLogOut color="#fff" className="h-6 w-6" />
                     <span className=' md:hidden lg:hidden' > {text.navbar.logout}</span>

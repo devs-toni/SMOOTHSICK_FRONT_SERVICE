@@ -45,10 +45,13 @@
       "password": "Cambiar Contraseña",
       "edit": "Editar Perfil",
       "plan": "Detalles del Plan",
+      "change_plan": "Cambiar Plan",
       "subscription": "Tipo de Suscripción",
       "name": "Nombre:",
       "email": "Email:",
-      "password2": "Contraseña"
+      "password2": "Contraseña",
+      "security_p": "Seguridad y Privacidad",
+      "security_o": "Opciones de Privacidad"
     },
     "liked": {
       "name": "Favoritos",
@@ -63,7 +66,10 @@
     "categories": {
       "lists": "Tus listas de reproducción",
       "favoritos": "Favoritos",
-      "canciones_fav": "Tus canciones favoritas"
+      "fav_tracks": "Tus canciones favoritas",
+      "title_table": "Título",
+      "album_table": "Álbum",
+      "portrait": "Portada"
     }
   },
   "en": {
@@ -112,10 +118,13 @@
       "password": "Change password",
       "edit": "Edit Profile",
       "plan": "Plan details",
+      "change_plan": "Change Plan",
       "subscription": "Type subscription",
       "name": "Name:",
       "email": "Email:",
-      "password2": "Password"
+      "password2": "Password",
+      "security_p": "Security and Privacy",
+      "security_o": "Security Options"
     },
     "liked": {
       "title": "Liked Songs",
@@ -125,12 +134,16 @@
       "track": "Track",
       "options": "Options",
       "total": "Songs",
-      "name": "Favourites"
+      "name": "Favourites",
+      "plan": "Plan"
     },
     "categories": {
       "lists": "Your playlists",
       "favoritos": "Favourites",
-      "canciones_fav": "Your Favorites Songs"
+      "fav_tracks": "Your Favorites Songs",
+      "title_table": "Title",
+      "album_table": "Album",
+      "portrait": "Portrait"
     }
   },
   "fr": {
@@ -176,10 +189,13 @@
       "password": "Change password",
       "edit": "Edit Profile",
       "plan": "Plan details",
+      "change_plan": "Change Plan",
       "subscription": "Type subscription",
       "name": "Name:",
       "email": "Email:",
-      "password2": "Password"
+      "password2": "Password",
+      "security_p": "Security and Privacy",
+      "security_o": "Security Options"
     },
     "liked": {
       "title": "Canciones Favoritas",
@@ -193,7 +209,11 @@
     },
     "categories": {
       "lists": "Your playlists",
-      "favoritos": "Favourites"
+      "favoritos": "Favourites",
+      "fav_tracks": "Your Favorites Songs",
+      "title_table": "Title",
+      "album_table": "Album",
+      "portrait": "Portrait"
     }
   },
   "chn": {
@@ -239,10 +259,13 @@
       "password": "Change password",
       "edit": "Edit Profile",
       "plan": "Plan details",
+      "change_plan": "Change Plan",
       "subscription": "Type subscription",
       "name": "Name:",
       "email": "Email:",
-      "password2": "Password"
+      "password2": "Password",
+      "security_p": "Security and Privacy",
+      "security_o": "Security Options"
     },
     "liked": {
       "title": "Canciones Favoritas",
@@ -256,7 +279,12 @@
     },
     "categories": {
       "lists": "Your playlists",
-      "favoritos": "Favourites"
+      "favoritos": "Favourites",
+      "fav_tracks": "Your Favorites Songs",
+      "title_table": "Title",
+      "album_table": "Album",
+      "portrait": "Portrait"
+      
     }
   }
 }

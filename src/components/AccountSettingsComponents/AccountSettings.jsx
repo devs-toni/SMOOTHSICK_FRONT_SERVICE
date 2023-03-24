@@ -33,12 +33,12 @@ const Accountsettings = () => {
             <p>{text.account.plan}</p><br></br>
           </div>
           <div><p>{text.account.subscription} </p><br></br></div>
-          <div><a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Change the plan</a></div>
+          <div><a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{text.account.change_plan}</a></div>
         </div>
         <div className='grid grid-cols-3 justify-start items-center pb-6 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 w-full h-1/3'>
-          <div className=""><p>Security and Privacy</p></div>
-          <div><p>Security Options</p></div>
-          <div><a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Security options </a></div>
+          <div className=""><p>{text.account.security_p}</p></div>
+          <div><p>{text.account.security_o}</p></div>
+          <div><a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{text.account.security_o}</a></div>
         </div>
       </div>
     </div>

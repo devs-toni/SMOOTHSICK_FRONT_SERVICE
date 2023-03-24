@@ -67,7 +67,7 @@ export const Categories = () => {
             >
               <div className="flex flex-col w-full h-full justify-center items-left p-4">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
-                  {text.categories.canciones_fav}
+                  {text.categories.fav_tracks}
                 </h5>
 
                 <p className="mr-3 text-xs capitalize font-bold text-gray-800">
@@ -87,7 +87,7 @@ export const Categories = () => {
                   <React.Fragment key={uuidv4()}>
                     <div className="flex flex-row justify-between items-center bg-box-icons h-36 lg:h-40 rounded-lg lg:p-5  ">
                       <div className="flex ml-6 h-full items-center">
-                        <span className="text-md text-center">List title:{" " + element.name}</span>
+                        <span className="text-md text-center">{element.name}</span>
                       </div>
                       <div
                         className={` rounded-lg grid grid-rows-2 grid-flow-col w-24 lg:w-28 relative filter cursor-pointer grayscale-[70%] blur-[1px] hover:grayscale-0 hover:blur-none ${(selectedList?.id === element.id) && 'grayscale-[0] blur-none'}`}
@@ -132,9 +132,9 @@ export const Categories = () => {
                 <div className="z-10 flex flex-col h-34 text-center justify-center w-5/6 md:w-3/5 lg:min-w-[75%] ">
                   <div className='flex items-center justify-between border-b border-b-gray-300'>
                     <p className="w-1/12">#</p>
-                    <p className="w-3/12">TRACK</p>
-                    <p className="w-8/12">{text.liked.title_table}</p>
-                    <p className="w-4/12">{text.liked.album_table}</p>
+                    <p className="w-3/12">{text.categories.portrait}</p>
+                    <p className="w-8/12">{text.categories.title_table}</p>
+                    <p className="w-4/12">{text.categories.album_table}</p>
                   </div>
                 </div>
                 <div className="z-10 mb-20 flex flex-col h-34 text-center justify-center w-5/6 md:w-3/5 lg:min-w-[100%]">

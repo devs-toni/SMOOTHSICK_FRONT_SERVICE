@@ -6,17 +6,17 @@ const Soundbox = ({ name, image, artist, section }) => {
   const search = section === "search" ? true : false;
 
   return (
-
-    <div
-      className=
-      {
-        `
+    <NavLink to={`/${DETAILS}/album/1`}>
+      <div
+        className=
+        {
+          `
           bg-chart box-shadow mt-2 p-5 pb-10 text-left sm:mr-5 mb-4 rounded-md m-auto
           ${search && "min-w-full pb-5 sm:pb-14 flex flex-row sm:flex-col sound-box"}
           `
-      }
-    >
-      <NavLink to={`/${DETAILS}/album/1`}>
+        }
+      >
+
         <div
           className=
           {
@@ -38,12 +38,13 @@ const Soundbox = ({ name, image, artist, section }) => {
             }
           />
         </div>
-      </NavLink>
-      <div className="mt-2 pl-1 data">
-        <p className="font-medium text-md mb-2">{name}</p>
-        <p className="text-sm">{artist}</p>
-      </div>
-    </div>
+
+        <div className="mt-2 pl-1 data">
+          <p className="font-medium text-md mb-2">{name}</p>
+          <p className="text-sm">{artist}</p>
+        </div>
+      </div >
+    </NavLink>
   )
 }
 
