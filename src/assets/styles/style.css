@@ -3,6 +3,7 @@
 @import './some-styles.css';
 @import './carousel.css';
 @import './player.css';
+@import './category-slider.css';
 
 
 @import 'tailwindcss/base';

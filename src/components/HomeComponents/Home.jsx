@@ -224,10 +224,6 @@ const Home = () => {
             name="Top Radio hits"
             list={albums}
           />
-
-
-
-
         </div>
       </div>
     </div>
