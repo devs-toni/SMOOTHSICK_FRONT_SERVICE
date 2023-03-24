@@ -37,10 +37,6 @@ export const Categories = () => {
   }
 
 
-  const handleRemoveBgImg = () => {
-    setImgs([])
-  }
-
   const handleLists = (e) => {
     handleSetBgImg(e);
     setCurrentList(e.target.id);
