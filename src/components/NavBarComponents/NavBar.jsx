@@ -24,15 +24,15 @@ export const NavBar = () => {
   const [asideLinks, setAsideLinks] = useState([])
 
   const { user } = authState
-  console.log(authState);
+
 
   const lenguageSelected = [
     { key: 1, name: "spain", country: flagSpain },
-    { key: 2, name: "france", country: flagEngland },
-    { key: 3, name: "united-kingdom", country: flagFrance },
+    { key: 2, name: "united-kingdom", country: flagEngland },
+    { key: 3, name: "france", country: flagFrance },
     { key: 4, name: "china", country: flagChina }
   ];
-
+  
 
 
   useEffect(() => {
@@ -78,6 +78,7 @@ export const NavBar = () => {
   }
 
   const handleApplyLenguage = ({ target }) => {
+    
     if (target.name === "spain") {
       handleLanguage(target)
     } else if (target.name === "united-kingdom") {

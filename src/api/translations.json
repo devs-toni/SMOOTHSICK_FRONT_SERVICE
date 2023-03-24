@@ -84,10 +84,10 @@
       "send": "Send recover email"
     },
     "login": {
-      "title": "To continue, log in to Smoothsic",
+      "title": "To continue, log in to Smoothsick",
       "email": "Email",
       "password": "Password",
-      "dontHaveAnAccount": "Don't have a Smoothsic account?",
+      "dontHaveAnAccount": "Don't have a Smoothsick account?",
       "register": "Register",
       "singingoogle": "Sign in with Google 🚀 ",
       "singin": "Sing In"
@@ -119,12 +119,12 @@
     },
     "liked": {
       "title": "Liked Songs",
-      "title_table": "TITLE",
-      "album_table": "ALBUM",
+      "title_table": "Title",
+      "album_table": "Album",
       "gender": "Gender",
       "track": "Track",
       "options": "Options",
-      "total": "songs",
+      "total": "Songs",
       "name": "Favourites"
     },
     "categories": {
@@ -148,10 +148,10 @@
       "login": "Sign in here"
     },
     "login": {
-      "title": "To continue, log in to Smoothsic",
+      "title": "To continue, log in to Smoothsick",
       "email": "Email",
       "password": "Password",
-      "dontHaveAnAccount": "Don't have a Smoothsic account?",
+      "dontHaveAnAccount": "Don't have a Smoothsick account?",
       "register": "Sign up",
       "singingoogle": "Sign in with Google",
       "singin": "Sing In"
@@ -188,7 +188,7 @@
       "gender": "Gender",
       "track": "Canción",
       "options": "Options",
-      "total": "canciones",
+      "total": "Canciones",
       "name": "Favourites"
     },
     "categories": {
@@ -211,10 +211,10 @@
       "login": "Sign in here"
     },
     "login": {
-      "title": "To continue, log in to Smoothsic",
+      "title": "To continue, log in to Smoothsick",
       "email": "Email",
       "password": "Password",
-      "dontHaveAnAccount": "Don't have a Smoothsic account?",
+      "dontHaveAnAccount": "Don't have a Smoothsick account?",
       "register": "Sign up",
       "singingoogle": "Sign in with Google",
       "singin": "Sing In"

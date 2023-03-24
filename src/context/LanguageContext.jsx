@@ -11,8 +11,8 @@ export const LanguageProvider = ({ children }) => {
   const [text, setText] = useState(translations["es"]);
 
   
-  const handleLanguage = (target) => {
-    const { name } = target
+  const handleLanguage = ({name}) => {
+
     if (name === "spain") {
       setLang("es")
       setText(translations.es)

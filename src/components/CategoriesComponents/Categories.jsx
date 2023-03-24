@@ -91,10 +91,10 @@ export const Categories = () => {
                   <React.Fragment key={uuidv4()}>
                     <div className="flex flex-row justify-between items-center bg-box-icons h-36 lg:h-40 rounded-lg lg:p-5  ">
                       <div className="flex ml-6 h-full items-center">
-                        <span className="text-md text-center">List title:{` ` + element.name}</span>
+                        <span className="text-md text-center">List title:{" " + element.name}</span>
                       </div>
                       <div
-                        className={`rounded-lg grid grid-rows-2 grid-flow-col w-24 lg:w-28 relative filter cursor-pointer grayscale brightness-50 hover:grayscale-0 ${(selectedList?.id === element.id) && 'grayscale-0 brightness-105'}`}
+                        className={` rounded-lg grid grid-rows-2 grid-flow-col w-24 lg:w-28 relative filter cursor-pointer grayscale-[70%] blur-[1px] hover:grayscale-0 hover:blur-none ${(selectedList?.id === element.id) && 'grayscale-[0] blur-none'}`}
                         onClick={handleLists}
                       >
                         <img
