@@ -1,4 +1,4 @@
-import { NavBar, MyRouter } from "../index"
+import { NavBar, MyRouter, Player } from "../index"
 
 export const LayoutPage = () => {
 
@@ -6,6 +6,7 @@ export const LayoutPage = () => {
     <>
       <NavBar />
       <MyRouter />
+      <Player />
     </>
   )
 }

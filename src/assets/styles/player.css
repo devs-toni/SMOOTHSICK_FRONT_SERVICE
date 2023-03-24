@@ -6,8 +6,11 @@
   font-family: inherit;
   width: 100%;
   padding: 10px 15px;
-  background-color: #fff;
+  background-color: #282e33;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 0;
+  z-index: 999999999;
 }
 .rhap_container:focus:not(:focus-visible) {
   outline: 0;
@@ -28,6 +31,7 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  padding-top: 10px;
 }
 
 .rhap_stacked .rhap_controls-section {
