@@ -5,11 +5,12 @@ import { BrowserRouter } from "react-router-dom"
 import './index.css'
 import 'flowbite';
 import './assets/styles/style.css';
+import { CLIENT_ID } from './config';
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <GoogleOAuthProvider clientId="1028595791747-g35j211ljte5olsej2jmvugv4uk0rbtc.apps.googleusercontent.com">
+  <GoogleOAuthProvider clientId={CLIENT_ID}>
     <GlobalProvider>
       <AuthProvider>
         <UserProvider>
