@@ -148,7 +148,7 @@ export const NavBar = () => {
                   :
                   <>
                     <Dropdown
-                      className='bg-zinc-700 border-none px-0 py-0'
+                      className='bg-zinc-700 border-none px-0 py-0 mr-10'
                       inline
                       label=
                       {
@@ -162,11 +162,11 @@ export const NavBar = () => {
                       <React.Fragment key=".0">
                         <NavLink to={`/${LOGIN}`}>
                           <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white hover:text-black py-0 h-10'>
-                            <span className='text-sm'>{text.navbar.login}</span>
+                            <span className='text-sm block'>{text.navbar.login}</span>
                           </Dropdown.Item>
                         </NavLink>
                         <NavLink to={`/${SIGNUP}`}>
-                          <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black py-0 h-10'>
+                          <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black px-12 py-0 h-10'>
                             <span>{text.navbar.register}</span>
                           </Dropdown.Item>
                         </NavLink>

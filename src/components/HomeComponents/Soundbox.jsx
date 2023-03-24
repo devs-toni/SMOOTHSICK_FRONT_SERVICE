@@ -6,7 +6,7 @@ const Soundbox = ({ name, image, artist, section }) => {
   const search = section === "search" ? true : false;
 
   return (
-    <NavLink to={`/${DETAILS}/album/1`}>
+    <NavLink to={`/${DETAILS}/album/1`} className="pointer-events-none">
       <div
         className=
         {
