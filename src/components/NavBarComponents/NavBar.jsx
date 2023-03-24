@@ -1,20 +1,20 @@
-import { Avatar } from 'flowbite-react';
+import { Dropdown } from 'flowbite-react';
 import { Toaster, toast } from "react-hot-toast";
 import { FaPhotoVideo, FaUserShield, FaUserPlus } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi"
 import { AiFillHome } from "react-icons/ai"
 import { RiFolderMusicFill, RiMenu4Fill } from "react-icons/ri"
 import { BiRadio } from "react-icons/bi"
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useAuthContext, useLanguage } from '../../index';
-import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png"
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
 import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import exampleLogo from '../../assets/imgs/logo/logo-head.svg';
 import { SIGNUP, LOGIN, SEARCH, ACCOUNT, FAVOURITES } from '../../router/paths'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { HiUserCircle } from "react-icons/hi"
 
 
 export const NavBar = () => {
@@ -25,14 +25,13 @@ export const NavBar = () => {
 
   const { user } = authState
 
-
   const lenguageSelected = [
     { key: 1, name: "spain", country: flagSpain },
     { key: 2, name: "united-kingdom", country: flagEngland },
     { key: 3, name: "france", country: flagFrance },
     { key: 4, name: "china", country: flagChina }
   ];
-  
+
 
 
   useEffect(() => {
@@ -50,14 +49,6 @@ export const NavBar = () => {
       ]
       )
   }, [authState.isAuthenticated])
-
-
-  // [
-  //   { key: 1, path: "/", icon: <AiFillHome color="#fff" className="h-6 w-6 " />, text: text.navbar.home },
-  //   { key: 2, path: "/categories", icon: <RiFolderMusicFill color="#fff" className="h-6 w-6 " />, text: text.navbar.categories },
-  //   { key: 3, path: "/radio", icon: <BiRadio color="#fff" className="h-6 w-6 " />, text: text.navbar.radio },
-  //   { key: 4, path: "/video", icon: <FaPhotoVideo color="#fff" className="h-6 w-6 " />, text: text.navbar.video }
-  // ]
 
 
 
@@ -78,7 +69,7 @@ export const NavBar = () => {
   }
 
   const handleApplyLenguage = ({ target }) => {
-    
+
     if (target.name === "spain") {
       handleLanguage(target)
     } else if (target.name === "united-kingdom") {
@@ -107,69 +98,92 @@ export const NavBar = () => {
                 authState.isAuthenticated
                   ?
                   <>
-                    <div className='flex flex-row gap-6 items-center'>
-                      <span>{text.navbar.welcome} {user.firstName}!</span>
 
 
-                      <Avatar
-                        className='cursor-pointer'
-                        img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                        rounded={true}
-                        id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
-                      />
-                    </div>
-                    <div id="dropdownDots" className="z-10 hidden bg-zinc-700 divide-y divide-gray-100 rounded-lg shadow w-44">
-                      <ul className="py-2 text-sm text-white  dark:text-gray-200" aria-labelledby="dropdownMenuIconButton" >
-                        <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
-                          <li className=' block px-4 py-2 hover:bg-gray-100'>
-                            <span>{text.navbar.dashboard}</span>
-                          </li>
-                        </NavLink>
-                        <NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
-                          <li className=' block px-4 py-2 hover:bg-gray-100'>
-                            <span>{text.liked.name}</span>
-                          </li>
-                        </NavLink>
-                        <div className="py-2 flex flex-row justify-evenly">
-                          {
-                            lenguageSelected.map((item) => (
-                              <img
-                                key={item.key}
-                                src={item.country}
-                                alt={item.name + " flag"}
-                                name={item.name}
-                                className="h-6 cursor-pointer hover:scale-125"
-                                onClick={handleApplyLenguage}
-                              />
-                            ))
-                          }
+
+                    <Dropdown
+                      className='bg-zinc-700 border-none px-0 py-0'
+                      inline
+                      label={<img src={user.profilePicture} className="w-8 rounded-full" />}
+                      placement="bottom-start"
+                      arrowIcon={false}
+                    >
+                      <React.Fragment key=".0">
+                        <div className=" py-1 text-sm text-white text-center">
+                          <span>{text.navbar.welcome} {user.firstName}!</span>
                         </div>
-                      </ul>
-                      <li className='block px-4 py-2 cursor-pointer hover:underline decoration-2' onClick={handleLogout}>
-                        <span> {text.navbar.logout}</span>
-                      </li>
-                    </div>
+                        <Dropdown.Divider />
+                        <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
+                          <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                            <li className=' block px-4 py-2'>
+                              <span className='text-center'>{text.navbar.dashboard}</span>
+                            </li>
+                          </NavLink>
+                        </Dropdown.Item>
+                        <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
+                          <NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                            <li className=' block px-4 py-2'>
+                              <span>{text.liked.name}</span>
+                            </li>
+                          </NavLink>
+                        </Dropdown.Item>
+                        <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
+                          <div className=" flex flex-row justify-center pl-2 items-center">
+                            {
+                              lenguageSelected.map((item) => (
+                                <img
+                                  key={item.key}
+                                  src={item.country}
+                                  alt={item.name + " flag"}
+                                  name={item.name}
+                                  className="h-6 m-1 cursor-pointer hover:scale-110 mr-2"
+                                  onClick={handleApplyLenguage}
+                                />
+                              ))
+                            }
+                          </div>
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <div className='py-1 text-sm text-white text-center cursor-pointer'>
+                          <li onClick={handleLogout}>
+                            <span> {text.navbar.logout}</span>
+                          </li>
+                        </div>
+                      </React.Fragment>
+                    </Dropdown>
                   </>
                   :
+
                   <>
-                    <Avatar
-                      img={defaultUserPicture}
-                      rounded={true}
-                      id="dropdownMenuIconButton2" data-dropdown-toggle="dropdownDots2"
-                    />
-                    <div id="dropdownDots2" className="z-10 hidden bg-zinc-700 divide-y divide-gray-100 rounded-lg shadow w-44">
-                      <ul className="py-2 text-sm text-white  dark:text-gray-200" aria-labelledby="dropdownMenuIconButton" >
-                        <NavLink to={`/${LOGIN}`}>
-                          <li className=' block px-4 py-2 hover:bg-gray-100'>
-                            <span>{text.navbar.login}</span>
-                          </li>
-                        </NavLink>
-                        <NavLink to={`/${SIGNUP}`}>
-                          <li className=' block px-4 py-2 hover:bg-gray-100'>
-                            <span>{text.navbar.register}</span>
-                          </li>
-                        </NavLink>
-                        <div className="py-2 flex flex-row justify-evenly">
+                    <Dropdown
+                      className='bg-zinc-700 border-none px-0 py-0'
+                      inline
+                      label=
+                      {
+                        <HiUserCircle
+                          size={40}
+                        />
+                      }
+                      placement="bottom-start"
+                      arrowIcon={false}
+                    >
+                      <React.Fragment key=".0">
+                        <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white hover:text-black py-0 h-10'>
+                          <NavLink to={`/${LOGIN}`}>
+                            <li className=' block px-4 py-2 hover:bg-gray-100'>
+                              <span className='text-sm'>{text.navbar.login}</span>
+                            </li>
+                          </NavLink>
+                        </Dropdown.Item>
+                        <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black py-0 h-10'>
+                          <NavLink to={`/${SIGNUP}`}>
+                            <li className=' block px-4 py-2 hover:bg-gray-100'>
+                              <span>{text.navbar.register}</span>
+                            </li>
+                          </NavLink>
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <div className="pl-2 flex flex-row justify-evenly">
                           {
                             lenguageSelected.map((item) => (
                               <img
@@ -177,14 +191,16 @@ export const NavBar = () => {
                                 src={item.country}
                                 alt={item.name + " flag"}
                                 name={item.name}
-                                className="h-6 cursor-pointer hover:scale-125"
+                                className="h-6 m-1 cursor-pointer hover:scale-110 mr-2"
                                 onClick={handleApplyLenguage}
                               />
                             ))
                           }
                         </div>
-                      </ul>
-                    </div>
+                      </React.Fragment>
+
+                    </Dropdown>
+
                   </>
               }
             </div>
