@@ -108,22 +108,75 @@ export const NavBar = () => {
                       arrowIcon={false}
                     >
                       <React.Fragment key=".0">
-                        <div className=" py-1 text-sm text-white text-center">
-                          <span>{text.navbar.welcome} {user.firstName}!</span>
+                        <div className="min-w-180">
+                          <div className=" py-1 text-sm text-white text-center">
+                            <span>{text.navbar.welcome} {user.firstName}!</span>
+                          </div>
+                          <Dropdown.Divider />
+                          <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                            <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-16 py-0 h-10 hover:text-black'>
+                              <span className='text-center'>{text.navbar.dashboard}</span>
+                            </Dropdown.Item>
+                          </NavLink>
+                          <NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                            <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
+                              <span>{text.liked.name}</span>
+                            </Dropdown.Item>
+                          </NavLink>
+                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
+                            <div className=" flex flex-row justify-center pl-2 items-center">
+                              {
+                                lenguageSelected.map((item) => (
+                                  <img
+                                    key={item.key}
+                                    src={item.country}
+                                    alt={item.name + " flag"}
+                                    name={item.name}
+                                    className="h-6 m-1 cursor-pointer hover:scale-110 mr-2"
+                                    onClick={handleApplyLenguage}
+                                  />
+                                ))
+                              }
+                            </div>
+                          </Dropdown.Item>
+                          <Dropdown.Divider />
+                          <div className='py-1 text-sm text-white text-center cursor-pointer'>
+                            <li onClick={handleLogout}>
+                              <span> {text.navbar.logout}</span>
+                            </li>
+                          </div>
                         </div>
-                        <Dropdown.Divider />
-                        <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
-                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-16 py-0 h-10 hover:text-black'>
-                            <span className='text-center'>{text.navbar.dashboard}</span>
-                          </Dropdown.Item>
-                        </NavLink>
-                        <NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
-                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
-                            <span>{text.liked.name}</span>
-                          </Dropdown.Item>
-                        </NavLink>
-                        <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
-                          <div className=" flex flex-row justify-center pl-2 items-center">
+                      </React.Fragment>
+                    </Dropdown>
+                  </>
+                  :
+                  <>
+                    <Dropdown
+                      className='bg-zinc-700 border-none px-0 py-0 mr-20'
+                      inline
+                      label=
+                      {
+                        <HiUserCircle
+                          size={40}
+                        />
+                      }
+                      placement="bottom-start"
+                      arrowIcon={false}
+                    >
+                      <React.Fragment key=".0">
+                        <div className='min-w-180'>
+                          <NavLink to={`/${LOGIN}`}>
+                            <Dropdown.Item className='w-full flex justify-center items-center bg-zinc-700 text-white hover:text-black px-0 py-0 h-10'>
+                              <span className='text-sm block w-full text-center'>{text.navbar.login}</span>
+                            </Dropdown.Item>
+                          </NavLink>
+                          <NavLink to={`/${SIGNUP}`}>
+                            <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black px-0 py-0 h-10'>
+                              <span>{text.navbar.register}</span>
+                            </Dropdown.Item>
+                          </NavLink>
+                          <Dropdown.Divider />
+                          <div className="pl-2 flex flex-row justify-evenly">
                             {
                               lenguageSelected.map((item) => (
                                 <img
@@ -137,55 +190,6 @@ export const NavBar = () => {
                               ))
                             }
                           </div>
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <div className='py-1 text-sm text-white text-center cursor-pointer'>
-                          <li onClick={handleLogout}>
-                            <span> {text.navbar.logout}</span>
-                          </li>
-                        </div>
-                      </React.Fragment>
-                    </Dropdown>
-                  </>
-                  :
-                  <>
-                    <Dropdown
-                      className='bg-zinc-700 border-none px-0 py-0 mr-10'
-                      inline
-                      label=
-                      {
-                        <HiUserCircle
-                          size={40}
-                        />
-                      }
-                      placement="bottom-start"
-                      arrowIcon={false}
-                    >
-                      <React.Fragment key=".0">
-                        <NavLink to={`/${LOGIN}`}>
-                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white hover:text-black py-0 h-10'>
-                            <span className='text-sm block'>{text.navbar.login}</span>
-                          </Dropdown.Item>
-                        </NavLink>
-                        <NavLink to={`/${SIGNUP}`}>
-                          <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black px-14 py-0 h-10'>
-                            <span>{text.navbar.register}</span>
-                          </Dropdown.Item>
-                        </NavLink>
-                        <Dropdown.Divider />
-                        <div className="pl-2 flex flex-row justify-evenly">
-                          {
-                            lenguageSelected.map((item) => (
-                              <img
-                                key={item.key}
-                                src={item.country}
-                                alt={item.name + " flag"}
-                                name={item.name}
-                                className="h-6 m-1 cursor-pointer hover:scale-110 mr-2"
-                                onClick={handleApplyLenguage}
-                              />
-                            ))
-                          }
                         </div>
                       </React.Fragment>
                     </Dropdown>
