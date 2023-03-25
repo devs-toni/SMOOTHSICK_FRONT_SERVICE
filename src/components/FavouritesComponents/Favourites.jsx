@@ -22,8 +22,8 @@ export const Favourites = () => {
 
 
   return (
-    <div className="flex items-center justify-center">
-      <div className='w-full h-full m-auto p-6 md:max-w-2xl md:pl-20 lg:max-w-3xl mt-20 min-w-[75%]'>
+    <div className="flex items-center justify-center pb-24">
+      <div className='w-full h-full m-auto p-6 md:max-w-2xl md:pl-20 lg:max-w-3xl mt-14 md:mt-20 min-w-[75%]'>
         <h3 className='text-xl text-center font-medium lg:text-4xl lg:mb-3'>{text.liked.title}</h3>
         <div className='flex items-center my-2 lg:mb-5'>
           <img src={authState.user.profilePicture} alt="User" className='user-profile-img mr-2 rounded-full w-full  ' />

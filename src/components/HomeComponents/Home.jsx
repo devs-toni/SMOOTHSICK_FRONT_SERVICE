@@ -205,7 +205,7 @@ const Home = () => {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div>
+    <div className='pb-20'>
       <div className="home">
         <div className="home__carousel">
           <Cover

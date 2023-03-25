@@ -14,7 +14,7 @@ export const SongCard = ({ img, name, artist, id }) => {
 						<img className="rounded-lg w-16 " src={img} alt="image description" />
 					</div>
 					<span className="text-xs w-8/12 md:text-md grow">{name}</span>
-					<p className="text-xs font-normal w-4/12 md:text-md ">{artist}</p>
+					<p className="text-xs font-normal w-4/12 md:text-md">{artist}</p>
 				</div>
 			</div>
 		</div>

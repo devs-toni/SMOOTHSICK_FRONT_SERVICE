@@ -57,7 +57,7 @@ const Register = () => {
   };
 
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="h-full flex justify-center items-center mb-44">
       {
         !authState.isAuthenticated &&
         (

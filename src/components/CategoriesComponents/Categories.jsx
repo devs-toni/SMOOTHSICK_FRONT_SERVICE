@@ -137,7 +137,7 @@ export const Categories = () => {
                     <p className="w-4/12">{text.categories.album_table}</p>
                   </div>
                 </div>
-                <div className="z-10 mb-20 flex flex-col h-34 text-center justify-center w-5/6 md:w-3/5 lg:min-w-[100%]">
+                <div className="z-10 mb-20 flex flex-col h-34 text-center justify-center w-5/6 md:w-3/5 lg:min-w-[100%] pb-20">
                   {selectedList?.songs &&
                     selectedList.songs.map((data, index) => (
                       <SongCard
