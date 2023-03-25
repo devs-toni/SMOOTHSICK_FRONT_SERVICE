@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 import { FAVOURITES } from '../../router/paths'
 import { v4 as uuidv4 } from 'uuid';
 
-
-
-
 export const Categories = () => {
   const { userLists } = useUser();
   const { text } = useLanguage();

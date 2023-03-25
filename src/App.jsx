@@ -1,6 +1,5 @@
 import { LayoutPage } from "./index"
 
-
 function App() {
 
   return (
