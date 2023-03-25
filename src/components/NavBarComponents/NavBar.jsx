@@ -88,7 +88,7 @@ export const NavBar = () => {
       <div className="fixed top-0 z-50 w-full md:bg-transparent md:shadow-none">
         <nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 " >
           <NavLink to="/" className="h-12 w-14 hidden md:block cursor-pointer">
-            <img src={exampleLogo} alt="" />
+            <img src={exampleLogo} alt="logo" />
           </NavLink>
           <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
             <RiMenu4Fill className='h-6 w-6' />
@@ -113,7 +113,7 @@ export const NavBar = () => {
                         </div>
                         <Dropdown.Divider />
                         <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
-                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
+                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-16 py-0 h-10 hover:text-black'>
                             <span className='text-center'>{text.navbar.dashboard}</span>
                           </Dropdown.Item>
                         </NavLink>
@@ -168,7 +168,7 @@ export const NavBar = () => {
                           </Dropdown.Item>
                         </NavLink>
                         <NavLink to={`/${SIGNUP}`}>
-                          <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black px-12 py-0 h-10'>
+                          <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black px-14 py-0 h-10'>
                             <span>{text.navbar.register}</span>
                           </Dropdown.Item>
                         </NavLink>
