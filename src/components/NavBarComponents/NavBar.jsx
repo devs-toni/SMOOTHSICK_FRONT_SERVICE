@@ -86,7 +86,7 @@ export const NavBar = () => {
     <>
       <Toaster />
       <div className="fixed top-0 z-50 w-full md:bg-transparent md:shadow-none">
-        <nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 mt-4">
+        <nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 mt-2">
           <NavLink to="/" className="h-12 w-14 hidden md:block cursor-pointer">
             <img src={exampleLogo} alt="logo" />
           </NavLink>
