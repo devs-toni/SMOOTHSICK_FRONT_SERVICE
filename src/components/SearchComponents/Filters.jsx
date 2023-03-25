@@ -1,13 +1,16 @@
 import { v4 as uuidv4 } from 'uuid';
+import { useLanguage } from '../../context/LanguageContext';
 import { FILTER_TYPES } from './filterTypes';
 
 const Filters = ({ active, setActive, setCurrentSearch, items }) => {
 
-  const handleClick = ({ target }) => {
-    const { textContent } = target;
-    setActive(textContent);
+  const { text } = useLanguage();
 
-    switch (textContent) {
+  const handleClick = ({ target }) => {
+    const { dataset } = target;
+    setActive(dataset.type);
+
+    switch (dataset.type) {
       case FILTER_TYPES.ALL:
         setCurrentSearch(items.all);
         break;
@@ -37,38 +40,45 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
 
   const filters = [
     {
+
       id: 0,
-      name: FILTER_TYPES.ALL,
-    },
-    {
-      id: 4,
-      name: FILTER_TYPES.PLAYLISTS
+      type: FILTER_TYPES.ALL,
+      name: text.filters.all
     },
     {
       id: 1,
-      name: FILTER_TYPES.ARTISTS
+      type: FILTER_TYPES.PLAYLISTS,
+      name: text.filters.playlists
     },
     {
       id: 2,
-      name: FILTER_TYPES.ALBUMS,
+      type: FILTER_TYPES.ARTISTS,
+      name: text.filters.artists
     },
     {
       id: 3,
-      name: FILTER_TYPES.TRACKS
+      type: FILTER_TYPES.ALBUMS,
+      name: text.filters.albums
+    },
+    {
+      id: 4,
+      type: FILTER_TYPES.TRACKS,
+      name: text.filters.tracks
     },
     /*     {
-          id: 5,
-          name: "Users"
+      id: 5,
+          type: FILTER_TYPES.USERS
+          name: text.filters.users
         } */
   ]
 
   return (
     <div className='flex flex-row flex-wrap justify-center items-center mt-7 md:mt-8 z-10'>
       {
-        filters.map(({ id, name }) => {
+        filters.map(({ id, type, name }) => {
           return (
             <div key={uuidv4()} className="mb-2 mr-2 md:mr-4 text-center" onClick={handleClick}>
-              <p id={id} className={`border border-gray-500 px-3 py-1 md:px-3 rounded-2xl text-xs sm:text-sm md:text-lg  cursor-pointer ${active === name ? 'bg-gray-500' : ''}`}>{name}</p>
+              <p id={id} data-type={type} className={`border border-gray-500 px-3 py-1 md:px-3 rounded-2xl text-xs sm:text-sm md:text-lg  cursor-pointer ${active === type ? 'bg-gray-500' : ''}`}>{name}</p>
             </div>
           )
         })

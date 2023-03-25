@@ -54,7 +54,7 @@ export const Categories = () => {
     <>
       <div className="absolute h-full w-full">
         <div className="flex flex-col items-center justify-center pt-32 gap-5">
-          <h1 className="text-center lg:text-left w-5/6 md:w-3/5 lg:w-4/6 text-5xl font-bold">Listas</h1>
+          <h1 className="text-center lg:text-left w-5/6 md:w-3/5 lg:w-4/6 text-5xl font-bold">{text.categories.lists}</h1>
           <div className=" z-10 w-5/6 h-3/6 md:w-3/5 md:h5/6 lg:flex lg:justify-between lg:w-4/6 lg:h-full mb-4">
             <Link to={`/${FAVOURITES}`}
               className="flex mb-10 rounded-lg lg:flex-none lg:h-80 lg:w-2/4 lg:mr-6 bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-200"

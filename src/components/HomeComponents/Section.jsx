@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Chart } from '../../index';
+import { Chart, useLanguage } from '../../index';
 
 const Section = ({ tracks, loaded }) => {
-
+  const { text } = useLanguage();
   return (
     <div className={`section ${loaded ? 'loaded' : ''}`}>
-      <h3 className='section__title'>Top charts</h3>
+      <h3 className='section__title'>{text.charts.title}</h3>
       <div>
         {
           tracks.map(({ id, name, artist, thumbnail, liked }) => {

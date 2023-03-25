@@ -21,7 +21,6 @@ const Category = ({ list, name }) => {
       setLeftIsMoved(true);
       setRightIsMoved(false);
     }
-
   }
 
   return (

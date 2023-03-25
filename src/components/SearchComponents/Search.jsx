@@ -37,6 +37,7 @@ const Search = () => {
 
   const { text } = useLanguage();
   const [active, setActive] = useState(FILTER_TYPES.ALL);
+  const [nameFilter, setNameFilter] = useState(text.filters.all)
   const [currentSearch, setCurrentSearch] = useState(all);
   const [results, setResults] = useState([]);
   const [allResults, setAllResults] = useState(initialState);
@@ -63,10 +64,12 @@ const Search = () => {
           albums: albums.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
           artists: artists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
         })
+        setNameFilter(text.filters.all)
       } else {
         let firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
         switch (active.toLowerCase()) {
           case "playlists":
+            setNameFilter(text.filters.playlists)
             firstResults = firstResults.map(playlist => {
               return {
                 name: playlist.name,
@@ -76,6 +79,7 @@ const Search = () => {
             })
             break;
           case "albums":
+            setNameFilter(text.filters.albums)
             firstResults = firstResults.map(album => {
               return {
                 name: album.name,
@@ -85,6 +89,7 @@ const Search = () => {
             })
             break;
           case "tracks":
+            setNameFilter(text.filters.tracks)
             firstResults = firstResults.map(track => {
               return {
                 name: track.name,
@@ -103,6 +108,7 @@ const Search = () => {
                       })
                       break; */
           case "artists":
+            setNameFilter(text.filters.artists)
             firstResults = firstResults.map(artist => {
               return {
                 name: artist.name,
@@ -138,6 +144,7 @@ const Search = () => {
 
       switch (active.toLowerCase()) {
         case "playlists":
+          setNameFilter(text.filters.playlists)
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
           firstResults = firstResults.map(playlist => {
             return {
@@ -148,6 +155,7 @@ const Search = () => {
           })
           break;
         case "albums":
+          setNameFilter(text.filters.albums)
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
           firstResults = firstResults.map(album => {
             return {
@@ -158,6 +166,7 @@ const Search = () => {
           })
           break;
         case "tracks":
+          setNameFilter(text.filters.tracks)
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
           firstResults = firstResults.map(track => {
             return {
@@ -178,6 +187,7 @@ const Search = () => {
                   })
                   break; */
         case "artists":
+          setNameFilter(text.filters.artists)
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
           firstResults = firstResults.map(artist => {
             return {
@@ -188,6 +198,7 @@ const Search = () => {
           })
           break;
         case "all":
+          setNameFilter(text.filters.all)
           setAllResults({
             playlists: playlists.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
             tracks: tracks.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
@@ -228,18 +239,18 @@ const Search = () => {
               ?
               (
                 <>
-                  {allResults.tracks.length > 0 && <SearchSection name="Tracks" list={allResults.tracks} />}
-                  {allResults.playlists.length > 0 && <SearchSection name="Playlists" list={allResults.playlists} />}
-                  {allResults.artists.length > 0 && <SearchSection name="Artists" list={allResults.artists} />}
-                  {allResults.albums.length > 0 && <SearchSection name="Albums" list={allResults.albums} />}
-                  {/*                       {allResults.users.length > 0 && <SearchSection name="Users" list={allResults.users} />} */}
+                  {allResults.tracks.length > 0 && <SearchSection check={FILTER_TYPES.TRACKS} list={allResults.tracks} name={text.filters.tracks} />}
+                  {allResults.playlists.length > 0 && <SearchSection check={FILTER_TYPES.PLAYLISTS} list={allResults.playlists} name={text.filters.playlists} />}
+                  {allResults.artists.length > 0 && <SearchSection check={FILTER_TYPES.ARTISTS} list={allResults.artists} name={text.filters.artists} />}
+                  {allResults.albums.length > 0 && <SearchSection check={FILTER_TYPES.ALBUMS} list={allResults.albums} name={text.filters.albums} />}
+                  {/*                       {allResults.users.length > 0 && <SearchSection name="Users" list={allResults.users} name={text.filters.users} />} */}
                 </>
               )
               :
               (
                 <>
                   {
-                    results.length > 0 && <h1 className='search__title'>{active}</h1>
+                    results.length > 0 && <h1 className='search__title'>{nameFilter}</h1>
                   }
                   <div className='search__section'>
                     {

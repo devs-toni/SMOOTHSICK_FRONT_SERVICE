@@ -224,15 +224,15 @@ const Home = () => {
 
         <div className="rows">
           <Category
-            name="Top Rock songs"
+            name="Title"
             list={albums}
           />
           <Category
-            name="Best Techno vibves"
+            name="Title"
             list={albums}
           />
           <Category
-            name="Top Radio hits"
+            name="Title"
             list={albums}
           />
         </div>

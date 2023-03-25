@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Searchbox } from '../../index';
+import { FILTER_TYPES, Searchbox } from '../../index';
 
-const SearchSection = ({ name, list }) => {
+const SearchSection = ({ check, name, list }) => {
 
-  switch (name) {
-    case "Playlists":
+  switch (check) {
+    case FILTER_TYPES.PLAYLISTS:
       list = list.map(playlist => {
         return {
           name: playlist.name,
@@ -13,7 +13,7 @@ const SearchSection = ({ name, list }) => {
         }
       })
       break;
-    case "Albums":
+    case FILTER_TYPES.ALBUMS:
       list = list.map(album => {
         return {
           name: album.name,
@@ -22,7 +22,7 @@ const SearchSection = ({ name, list }) => {
         }
       })
       break;
-    case "Tracks":
+    case FILTER_TYPES.TRACKS:
       list = list.map(track => {
         return {
           name: track.name,
@@ -31,7 +31,7 @@ const SearchSection = ({ name, list }) => {
         }
       })
       break;
-    case "Users":
+    case FILTER_TYPES.USERS:
       list = list.map(user => {
         return {
           name: user.name,
@@ -40,7 +40,7 @@ const SearchSection = ({ name, list }) => {
         }
       })
       break;
-    case "Artists":
+    case FILTER_TYPES.ARTISTS:
       list = list.map(artist => {
         return {
           name: artist.name,

@@ -47,11 +47,15 @@
       "plan": "Detalles del Plan",
       "change_plan": "Cambiar Plan",
       "subscription": "Tipo de Suscripción",
+      "cancel": "Cancelar Suscripción",
       "name": "Nombre:",
       "email": "Email:",
       "password2": "Contraseña",
       "security_p": "Seguridad y Privacidad",
       "security_o": "Opciones de Privacidad"
+    },
+    "charts": {
+      "title": "Las mejores listas"
     },
     "liked": {
       "name": "Favoritos",
@@ -70,6 +74,14 @@
       "title_table": "Título",
       "album_table": "Álbum",
       "portrait": "Portada"
+    },
+    "filters": {
+      "all": "Todo",
+      "playlists": "Listas",
+      "artists": "Artistas",
+      "albums": "Albums",
+      "tracks": "Tracks",
+      "users": "Usuarios"
     }
   },
   "en": {
@@ -120,11 +132,15 @@
       "plan": "Plan details",
       "change_plan": "Change Plan",
       "subscription": "Type subscription",
+      "cancel": "Cancel subscription",
       "name": "Name:",
       "email": "Email:",
       "password2": "Password",
       "security_p": "Security and Privacy",
       "security_o": "Security Options"
+    },
+    "charts": {
+      "title": "Top Charts"
     },
     "liked": {
       "title": "Liked Songs",
@@ -143,7 +159,15 @@
       "fav_tracks": "Your Favorites Songs",
       "title_table": "Title",
       "album_table": "Album",
-      "portrait": "Portrait"
+      "portrait": "Cover"
+    },
+    "filters": {
+      "all": "All",
+      "playlists": "Playlists",
+      "artists": "Artists",
+      "albums": "Albums",
+      "tracks": "Tracks",
+      "users": "Users"
     }
   },
   "fr": {
@@ -166,7 +190,7 @@
       "password": "Password",
       "dontHaveAnAccount": "Don't have a Smoothsick account?",
       "register": "Sign up",
-      "singingoogle": "Sign in with Google",
+      "singingoogle": "Sign in with Google 🚀",
       "singin": "Sing In"
     },
     "navbar": {
@@ -191,11 +215,15 @@
       "plan": "Plan details",
       "change_plan": "Change Plan",
       "subscription": "Type subscription",
+      "cancel": "Cancelar Suscripción",
       "name": "Name:",
       "email": "Email:",
       "password2": "Password",
       "security_p": "Security and Privacy",
       "security_o": "Security Options"
+    },
+    "charts": {
+      "title": "Top Charts"
     },
     "liked": {
       "title": "Canciones Favoritas",
@@ -214,77 +242,96 @@
       "title_table": "Title",
       "album_table": "Album",
       "portrait": "Portrait"
+    },
+    "filters": {
+      "all": "All",
+      "playlists": "Playlists",
+      "artists": "Artists",
+      "albums": "Albums",
+      "tracks": "Tracks",
+      "users": "Users"
     }
   },
   "chn": {
     "register": {
-      "title": "Create your Free Account",
-      "name": "Name",
-      "lastname": "Lastname",
-      "email": "Email",
-      "username": "Username",
-      "password": "Password",
-      "repeat": "Repeat Password",
-      "forget": "Forgot your password?",
-      "submit": "Register",
-      "already": "Already have an account?",
-      "login": "Sign in here"
+      "title": "创建您的免费账户",
+      "name": "名",
+      "lastname": "姓",
+      "email": "电子邮箱",
+      "username": "用户名",
+      "password": "密码",
+      "repeat": "再次输入密码",
+      "forget": "忘记了您的密码?",
+      "submit": "注册",
+      "already": "已经注册了账户?",
+      "login": "在此登录"
     },
     "login": {
-      "title": "To continue, log in to Smoothsick",
-      "email": "Email",
-      "password": "Password",
-      "dontHaveAnAccount": "Don't have a Smoothsick account?",
-      "register": "Sign up",
-      "singingoogle": "Sign in with Google",
-      "singin": "Sing In"
+      "title": "登录Smoothsick以继续",
+      "email": "电子邮箱",
+      "password": "密码",
+      "dontHaveAnAccount": "没有Smoothsick账户?",
+      "register": "注册",
+      "singingoogle": "用Google账户登录 🚀",
+      "singin": "登录"
     },
     "navbar": {
-      "home": "Home",
-      "categories": "Categories",
-      "radio": "Radio",
-      "video": "Video",
-      "login": "Log in",
-      "logout": "Log out",
-      "register": "Sign up",
-      "input_p_holder": "Find new music...",
-      "dashboard": "Profile",
-      "favourites": "Favourites",
-      "search": "Search",
-      "welcome": "Welcome"
+      "home": "主页",
+      "categories": "分类",
+      "radio": "电台",
+      "video": "视频",
+      "login": "登录",
+      "logout": "退出",
+      "register": "注册",
+      "input_p_holder": "发现新歌曲...",
+      "dashboard": "账户",
+      "favourites": "我的最爱",
+      "search": "搜索",
+      "welcome": "欢迎"
     },
     "account": {
-      "account": "Account settings",
-      "user": "User",
-      "password": "Change password",
-      "edit": "Edit Profile",
-      "plan": "Plan details",
-      "change_plan": "Change Plan",
-      "subscription": "Type subscription",
-      "name": "Name:",
-      "email": "Email:",
-      "password2": "Password",
-      "security_p": "Security and Privacy",
-      "security_o": "Security Options"
+      "account": "账户设置",
+      "user": "用户",
+      "password": "更改密码",
+      "edit": "修改账户",
+      "plan": "套餐细节",
+      "change_plan": "更改套餐",
+      "subscription": "订阅类型",
+      "cancel": "取消订阅",
+      "name": "名字:",
+      "email": "电子邮箱:",
+      "password2": "密码",
+      "security_p": "安全和隐私",
+      "security_o": "安全选项"
+    },
+    "charts": {
+      "title": "推荐歌单"
     },
     "liked": {
-      "title": "Canciones Favoritas",
-      "title_table": "TITLE",
-      "album_table": "ALBUM",
-      "gender": "Gender",
-      "track": "Track",
-      "options": "Options", 
-      "total": "Canciones",
-      "name": "Favourites"
+      "title": "喜爱的歌曲",
+      "title_table": "歌曲名称",
+      "album_table": "专辑",
+      "gender": "类型",
+      "track": "歌曲",
+      "options": "选项",
+      "total": "歌曲",
+      "name": "我的最爱"
     },
     "categories": {
-      "lists": "Your playlists",
-      "favoritos": "Favourites",
-      "fav_tracks": "Your Favorites Songs",
-      "title_table": "Title",
-      "album_table": "Album",
-      "portrait": "Portrait"
-      
+      "lists": "您的音乐清单",
+      "favoritos": "我的最爱",
+      "fav_tracks": "您喜爱的歌曲",
+      "title_table": "歌曲名称",
+      "album_table": "专辑",
+      "portrait": "封面"
+    },
+    "filters": {
+      "all": "全部",
+      "playlists": "歌单",
+      "artists": "歌手",
+      "albums": "专辑",
+      "tracks": "歌曲",
+      "users": "用户"
     }
   }
 }

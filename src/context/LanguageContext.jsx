@@ -7,8 +7,8 @@ export const useLanguage = () => {
 }
 
 export const LanguageProvider = ({ children }) => {
-  const [lang, setLang] = useState('es');
-  const [text, setText] = useState(translations["es"]);
+  const [lang, setLang] = useState('en');
+  const [text, setText] = useState(translations["en"]);
 
   
   const handleLanguage = ({name}) => {
