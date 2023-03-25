@@ -11,6 +11,8 @@ const Searchbox = ({ id, name, image, artist }) => {
             src={image}
             alt={name}
             className='search__img-container--img'
+            width=""
+            height=""
           />
         </div>
         <div className="search__data">

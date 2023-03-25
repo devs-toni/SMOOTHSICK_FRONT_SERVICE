@@ -6,7 +6,7 @@ const Chart = ({ img, title, artist, isLike }) => {
     <div className='section__chart'>
 
       <div className='chart__img-container'>
-        <img src={img} alt={title} className="chart__img-container--img" />
+        <img src={img} alt={title} className="chart__img-container--img" width="" height="" />
       </div>
 
       <div className='chart__data-container'>

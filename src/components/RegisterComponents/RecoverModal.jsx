@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { useLanguage } from '../../context/LanguageContext'
+import { useLanguage } from '../../index';
 
 const RecoverModal = ({ open, setOpen }) => {
 

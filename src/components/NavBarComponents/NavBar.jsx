@@ -13,7 +13,7 @@ import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import exampleLogo from '../../assets/imgs/logo/logo-head.svg';
 import { SIGNUP, LOGIN, SEARCH, ACCOUNT, FAVOURITES } from '../../router/paths'
-import React, { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { HiUserCircle } from "react-icons/hi"
 
 
@@ -88,7 +88,7 @@ export const NavBar = () => {
       <div className="fixed top-0 z-50 w-full md:bg-transparent md:shadow-none">
         <nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 mt-2">
           <NavLink to="/" className="h-12 w-14 hidden md:block cursor-pointer">
-            <img src={exampleLogo} alt="logo" />
+            <img src={exampleLogo} alt="logo" width="" height="" />
           </NavLink>
           <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
             <RiMenu4Fill className='h-6 w-6' />
@@ -107,7 +107,7 @@ export const NavBar = () => {
                       placement="top-start"
                       arrowIcon={false}
                     >
-                      <React.Fragment key=".0">
+                      <Fragment key=".0">
                         <div className="min-w-180">
                           <div className=" py-1 text-sm text-white text-center">
                             <span>{text.navbar.welcome} {user.firstName}!</span>
@@ -146,7 +146,7 @@ export const NavBar = () => {
                             </li>
                           </div>
                         </div>
-                      </React.Fragment>
+                      </Fragment>
                     </Dropdown>
                   </>
                   :
@@ -163,7 +163,7 @@ export const NavBar = () => {
                       placement="bottom-start"
                       arrowIcon={false}
                     >
-                      <React.Fragment key=".0">
+                      <Fragment key=".0">
                         <div className='min-w-180'>
                           <NavLink to={`/${LOGIN}`}>
                             <Dropdown.Item className='w-full flex justify-center items-center bg-zinc-700 text-white hover:text-black px-0 py-0 h-10'>
@@ -191,7 +191,7 @@ export const NavBar = () => {
                             }
                           </div>
                         </div>
-                      </React.Fragment>
+                      </Fragment>
                     </Dropdown>
                   </>
               }

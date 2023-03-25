@@ -5,7 +5,7 @@ const Song = ({ id, name, artist, url, thumbnail, genre, isLike }) => {
   return (
     <div className='flex items-center py-2 rounded-xl md:min-w-400 lg:min-w-400 xl:min-w-400'>
       <div className='w-1/6 mr-5'>
-        <img src={thumbnail} alt={name} className="w-full" />
+        <img src={thumbnail} alt={name} className="w-full" width=""  height="" />
       </div>
 
       <div className='flex flex-row justify-between w-full grow text-left'>

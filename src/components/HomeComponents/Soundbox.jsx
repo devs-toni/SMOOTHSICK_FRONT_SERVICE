@@ -11,6 +11,8 @@ const Soundbox = ({ id, name, image, artist }) => {
             src={image}
             alt={name}
             className='item__img-container--img'
+            width="" 
+            height="" 
           />
         </div>
         <div className="item__data">

@@ -1,9 +1,6 @@
 import { SongCard } from "./CategoriesSongCard";
-import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "../../context/GlobalContext";
-import { useAuthContext } from "../../context/AuthContext";
-import { useUser } from "../../context/UserContext";
-import { useLanguage } from "../../context/LanguageContext";
+import { useEffect, useState, Fragment } from "react";
+import { useAuthContext, useUser, useLanguage } from '../../index';
 import { Link } from "react-router-dom";
 import { FAVOURITES } from '../../router/paths'
 import { v4 as uuidv4 } from 'uuid';
@@ -84,7 +81,7 @@ export const Categories = () => {
             <div className=" flex flex-col h-80 rounded-lg overflow-y-scroll hide-scrollbar gap-3 lg:gap-2 lg:w-3/6 ">
               {userLists &&
                 userLists.map((element) => (
-                  <React.Fragment key={uuidv4()}>
+                  <Fragment key={uuidv4()}>
                     <div className="flex flex-row justify-between items-center bg-box-icons h-36 lg:h-40 rounded-lg lg:p-5  ">
                       <div className="flex ml-6 h-full items-center">
                         <span className="text-md text-center">{element.name}</span>
@@ -120,7 +117,7 @@ export const Categories = () => {
                         </span>
                       </div>
                     </div>
-                  </React.Fragment>
+                  </Fragment>
                 ))}
             </div>
           </div>

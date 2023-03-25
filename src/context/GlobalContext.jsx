@@ -1,9 +1,7 @@
 import { useContext, createContext, useReducer } from "react"
 import db from "../api/db.json"
-import { TYPES } from "./types"
-const GlobalContext = createContext()
 
- 
+const GlobalContext = createContext()
 
 export const useGlobalContext = () => {
     return useContext(GlobalContext)
