@@ -154,7 +154,6 @@ export const Categories = () => {
             )
           }
         </div>
-
         <div className="background-div" style={{
           top: 0,
           left: 0,
@@ -176,6 +175,11 @@ export const Categories = () => {
           backgroundImage: `url(${imgs[3]})`
         }}></div>
       </div>
+      {
+        imgs.length === 0 && (
+          <div className="headphones-image"></div>
+        )
+      }
     </>
   );
 };
