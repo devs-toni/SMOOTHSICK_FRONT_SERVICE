@@ -1,6 +1,6 @@
 import { Cover, Section, Category } from '../../index';
-import {useState } from 'react';
-import {v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const tracks = [
   [
@@ -171,6 +171,30 @@ const albums = [
     "name": "I samma bil",
     "imageUrl": "https://i.scdn.co/image/ab67616d0000b27349108981b176704992078242",
     "artist": "Hemliga Klubben"
+  },
+  {
+    "id": 6,
+    "name": "Velvet Pony Trax 11 part 2",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b27347d2bc41f459a0422c3dfff5",
+    "artist": "Axel Boman"
+  },
+  {
+    "id": 7,
+    "name": "PARTYPINGLA",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e467c6a0b070f390daa47693",
+    "artist": "Rasmus Hultgren"
+  },
+  {
+    "id": 8,
+    "name": "Someone To Love",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e9e5fbbde2d4147260db99bf",
+    "artist": "Dimitri Vangelis & Wyman"
+  },
+  {
+    "id": 9,
+    "name": "I samma bil",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b27349108981b176704992078242",
+    "artist": "Hemliga Klubben"
   }
 ]
 
@@ -181,23 +205,11 @@ const Home = () => {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="h-full">
-      <div className={`transition-img ${loaded ? 'loaded' : ''}`} style={{
-        maxWidth: "100vw",
-        maxHeight: "100vh",
-        position: "fixed",
-        zIndex: 0,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundImage: `url(${artists[selectedIndex].photoUrl})`
-      }}></div>
-
-      <div className="flex flex-col items-center justify-center w-full pt-32 z-10">
-        <div className="w-5/6 xl:flex md:w-3/5 lg:w-10/12 home-carousel">
+    <div>
+      <div className="home">
+        <div className="home__carousel">
           <Cover
             artists={artists}
-            showButtons={true}
-            autoPlay={true}
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
             tracks={tracks}
@@ -211,7 +223,7 @@ const Home = () => {
           />
         </div>
 
-        <div className="w-5/6 xl:flex xl:flex-col md:w-3/5 lg:w-10/12 z-10">
+        <div className="rows">
           <Category
             name="Top Rock songs"
             list={albums}
@@ -226,8 +238,11 @@ const Home = () => {
           />
         </div>
       </div>
+      <div className={`transition-img ${loaded ? 'loaded' : ''}`} style={{
+        backgroundImage: `url(${artists[selectedIndex].photoUrl})`
+      }}></div>
     </div>
   )
 }
 
-export default Home
+export default Home;

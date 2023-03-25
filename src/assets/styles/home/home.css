@@ -1,0 +1,152 @@
+.home {
+  max-width: 80%;
+  margin: 120px auto 0 auto;
+  z-index: 10;
+}
+
+.home__carousel {
+  width: 100%;
+  margin-bottom: 50px;
+  display: flex;
+}
+
+/* CAROUSEL */
+
+.carousel {
+  min-width: 60%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 6px;
+  margin-right: 40px;
+  box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.253);
+}
+
+.carousel .nav {
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 40%;
+}
+
+.carousel .nav .nav-icon {
+  opacity: 0.7;
+  cursor: pointer;
+  margin: 1.5em;
+  font-size: 2.2em;
+  transition: all 0.3s ease-in-out;
+  background-color: transparent;
+  color: white;
+}
+
+.carousel .nav .nav-icon:hover {
+  transform: scale(1.5);
+}
+
+.carousel .carousel-images {
+  display: flex;
+  flex-flow: row nowrap;
+  transition: all 0.5s ease-in-out;
+  z-index: 0;
+  max-height: 550px;
+}
+
+.carousel .carousel-images .data {
+  opacity: 0.1;
+  transition: all 0.5s ease-in-out;
+  top: 510px;
+  padding: 0 50px;
+}
+.carousel .carousel-images .data.loaded {
+  opacity: 1;
+}
+
+.carousel .carousel-images .carousel-image {
+  filter: opacity(0.1);
+  transition: all 0.5s ease-in-out;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  filter: saturate(1) contrast(1.3) blur(1);
+}
+.carousel .carousel-images .carousel-image.loaded {
+  filter: opacity(1);
+}
+
+@media screen and (min-width: 2200px) {
+  .carousel {
+    width: 75%;
+  }
+  .carousel .carousel-images {
+  }
+}
+
+@media screen and (max-width: 1850px) {
+  .carousel .carousel-images {
+    max-height: 350px;
+  }
+}
+
+@media screen and (max-width: 1450px) {
+  .carousel {
+    margin-right: 20px;
+  }
+  .carousel .carousel-images {
+    max-height: 250px;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .home {
+    max-width: 70%;
+  }
+  .carousel {
+    margin-right: 10px;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .home {
+    max-width: 50%;
+    margin: 80px auto 0 auto;
+  }
+  .home__carousel {
+    flex-direction: column-reverse;
+    margin: 0 0 50px 0;
+  }
+  .carousel {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    max-width: 75%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .home {
+    max-width: 90%;
+  }
+}
+
+/* HOMEPAGE BACKGROUND SECTION */
+
+.transition-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.transition-img.loaded {
+  opacity: 0.1;
+}

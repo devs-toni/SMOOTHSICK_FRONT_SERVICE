@@ -63,12 +63,12 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
   ]
 
   return (
-    <div className='flex flex-row flex-wrap justify-center items-center mt-10 z-10'>
+    <div className='flex flex-row flex-wrap justify-center items-center mt-7 md:mt-8 z-10'>
       {
         filters.map(({ id, name }) => {
           return (
-            <div key={uuidv4()} className="mb-2 mr-5 min-w-100 text-center" onClick={handleClick}>
-              <p id={id} className={`border border-gray-500 px-4 py-1 rounded-2xl cursor-pointer ${active === name ? 'bg-gray-500' : ''}`}>{name}</p>
+            <div key={uuidv4()} className="mb-2 mr-2 md:mr-4 text-center" onClick={handleClick}>
+              <p id={id} className={`border border-gray-500 px-3 py-1 md:px-3 rounded-2xl text-xs sm:text-sm md:text-lg  cursor-pointer ${active === name ? 'bg-gray-500' : ''}`}>{name}</p>
             </div>
           )
         })

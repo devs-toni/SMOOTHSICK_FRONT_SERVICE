@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { TextInput } from 'flowbite-react';
 import { useSearchParams } from 'react-router-dom';
-import { Filters, useLanguage, useGlobalContext, SearchSection, Soundbox } from '../../index';
+import { Filters, useLanguage, useGlobalContext, SearchSection, Searchbox } from '../../index';
 import { FILTER_TYPES } from './filterTypes';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -202,8 +202,8 @@ const Search = () => {
   }, [active])
 
   return (
-    <div className='pb-20 flex w-full'>
-      <div className="sm:w-3/4 flex flex-col items-center justify-center mt-24 overflow-hidden m-auto z-10">
+    <div className='flex w-full'>
+      <div className="sm:w-3/4 flex flex-col items-center justify-center mt-10 md:mt-24 overflow-hidden m-auto z-10">
         <form className='flex w-full justify-center mt-10'>
           <TextInput
             type="text"
@@ -238,14 +238,15 @@ const Search = () => {
               :
               (
                 <>
-                  {results.length > 0 && <h1 className='pl-10 text-2xl mt-10 font-medium'>{active}</h1>}
-                  <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 search-grid'>
+                  {
+                    results.length > 0 && <h1 className='search__title'>{active}</h1>
+                  }
+                  <div className='search__section'>
                     {
                       results.map(({ name, img, artist }) => {
                         return (
-                          <Soundbox
+                          <Searchbox
                             key={uuidv4()}
-                            section="search"
                             image={img}
                             name={name}
                             artist={artist}

@@ -28,14 +28,14 @@ const Cover = ({ artists, autoPlay, showButtons, selectedIndex, setSelectedIndex
     }, 500)
   }
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (autoPlay || !showButtons) {
       const interval = setInterval(() => {
         selectNewImage(selectedIndex, artists);
       }, 13000);
       return () => clearInterval(interval);
     }
-  }, [selectNewImage])
+  }, [selectNewImage]) */
 
 
   return (

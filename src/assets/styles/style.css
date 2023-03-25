@@ -1,38 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Inter:wght@400;500;600;700;800;900&display=fallback');
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Inter:wght@400;500;600;700;800;900&display=fallback");
 
-@import './some-styles.css';
-@import './carousel.css';
-@import './player.css';
-@import './category-slider.css';
+@import "./home/home-section.css";
+@import "./home/category-slider.css";
+@import "./home/home.css";
+@import "./categories/categories.css";
+@import "./main/main.css";
+@import "./search/search.css";
+@import "./player.css";
+@import "./utils.css";
 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-
-
-/* Additional styles */
-/* @import 'additional-styles/utility-patterns.css';
-@import 'additional-styles/range-slider.css';
-@import 'additional-styles/toggle-switch.css';
-@import 'additional-styles/theme.css'; */
-
-
-
-@import 'tailwindcss/utilities';
-
-/* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
 @layer utilities {
-    .rtl {
-        direction: rtl;
-    }
+  .rtl {
+    direction: rtl;
+  }
 }
 
-/* See Alpine.js: https://github.com/alpinejs/alpine#x-cloak */
 [x-cloak=""] {
-    display: none;
+  display: none;
 }
-
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
