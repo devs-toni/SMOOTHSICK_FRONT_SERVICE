@@ -54,51 +54,52 @@ const Login = () => {
       });
     }
   };
-  /*  const setProfileOAuthGoogle = (profile) => {
-     const { email, id, given_name, family_name, picture } = profile;
-     console.log(email, id, given_name, family_name, picture);
-     const user = {
-       id,
-       firstName: given_name,
-       lastName: family_name,
-       email,
-       profilePicture: picture,
-     }
-     if (profile) {
-       login(id, user);
-       localStorage.setItem(
-         "auth",
-         JSON.stringify(
-           user
-         )
-       );
-     }
-     const userG = { email, password };
-     console.log(userG);
-   };
-   const loginG = useGoogleLogin({
- 
-     onSuccess: (codeResponse) => {
-       axios
-         .get(
-           `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${codeResponse.access_token}`,
-           {
-             headers: {
-               Authorization: `Bearer ${codeResponse.access_token}`,
-               Accept: "application/json",
-             },
-           }
-         )
- 
-         .then((res) => {
-           setProfileOAuthGoogle(res.data);
-           navigate("/");
-         })
-         .catch((err) => console.log(err));
-     },
-     onError: (error) => console.log("Login Failed:", error),
-   });
- */
+
+  const setProfileOAuthGoogle = (profile) => {
+    const { email, id, given_name, family_name, picture } = profile;
+    console.log(email, id, given_name, family_name, picture);
+    const user = {
+      id,
+      firstName: given_name,
+      lastName: family_name,
+      email,
+      profilePicture: picture,
+    }
+    if (profile) {
+      login(id, user);
+      localStorage.setItem(
+        "auth",
+        JSON.stringify(
+          user
+        )
+      );
+    }
+    const userG = { email, password };
+    console.log(userG);
+  };
+  const loginG = useGoogleLogin({
+
+    onSuccess: (codeResponse) => {
+      axios
+        .get(
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${codeResponse.access_token}`,
+          {
+            headers: {
+              Authorization: `Bearer ${codeResponse.access_token}`,
+              Accept: "application/json",
+            },
+          }
+        )
+
+        .then((res) => {
+          setProfileOAuthGoogle(res.data);
+          navigate("/");
+        })
+        .catch((err) => console.log(err));
+    },
+    onError: (error) => console.log("Login Failed:", error),
+  });
+
   const styleInput = {
     backgroundColor: "#00000000"
   };
@@ -159,13 +160,13 @@ const Login = () => {
               {text.login.singin}
 
             </Button>
-            {/*        <Button
+            <Button
               onClick={loginG}
               color="black"
               className="text-xs md:text bg-slate-50  transition duration-500 ease-in-out transform text-black font-bold"
             >
               {text.login.singingoogle}
-            </Button> */}
+            </Button>
 
           </form>
           <div className="flex item-center w-3/12 ">

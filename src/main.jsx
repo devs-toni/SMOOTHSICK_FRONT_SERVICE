@@ -10,7 +10,7 @@ import { CLIENT_ID } from './config';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-/*   <GoogleOAuthProvider clientId={CLIENT_ID}> */
+  <GoogleOAuthProvider clientId={CLIENT_ID}>
     <GlobalProvider>
       <AuthProvider>
         <UserProvider>
@@ -22,5 +22,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </UserProvider>
       </AuthProvider>
     </GlobalProvider>
-/*   </GoogleOAuthProvider> */
+  </GoogleOAuthProvider>
 )
