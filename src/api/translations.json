@@ -172,84 +172,84 @@
   },
   "fr": {
     "register": {
-      "title": "Create your Free Account",
-      "name": "Name",
-      "lastname": "Lastname",
+      "title": "Créez votre compte gratuit",
+      "name": "Prénom",
+      "lastname": "Nom",
       "email": "Email",
-      "username": "Username",
-      "password": "Password",
-      "repeat": "Repeat Password",
-      "forget": "Forgot your password?",
-      "submit": "Sign up",
-      "already": "Already have an account?",
-      "login": "Sign in here"
+      "username": "Idientifiant",
+      "password": "Mot de passe",
+      "repeat": "Répétez votre mot de passe",
+      "forget": "Mot de passe oublié?",
+      "submit": "S'inscrire",
+      "already": "Avez-vous déjà un compte?",
+      "login": "Se connecter"
     },
     "login": {
-      "title": "To continue, log in to Smoothsick",
+      "title": "Pour continuer connectez-vous à Smoothsick",
       "email": "Email",
-      "password": "Password",
-      "dontHaveAnAccount": "Don't have a Smoothsick account?",
-      "register": "Sign up",
-      "singingoogle": "Sign in with Google 🚀",
-      "singin": "Sing In"
+      "password": "Mot de passe",
+      "dontHaveAnAccount": "Vous n'avez pas un compte à Smoothsick?",
+      "register": "S'enregistrer",
+      "singingoogle": "S'enregistrer avec Google 🚀",
+      "singin": "S'identifier'"
     },
     "navbar": {
-      "home": "Home",
-      "categories": "Categories",
+      "home": "Page d'accueil",
+      "categories": "Catégories",
       "radio": "Radio",
       "video": "Video",
-      "login": "Log in",
-      "logout": "Log out",
-      "register": "Sign up",
-      "input_p_holder": "Find new music...",
-      "dashboard": "Profile",
-      "favourites": "Favourites",
-      "search": "Search",
-      "welcome": "Welcome"
+      "login": "Se connecter",
+      "logout": "Se déconnecter",
+      "register": "S'inscrire'",
+      "input_p_holder": "Trouvez nouvelle musique...",
+      "dashboard": "Profil",
+      "favourites": "Favoris",
+      "search": "Chercher",
+      "welcome": "Bienvenue"
     },
     "account": {
-      "account": "Account settings",
-      "user": "User",
-      "password": "Change password",
-      "edit": "Edit Profile",
-      "plan": "Plan details",
-      "change_plan": "Change Plan",
-      "subscription": "Type subscription",
-      "cancel": "Cancelar Suscripción",
-      "name": "Name:",
+      "account": "Paramètres du compte",
+      "user": "Utilisateur",
+      "password": "Changez votre mot de passe",
+      "edit": "Éditez votre profil",
+      "plan": "Détails du plan",
+      "change_plan": "Changez votre plan",
+      "subscription": "Genre d'abonnement'",
+      "cancel": "Annuler abonnement",
+      "name": "Prénom:",
       "email": "Email:",
-      "password2": "Password",
-      "security_p": "Security and Privacy",
-      "security_o": "Security Options"
+      "password2": "Mot de passe",
+      "security_p": "Sécurité et Confidentialité",
+      "security_o": "Options de Sécurité"
     },
     "charts": {
-      "title": "Top Charts"
+      "title": "Le hit-parade"
     },
     "liked": {
-      "title": "Canciones Favoritas",
-      "title_table": "TITLE",
+      "title": "Chansons Favoris",
+      "title_table": "TITRE",
       "album_table": "ALBUM",
-      "gender": "Gender",
-      "track": "Canción",
+      "gender": "Genre",
+      "track": "Chanson",
       "options": "Options",
-      "total": "Canciones",
-      "name": "Favourites"
+      "total": "Chansons",
+      "name": "Favoris"
     },
     "categories": {
-      "lists": "Your playlists",
-      "favoritos": "Favourites",
-      "fav_tracks": "Your Favorites Songs",
-      "title_table": "Title",
+      "lists": "Vos playlists",
+      "favoritos": "Favoris",
+      "fav_tracks": "Vos chansons favoris",
+      "title_table": "Titre",
       "album_table": "Album",
       "portrait": "Portrait"
     },
     "filters": {
-      "all": "All",
+      "all": "Toutes",
       "playlists": "Playlists",
-      "artists": "Artists",
+      "artists": "Artistes",
       "albums": "Albums",
-      "tracks": "Tracks",
-      "users": "Users"
+      "tracks": "Pistes",
+      "users": "Utilisateurs"
     }
   },
   "chn": {
