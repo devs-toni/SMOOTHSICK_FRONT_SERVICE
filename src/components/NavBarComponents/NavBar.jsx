@@ -5,7 +5,7 @@ import { FiLogOut } from "react-icons/fi"
 import { AiFillHome } from "react-icons/ai"
 import { RiFolderMusicFill, RiMenu4Fill } from "react-icons/ri"
 import { BiRadio } from "react-icons/bi"
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAuthContext, useLanguage } from '../../index';
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
@@ -88,7 +88,7 @@ export const NavBar = () => {
       <div className="fixed top-0 z-50 w-full md:bg-transparent md:shadow-none">
         <nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 mt-2">
           <NavLink to="/" className="h-12 w-14 hidden md:block cursor-pointer">
-            <img src={exampleLogo} alt="logo" width="" height="" />
+             <img src={exampleLogo} alt="logo"/> 
           </NavLink>
           <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
             <RiMenu4Fill className='h-6 w-6' />

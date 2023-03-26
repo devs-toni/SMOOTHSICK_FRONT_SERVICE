@@ -82,6 +82,13 @@
       "albums": "Albums",
       "tracks": "Tracks",
       "users": "Usuarios"
+    },
+    "changepass": {
+      "title": "Cambia tu contrasña",
+      "current_pass": "Contraseña actual",
+      "new_pass": "Nueva contraseña",
+      "r_new_pass": "Repite nueva contraseña",
+      "btn_save_pass": "Guarda tus cambios"
     }
   },
   "en": {
@@ -168,6 +175,14 @@
       "albums": "Albums",
       "tracks": "Tracks",
       "users": "Users"
+    },
+    "changepass": {
+      "title": "Change your password",
+      "current_pass": "Current password",
+      "new_pass": "New password",
+      "r_new_pass": "Repeat new password",
+      "btn_save_pass": "Save your changes"
+      
     }
   },
   "fr": {
@@ -250,6 +265,13 @@
       "albums": "Albums",
       "tracks": "Tracks",
       "users": "Users"
+    },
+    "changepass": {
+      "title": "Change your password",
+      "current_pass": "Current password",
+      "new_pass": "New password",
+      "r_new_pass": "Repeat new password",
+      "btn_save_pass": "Save your changes"
     }
   },
   "chn": {
@@ -332,6 +354,13 @@
       "albums": "专辑",
       "tracks": "歌曲",
       "users": "用户"
+    },
+    "changepass": {
+      "title": "Change your password",
+      "current_pass": "Current password",
+      "new_pass": "New password",
+      "r_new_pass": "Repeat new password",
+      "btn_save_pass": "Save your changes"
     }
   }
 }
