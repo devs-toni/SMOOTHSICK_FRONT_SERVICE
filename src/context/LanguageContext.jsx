@@ -1,5 +1,6 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useMemo, useCallback } from "react";
 import translations from '../api/translations.json';
+import { LANGUAGES } from "./types";
 
 const LanguageContext = createContext();
 export const useLanguage = () => {
@@ -7,36 +8,29 @@ export const useLanguage = () => {
 }
 
 export const LanguageProvider = ({ children }) => {
-  const [lang, setLang] = useState('en');
-  const [text, setText] = useState(translations["en"]);
+  const main = "en";
+  const [lang, setLang] = useState(main);
+  const [text, setText] = useState(translations[main]);
 
-  
-  const handleLanguage = ({name}) => {
 
-    if (name === "spain") {
-      setLang("es")
+  const handleLanguage = useCallback(({ name }) => {
+    setLang(name);
+    if (name === "spain")
       setText(translations.es)
-    }
-    else if (name === "united-kingdom") {
-      setLang("en")
+    else if (name === "united-kingdom")
       setText(translations.en)
-    }
-    else if (name === "france") {
-      setLang("fr")
+    else if (name === "france")
       setText(translations.fr)
-    }
-    else {
-      setLang("chn")
-      setText(translations.chn)
-    }
-  }
-  
+    else setText(translations.chn)
+  }, [])
 
-  const data = {
+
+  const data = useMemo(() => ({
     text,
     lang,
     handleLanguage
-  }
+  }), [text.lang, handleLanguage]);
+
   return (
     <LanguageContext.Provider value={data}>{children}</LanguageContext.Provider>
   )

@@ -1,15 +1,14 @@
-import { createContext, useContext, useReducer, useCallback } from "react";
+import { createContext, useContext, useReducer, useCallback, useMemo } from "react";
 import { TYPES } from "./types";
 import defaultUserPicture from "../assets/imgs/default_pictures/default_user_img.png"
 
 const init = () => {
   const auth = JSON.parse(localStorage.getItem('auth'));
-
   return {
     isAuthenticated: !!auth,
     id: auth ? auth.id : -1,
     user: auth ? auth : {},
-    error:""
+    error: ""
   }
 }
 
@@ -59,7 +58,6 @@ export const AuthProvider = ({ children }) => {
           ...state,
           error: "",
         };
-
       default:
         return state;
     }
@@ -70,11 +68,9 @@ export const AuthProvider = ({ children }) => {
   const login = useCallback((id, user, error) => {
     if (!error) {
       dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { id, user } })
-      localStorage.setItem('auth', JSON.stringify( user ));
-
+      localStorage.setItem('auth', JSON.stringify(user));
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
-    
   }, [])
 
   const logout = useCallback(() => {
@@ -86,14 +82,13 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: TYPES.RESET_ERROR })
   }, [])
 
-  
-
-  const authData = {
+  const authData = useMemo(() => ({
     authState,
     login,
     logout,
     reset,
-  };
+  }), [authState, login, logout, reset]);
+
   return (
     <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>
   );
