@@ -7,6 +7,9 @@ import { useRef, useState } from 'react';
 
 const Category = ({ list, name }) => {
 
+
+
+  
   const divRef = useRef();
   const [rightIsMoved, setRightIsMoved] = useState(false);
   const [leftIsMoved, setLeftIsMoved] = useState(true);
