@@ -146,7 +146,7 @@ export const NavBar = () => {
                           </>
                       }
                       <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
-                        <div className=" flex flex-row justify-center pl-2 items-center">
+                        <div className=" flex flex-row justify-center pl-2 items-center"> 
                           {
                             lenguageSelected.map((item) => (
                               <img
