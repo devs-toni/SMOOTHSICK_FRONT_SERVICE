@@ -88,117 +88,98 @@ export const NavBar = () => {
       <div className="fixed top-0 z-50 w-full md:bg-transparent md:shadow-none">
         <nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 mt-2">
           <NavLink to="/" className="h-12 w-14 hidden md:block cursor-pointer">
-             <img src={exampleLogo} alt="logo"/> 
+            <img src={exampleLogo} alt="logo" />
           </NavLink>
           <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
             <RiMenu4Fill className='h-6 w-6' />
           </button>
-
           <div className="flex flex-row justify-center items-center flex-wrap">
             <div>
-              {
-                authState.isAuthenticated
-                  ?
-                  <>
-                    <Dropdown
-                      className='bg-zinc-700 border-none px-0 py-0'
-                      inline
-                      label={<img src={user.profilePicture} className="w-8 rounded-full" />}
-                      placement="top-start"
-                      arrowIcon={false}
-                    >
-                      <Fragment key=".0">
-                        <div className="min-w-180">
+              <>
+                <Dropdown
+                  className='bg-zinc-700 border-none px-0 py-0'
+                  inline
+                  id="user-drop-id"
+                  label={authState.isAuthenticated ? <img src={user.profilePicture} className="w-8 rounded-full" /> : <HiUserCircle size={40}
+                  />}
+                  placement="top-start"
+                  arrowIcon={false}
+                >
+                  <Fragment key=".0">
+                    <div className="min-w-180">
+                      {
+                        authState.isAuthenticated &&
+                        <>
                           <div className=" py-1 text-sm text-white text-center">
                             <span>{text.navbar.welcome} {user.firstName}!</span>
                           </div>
                           <Dropdown.Divider />
-                          <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
-                            <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-16 py-0 h-10 hover:text-black'>
-                              <span className='text-center'>{text.navbar.dashboard}</span>
-                            </Dropdown.Item>
-                          </NavLink>
-                          <NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
-                            <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
-                              <span>{text.liked.name}</span>
-                            </Dropdown.Item>
-                          </NavLink>
-                          <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
-                            <div className=" flex flex-row justify-center pl-2 items-center">
-                              {
-                                lenguageSelected.map((item) => (
-                                  <img
-                                    key={item.key}
-                                    src={item.country}
-                                    alt={item.name + " flag"}
-                                    name={item.name}
-                                    className="h-6 m-1 cursor-pointer hover:scale-110 mr-2"
-                                    onClick={handleApplyLenguage}
-                                  />
-                                ))
-                              }
-                            </div>
-                          </Dropdown.Item>
+                        </>
+                      }
+                      {
+                        authState.isAuthenticated ?
+                          <>
+                            <NavLink to={`/${ACCOUNT}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                              <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-16 py-0 h-10 hover:text-black'>
+                                <span className='text-center'>{text.navbar.dashboard}</span>
+                              </Dropdown.Item>
+                            </NavLink>
+                            <NavLink to={`/${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                              <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
+                                <span>{text.liked.name}</span>
+                              </Dropdown.Item>
+                            </NavLink>
+                          </>
+                          :
+                          <>
+                            <NavLink to={`/${LOGIN}`}>
+                              <Dropdown.Item className='w-full flex justify-center items-center bg-zinc-700 text-white hover:text-black px-0 py-0 h-10'>
+                                <span className='text-sm block w-full text-center'>{text.navbar.login}</span>
+                              </Dropdown.Item>
+                            </NavLink>
+                            <NavLink to={`/${SIGNUP}`}>
+                              <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black px-0 py-0 h-10'>
+                                <span>{text.navbar.register}</span>
+                              </Dropdown.Item>
+                            </NavLink>
+                            <Dropdown.Divider />
+                          </>
+                      }
+                      <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
+                        <div className=" flex flex-row justify-center pl-2 items-center">
+                          {
+                            lenguageSelected.map((item) => (
+                              <img
+                                key={item.key}
+                                src={item.country}
+                                alt={item.name + " flag"}
+                                name={item.name}
+                                className="h-6 m-1 cursor-pointer hover:scale-110 mr-2"
+                                onClick={handleApplyLenguage}
+                              />
+                            ))
+                          }
+                        </div>
+                      </Dropdown.Item>
+                      {
+                        authState.isAuthenticated &&
+                        <>
                           <Dropdown.Divider />
-                          <div className='py-1 text-sm text-white text-center cursor-pointer'>
-                            <li onClick={handleLogout}>
+                          <Dropdown.Item className='py-1 text-sm text-white text-center cursor-pointer'>
+                            <li onClick={handleLogout} data-dropdown-toggle='user-drop-id'>
                               <span> {text.navbar.logout}</span>
                             </li>
-                          </div>
-                        </div>
-                      </Fragment>
-                    </Dropdown>
-                  </>
-                  :
-                  <>
-                    <Dropdown
-                      className='bg-zinc-700 border-none px-0 py-0 mr-20'
-                      inline
-                      label=
-                      {
-                        <HiUserCircle
-                          size={40}
-                        />
+                          </Dropdown.Item>
+                        </>
                       }
-                      placement="bottom-start"
-                      arrowIcon={false}
-                    >
-                      <Fragment key=".0">
-                        <div className='min-w-180'>
-                          <NavLink to={`/${LOGIN}`}>
-                            <Dropdown.Item className='w-full flex justify-center items-center bg-zinc-700 text-white hover:text-black px-0 py-0 h-10'>
-                              <span className='text-sm block w-full text-center'>{text.navbar.login}</span>
-                            </Dropdown.Item>
-                          </NavLink>
-                          <NavLink to={`/${SIGNUP}`}>
-                            <Dropdown.Item className=' flex justify-center items-center bg-zinc-700 text-white hover:text-black px-0 py-0 h-10'>
-                              <span>{text.navbar.register}</span>
-                            </Dropdown.Item>
-                          </NavLink>
-                          <Dropdown.Divider />
-                          <div className="pl-2 flex flex-row justify-evenly">
-                            {
-                              lenguageSelected.map((item) => (
-                                <img
-                                  key={item.key}
-                                  src={item.country}
-                                  alt={item.name + " flag"}
-                                  name={item.name}
-                                  className="h-6 m-1 cursor-pointer hover:scale-110 mr-2"
-                                  onClick={handleApplyLenguage}
-                                />
-                              ))
-                            }
-                          </div>
-                        </div>
-                      </Fragment>
-                    </Dropdown>
-                  </>
-              }
+                    </div >
+                  </Fragment>
+                </Dropdown>
+              </>
             </div>
           </div>
-        </nav>
-      </div>
+        </nav >
+      </div >
 
       <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-full px-10 bg-primary-color md:bg-transparent h-screen transition-transform -translate-x-full md:translate-x-0 md:w-36 lg:w-24 max-h-100 min-h-max" aria-label="Sidebar">
         <div className="flex flex-col justify-around items-center h-full px-3 gap-3">
