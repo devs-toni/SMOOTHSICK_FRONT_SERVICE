@@ -14,12 +14,13 @@ export const LanguageProvider = ({ children }) => {
 
 
   const handleLanguage = useCallback(({ name }) => {
+    console.log(name);
     setLang(name);
-    if (name === "spain")
+    if (name === "es")
       setText(translations.es)
-    else if (name === "united-kingdom")
+    else if (name === "en")
       setText(translations.en)
-    else if (name === "france")
+    else if (name === "fr")
       setText(translations.fr)
     else setText(translations.chn)
   }, [])
@@ -29,7 +30,7 @@ export const LanguageProvider = ({ children }) => {
     text,
     lang,
     handleLanguage
-  }), [text.lang, handleLanguage]);
+  }), [text, lang, handleLanguage]);
 
   return (
     <LanguageContext.Provider value={data}>{children}</LanguageContext.Provider>
