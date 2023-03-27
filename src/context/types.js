@@ -14,3 +14,10 @@ export const TYPES = {
   RESET_ERROR: "RESET_ERROR"
 };
 
+export const LANGUAGES = {
+  SPA: "es",
+  ENG: "en",
+  CHN: "chn",
+  FRA: "fr"
+}
+
