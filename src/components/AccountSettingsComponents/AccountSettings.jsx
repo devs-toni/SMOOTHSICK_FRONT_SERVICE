@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useAuthContext, useLanguage } from '../../index';
+import { ACCOUNT, CHANGEPASS } from '../../router/paths'
 
 const Accountsettings = () => {
   const { text } = useLanguage()
@@ -11,7 +13,7 @@ const Accountsettings = () => {
       <div className="flex justify-around items-center flex-col pt-56 gap-7 w-full m-auto mt-10 p-10 md:max-w-xl lg:max-w-3xl xl:max-w-6xl ">
         <div className='grid grid-cols-3 justify-start items-start py-4 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500  w-full'>
           <div className='flex flex-col'>
-            {console.log(authState)}
+
             <span> {text.account.account} </span>
             <button type="button" className="text-white h-16 w-32 bg-gradient-to-r from-purple-500 to-pink-500  hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">{text.account.cancel}</button>
           </div>
@@ -24,7 +26,7 @@ const Accountsettings = () => {
             </div>
           </div>
           <div className='flex flex-col'>
-            <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{text.account.password}</a><br></br>
+            <Link to={`${CHANGEPASS}`}> <span className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{text.account.password}</span><br></br> </Link>
             <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{text.account.edit} </a><br></br>
           </div>
         </div>
