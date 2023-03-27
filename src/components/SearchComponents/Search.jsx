@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { TextInput } from 'flowbite-react';
 import { useSearchParams } from 'react-router-dom';
-import { Filters, useLanguage, useGlobalContext, SearchSection, Searchbox } from '../../index';
+import { Filters, useLanguage, useGlobalContext, SearchSection, OutputBox } from '../../index';
 import { FILTER_TYPES } from './filterTypes';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -46,6 +45,7 @@ const Search = () => {
     backgroundColor: "#00000000",
     color: 'white',
     textAlign: 'center',
+    borderBottom: "1px solid #4d4d4d"
   };
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -216,13 +216,11 @@ const Search = () => {
     <div className='flex w-full pb-32'>
       <div className="sm:w-3/4 flex flex-col items-center justify-center mt-10 md:mt-24 overflow-hidden m-auto z-10">
         <form className='flex w-full justify-center mt-10'>
-          <TextInput
+          <input
             type="text"
             placeholder={text.navbar.input_p_holder}
             autoFocus
             style={styleInput}
-            color="white"
-            className="border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 "
             value={strSearch}
             onChange={handleSearch}
           />
@@ -256,11 +254,12 @@ const Search = () => {
                     {
                       results.map(({ name, img, artist }) => {
                         return (
-                          <Searchbox
+                          <OutputBox
                             key={uuidv4()}
                             image={img}
                             name={name}
                             artist={artist}
+                            targetClass="search"
                           />
                         )
                       })

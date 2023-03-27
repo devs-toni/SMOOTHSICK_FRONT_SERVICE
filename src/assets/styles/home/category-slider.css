@@ -43,53 +43,53 @@
   opacity: 0.2;
 }
 
-.item__img-container {
+.list__img-container {
   width: 200px;
   height: 200px;
 }
 
-.item__img-container--img {
+.list__img-container--img {
   max-height: 200px;
   object-fit: cover;
   transition: all 0.12s ease-in;
   height: 100%;
 }
 
-.item__data {
+.list__data {
   margin-top: 15px;
   font-size: 1.05em;
   word-break: break-all;
 }
-.item__data--name {
+.list__data--name {
   font-weight: 500;
 }
-.item__data--artist {
+.list__data--artist {
   font-size: 0.8em;
   font-style: italic;
 }
 
-.item__img-container--img:hover {
+.list__img-container--img:hover {
   transform: scale(1.08);
 }
 
 @media screen and (max-width: 1880px) {
-  .item__img-container {
+  .list__img-container {
     max-width: 120px;
     height: unset;
   }
-  .item__img-container--img {
+  .list__img-container--img {
     height: unset;
   }
 }
 
 @media screen and (max-width: 1580px) {
-  .item__img-container {
+  .list__img-container {
     max-width: 100px;
   }
   .row__list--item {
     padding: 10px;
   }
-  .item__data {
+  .list__data {
     font-size: 0.8em;
   }
   .row__arrows {
@@ -102,16 +102,16 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .item__img-container {
+  .list__img-container {
     max-width: 80px;
   }
 }
 
 @media screen and (max-width: 920px) {
-  .item__img-container {
+  .list__img-container {
     max-width: 60px;
   }
-  .item__data {
+  .list__data {
     font-size: 0.6em;
   }
   .row__arrows {
@@ -124,10 +124,10 @@
 }
 
 @media screen and (max-width: 450px) {
-  .item__img-container {
+  .list__img-container {
     max-width: 50px;
   }
-  .item__data {
+  .list__data {
     font-size: 0.6em;
   }
   .row__list--item {
