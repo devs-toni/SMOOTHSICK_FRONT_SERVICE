@@ -1,5 +1,5 @@
 
-import { Soundbox } from '../../index';
+import { OutputBox } from '../../index';
 import { v4 as uuidv4 } from 'uuid'
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useRef, useState } from 'react';
@@ -37,12 +37,13 @@ const Category = ({ list, name }) => {
               {
                 list.map(({ id, name, imageUrl, artist }) => {
                   return (
-                    <Soundbox
+                    <OutputBox
                       key={uuidv4()}
                       id={id}
                       name={name}
                       image={imageUrl}
                       artist={artist}
+                      targetClass="list"
                     />
                   )
                 })

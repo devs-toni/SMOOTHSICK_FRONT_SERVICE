@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { FILTER_TYPES, Searchbox } from '../../index';
+import { FILTER_TYPES, OutputBox } from '../../index';
 
 const SearchSection = ({ check, name, list }) => {
 
@@ -60,12 +60,12 @@ const SearchSection = ({ check, name, list }) => {
           (
             list.map(({ name, img, artist }) => {
               return (
-                <Searchbox
+                <OutputBox
                   key={uuidv4()}
-
                   image={img}
                   name={name}
                   artist={artist}
+                  targetClass="search"
                 />
               )
             })
