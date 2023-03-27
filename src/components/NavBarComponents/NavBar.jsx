@@ -89,7 +89,6 @@ export const NavBar = () => {
         <nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 mt-2">
           <NavLink to="/" className="h-12 w-14 hidden md:block cursor-pointer">
             <img src={exampleLogo} alt="logo" />
-            <img src={exampleLogo} alt="logo" />
           </NavLink>
           <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
             <RiMenu4Fill className='h-6 w-6' />
@@ -166,8 +165,8 @@ export const NavBar = () => {
                         authState.isAuthenticated &&
                         <>
                           <Dropdown.Divider />
-                          <Dropdown.Item className='py-1 text-sm text-white text-center cursor-pointer'>
-                            <li onClick={handleLogout} data-dropdown-toggle='user-drop-id'>
+                          <Dropdown.Item className='py-1 text-sm text-white cursor-pointer'>
+                            <li className='w-full text-center' onClick={handleLogout}>
                               <span> {text.navbar.logout}</span>
                             </li>
                           </Dropdown.Item>
