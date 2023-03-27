@@ -153,7 +153,7 @@ export const NavBar = () => {
                                 key={item.key}
                                 src={item.country}
                                 alt={item.name + " flag"}
-                                name={item.name}
+                                name={item.code}
                                 className="h-6 m-1 cursor-pointer hover:scale-110 mr-2"
                                 onClick={handleApplyLenguage}
                               />
@@ -165,10 +165,8 @@ export const NavBar = () => {
                         authState.isAuthenticated &&
                         <>
                           <Dropdown.Divider />
-                          <Dropdown.Item className='py-1 text-sm text-white cursor-pointer'>
-                            <li className='w-full text-center' onClick={handleLogout}>
-                              <span> {text.navbar.logout}</span>
-                            </li>
+                          <Dropdown.Item className='py-1 text-sm text-white cursor-pointer w-full text-center' onClick={handleLogout}>
+                            <span className='w-full text-center'>{text.navbar.logout}</span>
                           </Dropdown.Item>
                         </>
                       }
