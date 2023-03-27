@@ -103,7 +103,7 @@ export const NavBar = () => {
                     <Dropdown
                       className='bg-zinc-700 border-none px-0 py-0'
                       inline
-                      label={<img src={user.profilePicture} className="w-8 rounded-full" />}
+                      label={<img src={user.profilePicture} className="w-8 rounded-full" alt="logo" />}
                       placement="top-start"
                       arrowIcon={false}
                     >
