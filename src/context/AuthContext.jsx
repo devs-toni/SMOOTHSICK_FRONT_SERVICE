@@ -21,6 +21,7 @@ export const useAuthContext = () => {
 export const AuthProvider = ({ children }) => {
   const initialState = {
     isAuthenticated: false,
+    firstTime: false,
     id: -1,
     user: {
       id: -1,
@@ -39,6 +40,7 @@ export const AuthProvider = ({ children }) => {
           isAuthenticated: true,
           id: action.payload.id,
           user: action.payload.user,
+          firstTime: true,
           error: ""
         };
       case TYPES.LOGIN_UNSUCCESS:
@@ -58,6 +60,12 @@ export const AuthProvider = ({ children }) => {
           ...state,
           error: "",
         };
+
+      case TYPES.SET_FIRST_TIME_FALSE:
+        return {
+          ...state,
+          firstTime: false
+        }
       default:
         return state;
     }
@@ -82,12 +90,17 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: TYPES.RESET_ERROR })
   }, [])
 
+  const resetFirstTime = useCallback(() => {
+    dispatch({ type: TYPES.SET_FIRST_TIME_FALSE })
+  }, [])
+
   const authData = useMemo(() => ({
     authState,
     login,
     logout,
     reset,
-  }), [authState, login, logout, reset]);
+    resetFirstTime
+  }), [authState, login, logout, reset, resetFirstTime]);
 
   return (
     <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>

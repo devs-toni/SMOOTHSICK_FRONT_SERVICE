@@ -1,5 +1,6 @@
-import { Cover, Section, Category } from '../../index';
-import { useState } from 'react';
+import { Cover, Section, Category, useAuthContext } from '../../index';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const tracks = [
   [
@@ -197,11 +198,33 @@ const albums = [
   }
 ]
 
+
 const Home = () => {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedTracks, setSelectedTracks] = useState(tracks[0]);
   const [loaded, setLoaded] = useState(false);
+
+  const { authState, resetFirstTime } = useAuthContext();
+
+  useEffect(() => {
+    if (authState.firstTime) {
+      toast.success('Log in successfully!',
+        {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+          success: {
+            duration: 2000
+          }
+        }
+      )
+      resetFirstTime();
+    }
+
+  }, [])
 
   return (
     <div className='pb-20'>
