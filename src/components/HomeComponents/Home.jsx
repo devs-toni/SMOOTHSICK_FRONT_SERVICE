@@ -149,6 +149,11 @@ const Home = () => {
             list={dataState.artists}
             type={SECTIONS.ARTIST}
           />
+          <Slider
+            name={text.filters.playlists}
+            list={dataState.playlists}
+            type={SECTIONS.PLAYLIST}
+          />
         </div>
       </div>
       <div className={`transition-img ${loaded ? 'loaded' : ''}`} style={{
