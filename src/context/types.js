@@ -12,7 +12,11 @@ export const TYPES = {
   LOGIN_UNSUCCESS: "LOGIN_UNSUCCESS",
   LOGOUT: "LOGOUT",
   RESET_ERROR: "RESET_ERROR",
-  SET_FIRST_TIME_FALSE: "SET_FIRST_TIME_FALSE"
+  SET_FIRST_TIME_FALSE: "SET_FIRST_TIME_FALSE",
+
+  //Player reducer types
+  ADD_SONG: "ADD_SONG",
+  PLAY_SONG: "PLAY_SONG",
 };
 
 export const LANGUAGES = {
@@ -20,5 +24,13 @@ export const LANGUAGES = {
   ENG: "en",
   CHN: "chn",
   FRA: "fr"
+}
+
+export const SECTIONS = {
+  ARTIST: "ARTIST",
+  ALBUM: "ALBUM",
+  TRACK: "TRACK",
+  USER: "USER",
+  PLAYLIST: "PLAYLIST"
 }
 

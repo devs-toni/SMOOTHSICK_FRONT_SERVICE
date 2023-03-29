@@ -1,13 +1,16 @@
 import AudioPlayer from 'react-h5-audio-player';
+import { usePlayer } from '../context/PlayerContext';
 
 const Player = () => {
+
+  const { playerState } = usePlayer();
 
   return (
     <div className='pt-10'>
       <AudioPlayer
-        //autoPlay
-        src="https://res.cloudinary.com/dmkdsujzh/video/upload/v1644587219/tracks-dev/Lessky_-_Un_Ratito_Nama__Prod__Duran_The_Coach__npuws5.mp3"
-        onPlay={e => console.log('onPlay')}
+        autoPlay
+        src={playerState.current}
+        onPlay={e => console.log(playerState.current)}
       />
     </div>
   )
