@@ -15,13 +15,16 @@ const OutputBox = ({ obj, targetClass, type }) => {
   const [canPlay, setCanPlay] = useState(false);
 
   useLayoutEffect(() => {
-    if (type === SECTIONS.ARTIST) {
+    if (type == SECTIONS.ARTIST) {
       setImage(obj.photoUrl)
-    } else if (type === SECTIONS.TRACK) {
+    } else if (type == SECTIONS.TRACK) {
       setCanPlay(true);
       setImage(obj.thumbnail)
-    } else
+    } else if (type == SECTIONS.ALBUM) {
       setImage(obj.imageUrl)
+    } else if (type == SECTIONS.PLAYLIST) {
+      setImage(obj.thumbnail)
+    }
   }, [])
 
   const isTrack = type === SECTIONS.TRACK ? true : false;

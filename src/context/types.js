@@ -27,10 +27,10 @@ export const LANGUAGES = {
 }
 
 export const SECTIONS = {
-  ARTIST: "ARTIST",
-  ALBUM: "ALBUM",
-  TRACK: "TRACK",
-  USER: "USER",
-  PLAYLIST: "PLAYLIST"
+  ARTIST: "ARTISTS",
+  ALBUM: "ALBUMS",
+  TRACK: "TRACKS",
+  USER: "USERS",
+  PLAYLIST: "PLAYLISTS"
 }
 
