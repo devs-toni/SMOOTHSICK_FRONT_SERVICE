@@ -6,7 +6,7 @@ export const LayoutPage = () => {
     <>
       <NavBar />
       <MyRouter />
-{/*       <Player /> */}
+      <Player />
     </>
   )
 }
