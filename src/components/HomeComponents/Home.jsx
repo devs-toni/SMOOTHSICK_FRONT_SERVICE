@@ -1,4 +1,4 @@
-import { Cover, Section, Category, useAuthContext } from '../../index';
+import { Cover, Section, Slider, useAuthContext } from '../../index';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
@@ -247,15 +247,15 @@ const Home = () => {
         </div>
 
         <div className="rows">
-          <Category
+          <Slider
             name="Title"
             list={albums}
           />
-          <Category
+          <Slider
             name="Title"
             list={albums}
           />
-          <Category
+          <Slider
             name="Title"
             list={albums}
           />
