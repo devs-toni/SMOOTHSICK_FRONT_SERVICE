@@ -1,12 +1,10 @@
 import { useReducer } from "react";
-import { useContext } from "react";
+import { useContext, createContext } from "react";
 import { useMemo } from "react";
-
-const { createContext } = require("react");
 
 const PlayerContext = createContext();
 
-export const usePlayer = () => => {
+export const usePlayer = () => {
   return useContext(PlayerContext);
 }
 

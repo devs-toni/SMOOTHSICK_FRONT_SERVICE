@@ -29,6 +29,7 @@ export * from './config';
 export * from './context/AuthContext';
 export * from './context/GlobalContext';
 export * from './context/LanguageContext';
+export * from './context/PlayerContext';
 export * from './context/UserContext';
 export * from './context/types';
 export * from './hooks/useForm';
