@@ -228,6 +228,7 @@ const Home = () => {
 
   return (
     <div className='pb-20'>
+      <h1 className='invisible'>Smoothsick</h1>
       <div className="home">
         <div className="home__carousel">
           <Cover
