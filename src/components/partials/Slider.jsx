@@ -5,7 +5,7 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useRef, useState } from 'react';
 
 
-const Category = ({ list, name }) => {
+const Slider = ({ list, name }) => {
 
 
 
@@ -60,4 +60,4 @@ const Category = ({ list, name }) => {
   )
 }
 
-export default Category
+export default Slider
