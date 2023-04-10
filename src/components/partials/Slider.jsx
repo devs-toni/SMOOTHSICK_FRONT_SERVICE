@@ -1,11 +1,11 @@
 
-import { OutputBox } from '../../index';
+import { OutputBox, SECTIONS } from '../../index';
 import { v4 as uuidv4 } from 'uuid'
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useRef, useState } from 'react';
 
 
-const Slider = ({ list, name }) => {
+const Slider = ({ list, name, type }) => {
 
 
 
@@ -32,21 +32,19 @@ const Slider = ({ list, name }) => {
         list.length > 0 && (
           <>
             <h1 className="text-2xl mb-5">{name}</h1>
-            <div className='row__arrows'>
+{/*             <div className='row__arrows'>
               <MdArrowBackIosNew className={`row__arrows--arrow ${leftIsMoved && 'invisible'}`} onClick={() => handleClick("back")} />
               <MdArrowForwardIos className={`row__arrows--arrow ${rightIsMoved && 'invisible'}`} onClick={() => handleClick("forward")} />
-            </div>
+            </div> */}
             <div className='row__list' ref={divRef}>
               {
-                list.map(({ id, name, imageUrl, artist }) => {
+                list.map((obj) => {
                   return (
                     <OutputBox
                       key={uuidv4()}
-                      id={id}
-                      name={name}
-                      image={imageUrl}
-                      artist={artist}
+                      obj={obj}
                       targetClass="list"
+                      type={type}
                     />
                   )
                 })

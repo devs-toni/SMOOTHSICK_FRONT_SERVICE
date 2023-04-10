@@ -70,52 +70,18 @@ const Search = () => {
         switch (active.toLowerCase()) {
           case "playlists":
             setNameFilter(text.filters.playlists)
-            firstResults = firstResults.map(playlist => {
-              return {
-                name: playlist.name,
-                img: playlist.thumbnail,
-                artist: ""
-              }
-            })
             break;
           case "albums":
             setNameFilter(text.filters.albums)
-            firstResults = firstResults.map(album => {
-              return {
-                name: album.name,
-                img: album.imageUrl,
-                artist: album.artist
-              }
-            })
             break;
           case "tracks":
             setNameFilter(text.filters.tracks)
-            firstResults = firstResults.map(track => {
-              return {
-                name: track.name,
-                img: track.thumbnail,
-                artist: track.artist
-              }
-            })
             break;
           /*           case "users":
-                      firstResults = firstResults.map(user => {
-                        return {
-                          name: user.name,
-                          img: user.profilePicture,
-                          artist: ""
-                        }
-                      })
+
                       break; */
           case "artists":
             setNameFilter(text.filters.artists)
-            firstResults = firstResults.map(artist => {
-              return {
-                name: artist.name,
-                img: artist.photoUrl,
-                artist: ""
-              }
-            })
             break;
         }
         setResults(firstResults)
@@ -146,56 +112,21 @@ const Search = () => {
         case "playlists":
           setNameFilter(text.filters.playlists)
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
-          firstResults = firstResults.map(playlist => {
-            return {
-              name: playlist.name,
-              img: playlist.thumbnail,
-              artist: ""
-            }
-          })
           break;
         case "albums":
           setNameFilter(text.filters.albums)
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
-          firstResults = firstResults.map(album => {
-            return {
-              name: album.name,
-              img: album.imageUrl,
-              artist: album.artist
-            }
-          })
           break;
         case "tracks":
           setNameFilter(text.filters.tracks)
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
-          firstResults = firstResults.map(track => {
-            return {
-              name: track.name,
-              img: track.thumbnail,
-              artist: track.artist
-            }
-          })
           break;
         /*         case "users":
                   firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
-                  firstResults = firstResults.map(user => {
-                    return {
-                      name: user.name,
-                      img: user.profilePicture,
-                      artist: ""
-                    }
-                  })
                   break; */
         case "artists":
           setNameFilter(text.filters.artists)
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
-          firstResults = firstResults.map(artist => {
-            return {
-              name: artist.name,
-              img: artist.photoUrl,
-              artist: ""
-            }
-          })
           break;
         case "all":
           setNameFilter(text.filters.all)
@@ -252,14 +183,13 @@ const Search = () => {
                   }
                   <div className='search__section'>
                     {
-                      results.map(({ name, img, artist }) => {
+                      results.map(obj => {
                         return (
                           <OutputBox
                             key={uuidv4()}
-                            image={img}
-                            name={name}
-                            artist={artist}
+                            obj={obj}
                             targetClass="search"
+                            type={nameFilter.toUpperCase()}
                           />
                         )
                       })

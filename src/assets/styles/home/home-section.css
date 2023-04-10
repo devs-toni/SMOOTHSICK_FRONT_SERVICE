@@ -15,7 +15,7 @@
   margin-bottom: 10px;
 }
 
-.section__chart {
+.row__chart--item {
   display: flex;
   margin: 20px 0 0 0;
   border-radius: 5px;
@@ -30,24 +30,26 @@
 .chart__img-container--img {
   max-width: 120px;
   object-fit: cover;
+  min-height: 122px;
 }
 
-.chart__data-container {
+.chart__data {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: start;
 }
-.chart__data-container--data {
+
+.chart__data--name {
   font-size: 1.1em;
-}
-.chart__data-container--data-title {
   font-weight: 500;
+  margin-bottom: 10px;
 }
-.chart__data-container--data-artist {
-  font-size: 0.7em;
+.chart__data--artist {
+  font-size: 0.8em;
   font-style: italic;
 }
-.chart__data-container--like {
+.chart__data--like {
   padding-right: 20px;
   align-self: center;
 }

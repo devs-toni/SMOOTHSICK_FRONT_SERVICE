@@ -1,31 +1,34 @@
-import { Cover, Section, Slider, useAuthContext } from '../../index';
+import { Cover, Section, SECTIONS, Slider, useAuthContext, useGlobalContext, useLanguage } from '../../index';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 const tracks = [
   [
     {
-      "id": 1,
-      "name": "Better of alone",
-      "artist": "RXBYN",
-      "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644583757/tracks-thumbnails-dev/better_off_alone_gfmcby.jpg",
-      "genre": "piano",
-      "liked": true
+      "id": 10,
+      "name": "Healin My Blues",
+      "artist": "BJ Wilbanks",
+      "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644427496/tracks-thumbnails/thumbnail-1644427496210_qqpy4a.jpg",
+      "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644523019/tracks/track-1644523017728_qb6wq4.mp3",
+      "genre": "soul",
+      "liked": false
     },
     {
-      "id": 2,
-      "name": "Alone",
-      "artist": "Color Out",
-      "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644583757/tracks-thumbnails-dev/alone_rfib7a.jpg",
+      "id": 11,
+      "name": "Head Over Heels (Friend Group Remix)",
+      "artist": "The Devil Music Co.",
+      "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644585554/tracks-dev/The_Devil_Music_Co._-_Head_Over_Heels__Friend_Group_Remix__buotnt.mp3",
+      "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644585551/tracks-thumbnails-dev/Head_Over_Heels_Friend_Group_Remix_c9uatt.jpg",
       "genre": "poprock",
-      "liked": true
+      "liked": false
     },
     {
-      "id": 3,
-      "name": "Mahidevran - Maze of sorrow",
-      "artist": "MAHIDEVRAN ROCK BAND",
-      "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644583757/tracks-thumbnails-dev/Maze_of_sorrow_r1crlr.jpg",
-      "genre": "chillout",
+      "id": 12,
+      "name": "Under Water",
+      "artist": "THE.MADPIX.PROJECT",
+      "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644586422/tracks-dev/The.madpix.project_-_Under_Water_2_gyvrkl.mp3",
+      "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644586423/tracks-thumbnails-dev/Under_Water_yoirsy.jpg",
+      "genre": "electronic",
       "liked": false
     },
   ],
@@ -79,133 +82,18 @@ const tracks = [
     },
   ]
 ]
-const artists = [
-  {
-    "id": 1,
-    "name": "Kim Cesarion",
-    "genres": ["swedish pop", "swedish soul"],
-    "popularity": 38,
-    "photoUrl": "https://i.scdn.co/image/ab6761610000e5eb842fae710a21f648e26dd910"
-  },
-  {
-    "id": 2,
-    "name": "C.Gambino",
-    "genres": [
-      "swedish gangsta rap",
-      "swedish hip hop",
-      "swedish trap pop"
-    ],
-    "popularity": 56,
-    "photoUrl": "https://i.scdn.co/image/ab6761610000e5eb9fb2b5ff325f43536a2a4ae2"
-  },
-  {
-    "id": 3,
-    "name": "Nicky Romero",
-    "genres": [
-      "big room",
-      "dance pop",
-      "dutch edm",
-      "edm",
-      "electro house",
-      "pop dance",
-      "pop edm",
-      "progressive electro house",
-      "progressive house",
-      "tropical house"
-    ],
-    "popularity": 63,
-    "photoUrl": "https://i.scdn.co/image/ab6761610000e5eb8d683372296589f7c718dea6"
-  }
-]
-const albums = [
-  {
-    "id": 1,
-    "name": "Flyga",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cfb34a37cfed6297d8c18231",
-    "artist": "Kim Cesarion"
-  },
-  {
-    "id": 2,
-    "name": "XXX (Bow Wow Wow)",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273256e16efc88a39e4795d5f32",
-    "artist": "C.Gambino"
-  },
-  {
-    "id": 3,
-    "name": "Stay A Little Longer",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732cf9821eb5087702a63330b5",
-    "artist": "Nicky Romero"
-  },
-  {
-    "id": 4,
-    "name": "WTF",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730b7020f4bce3fc16f5370df3",
-    "artist": "Denz"
-  },
-  {
-    "id": 5,
-    "name": "Vivaldi",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a7fc8699c8a8c6dc4b90c948",
-    "artist": "Jesper Swärd"
-  },
-  {
-    "id": 6,
-    "name": "Velvet Pony Trax 11 part 2",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b27347d2bc41f459a0422c3dfff5",
-    "artist": "Axel Boman"
-  },
-  {
-    "id": 7,
-    "name": "PARTYPINGLA",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e467c6a0b070f390daa47693",
-    "artist": "Rasmus Hultgren"
-  },
-  {
-    "id": 8,
-    "name": "Someone To Love",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e9e5fbbde2d4147260db99bf",
-    "artist": "Dimitri Vangelis & Wyman"
-  },
-  {
-    "id": 9,
-    "name": "I samma bil",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b27349108981b176704992078242",
-    "artist": "Hemliga Klubben"
-  },
-  {
-    "id": 6,
-    "name": "Velvet Pony Trax 11 part 2",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b27347d2bc41f459a0422c3dfff5",
-    "artist": "Axel Boman"
-  },
-  {
-    "id": 7,
-    "name": "PARTYPINGLA",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e467c6a0b070f390daa47693",
-    "artist": "Rasmus Hultgren"
-  },
-  {
-    "id": 8,
-    "name": "Someone To Love",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e9e5fbbde2d4147260db99bf",
-    "artist": "Dimitri Vangelis & Wyman"
-  },
-  {
-    "id": 9,
-    "name": "I samma bil",
-    "imageUrl": "https://i.scdn.co/image/ab67616d0000b27349108981b176704992078242",
-    "artist": "Hemliga Klubben"
-  }
-]
 
 
 const Home = () => {
 
+  const { text } = useLanguage();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedTracks, setSelectedTracks] = useState(tracks[0]);
   const [loaded, setLoaded] = useState(false);
 
+
   const { authState, resetFirstTime } = useAuthContext();
+  const { dataState } = useGlobalContext();
 
   useEffect(() => {
     if (authState.firstTime) {
@@ -223,7 +111,6 @@ const Home = () => {
       )
       resetFirstTime();
     }
-
   }, [])
 
   return (
@@ -232,7 +119,7 @@ const Home = () => {
       <div className="home">
         <div className="home__carousel">
           <Cover
-            artists={artists}
+            artists={dataState.artists}
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
             tracks={tracks}
@@ -248,21 +135,29 @@ const Home = () => {
 
         <div className="rows">
           <Slider
-            name="Title"
-            list={albums}
+            name={text.filters.tracks}
+            list={dataState.tracks}
+            type={SECTIONS.TRACK}
           />
           <Slider
-            name="Title"
-            list={albums}
+            name={text.filters.albums}
+            list={dataState.albums}
+            type={SECTIONS.ALBUM}
           />
           <Slider
-            name="Title"
-            list={albums}
+            name={text.filters.artists}
+            list={dataState.artists}
+            type={SECTIONS.ARTIST}
+          />
+          <Slider
+            name={text.filters.playlists}
+            list={dataState.playlists}
+            type={SECTIONS.PLAYLIST}
           />
         </div>
       </div>
       <div className={`transition-img ${loaded ? 'loaded' : ''}`} style={{
-        backgroundImage: `url(${artists[selectedIndex].photoUrl})`
+        backgroundImage: `url(${dataState.artists[selectedIndex].photoUrl})`
       }}></div>
     </div>
   )

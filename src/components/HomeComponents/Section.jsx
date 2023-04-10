@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Chart, useLanguage } from '../../index';
+import { OutputBox, SECTIONS, useLanguage } from '../../index';
 
 const Section = ({ tracks, loaded }) => {
   const { text } = useLanguage();
@@ -8,14 +8,14 @@ const Section = ({ tracks, loaded }) => {
       <h3 className='section__title'>{text.charts.title}</h3>
       <div>
         {
-          tracks.map(({ id, name, artist, thumbnail, liked }) => {
+          tracks.map(obj => {
             return (
-              <Chart
+              <OutputBox
                 key={uuidv4()}
-                img={thumbnail}
-                title={name}
-                artist={artist}
-                isLike={liked} />
+                obj={obj}
+                targetClass="chart"
+                type={SECTIONS.TRACK}
+              />
             )
           })
         }

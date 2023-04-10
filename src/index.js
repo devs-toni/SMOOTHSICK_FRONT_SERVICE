@@ -7,7 +7,6 @@ export * from './components/ChangePasswordComponents/ChangePassword';
 export { default as Details } from './components/DetailsComponents/Details';
 export * from './components/FavouritesComponents/Favourites';
 export * from './components/FavouritesComponents/FavouritesSongCard';
-export { default as Chart } from './components/HomeComponents/Chart';
 export { default as Cover } from './components/HomeComponents/Cover';
 export { default as Home } from './components/HomeComponents/Home';
 export { default as Section } from './components/HomeComponents/Section';
