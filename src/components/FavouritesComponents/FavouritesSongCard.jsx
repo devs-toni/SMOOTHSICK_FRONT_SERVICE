@@ -5,9 +5,8 @@ import { SlOptionsVertical } from 'react-icons/sl'
 
 export const FavouritesSongCard = ({ id, name, artist, url, thumbnail, genre, isLike, count }) => {
 
-    const handleLick = (e) => {
-        console.log(e.target);
-    }
+
+
     return (
         <div className='flex w-full items-center justify-center h-full'>
             <div className='w-full md:max-w-2xl lg:max-w-3xl min-w-[100%] pt-5'>
@@ -20,7 +19,7 @@ export const FavouritesSongCard = ({ id, name, artist, url, thumbnail, genre, is
                     <p className="text-xs text-center font-normal w-4/12 md:text-md ">{artist}</p>
                     <span className="text-xs text-center w-2/12 md:text-md grow">{genre}</span>
                     <div className={`${isLike ? "border-red-500" : "border-gray-400"} flex items-center justify-center text-xs md:text-2xl rounded-full my-auto cursor-pointer w-2/12`}>
-                        <FaHeart onClick={handleLick} className={`${isLike ? "text-green-400" : "text-gray-600"} mr-4`} />
+                        <FaHeart className={`${isLike ? "text-green-400" : "text-gray-600"} mr-4`} />
                         <SlOptionsVertical className="text-gray-600" />
                     </div>
                 </div>

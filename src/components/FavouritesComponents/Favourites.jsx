@@ -10,7 +10,7 @@ export const Favourites = () => {
   const { authState } = useAuthContext();
   const { text } = useLanguage();
   const [totalTracks, setTotalTracks] = useState([])
-
+  
   useEffect(() => {
     setTotalTracks(dataState.tracks);
   }, [])
@@ -42,8 +42,7 @@ export const Favourites = () => {
         </div>
         {
           dataState.tracks.map(({ id, name, artist, url, thumbnail, genre }, index) => {
-
-
+            
             return (
               <FavouritesSongCard
                 key={uuidv4()}

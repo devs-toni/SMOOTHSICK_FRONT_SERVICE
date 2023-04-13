@@ -34,7 +34,9 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require('flowbite/plugin')
+    require('tailwindcss'),
+    require('flowbite/plugin'),
+    require('autoprefixer')
 
   ]
 }
