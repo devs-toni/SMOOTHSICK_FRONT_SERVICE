@@ -5,8 +5,10 @@ import { SECTIONS } from "../../context/types";
 import { ALBUM, DETAILS } from "../../router/paths";
 import { FaHeart } from 'react-icons/fa';
 import { useAuthContext } from "../../context/AuthContext";
+import './HomeSongCard.css';
+import './HomeSongBox.css';
 
-const OutputBox = ({ obj, targetClass, type }) => {
+const HomeSongCard = ({ obj, targetClass, type }) => {
   const { id, name, artist, liked } = obj;
   const { playSong } = usePlayer();
   const { authState } = useAuthContext();
@@ -59,4 +61,4 @@ const OutputBox = ({ obj, targetClass, type }) => {
   )
 }
 
-export default OutputBox
+export default HomeSongCard

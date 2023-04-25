@@ -50,8 +50,9 @@ export const NavBar = () => {
       : setAsideLinks(
         [
           { key: 1, path: HOME, icon: <AiFillHome color="#fff" className="h-6 w-6 " />, text: text.navbar.home },
-          { key: 3, path: SEARCH, icon: <TbSearch color="#fff" className="h-6 w-6" />, text: text.navbar.search },
-          { key: 2, path: LOGIN, icon: <FaUserShield color="#fff" className="h-6 w-6 " />, text: text.navbar.login },
+          { key: 2, path: SEARCH, icon: <TbSearch color="#fff" className="h-6 w-6" />, text: text.navbar.search },
+          { key: 3, path: LOGIN, icon: <FaUserShield color="#fff" className="h-6 w-6 " />, text: text.navbar.login },
+          { key: 4, path: SIGNUP, icon: <FaUserPlus color="#fff" className="h-6 w-6 " />, text: text.navbar.register }
         ]
       )
   }, [authState.isAuthenticated])
@@ -205,26 +206,46 @@ export const NavBar = () => {
             </section>
             <section className='flex items-center justify-center gap-20 w-full'>
               <div className='flex flex-col ml-6 md:ml-0 justify-center gap-6 h-full lg:w-full text-sm '>
-                <NavLink to={ARTIST} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
-                  <li className='inline-flex gap-3 w-full lg:w-16 md:justify-left'>
-                    <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
-                  </li>
-                </NavLink>
-                <NavLink to={ALBUM} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
-                  <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
-                    <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
-                  </li>
-                </NavLink>
-                <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
-                  <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
-                    <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
-                  </li>
-                </NavLink>
-                <NavLink to={FAVOURITES} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8 " : "flex justify-center")}>
-                  <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
-                    <span className='md:hidden lg:block cursor-pointer'>{text.liked.name}</span>
-                  </li>
-                </NavLink>
+                {
+                  authState.isAuthenticated
+                    ?
+                    <>
+
+                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                        <li className='inline-flex gap-3 w-full lg:w-16 md:justify-left'>
+                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
+                        </li>
+                      </NavLink>
+                      <NavLink to={ALBUM} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
+                        </li>
+                      </NavLink>
+                      <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
+                        </li>
+                      </NavLink>
+                      <NavLink to={FAVOURITES} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8 " : "flex justify-center")}>
+                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                          <span className='md:hidden lg:block cursor-pointer'>{text.liked.name}</span>
+                        </li>
+                      </NavLink>
+                    </>
+                    :
+                    <>
+                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                        <li className='inline-flex gap-3 w-full lg:w-16 md:justify-left'>
+                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
+                        </li>
+                      </NavLink>
+                      <NavLink to={ALBUM} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
+                        </li>
+                      </NavLink>
+                    </>
+                }
               </div>
             </section>
             {

@@ -14,10 +14,6 @@ const Song = ({ id, name, artist, url, thumbnail, genre, isLike }) => {
           <p className='text-xs sm:text-md mt-1 text-gray-500'>{artist}</p>
         </div>
 
-        <div>
-          
-        </div>
-
         <div className={`${isLike ? "border-red-500" : "border-gray-400"} flex sm:mr-5 text-xs md:text-2xl rounded-full my-auto cursor-pointer`}>
           <FaHeart className={`${isLike ? "text-green-400" : "text-gray-600"} mr-4`} />
           <SlOptionsVertical className="text-gray-600" />

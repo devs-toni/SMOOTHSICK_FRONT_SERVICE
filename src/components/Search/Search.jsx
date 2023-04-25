@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import { Filters, useLanguage, useGlobalContext, SearchSection, OutputBox } from '../../index';
+import { Filters, useLanguage, useGlobalContext, SearchSection, HomeSongCard } from '../../index';
 import { FILTER_TYPES } from './filterTypes';
 import { v4 as uuidv4 } from 'uuid';
 import "./Search.css";
@@ -186,7 +186,7 @@ const Search = () => {
                     {
                       results.map(obj => {
                         return (
-                          <OutputBox
+                          <HomeSongCard
                             key={uuidv4()}
                             obj={obj}
                             targetClass="search"

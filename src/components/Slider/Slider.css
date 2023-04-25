@@ -1,5 +1,5 @@
 .row {
-  margin: 100px 0 70px 0;
+  margin: 70px 0 70px 0;
   height: fit-content;
   z-index: 10;
   position: relative;
@@ -17,87 +17,29 @@
   position: relative;
 }
 
-.row__list--item {
-  margin-right: 10px;
-  padding: 20px 20px;
-  height: 100%;
-  border-radius: 10px;
-  transition: all .3s ease-in;
-  max-width: fit-content;
-
-}
-.row__list--item:hover {
-  transform: scale(1.01);
-}
-
 .row__arrows {
-  width: 100%;
+  width: 105%;
+  margin-left: -2.5%;
   display: flex;
   position: absolute;
   height: 90%;
   align-items: center;
   justify-content: space-between;
-  z-index: 11;
+  z-index: 1;
 }
 
 .row__arrows--arrow {
   width: 30px;
   height: 140px;
   padding: 0;
-  background-color: rgba(70, 70, 70, 0.555);
   cursor: pointer;
 }
 .row__arrows--arrow:hover {
   opacity: 0.2;
 }
 
-.list__img-container {
-  width: 140px;
-  height: 140px;
-}
-
-.list__img-container--img {
-  max-height: 140px;
-  object-fit: cover;
-  transition: all 0.12s ease-in;
-  height: 100%;
-  min-width: 100%;
-}
-
-.list__data {
-  margin-top: 15px;
-  font-size: 1.05em;
-  word-break: break-all;
-  max-width: 140px;
-}
-.list__data--name {
-  font-weight: 500;
-}
-.list__data--artist {
-  font-size: 0.8em;
-  font-style: italic;
-}
-
-@media screen and (max-width: 1880px) {
-  .list__img-container {
-    max-width: 120px;
-    height: unset;
-  }
-  .list__img-container--img {
-    height: unset;
-  }
-}
-
 @media screen and (max-width: 1580px) {
-  .list__img-container {
-    max-width: 100px;
-  }
-  .row__list--item {
-    padding: 10px;
-  }
-  .list__data {
-    font-size: 0.8em;
-  }
+
   .row__arrows {
     height: 80%;
   }
@@ -107,18 +49,10 @@
   }
 }
 
-@media screen and (max-width: 1280px) {
-  .list__img-container {
-    max-width: 80px;
-  }
-}
-
 @media screen and (max-width: 920px) {
-  .list__img-container {
-    max-width: 60px;
-  }
-  .list__data {
-    font-size: 0.6em;
+
+  .row {
+    margin: 40px 0 40px 0;
   }
   .row__arrows {
     height: 75%;
@@ -129,18 +63,8 @@
   }
 }
 
-@media screen and (max-width: 450px) {
-  .list__img-container {
-    max-width: 50px;
-  }
-  .list__data {
-    font-size: 0.6em;
-  }
-  .row__list--item {
-    border-radius: 0;
-    padding: 5px;
-    margin-right: 5px;
-  }
+@media screen and (max-width: 768px) {
+
   .row__arrows {
     height: 70%;
   }
@@ -149,3 +73,4 @@
     height: 60px;
   }
 }
+
