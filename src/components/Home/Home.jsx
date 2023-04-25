@@ -32,6 +32,15 @@ const tracks = [
       "genre": "electronic",
       "liked": false
     },
+    {
+      "id": 10,
+      "name": "Healin My Blues",
+      "artist": "BJ Wilbanks",
+      "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644427496/tracks-thumbnails/thumbnail-1644427496210_qqpy4a.jpg",
+      "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644523019/tracks/track-1644523017728_qb6wq4.mp3",
+      "genre": "soul",
+      "liked": false
+    }
   ],
   [
     {
@@ -127,12 +136,17 @@ const Home = () => {
             loaded={loaded}
             setLoaded={setLoaded}
           />
+        </div>
+        <div className='home__sections'>
+          <Section
+            tracks={selectedTracks}
+            loaded={loaded}
+          />
           <Section
             tracks={selectedTracks}
             loaded={loaded}
           />
         </div>
-
         <div className="rows">
           <Slider
             name={text.filters.tracks}

@@ -1,0 +1,89 @@
+.row__list--item {
+  margin-right: 10px;
+  padding: 17px 17px;
+  height: 100%;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
+  max-width: fit-content;
+}
+.row__list--item:hover {
+  transform: scale(1.01);
+}
+
+.list__img-container {
+  width: 140px;
+  height: 140px;
+}
+
+.list__img-container--img {
+  max-height: 140px;
+  object-fit: cover;
+  transition: all 0.12s ease-in;
+  height: 100%;
+  min-width: 100%;
+}
+
+.list__data {
+  margin-top: 15px;
+  font-size: 1.05em;
+  word-break: break-all;
+  max-width: 140px;
+}
+.list__data--name {
+  font-weight: 500;
+}
+.list__data--artist {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+@media screen and (max-width: 1880px) {
+  .list__img-container {
+    max-width: 120px;
+    height: unset;
+  }
+  .list__img-container--img {
+    height: unset;
+  }
+}
+
+@media screen and (max-width: 1580px) {
+  .list__img-container {
+    max-width: 100px;
+  }
+  .row__list--item {
+    padding: 10px;
+  }
+  .list__data {
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .list__img-container {
+    max-width: 80px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .list__img-container {
+    max-width: 60px;
+  }
+  .list__data {
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .list__img-container {
+    max-width: 50px;
+  }
+  .list__data {
+    font-size: 0.6em;
+  }
+  .row__list--item {
+    border-radius: 0;
+    padding: 5px;
+    margin-right: 5px;
+  }
+}

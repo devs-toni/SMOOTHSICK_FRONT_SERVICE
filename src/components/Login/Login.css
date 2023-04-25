@@ -1,0 +1,16 @@
+.headphones-image {
+  background-image: url("../../imgs/register.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  filter: opacity(0.1) grayscale(5);
+  z-index: -1;
+}
+
+.image-z {
+  position: relative;
+  z-index: 10;
+}

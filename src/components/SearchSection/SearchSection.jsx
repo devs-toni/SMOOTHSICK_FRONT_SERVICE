@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { OutputBox } from '../../index';
+import { HomeSongCard } from '../../index';
 
 const SearchSection = ({ check, name, list }) => {
 
@@ -12,7 +12,7 @@ const SearchSection = ({ check, name, list }) => {
           (
             list.map(obj => {
               return (
-                <OutputBox
+                <HomeSongCard
                   key={uuidv4()}
                   obj={obj}
                   targetClass="search"
