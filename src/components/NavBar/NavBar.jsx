@@ -86,11 +86,11 @@ export const NavBar = () => {
     <>
       <Toaster />
       <div className="fixed top-0 z-50 w-full md:bg-transparent md:shadow-none">
-        <nav className="flex flex-row items-center justify-between p-3 md:p-3 pr-4 pl-4 pt-3 md:pr-8 md:pl-11 lg:pr-5 lg:pl-5 mt-2">
-          <NavLink to="/" className="h-12 w-14 hidden md:block cursor-pointer">
-            <img src={exampleLogo} alt="logo" />
+        <nav className="flex flex-row-reverse md:flex-row items-center justify-between p-3 pr-4 pl-4 md:pr-4 md:pl-4 lg:pr-5 lg:pl-5">
+          <NavLink to="/" className=" hidden md:block cursor-pointer">
+            <img src={exampleLogo} alt="logo" className='w-12 lg:w-14' />
           </NavLink>
-          <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
+          <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
             <RiMenu4Fill className='h-6 w-6' />
           </button>
           <div className="flex flex-row justify-center items-center flex-wrap">
@@ -100,7 +100,7 @@ export const NavBar = () => {
                   className='bg-zinc-700 border-none px-0 py-0'
                   inline
                   id="user-drop-id"
-                  label={authState.isAuthenticated ? <img src={user.profilePicture} className="w-8 rounded-full" /> : <HiUserCircle size={40}
+                  label={authState.isAuthenticated ? <img src={user.profilePicture} className="w-10 rounded-full" /> : <HiUserCircle size={40}
                   />}
                   placement="top-start"
                   arrowIcon={false}
@@ -146,7 +146,7 @@ export const NavBar = () => {
                           </>
                       }
                       <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
-                        <div className=" flex flex-row justify-center pl-2 items-center"> 
+                        <div className=" flex flex-row justify-center pl-2 items-center">
                           {
                             lenguageSelected.map((item) => (
                               <img
@@ -179,51 +179,48 @@ export const NavBar = () => {
         </nav >
       </div >
 
-      <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-full px-10 bg-primary-color md:bg-transparent h-screen transition-transform -translate-x-full md:translate-x-0 md:w-36 lg:w-24 max-h-100 min-h-max" aria-label="Sidebar">
-        <div className="flex flex-col justify-around items-center h-full px-3 gap-3">
-          <ul className="space-y-2 flex flex-col gap-7 mt-2 ">
-            <div className='flex flex-col gap-6 md:rounded-full md:p-4 lg:rounded-full lg:p-4 '>
-
+      <aside id="logo-sidebar" className="flex justify-center w-full h-full items-center fixed z-40 bg-primary-color md:bg-transparent transition-transform -translate-x-full md:translate-x-0 md:w-20 lg:w-24" aria-label="Sidebar">
+        <div className="h-full">
+          <ul className="space-y-2 flex flex-col gap-7 h-full w-full justify-center items-center">
+            <div className='flex flex-col gap-6 md:rounded-full md:p-4 lg:rounded-full lg:p-4 items-left'>
               {
                 asideLinks.map((item) => (
                   <NavLink key={item.key} to={item.path} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
-                    <li className='inline-flex gap-3 items-center hover:scale-110'>
+                    <li className='inline-flex gap-3 hover:scale-110'>
                       {item.icon}
                       <span className=' md:hidden lg:hidden'>{item.text}</span>
                     </li>
                   </NavLink>
                 ))
               }
-
               <NavLink to={`/${SEARCH}`} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar">
-                <li className='inline-flex gap-3 items-center hover:scale-110'>
-                  <svg aria-hidden="true" className="w-5 h-5" fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                <li className='inline-flex gap-3  hover:scale-110'>
+                  <svg aria-hidden="true" className="w-6 h-6" fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
                   <span className=' md:hidden lg:hidden'>{text.navbar.search}</span>
                 </li>
               </NavLink>
             </div>
-
-            <div className='flex flex-col gap-6 md:rounded-full md:p-4 lg:rounded-full md:bg-box-icons lg:p-4 '>
+            <div className='flex flex-col items-left gap-6 md:rounded-full md:p-4 lg:rounded-full lg:p-4 '>
               {
                 !authState.isAuthenticated
                   ?
                   <>
                     <NavLink to={`/${LOGIN}`} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
-                      <li className='inline-flex gap-3 items-center hover:scale-110 '>
+                      <li className='inline-flex gap-3  hover:scale-110 '>
                         <FaUserShield color="#fff" className="h-6 w-6 " />
                         <span className=' md:hidden lg:hidden' > {text.navbar.login}</span>
                       </li>
                     </NavLink>
 
                     <NavLink to={`/${SIGNUP}`} className={({ isActive }) => (isActive ? "opacity-40" : "")} data-drawer-hide="logo-sidebar" >
-                      <li className='inline-flex gap-3 items-center hover:scale-110 '>
-                        <FaUserPlus color="#fff" className="h-6 w-6 " />
+                      <li className='inline-flex gap-3 hover:scale-110 '>
+                        <FaUserPlus color="#fff" className="h-6 w-6" />
                         <span className=' md:hidden lg:hidden' > {text.navbar.register}</span>
                       </li>
                     </NavLink>
                   </>
                   :
-                  <li className='inline-flex gap-3 items-center hover:scale-125 cursor-pointer' onClick={handleLogout} data-drawer-hide="logo-sidebar">
+                  <li className='inline-flex gap-3 hover:scale-110 cursor-pointer mr-6 mt-4 md:mr-0' onClick={handleLogout} data-drawer-hide="logo-sidebar">
                     <FiLogOut color="#fff" className="h-6 w-6" />
                     <span className=' md:hidden lg:hidden' > {text.navbar.logout}</span>
                   </li>

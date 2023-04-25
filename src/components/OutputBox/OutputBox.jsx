@@ -31,13 +31,13 @@ const OutputBox = ({ obj, targetClass, type }) => {
   const isArtist = type === SECTIONS.ARTIST ? true : false;
 
   return (
-    <NavLink to={isTrack ? '' : `/${DETAILS}/album/1`}>
-      <div className={`row__${targetClass}--item bg-zinc-900`}>
+    <NavLink to={isTrack ? '' : `/${DETAILS}/album/${id}`}>
+      <div className={`row__${targetClass}--item bg-zinc-900 ` }>
         <div className={`${targetClass}__img-container`}>
           <img
             src={image}
             alt={name}
-            className={`${targetClass}__img-container--img`}
+            className={`${targetClass}__img-container--img object-cover`}
             style={isArtist ? { borderRadius: "50%" } : {}}
             width=""
             height=""

@@ -1,5 +1,5 @@
 {
-  "name": "apollofy",
+  "name": "smoothsick",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,7 +15,7 @@
     "axios": "^1.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-h5-audio-player": "^3.8.6",
+    " ": "^3.8.6",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
