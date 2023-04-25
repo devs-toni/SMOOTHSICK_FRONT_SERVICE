@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { usePlayer } from "../../context/PlayerContext";
 import { SECTIONS } from "../../context/types";
-import { DETAILS } from "../../router/paths";
+import { ALBUM, DETAILS } from "../../router/paths";
 import { FaHeart } from 'react-icons/fa';
 import { useAuthContext } from "../../context/AuthContext";
 
@@ -31,7 +31,7 @@ const OutputBox = ({ obj, targetClass, type }) => {
   const isArtist = type === SECTIONS.ARTIST ? true : false;
 
   return (
-    <NavLink to={isTrack ? '' : `/${DETAILS}/album/${id}`}>
+    <NavLink to={isTrack ? '' : `${DETAILS}${ALBUM}/${id}`}>
       <div className={`row__${targetClass}--item bg-zinc-900 ` }>
         <div className={`${targetClass}__img-container`}>
           <img
