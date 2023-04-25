@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Filters, useLanguage, useGlobalContext, SearchSection, OutputBox } from '../../index';
 import { FILTER_TYPES } from './filterTypes';
 import { v4 as uuidv4 } from 'uuid';
+import "./Search.css";
 
 const Search = () => {
 

@@ -1,6 +1,6 @@
 import { useGlobalContext, useAuthContext, useLanguage } from '../../index';
 import { v4 as uuidv4 } from 'uuid';
-import { FavouritesSongCard } from './FavouritesSongCard';
+import { FavouritesSongCard } from '../FavouritesSongCard/FavouritesSongCard';
 import { useEffect, useState } from 'react';
 
 

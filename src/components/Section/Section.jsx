@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { OutputBox, SECTIONS, useLanguage } from '../../index';
+import './Section.css';
 
 const Section = ({ tracks, loaded }) => {
   const { text } = useLanguage();

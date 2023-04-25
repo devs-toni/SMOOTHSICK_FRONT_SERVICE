@@ -1,15 +1,15 @@
-import { SongCard } from "./CategoriesSongCard";
+import { SongCard } from "../CategoriesSongCard/CategoriesSongCard";
 import { useEffect, useState, Fragment } from "react";
 import { useAuthContext, useUser, useLanguage } from '../../index';
 import { Link } from "react-router-dom";
 import { FAVOURITES } from '../../router/paths'
 import { v4 as uuidv4 } from 'uuid';
+import "./Categories.css";
 
 export const Categories = () => {
   const { userLists } = useUser();
   const { text } = useLanguage();
   const { authState } = useAuthContext();
-
 
   const [selectedList, setSelectedList] = useState();
   const [currentList, setCurrentList] = useState();
@@ -17,11 +17,7 @@ export const Categories = () => {
   const [hoverList, setHoverList] = useState();
   const [changeImg, setChangeImg] = useState();
 
-
-
   const [imgs, setImgs] = useState([]);
-
-
 
   const handleSetBgImg = ({ target }) => {
     const { id } = target;
@@ -29,7 +25,6 @@ export const Categories = () => {
     const newArray = hoverList.songs.slice(0, 4);
     setImgs(newArray.map(img => img.thumbnail));
   }
-
 
   const handleLists = (e) => {
     handleSetBgImg(e);
@@ -47,8 +42,6 @@ export const Categories = () => {
       }
     }
   }, [currentList, selectedListId, hoverList]);
-
-
 
   return (
     <>

@@ -1,6 +1,7 @@
 import { Cover, Section, SECTIONS, Slider, useAuthContext, useGlobalContext, useLanguage } from '../../index';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import './Home.css';
 
 const tracks = [
   [

@@ -3,7 +3,7 @@ import { OutputBox, SECTIONS } from '../../index';
 import { v4 as uuidv4 } from 'uuid'
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useRef, useState } from 'react';
-
+import './Slider.css';
 
 const Slider = ({ list, name, type }) => {
 

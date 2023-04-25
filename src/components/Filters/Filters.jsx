@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from '../../context/LanguageContext';
-import { FILTER_TYPES } from './filterTypes';
+import { FILTER_TYPES } from '../Search/filterTypes';
 
 const Filters = ({ active, setActive, setCurrentSearch, items }) => {
 
