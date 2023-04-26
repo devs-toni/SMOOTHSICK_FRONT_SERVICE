@@ -45,7 +45,7 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
           <img
             src={image}
             alt={name}
-            className={`${targetClass}__img-container--img object-cover`}
+            className={`${targetClass}__img-container--img object-cover w-20`}
             style={isArtist ? { borderRadius: "50%" } : {}}
             width=""
             height=""
@@ -53,7 +53,7 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
           />
         </div>
         <div className={`${targetClass}__data ${isArtist && 'text-center'}`}>
-          <p className={`${targetClass}__data--name`}>{name}</p>
+          <p className={`${targetClass}__data--name truncate`}>{name}</p>
           <p className={`${targetClass}__data--artist truncate`}>{artist}</p>
         </div>
         {
