@@ -1,0 +1,32 @@
+.section {
+  filter: opacity(0.1);
+  transition: all 0.5s ease-in-out;
+  width: 30%;
+}
+.section.loaded {
+  filter: opacity(1);
+}
+
+.section__title {
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1940px) {
+  .section {
+    width: 47%;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .section {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .section__title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,76 @@
+.row {
+  margin: 70px 0 70px 0;
+  height: fit-content;
+  z-index: 10;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+.row__list {
+  width: 100%;
+  display: flex;
+  max-height: 450px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  z-index: 15 !important;
+  position: relative;
+}
+
+.row__arrows {
+  width: 105%;
+  margin-left: -2.5%;
+  display: flex;
+  position: absolute;
+  height: 90%;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.row__arrows--arrow {
+  width: 30px;
+  height: 140px;
+  padding: 0;
+  cursor: pointer;
+}
+.row__arrows--arrow:hover {
+  opacity: 0.2;
+}
+
+@media screen and (max-width: 1580px) {
+
+  .row__arrows {
+    height: 80%;
+  }
+  .row__arrows--arrow {
+    width: 20px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+
+  .row {
+    margin: 40px 0 40px 0;
+  }
+  .row__arrows {
+    height: 75%;
+  }
+  .row__arrows--arrow {
+    width: 18px;
+    height: 70px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .row__arrows {
+    height: 70%;
+  }
+  .row__arrows--arrow {
+    width: 16px;
+    height: 60px;
+  }
+}
+

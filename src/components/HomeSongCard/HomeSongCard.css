@@ -1,0 +1,122 @@
+.row__chart--item {
+  display: flex;
+  margin: 20px 0 0 0;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.459);
+  padding: 15px;
+}
+
+.chart__img-container {
+  margin-right: 18px;
+}
+
+.chart__img-container--img {
+  max-width: 65px;
+  object-fit: cover;
+  height: 100%;
+}
+
+.chart__data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.chart__data--name {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.chart__data--artist {
+  font-size: 0.8em;
+  font-style: italic;
+}
+.chart__data--like {
+  padding-right: 20px;
+  align-self: center;
+}
+
+@media screen and (min-width: 2200px) {
+  .chart__data-container--data {
+    font-size: 1.9em;
+  }
+  .chart__img-container--img {
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 1850px) {
+  .chart__img-container--img {
+    max-width: 100px;
+  }
+}
+
+@media screen and (max-width: 1450px) {
+  .chart__img-container--img {
+    max-width: 70px;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .chart__img-container--img {
+    max-width: 50px;
+  }
+  .chart__data-container--data {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .row__chart--item {
+    width: 95%;
+    height: 55px;
+    padding: 10px;
+    margin: 5px;
+    overflow: hidden;
+  }
+  .chart__img-container--img {
+    width: 35px;
+    object-fit: cover;
+    height: 35px;
+  }
+  .chart__data {
+    font-size: 0.7em;
+  }
+  .chart__data--name {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+  }
+  .chart__data--artist {
+    font-size: 0.7em;
+  }
+  .link {
+    display: block;
+    width: 50% !important;
+    margin: 0 !important;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .chart__data {
+    font-size: 0.6em;
+  }
+  .chart__data--name {
+    font-size: 0.9em;
+  }
+  .chart__img-container {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .chart__data {
+    font-size: 0.6em;
+  }
+  .chart__data--name {
+    font-size: 0.7em;
+  }
+  .chart__data--artist {
+    font-size: 0.7em;
+  }
+}
