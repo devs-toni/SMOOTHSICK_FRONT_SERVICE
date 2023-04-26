@@ -1,5 +1,4 @@
 .row__list--item {
-  margin-right: 10px;
   padding: 17px 17px;
   height: 100%;
   border-radius: 5px;
@@ -7,6 +6,15 @@
   max-width: fit-content;
   overflow: hidden;
 }
+
+.link {
+  margin-right: 10px;
+}
+
+.link:last-child {
+  margin-right: 0;
+}
+
 .row__list--firstItem {
   margin-right: 10px;
   height: 100%;
