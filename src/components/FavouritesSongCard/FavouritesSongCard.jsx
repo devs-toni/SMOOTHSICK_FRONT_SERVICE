@@ -20,7 +20,7 @@ export const FavouritesSongCard = ({ id, name, artist, url, thumbnail, genre, is
                         <img className="rounded-lg w-16 " src={thumbnail} alt="image description" width="" height="" />
                     </div>
                     <span className="text-xs text-center w-2/12 md:text-md grow">{name}</span>
-                    <div className={`${isLike ? "border-red-500" : "border-gray-400"} flex items-center justify-center text-xs md:text-2xl rounded-full my-auto cursor-pointer w-2/12`}>
+                    <div className={`${isLike ? "border-red-500" : "border-gray-400"} w-2/12 flex items-center justify-center text-xs md:text-2xl rounded-full my-auto cursor-pointer `}>
                         <FaHeart className={`${isLike ? "text-green-400" : "text-gray-600"} mr-4`} />
                         <Link to="/">
               <GiMicrophone
