@@ -32,8 +32,8 @@ export const Favourites = () => {
         </div>
         <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
           <div className='flex items-center justify-between border-b border-b-gray-300'>
-            <p className="w-2/6">{text.liked.track}</p>
-            <p className="w-4/6"></p>
+            <p className="w-1/6">{text.liked.track}</p>
+            <p className="w-2/6"></p>
             {/* <p className="w-2/12">{text.liked.title_table}</p> */}
             <p className="w-3/6">{text.liked.album_table}</p>
             <p className="w-2/6">{text.liked.gender}</p>
