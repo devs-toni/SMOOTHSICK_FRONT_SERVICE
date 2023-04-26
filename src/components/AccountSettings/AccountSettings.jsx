@@ -8,14 +8,14 @@ const Accountsettings = () => {
 
   return (
 
-    <div className='h-full flex max-w-5xl m-auto'>
+    <div className='h-full flex flex-col max-w-5xl m-auto'>
       <div className="headphones-image"></div>
-      <div className="flex justify-around items-center flex-col pt-56 gap-7 w-full m-auto mt-10 p-10 md:max-w-xl lg:max-w-3xl xl:max-w-6xl ">
-        <div className='grid grid-cols-3 justify-start items-start py-4 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500  w-full'>
+      <div className= "flex flex-col justify-around items-center pt-56 gap-7 w-full m-auto mt-10 p-10 md:max-w-xl lg:max-w-3xl xl:max-w-6xl ">
+        <div className= 'grid md:grid-cols-3 md:justify-start items-start md:py-4 md:gap-7 md:border-t md:border-l md:border-r md:border-neutral-500 w-full'>
           <div className='flex flex-col'>
 
             <span> {text.account.account} </span>
-            <button type="button" className="text-white h-16 w-32 bg-gradient-to-r from-purple-500 to-pink-500  hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">{text.account.cancel}</button>
+            <button type="button" className="text-white h-16 w-32 bg-gradient-to-r from-purple-500 to-pink-500  hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" >{text.account.cancel}</button>
           </div>
           <div className='flex flex-col'>
             <h1> {text.account.user}</h1>
