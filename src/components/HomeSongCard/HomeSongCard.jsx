@@ -33,11 +33,11 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
   const isArtist = type === SECTIONS.ARTIST ? true : false;
 
   return (
-    <NavLink to={isTrack ? '' : `${DETAILS}${ALBUM}/${id}`}>
+    <NavLink to={isTrack ? '' : `${DETAILS}${ALBUM}/${id}`} className="link">
       <div className={`row__${targetClass}--item bg-zinc-900 ` }>
         <div className={`${targetClass}__img-container`}>
           <img
-            src={image}
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZ_YAGEN8LMYjY_KC9mziJkg3b1z4WNnZDZrAIYv6bQ&s"
             alt={name}
             className={`${targetClass}__img-container--img object-cover`}
             style={isArtist ? { borderRadius: "50%" } : {}}

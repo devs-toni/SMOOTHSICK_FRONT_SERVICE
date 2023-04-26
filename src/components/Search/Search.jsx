@@ -146,7 +146,7 @@ const Search = () => {
 
   return (
     <div className='flex w-full pb-32'>
-      <div className="sm:w-3/4 flex flex-col items-center justify-center mt-10 md:mt-24 overflow-hidden m-auto z-10">
+      <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-24 overflow-hidden m-auto z-10 md:ml-20 lg:ml-52">
         <form className='flex w-full justify-center mt-10'>
           <input
             type="text"
