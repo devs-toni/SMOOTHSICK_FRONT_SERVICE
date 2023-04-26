@@ -13,7 +13,7 @@ export const FavouritesSongCard = ({ id, name, artist, url, thumbnail, genre, is
 
     return (
         <div className='flex w-full items-center justify-center h-full'>
-            <div className='w-full md:max-w-2xl lg:max-w-3xl min-w-[100%] pt-5'>
+            <div className='w-full md:max-w-2xl lg:max-w-3xl min-w-[100%] pt-2'>
                 <div className='flex items-center rounded-xl bg-box-icons h-18'>
                   {/*   <span className='w-1/12 text-center'>{count + 1}</span> */}
                     <div className=' flex w-1/12 items-center justify-center'>
