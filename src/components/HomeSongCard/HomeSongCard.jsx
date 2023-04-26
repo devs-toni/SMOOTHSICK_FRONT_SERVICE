@@ -38,7 +38,7 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
         <div className={`${targetClass}__img-container`}>
           {
             isTrack &&
-            <div className={`${targetClass}__img-container--play-container`}>
+            <div className={`${targetClass}__img-container--play-container`} onClick={() => playSong(obj.url)}>
               <FaPlayCircle className={`${targetClass}__img-container--play-container-play`} />
             </div>
           }
@@ -49,7 +49,7 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
             style={isArtist ? { borderRadius: "50%" } : {}}
             width=""
             height=""
-            onClick={isTrack ? () => playSong(obj.url) : () => { }}
+
           />
         </div>
         <div className={`${targetClass}__data ${isArtist && 'text-center'}`}>
