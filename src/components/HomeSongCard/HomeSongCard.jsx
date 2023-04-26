@@ -8,7 +8,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import './HomeSongCard.css';
 import './HomeSongBox.css';
 
-const HomeSongCard = ({ obj, targetClass, type }) => {
+const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   const { id, name, artist, liked } = obj;
   const { playSong } = usePlayer();
   const { authState } = useAuthContext();
@@ -34,7 +34,7 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
 
   return (
     <NavLink to={isTrack ? '' : `${DETAILS}${ALBUM}/${id}`} className="link">
-      <div className={`row__${targetClass}--item bg-zinc-900 `}>
+      <div className={`${!isFirstRowSection ? `row__${targetClass}--item bg-zinc-900` : `row__${targetClass}--firstItem`}`}>
         <div className={`${targetClass}__img-container`}>
           {
             isTrack &&
@@ -52,10 +52,13 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
 
           />
         </div>
-        <div className={`${targetClass}__data ${isArtist && 'text-center'}`}>
-          <p className={`${targetClass}__data--name truncate`}>{name}</p>
-          <p className={`${targetClass}__data--artist truncate`}>{artist}</p>
-        </div>
+        {
+          !isFirstRowSection &&
+          <div className={`${targetClass}__data ${isArtist && 'text-center'}`}>
+            <p className={`${targetClass}__data--name`}>{name}</p>
+            <p className={`${targetClass}__data--artist`}>{artist}</p>
+          </div>
+        }
         {
           (targetClass === 'chart' && authState.isAuthenticated) &&
           <div className={`${liked ? "border-red-500" : "border-gray-400"} chart__data--like`}>

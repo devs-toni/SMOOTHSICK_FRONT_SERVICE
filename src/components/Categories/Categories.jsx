@@ -121,7 +121,7 @@ export const Categories = () => {
                     <p className="w-2/12">{text.categories.portrait}</p>
                     <p className="w-2/12">{text.categories.title_table}</p>
                     <p className="w-2/12">{text.categories.album_table}</p>
-                    <p className="w-2/12">OPTIONS</p>
+                    <p className="w-2/12">Options</p>
                   </div>
                 </div>
                 <div className="z-10  flex flex-col h-30 text-center justify-center w-6/6 md:w-3/5 lg:min-w-[100%] pb-20">

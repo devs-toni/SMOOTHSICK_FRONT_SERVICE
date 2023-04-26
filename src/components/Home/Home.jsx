@@ -126,6 +126,14 @@ const Home = () => {
   return (
     <div className='pb-20 main-home'>
       <div className="home">
+        <div className="first-row">
+          <Slider
+            name="The best!"
+            list={dataState.artists}
+            type={SECTIONS.ARTIST}
+            isFirstRowSection={true}
+          />
+        </div>
         <div className="w-full">
           <div className="home__carousel">
             <Cover
@@ -151,6 +159,11 @@ const Home = () => {
         </div>
         <div className="rows">
           <Slider
+            name={text.filters.playlists}
+            list={dataState.playlists}
+            type={SECTIONS.PLAYLIST}
+          />
+          <Slider
             name={text.filters.tracks}
             list={dataState.tracks}
             type={SECTIONS.TRACK}
@@ -165,11 +178,7 @@ const Home = () => {
             list={dataState.artists}
             type={SECTIONS.ARTIST}
           />
-          <Slider
-            name={text.filters.playlists}
-            list={dataState.playlists}
-            type={SECTIONS.PLAYLIST}
-          />
+
         </div>
       </div>
       <div className={`transition-img ${loaded ? 'loaded' : ''}`} style={{
