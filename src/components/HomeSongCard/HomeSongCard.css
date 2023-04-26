@@ -6,6 +6,7 @@
 
 .chart__img-container {
   margin-right: 18px;
+  position: relative;
 }
 
 .chart__img-container--img {
@@ -13,6 +14,25 @@
   max-height: 65px;
   object-fit: cover;
   height: 100%;
+}
+
+.chart__img-container--play-container {
+  opacity: 0;
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+.chart__img-container--play-container:hover {
+  opacity: 0.6;
+}
+.chart__img-container--play-container-play {
+  width: 40px;
+  height: 40px;
 }
 
 .chart__data {

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { usePlayer } from "../../context/PlayerContext";
 import { SECTIONS } from "../../context/types";
 import { ALBUM, DETAILS } from "../../router/paths";
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaPlayCircle } from 'react-icons/fa';
 import { useAuthContext } from "../../context/AuthContext";
 import './HomeSongCard.css';
 import './HomeSongBox.css';
@@ -34,8 +34,14 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
 
   return (
     <NavLink to={isTrack ? '' : `${DETAILS}${ALBUM}/${id}`} className="link">
-      <div className={`row__${targetClass}--item bg-zinc-900 ` }>
+      <div className={`row__${targetClass}--item bg-zinc-900 `}>
         <div className={`${targetClass}__img-container`}>
+          {
+            isTrack &&
+            <div className={`${targetClass}__img-container--play-container`}>
+              <FaPlayCircle className={`${targetClass}__img-container--play-container-play`} />
+            </div>
+          }
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZ_YAGEN8LMYjY_KC9mziJkg3b1z4WNnZDZrAIYv6bQ&s"
             alt={name}
@@ -48,7 +54,7 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
         </div>
         <div className={`${targetClass}__data ${isArtist && 'text-center'}`}>
           <p className={`${targetClass}__data--name`}>{name}</p>
-          <p className={`${targetClass}__data--artist`}>{artist}</p>
+          <p className={`${targetClass}__data--artist truncate`}>{artist}</p>
         </div>
         {
           (targetClass === 'chart' && authState.isAuthenticated) &&
