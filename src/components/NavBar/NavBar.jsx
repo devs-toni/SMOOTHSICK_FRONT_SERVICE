@@ -11,7 +11,8 @@ import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
 import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
-import exampleLogo from '../../assets/imgs/logo/logo-head.svg';
+import logo from '../../assets/imgs/logo/logo-no-background.svg'
+import logo_text from '../../assets/imgs/logo/logo-text-no-background.svg'
 import { SIGNUP, LOGIN, SEARCH, ACCOUNT, FAVOURITES, HOME, CATEGORIES, RADIO, VIDEO, ALBUM, PLAYLIST, ARTIST } from '../../router/paths'
 import { Fragment, useEffect, useState } from 'react';
 import { HiUserCircle } from "react-icons/hi"
@@ -40,19 +41,19 @@ export const NavBar = () => {
     authState.isAuthenticated
       ? setAsideLinks(
         [
-          { key: 1, path: HOME, icon: <AiFillHome color="#fff" className="h-6 w-6 " />, text: text.navbar.home },
-          { key: 2, path: CATEGORIES, icon: <RiFolderMusicFill color="#fff" className="h-6 w-6 " />, text: text.navbar.categories },
-          { key: 3, path: RADIO, icon: <BiRadio color="#fff" className="h-6 w-6 " />, text: text.navbar.radio },
-          { key: 4, path: VIDEO, icon: <FaPhotoVideo color="#fff" className="h-6 w-6 " />, text: text.navbar.video },
-          { key: 5, path: SEARCH, icon: <TbSearch color="#fff" className="h-6 w-6" />, text: text.navbar.search }
+          { key: 1, path: HOME, icon: <AiFillHome className="h-6 w-6 " />, text: text.navbar.home },
+          { key: 2, path: CATEGORIES, icon: <RiFolderMusicFill className="h-6 w-6 " />, text: text.navbar.categories },
+          { key: 3, path: RADIO, icon: <BiRadio className="h-6 w-6 " />, text: text.navbar.radio },
+          { key: 4, path: VIDEO, icon: <FaPhotoVideo className="h-6 w-6 " />, text: text.navbar.video },
+          { key: 5, path: SEARCH, icon: <TbSearch className="h-6 w-6" />, text: text.navbar.search }
         ]
       )
       : setAsideLinks(
         [
-          { key: 1, path: HOME, icon: <AiFillHome color="#fff" className="h-6 w-6 " />, text: text.navbar.home },
-          { key: 2, path: SEARCH, icon: <TbSearch color="#fff" className="h-6 w-6" />, text: text.navbar.search },
-          { key: 3, path: LOGIN, icon: <FaUserShield color="#fff" className="h-6 w-6 " />, text: text.navbar.login },
-          { key: 4, path: SIGNUP, icon: <FaUserPlus color="#fff" className="h-6 w-6 " />, text: text.navbar.register }
+          { key: 1, path: HOME, icon: <AiFillHome className="h-6 w-6 " />, text: text.navbar.home },
+          { key: 2, path: SEARCH, icon: <TbSearch className="h-6 w-6 " />, text: text.navbar.search },
+          { key: 3, path: LOGIN, icon: <FaUserShield className="h-6 w-6 " />, text: text.navbar.login },
+          { key: 4, path: SIGNUP, icon: <FaUserPlus className="h-6 w-6 " />, text: text.navbar.register }
         ]
       )
   }, [authState.isAuthenticated])
@@ -94,7 +95,7 @@ export const NavBar = () => {
       <div className="fixed top-0 z-50 md:z-30 w-full bg-zinc-900 md:shadow-none">
         <nav className="flex border-b border-neutral-700 flex-row-reverse items-center justify-between p-3 pr-4 pl-4 md:pr-4 md:pl-4 lg:pr-5 lg:pl-5 md:flex-row-reverse">
 
-          <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
+          <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center hover:text-deezer text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
             <RiMenu4Fill className='h-6 w-6' />
           </button>
           <div className="flex flex-row justify-center items-center flex-wrap">
@@ -184,18 +185,24 @@ export const NavBar = () => {
       </div >
 
       <aside id="logo-sidebar" className="flex bg-zinc-900 flex-col justify-center h-full w-full items-center fixed top-0 z-40 bg-primary-color transition-transform -translate-x-full md:translate-x-0 md:w-20 md:border-r md:border-neutral-700 lg:w-52" aria-label="Sidebar">
-        <div className='flex flex-col mt-4 justify-content-center h-10 items-center'>
-          <NavLink to="/" className=" hidden md:block cursor-pointer">
-            <img src={exampleLogo} alt="logo" className='w-12 lg:mr-5 lg:w-14' />
+
+        <div className='flex flex-row mt-4 justify-content-center h-10 items-center '>
+          <NavLink to="/" className="hidden md:block lg:hidden cursor-pointer">
+            <img src={logo} alt="logo" className='w-12 lg:mr-5 lg:w-14' />
+          </NavLink>
+          <NavLink to="/" className="hidden md:hidden lg:block cursor-pointer">
+            <img src={logo_text} alt="logo" className='w-12 lg:mr-5 lg:w-28' />
           </NavLink>
         </div>
+
+
         <div className="h-full w-full">
-          <ul className="space-y-2 flex flex-col gap-7 h-full justify-center items-center">
-            <section className='flex flex-col gap-6 lg:w-full items-left text-sm'>
+          <ul className="space-y-2 flex flex-col gap-7 h-full justify-start mt-28 items-center ">
+            <section className='flex flex-col gap-6 lg:w-full items-left text-sm  '>
               {
                 asideLinks.map((item) => (
-                  <NavLink key={item.key} to={item.path} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")} data-drawer-hide="logo-sidebar" >
-                    <li className='inline-flex gap-2 items-center w-full lg:w-32 justify-left'>
+                  <NavLink key={item.key} to={item.path} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar" >
+                    <li className='inline-flex gap-2 items-center w-full lg:w-32 justify-left '>
                       {item.icon}
                       <span className=" md:hidden lg:block">{item.text}</span>
                     </li>
@@ -205,28 +212,28 @@ export const NavBar = () => {
 
             </section>
             <section className='flex items-center justify-center gap-20 w-full'>
-              <div className='flex flex-col ml-6 md:ml-0 justify-center gap-6 h-full lg:w-full text-sm '>
+              <div className='flex flex-col ml-6 md:ml-0 justify-center gap-6 h-full lg:w-full '>
                 {
                   authState.isAuthenticated
                     ?
                     <>
 
-                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-16 md:justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
                         </li>
                       </NavLink>
-                      <NavLink to={ALBUM} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                      <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
                         </li>
                       </NavLink>
-                      <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                      <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
                         </li>
                       </NavLink>
-                      <NavLink to={FAVOURITES} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8 " : "flex justify-center")}>
+                      <NavLink to={FAVOURITES} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer " : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.liked.name}</span>
                         </li>
@@ -234,12 +241,12 @@ export const NavBar = () => {
                     </>
                     :
                     <>
-                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-16 md:justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
                         </li>
                       </NavLink>
-                      <NavLink to={ALBUM} className={({ isActive }) => (isActive ? "opacity-40 flex justify-center left-0 lg:border-l-8" : "flex justify-center")}>
+                      <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
                         </li>
@@ -259,6 +266,10 @@ export const NavBar = () => {
             }
           </ul>
         </div >
+
+        <div className='flex flex-col mt-4 justify-content-center h-10 items-center'>
+          
+        </div>
       </aside >
     </>
 

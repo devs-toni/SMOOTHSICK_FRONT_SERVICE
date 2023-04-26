@@ -32,6 +32,9 @@ module.exports = {
       },
       colors: {
         "deezer": "#ef5567"
+      },
+      borderColor: {
+        "deezer": "#ef5567"
       }
     },
   },
