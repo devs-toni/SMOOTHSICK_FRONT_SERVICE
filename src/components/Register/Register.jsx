@@ -3,7 +3,12 @@ import { FaEye } from 'react-icons/fa';
 import { Link, useNavigate } from "react-router-dom";
 import { LOGIN } from "../../router/paths";
 import { useEffect, useState } from "react";
-import { RecoverModal, Error, useLanguage, useAuthContext, useForm } from "../../index"
+import { useAuthContext } from '../../context/AuthContext';
+import { useForm } from '../../hooks/useForm';
+import { useLanguage } from '../../context/LanguageContext';
+import RecoverModal from "../RecoverModal/RecoverModal";
+import Error from "../Error/Error";
+
 
 
 const Register = () => {

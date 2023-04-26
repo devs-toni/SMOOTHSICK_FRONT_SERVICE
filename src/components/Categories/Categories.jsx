@@ -1,6 +1,8 @@
 import { SongCard } from "../CategoriesSongCard/CategoriesSongCard";
 import { useEffect, useState, Fragment } from "react";
-import { useAuthContext, useUser, useLanguage } from '../../index';
+import { useAuthContext } from '../../context/AuthContext';
+import { useUser } from '../../context/UserContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { Link } from "react-router-dom";
 import { FAVOURITES } from '../../router/paths'
 import { v4 as uuidv4 } from 'uuid';

@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import { Filters, useLanguage, useGlobalContext, SearchSection, HomeSongCard } from '../../index';
+import { useGlobalContext } from '../../context/GlobalContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { FILTER_TYPES } from './filterTypes';
 import { v4 as uuidv4 } from 'uuid';
 import "./Search.css";
+import Filters from '../Filters/Filters';
+import HomeSongCard from '../HomeSongCard/HomeSongCard';
+import SearchSection from '../SearchSection/SearchSection';
 
 const Search = () => {
 

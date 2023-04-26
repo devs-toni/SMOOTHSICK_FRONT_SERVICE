@@ -1,10 +1,9 @@
-import { AccountSettings } from "../index";
+import { AccountSettings } from "../components";
 
-const AccountsettingsPage = () => {
+
+export const AccountSettingsPage = () => {
 
   return (
     <AccountSettings />
   )
 }
-
-export default AccountsettingsPage;

@@ -1,4 +1,5 @@
-import { Video } from "../index"
+import { Video } from "../components"
+
 
 export const VideoPage = () => {
   return (

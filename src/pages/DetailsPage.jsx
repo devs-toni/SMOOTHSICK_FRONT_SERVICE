@@ -1,10 +1,8 @@
-import React from 'react'
-import { Details } from '../index';
+import { Details } from "../components"
 
-const DetailsPage = () => {
+
+export const DetailsPage = () => {
   return (
     <Details />
   )
 }
-
-export default DetailsPage

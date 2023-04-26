@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useAuthContext, useLanguage } from '../../index';
+import { useAuthContext } from '../../context/AuthContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { ACCOUNT, CHANGEPASS } from '../../router/paths'
 
 const Accountsettings = () => {

@@ -6,7 +6,6 @@ import { AiFillHome } from "react-icons/ai"
 import { RiFolderMusicFill, RiLoginBoxLine, RiMenu4Fill } from "react-icons/ri"
 import { BiLogOut, BiRadio } from "react-icons/bi"
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useAuthContext, useLanguage } from '../../index';
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
 import flagFrance from '../../assets/imgs/flags/france.png'
@@ -18,6 +17,8 @@ import { Fragment, useEffect, useState } from 'react';
 import { HiUserCircle } from "react-icons/hi"
 import { TbSearch } from "react-icons/tb"
 import { MdOutlineLogout } from 'react-icons/md';
+import { useAuthContext } from '../../context/AuthContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 
 export const NavBar = () => {
@@ -98,7 +99,6 @@ export const NavBar = () => {
             <RiMenu4Fill className='h-6 w-6' />
           </button>
           <div className="flex flex-row justify-center items-center flex-wrap">
-         
             <div>
               <>
                 <Dropdown
@@ -184,7 +184,7 @@ export const NavBar = () => {
           </div>
         </nav >
       </div >
-
+sdfg
       <aside id="logo-sidebar" className="flex bg-zinc-900 flex-col justify-center h-full w-full items-center fixed top-0 z-40 bg-primary-color transition-transform -translate-x-full md:translate-x-0 md:w-20 md:border-r md:border-neutral-700 lg:w-52" aria-label="Sidebar">
         <div className='flex flex-row mt-4 justify-content-center h-10 items-center '>
           <NavLink to="/" className="hidden md:block lg:hidden cursor-pointer">

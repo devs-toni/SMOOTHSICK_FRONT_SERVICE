@@ -1,6 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
-import { HomeSongCard, SECTIONS, useLanguage } from '../../index';
+
 import './Section.css';
+import HomeSongCard from '../HomeSongCard/HomeSongCard';
+import { useLanguage } from '../../context/LanguageContext';
+import { SECTIONS } from '../../context/types';
 
 const Section = ({ tracks, loaded }) => {
   const { text } = useLanguage();

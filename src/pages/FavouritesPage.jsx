@@ -1,9 +1,8 @@
-import { Favourites } from "../index"
+import { Favourites } from "../components"
 
-const FavouritesPage = () => {
+
+export const FavouritesPage = () => {
   return (
     <Favourites />
   )
 }
-
-export default FavouritesPage

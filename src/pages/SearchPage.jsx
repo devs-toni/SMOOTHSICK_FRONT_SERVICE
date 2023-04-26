@@ -1,9 +1,7 @@
-import { Search } from '../index';
+import { Search } from "../components";
 
-const SearchPage = () => {
+export const SearchPage = () => {
   return (
     <Search />
   )
 }
-
-export default SearchPage;

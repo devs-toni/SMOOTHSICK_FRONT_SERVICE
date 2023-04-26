@@ -1,4 +1,5 @@
-import { NavBar, MyRouter, Player } from "../index"
+import { MyRouter } from "../router/MyRouter"
+import { NavBar, Player } from "../components/index"
 
 export const LayoutPage = () => {
 

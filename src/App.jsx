@@ -1,9 +1,11 @@
-import { LayoutPage } from "./index"
+
+import { LayoutPage } from './pages/LayoutPage';
+
 
 function App() {
 
   return (
-      <LayoutPage />
+    <LayoutPage />
   )
 }
 
