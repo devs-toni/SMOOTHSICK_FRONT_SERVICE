@@ -27,12 +27,12 @@ export const SongCard = ({ img, name, artist, id, isLike }) => {
             } flex items-center justify-center text-xs md:text-2xl rounded-full my-auto cursor-pointer w-5/12`}
           >
             <FaHeart
-              className={`${isLike ? "text-withe-400" : "text-gray-600"} mr-4`}
+              className={`${isLike ? "text-withe-400" : "text-withe-600"} mr-4`}
             />
             <Link to="/">
               <GiMicrophone
                 className={`${
-                  isLike ? "text-white-400" : "text-gray-600"
+                  isLike ? "text-white-400" : "text-withe-600"
                 } mr-4`}
               />
             </Link>
