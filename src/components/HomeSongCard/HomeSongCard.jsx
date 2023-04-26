@@ -43,7 +43,7 @@ const HomeSongCard = ({ obj, targetClass, type }) => {
             </div>
           }
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZ_YAGEN8LMYjY_KC9mziJkg3b1z4WNnZDZrAIYv6bQ&s"
+            src={image}
             alt={name}
             className={`${targetClass}__img-container--img object-cover`}
             style={isArtist ? { borderRadius: "50%" } : {}}

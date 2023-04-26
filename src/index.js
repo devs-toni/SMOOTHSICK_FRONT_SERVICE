@@ -11,7 +11,7 @@ export { default as Home } from './components/Home/Home';
 export { default as HomeSongCard } from './components/HomeSongCard/HomeSongCard';
 export { default as Login } from './components/Login/Login';
 export * from './components/NavBar/NavBar';
-export { default as Player } from './components/Player';
+export { default as Player } from './components/Player/Player';
 export { default as RecoverModal } from './components/RecoverModal/RecoverModal';
 export { default as Register } from './components/Register/Register';
 export { default as Search } from './components/Search/Search';
