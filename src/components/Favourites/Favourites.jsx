@@ -2,6 +2,7 @@ import { useGlobalContext, useAuthContext, useLanguage } from '../../index';
 import { v4 as uuidv4 } from 'uuid';
 import { FavouritesSongCard } from '../FavouritesSongCard/FavouritesSongCard';
 import { useEffect, useState } from 'react';
+import { BsClock } from 'react-icons/bs'
 
 
 
@@ -18,7 +19,7 @@ export const Favourites = () => {
 
 
   return (
-    <div className="flex items-center justify-center pb-24">
+    <div className="flex w-full items-center justify-center pb-24">
       <div className='w-full h-full m-auto p-6 md:max-w-2xl md:pl-20 lg:max-w-3xl mt-14 md:mt-20 min-w-[75%]'>
         <h3 className='text-xl text-center font-medium lg:text-4xl lg:mb-3'>{text.liked.title}</h3>
         <div className='flex items-center my-2 lg:mb-5'>
@@ -29,17 +30,18 @@ export const Favourites = () => {
         <div className='flex items-center my-2 lg:mb-5'>
 
         </div>
-        <div className="z-10 flex flex-col h-34 text-center justify-center w-5/6 min-w-[100%] ">
+        <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
           <div className='flex items-center justify-between border-b border-b-gray-300'>
-            <p className="w-1/12">#</p>
-            <p className="w-1/12">{text.liked.track}</p>
-            <p className="w-2/12">{text.liked.title_table}</p>
-            <p className="w-4/12">{text.liked.album_table}</p>
+            <p className="w-2/12">{text.liked.track}</p>
+            <p className="w-2/12">Options</p>
+            <p className="w-2/12">{text.liked.album_table}</p>
             <p className="w-2/12">{text.liked.gender}</p>
-            <p className="w-2/12">{text.liked.options}</p>
+            <p className="w-2/12"><BsClock/></p>
+
 
           </div>
         </div>
+        
         {
           dataState.tracks.map(({ id, name, artist, url, thumbnail, genre }, index) => {
             
