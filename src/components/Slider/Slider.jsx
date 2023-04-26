@@ -17,9 +17,13 @@ const Slider = ({ list, name, type }) => {
   const handleClick = (direction) => {
     if (direction === "forward") {
       divRef.current.scrollLeft += divRef.current.offsetWidth;
+      setRightIsMoved(true);
+      setLeftIsMoved(false);
 
     } else if (direction === "back") {
       divRef.current.scrollLeft -= divRef.current.offsetWidth;
+      setLeftIsMoved(true);
+      setRightIsMoved(false);
     }
   }
 
@@ -30,8 +34,8 @@ const Slider = ({ list, name, type }) => {
           <>
             <h1 className="text-2xl mb-5 max-sm:text-lg max-sm:mb-2">{name}</h1>
             <div className='row__arrows'>
-              <MdArrowBackIosNew className={`row__arrows--arrow`} onClick={() => handleClick("back")} />
-              <MdArrowForwardIos className={`row__arrows--arrow`} onClick={() => handleClick("forward")} />
+              <MdArrowBackIosNew className={`row__arrows--arrow ${leftIsMoved && 'null'}`} onClick={() => handleClick("back")} />
+              <MdArrowForwardIos className={`row__arrows--arrow ${rightIsMoved && 'null'}`}  onClick={() => handleClick("forward")} />
             </div>
             <div className='row__list' ref={divRef}>
               {

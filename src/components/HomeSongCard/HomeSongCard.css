@@ -1,19 +1,38 @@
 .row__chart--item {
   display: flex;
-  margin: 20px 0 0 0;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.459);
-  padding: 15px;
 }
 
 .chart__img-container {
   margin-right: 18px;
+  position: relative;
 }
 
 .chart__img-container--img {
   max-width: 65px;
+  max-height: 65px;
   object-fit: cover;
   height: 100%;
+}
+
+.chart__img-container--play-container {
+  opacity: 0;
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+.chart__img-container--play-container:hover {
+  opacity: 0.6;
+}
+.chart__img-container--play-container-play {
+  width: 40px;
+  height: 40px;
 }
 
 .chart__data {
@@ -24,26 +43,18 @@
 }
 
 .chart__data--name {
-  font-size: 1.1em;
+  padding-top: 5px;
+  font-size: 1em;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 .chart__data--artist {
-  font-size: 0.8em;
+  font-size: 0.7em;
   font-style: italic;
 }
 .chart__data--like {
   padding-right: 20px;
   align-self: center;
-}
-
-@media screen and (min-width: 2200px) {
-  .chart__data-container--data {
-    font-size: 1.9em;
-  }
-  .chart__img-container--img {
-    max-width: 200px;
-  }
 }
 
 @media screen and (max-width: 1850px) {
@@ -69,7 +80,7 @@
 
 @media screen and (max-width: 920px) {
   .row__chart--item {
-    width: 95%;
+    width: 97%;
     height: 55px;
     padding: 10px;
     margin: 5px;
@@ -92,7 +103,7 @@
   }
   .link {
     display: block;
-    width: 50% !important;
+    width: 45% !important;
     margin: 0 !important;
   }
 }

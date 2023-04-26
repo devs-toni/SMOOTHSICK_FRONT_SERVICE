@@ -57,7 +57,7 @@ const Register = () => {
   };
 
   return (
-    <div className="h-full flex justify-center items-center mb-44">
+    <div className="h-full flex justify-center items-center mb-44 md:ml-20 lg:ml-52">
       {
         !authState.isAuthenticated &&
         (
@@ -179,7 +179,7 @@ const Register = () => {
                 </Button>
                 <div className="flex flex-row justify-left text-xs md:text-sm mt-1">
                   <span className="w-fit">{text.register.already}</span>
-                  <Link to={`/${LOGIN}`} className="ml-2 text-pink-300 hover:underline w-fit text-left">{text.register.login}</Link>
+                  <Link to={`${LOGIN}`} className="ml-2 text-pink-300 hover:underline w-fit text-left">{text.register.login}</Link>
                 </div>
               </form>
             </div>

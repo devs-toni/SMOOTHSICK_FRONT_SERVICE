@@ -1,11 +1,12 @@
 
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
-import { usePlayer } from '../context/PlayerContext';
-import { useGlobalContext } from '../context/GlobalContext';
+import { usePlayer } from '../../context/PlayerContext';
+import { useGlobalContext } from '../../context/GlobalContext';
 import { useState } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { MdQueueMusic } from 'react-icons/md';
 import { FaRandom } from 'react-icons/fa';
+import "./Player.css"
 
 
 

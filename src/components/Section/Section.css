@@ -1,7 +1,11 @@
 .section {
   filter: opacity(0.1);
   transition: all 0.5s ease-in-out;
-  width: 30%;
+  width: 29%;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  justify-content: center;
 }
 .section.loaded {
   filter: opacity(1);
@@ -24,6 +28,7 @@
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+    gap: 0;
   }
   .section__title {
     text-align: center;

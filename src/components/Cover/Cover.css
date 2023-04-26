@@ -1,5 +1,5 @@
 .carousel {
-  width: 75%;
+  width: 39%;
   overflow: hidden;
   position: relative;
   border-radius: 6px;
@@ -36,7 +36,7 @@
   flex-flow: row nowrap;
   transition: all 0.5s ease-in-out;
   z-index: 0;
-  max-height: 450px;
+  max-height: 350px;
   width: 100%;
 }
 
@@ -69,12 +69,6 @@
   }
   .carousel .carousel-images .carousel-image {
     object-fit: contain;
-  }
-}
-
-@media screen and (max-width: 1850px) {
-  .carousel .carousel-images {
-    max-height: 450px;
   }
 }
 

@@ -1,29 +1,32 @@
+.main-home {
+  width: calc(100% - 208px);
+  margin-left: 208px;
+}
+
 .home {
   max-width: 80%;
   margin: 120px auto 0 auto;
   z-index: 10;
+  position: relative;
 }
 
 .home__carousel {
-  width: 50%;
+  width: 100%;
   margin-bottom: 50px;
   display: flex;
-  justify-content: space-between;
   margin: 0 auto;
 }
 
 .home__sections {
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
   position: absolute;
-  top: 120px;
+  top: 0px;
+  height: 350px;
 }
 
 @media screen and (max-width: 1940px) {
-  .home__carousel {
-    min-width: 1200px;
-  }
   .home__sections {
     position: static;
     justify-content: space-around;
@@ -54,10 +57,16 @@
   }
   .home__sections {
     flex-direction: column;
+    justify-content: center;
+
   }
 }
 
 @media screen and (max-width: 768px) {
+  .main-home {
+    width: 100%;
+    margin-left: 0;
+  }
   .home {
     max-width: 75%;
   }
@@ -66,6 +75,13 @@
 @media screen and (max-width: 470px) {
   .home {
     max-width: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .main-home {
+    width: calc(100% - 80px);
+    margin-left: 80px;
   }
 }
 

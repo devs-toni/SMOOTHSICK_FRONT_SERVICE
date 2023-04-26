@@ -124,28 +124,30 @@ const Home = () => {
   }, [])
 
   return (
-    <div className='pb-20'>
-      <div className="home ">
-        <div className="home__carousel">
-          <Cover
-            artists={dataState.artists}
-            selectedIndex={selectedIndex}
-            setSelectedIndex={setSelectedIndex}
-            tracks={tracks}
-            setSelectedTracks={setSelectedTracks}
-            loaded={loaded}
-            setLoaded={setLoaded}
-          />
-        </div>
-        <div className='home__sections'>
-          <Section
-            tracks={selectedTracks}
-            loaded={loaded}
-          />
-          <Section
-            tracks={selectedTracks}
-            loaded={loaded}
-          />
+    <div className='pb-20 main-home'>
+      <div className="home">
+        <div className="w-full">
+          <div className="home__carousel">
+            <Cover
+              artists={dataState.artists}
+              selectedIndex={selectedIndex}
+              setSelectedIndex={setSelectedIndex}
+              tracks={tracks}
+              setSelectedTracks={setSelectedTracks}
+              loaded={loaded}
+              setLoaded={setLoaded}
+            />
+          </div>
+          <div className='home__sections'>
+            <Section
+              tracks={selectedTracks}
+              loaded={loaded}
+            />
+            <Section
+              tracks={selectedTracks}
+              loaded={loaded}
+            />
+          </div>
         </div>
         <div className="rows">
           <Slider
