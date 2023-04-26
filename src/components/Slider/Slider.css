@@ -61,11 +61,7 @@
     margin: 40px 0 40px 0;
   }
   .row__arrows {
-    height: 75%;
-  }
-  .row__arrows--arrow {
-    width: 18px;
-    height: 70px;
+    display: none;
   }
 }
 

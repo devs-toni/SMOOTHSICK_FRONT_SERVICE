@@ -26,6 +26,11 @@
   height: 350px;
 }
 
+.first-row {
+  margin-top: 90px;
+  display: none;
+}
+
 @media screen and (max-width: 1940px) {
   .home__sections {
     position: static;
@@ -49,7 +54,7 @@
 @media screen and (max-width: 920px) {
   .home {
     max-width: 75%;
-    margin: 80px auto 0 auto;
+    margin: 20px auto 0 auto;
   }
   .home__carousel {
     flex-direction: column-reverse;
@@ -58,7 +63,11 @@
   .home__sections {
     flex-direction: column;
     justify-content: center;
-
+    height: auto;
+    margin-top: 0;
+  }
+  .first-row {
+    display: block;
   }
 }
 
