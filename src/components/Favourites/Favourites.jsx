@@ -1,9 +1,12 @@
+import { useGlobalContext } from '../../context/GlobalContext';
 import { useAuthContext } from '../../context/AuthContext';
+
+import { useLanguage } from '../../context/LanguageContext';
+
 import { v4 as uuidv4 } from 'uuid';
 import { FavouritesSongCard } from '../FavouritesSongCard/FavouritesSongCard';
 import { useEffect, useState } from 'react';
 import { BsClock } from 'react-icons/bs'
-import { useLanguage } from '../../context/LanguageContext';
 
 
 
@@ -36,9 +39,9 @@ export const Favourites = () => {
             <p className="w-2/12">{text.liked.track}</p>
             <p className="w-2/12"></p>
             <p className="w-3/12">Options</p>
-            <p className="w-2/12">{text.liked.album_table}</p>
+            <p className="w-3/12">{text.liked.album_table}</p>
             <p className="w-2/12">{text.liked.gender}</p>
-            <p className="w-1/12"><BsClock /></p>
+            <p className="w-2/12"><BsClock  className='w=8em'/></p>
 
 
           </div>

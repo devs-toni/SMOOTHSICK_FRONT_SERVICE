@@ -31,9 +31,9 @@ export const FavouritesSongCard = ({ id, name, artist, url, thumbnail, genre, is
             </Link>
                         <SlOptions className="text-withe-600" />
                     </div>
-                    <p className="text-xs text-center font-normal w-2/12 md:text-md ">{artist}</p>
+                    <p className="text-xs text-center font-normal w-3/12 md:text-md ">{artist}</p>
                     <span className="text-xs text-center w-2/12 md:text-md grow">{genre}</span>
-                    <span className="text-xs text-center w-1/12 md:text-md grow">{genre}</span>
+                    <span className="text-xs text-center w-2/12 md:text-md grow">{genre}</span>
 
                 </div>
             </div>
