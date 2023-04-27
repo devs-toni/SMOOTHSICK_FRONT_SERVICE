@@ -1,10 +1,9 @@
-import { Login } from '../index';
+import { Login } from "../components";
 
-const LoginPage = () => {
+
+export const LoginPage = () => {
 
   return (
     <Login />
   );
 };
-
-export default LoginPage;

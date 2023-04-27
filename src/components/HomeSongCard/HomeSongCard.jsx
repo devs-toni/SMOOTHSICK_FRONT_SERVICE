@@ -43,9 +43,9 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
             </div>
           }
           <img
-            src={image}
+            src="https://cdn.smehost.net/estopacom-mendivilprod/wp-content/uploads/2015/07/30085354/estopa20.jpg"
             alt={name}
-            className={`${targetClass}__img-container--img object-cover`}
+            className={`${targetClass}__img-container--img object-cover w-20`}
             style={isArtist ? { borderRadius: "50%" } : {}}
             width=""
             height=""

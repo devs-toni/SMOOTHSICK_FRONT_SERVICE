@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import { Filters, useLanguage, useGlobalContext, SearchSection, HomeSongCard } from '../../index';
+import { useGlobalContext } from '../../context/GlobalContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { FILTER_TYPES } from './filterTypes';
 import { v4 as uuidv4 } from 'uuid';
 import "./Search.css";
+import Filters from '../Filters/Filters';
+import HomeSongCard from '../HomeSongCard/HomeSongCard';
+import SearchSection from '../SearchSection/SearchSection';
 
 const Search = () => {
 
@@ -146,7 +150,7 @@ const Search = () => {
 
   return (
     <div className='flex w-full pb-32'>
-      <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-24 overflow-hidden m-auto z-10 md:ml-20 lg:ml-52">
+      <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-24 overflow-hidden z-10 md:ml-20 lg:ml-52">
         <form className='flex w-full justify-center mt-10'>
           <input
             type="text"
@@ -163,7 +167,7 @@ const Search = () => {
           setCurrentSearch={setCurrentSearch}
           items={items}
         />
-        <div className='m-auto w-full'>
+        <div className='max-w-81rem'>
           {
             active === FILTER_TYPES.ALL
               ?

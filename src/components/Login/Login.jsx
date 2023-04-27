@@ -6,7 +6,9 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { Button, TextInput } from "flowbite-react";
 import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png";
-import { useLanguage, useAuthContext, useGlobalContext } from '../../index';
+import { useAuthContext } from '../../context/AuthContext';
+import { useGlobalContext } from '../../context/GlobalContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Login = () => {
 
