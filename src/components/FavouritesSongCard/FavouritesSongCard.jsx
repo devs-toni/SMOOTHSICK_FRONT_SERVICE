@@ -17,7 +17,7 @@ export const FavouritesSongCard = ({ id, name, artist, url, thumbnail, genre, is
                 <div className='flex items-center rounded-xl bg-box-icons h-16'>
                   {/*   <span className='w-1/12 text-center'>{count + 1}</span> */}
                     <div className=' flex w-2/12 items-center justify-center'>
-                        <img className="rounded-lg w-16 " src={thumbnail} alt="image description" width="" height="" />
+                        <img className="rounded-lg w-16 " src={thumbnail} alt="image description" width="60px" height="" />
                     </div>
                     <span className="text-xs text-center w-2/12 md:text-md grow">{name}</span>
                     <div className={`${isLike ? "border-red-500" : "border-gray-400"} w-3/12 flex items-center justify-center text-xs md:text-2xl rounded-full my-auto cursor-pointer `}>
