@@ -1,3 +1,4 @@
+
 import { SongCard } from "../CategoriesSongCard/CategoriesSongCard";
 import { useEffect, useState, Fragment } from "react";
 import { useAuthContext } from '../../context/AuthContext';
@@ -7,6 +8,7 @@ import { Link } from "react-router-dom";
 import { FAVOURITES } from '../../router/paths'
 import { v4 as uuidv4 } from 'uuid';
 import "./Categories.css";
+import { BsClock } from "react-icons/bs";
 
 export const Categories = () => {
   const { userLists } = useUser();
@@ -45,20 +47,21 @@ export const Categories = () => {
     }
   }, [currentList, selectedListId, hoverList]);
 
+  console.log(selectedList?.songs);
+
   return (
     <>
-      <div className="absolute h-full w-full">
-        <div className="flex flex-col items-center justify-center pt-32 gap-5">
-          <h1 className="text-center lg:text-left w-5/6 md:w-3/5 lg:w-4/6 text-5xl font-bold">{text.categories.lists}</h1>
-          <div className=" z-10 w-5/6 h-3/6 md:w-3/5 md:h5/6 lg:flex lg:justify-between lg:w-4/6 lg:h-full mb-4">
+      <div className="h-full p-4 md:ml-20 lg:ml-52">
+        <div className="flex flex-col items-center justify-center pt-24 gap-5">
+          <h1 className="text-center lg:text-left w-5/6 md:w-3/5 lg:w-4/5 text-xl md:text-3xl lg:text-5xl font-bold">{text.categories.lists}</h1>
+          <div className=" z-10 mb-4 h-3/6 w-full xl:w-4/5 lg:flex lg:justify-between lg:h-full">
             <Link to={`${FAVOURITES}`}
               className="flex mb-10 rounded-lg lg:flex-none lg:h-80 lg:w-2/4 lg:mr-6 bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-200"
             >
               <div className="flex flex-col w-full h-full justify-center items-left p-4">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
+                <h5 className="mb-2 text-sm font-bold tracking-tight text-white dark:text-white">
                   {text.categories.fav_tracks}
                 </h5>
-
                 <p className="mr-3 text-xs capitalize font-bold text-gray-800">
                   {authState.user.firstName}
                 </p>
@@ -68,8 +71,6 @@ export const Categories = () => {
               </div>
             </Link>
 
-
-            <h3 className="text-1xl text-center font-bold sticky top-0 pb-7 lg:pt-0 lg:text-left lg:p-2 lg:hidden">{text.categories.lists}</h3>
             <div className=" flex flex-col h-80 rounded-lg overflow-y-scroll hide-scrollbar gap-3 lg:gap-2 lg:w-3/6 ">
               {userLists &&
                 userLists.map((element) => (
@@ -104,7 +105,7 @@ export const Categories = () => {
                         />
                         <span
                           id={element.id}
-                          className="absolute flex items-center justify-center p-4  h-full w-full text-white text-2xl "
+                          className="absolute flex items-center justify-center p-4 h-full w-full text-white text-2xl "
                         >
                         </span>
                       </div>
@@ -118,24 +119,25 @@ export const Categories = () => {
             &&
             (
               <>
-                <div className="z-10 flex flex-col h-34 text-center justify-center w-full md:w-3/5 lg:min-w-[75%] ">
-                  <div className='flex items-center justify-between border-b border-b-gray-300'>
-                    <p className="w-1/12">{text.categories.portrait}</p>
-                    <p className="w-3/12">{text.categories.title_table}</p>
-                    <p className="w-4/12">{text.categories.album_table}</p>
-                    <p className="w-2/12">Options</p>
+                <div className="z-10 flex flex-col h-34 text-center justify-center w-full xl:w-4/5">
+                  <div className='flex items-center border-b border-b-gray-300 justify-between'>
+                    <span className="w-1/12 xl:w-14 text-left text-xs md:text-sm lg:text-md">{text.categories.album_table}</span>
+                    <span className="w-4/12 text-left text-xs md:text-sm lg:text-md">{text.categories.track}</span>
+                    <span className="w-2/12 text-left text-xs md:text-sm lg:text-md">{text.categories.artist}</span>
+                    {<BsClock className="w-1/12 mb-1 text-xs md:text-sm lg:text-md" size={18} />} 
+                    <span className="w-2/12 text-xs md:text-sm lg:text-md">{text.categories.options}</span>
                   </div>
                 </div>
-                <div className="z-10  flex flex-col h-30 text-center justify-center w-6/6 md:w-3/5 lg:min-w-[100%] pb-20">
+                <div className="z-10 flex flex-col justify-center pb-20 gap-3 h-30 text-center w-full xl:w-4/5">
                   {selectedList?.songs &&
-                    selectedList.songs.map((data, index) => (
+                    selectedList.songs.map((data) => (
                       <SongCard
                         key={uuidv4()}
-                        id={index}
                         data={data}
                         img={data.thumbnail}
                         name={data.name}
                         artist={data.artist}
+                        track_url={data.url}
                       />
                     ))}
                 </div>
@@ -144,21 +146,25 @@ export const Categories = () => {
           }
         </div>
         <div className="background-div" style={{
+          objectFit: "cover",
           top: 0,
           left: 0,
           backgroundImage: `url(${imgs[0]})`
         }}></div>
         <div className="background-div" style={{
+          objectFit: "cover",
           top: 0,
           right: 0,
           backgroundImage: `url(${imgs[1]})`
         }}></div>
         <div className="background-div" style={{
+          objectFit: "cover",
           bottom: 0,
           left: 0,
           backgroundImage: `url(${imgs[2]})`
         }}></div>
         <div className="background-div" style={{
+          objectFit: "cover",
           bottom: 0,
           right: 0,
           backgroundImage: `url(${imgs[3]})`
@@ -172,3 +178,4 @@ export const Categories = () => {
     </>
   );
 };
+
