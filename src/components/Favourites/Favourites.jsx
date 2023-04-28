@@ -41,7 +41,7 @@ export const Favourites = () => {
             <p className="w-3/12">Options</p>
             <p className="w-3/12">{text.liked.album_table}</p>
             <p className="w-2/12">{text.liked.gender}</p>
-            <p className="w-2/12"><BsClock  className='w=8em'/></p>
+            <p className="w-2/12"><BsClock className='w-11/12'/></p>
 
 
           </div>
