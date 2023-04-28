@@ -73,7 +73,11 @@
       "fav_tracks": "Tus canciones favoritas",
       "title_table": "Título",
       "album_table": "Álbum",
-      "portrait": "Portada"
+      "portrait": "Portada",
+      "track": "Canción",
+      "artist": "Artista",
+      "duration": "Duración",
+      "options": "Opciones"
     },
     "filters": {
       "all": "Todo",
@@ -166,7 +170,11 @@
       "fav_tracks": "Your Favorites Songs",
       "title_table": "Title",
       "album_table": "Album",
-      "portrait": "Cover"
+      "portrait": "Cover",
+      "track": "Track",
+      "artist": "Artist",
+      "duration": "Duration",
+      "options": "Options"
     },
     "filters": {
       "all": "All",
@@ -256,7 +264,11 @@
       "fav_tracks": "Vos chansons favoris",
       "title_table": "Titre",
       "album_table": "Album",
-      "portrait": "Portrait"
+      "portrait": "Portrait",
+      "track": "Track",
+      "artist": "Artist",
+      "duration": "Duration",
+      "options": "Options"
     },
     "filters": {
       "all": "Toutes",
@@ -345,7 +357,11 @@
       "fav_tracks": "您喜爱的歌曲",
       "title_table": "歌曲名称",
       "album_table": "专辑",
-      "portrait": "封面"
+      "portrait": "封面",
+      "track": "Track",
+      "artist": "Artist",
+      "duration": "Duration",
+      "options": "Options"
     },
     "filters": {
       "all": "全部",
