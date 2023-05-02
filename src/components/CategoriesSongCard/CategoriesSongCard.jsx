@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { GiMicrophone } from "react-icons/gi";
 import { SlOptions } from "react-icons/sl";
@@ -6,41 +6,48 @@ import { Link } from "react-router-dom";
 
 
 
+export const SongCard = ({ img, name, artist, isLike, track_url }) => {
+  const [duration, setDuration] = useState()
+  const songDuration = useRef()
 
-export const SongCard = ({ img, name, artist, id, isLike }) => {
+  const calcTrackDuration = () => {
+    if (songDuration.current) {
+      const data = songDuration.current.duration
+      const hours = Math.floor(data / 3600)
+      const mins = Math.floor(data % 3600 / 60)
+      const secs = Math.floor(data % 3600 % 60)
+      const mDisplay = mins < 10 ? (`0${mins}`) : mins
+      const sDisplay = secs < 10 ? (`0${secs}`) : secs
+      setDuration(`${mDisplay}:${sDisplay}`);
+    }
+  }
 
-	return (
 
-		
-		 <div className='flex w-full items-center justify-center h-full'>
-			<div className='w-full md:max-w-2xl lg:max-w-3xl min-w-[75%] pt-3'>
-				<div className='flex items-center rounded-xl bg-box-icons h-18'>
-				{/* 	<span className='w-1/12'>{id + 1}</span> */}
-					<div className=' flex w-3/12 items-center justify-center'>
-						<img className="rounded-lg w-3/12 " src={img} alt="image description" width="" height="" />
-					</div>
-					<span className="text-xs w-8/12 md:text-md grow">{name}</span>
-					<p className="text-xs font-normal w-4/12 md:text-md">{artist}</p>
-					<div
-            className={`${
-              isLike ? "border-red-500" : "border-gray-400"
-            } flex items-center justify-center text-xs md:text-2xl rounded-full my-auto cursor-pointer w-5/12`}
-          >
-            <FaHeart
-              className={`${isLike ? "text-withe-400" : "text-withe-600"} mr-4`}
-            />
-            <Link to="/">
-              <GiMicrophone
-                className={`${
-                  isLike ? "text-white-400" : "text-withe-600"
-                } mr-4`}
-              />
-            </Link>
-            <SlOptions className="text-withe-600" />
-          </div>
-				</div>
-			</div>
-		</div> 
+  return (
+    <>
+      <audio
+        ref={songDuration}
+        onLoadedMetadata={calcTrackDuration}
+        className="hidden"
+      >
+        <source src={track_url} type="audio/x-wav" />
+      </audio>
 
-	)
+
+      <div className="flex items-center rounded-sm justify-between bg-box-icons ">
+        <img className="rounded-sm w-1/12 text-xs md:text-sm  lg:text-md xl:w-14 xl:h-14" src={img} alt="image description" />
+        <span className=" w-4/12 text-left text-xs md:text-sm lg:text-md truncate">{name}</span>
+        <span className=" font-normal text-left w-2/12 text-xs md:text-sm lg:text-md truncate">{artist}</span>
+        <span className=" font-normal text-center w-1/12 text-xs md:text-sm lg:text-md">{duration}</span>
+        <div className="flex items-center justify-center text-xs lg:text-2xl rounded-full cursor-pointer w-2/12">
+          <FaHeart className={`${isLike ? "text-withe-400" : "text-withe-600"} mr-1  md:mr-4`} />
+          <Link to="/">
+            <GiMicrophone className={`${isLike ? "text-white-400" : "text-withe-600"} mr-1 md:mr-4`} />
+          </Link>
+          <SlOptions className="text-white-600" />
+          
+        </div>
+      </div>
+    </>
+  );
 };

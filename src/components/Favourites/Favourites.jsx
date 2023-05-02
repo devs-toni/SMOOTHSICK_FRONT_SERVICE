@@ -1,9 +1,12 @@
+import { useGlobalContext } from '../../context/GlobalContext';
 import { useAuthContext } from '../../context/AuthContext';
+
+import { useLanguage } from '../../context/LanguageContext';
+
 import { v4 as uuidv4 } from 'uuid';
 import { FavouritesSongCard } from '../FavouritesSongCard/FavouritesSongCard';
 import { useEffect, useState } from 'react';
 import { BsClock } from 'react-icons/bs'
-import { useLanguage } from '../../context/LanguageContext';
 
 
 
@@ -34,10 +37,11 @@ export const Favourites = () => {
         <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
           <div className='flex items-center justify-between border-b border-b-gray-300'>
             <p className="w-2/12">{text.liked.track}</p>
-            <p className="w-2/12">Options</p>
-            <p className="w-2/12">{text.liked.album_table}</p>
+            <p className="w-2/12"></p>
+            <p className="w-3/12">Options</p>
+            <p className="w-3/12">{text.liked.album_table}</p>
             <p className="w-2/12">{text.liked.gender}</p>
-            <p className="w-1/12"><BsClock  className='w=8em'/></p>
+            <p className="w-2/12"><BsClock className='w-11/12'/></p>
 
 
           </div>
