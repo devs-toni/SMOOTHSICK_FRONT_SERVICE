@@ -2,16 +2,58 @@ import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { ACCOUNT, CHANGEPASS } from '../../router/paths'
+import axios from 'axios';
+
+const ourArtists = [
+  "271722",
+  "5541552",
+  "4474",
+  "1853921",
+  "1216573",
+  "10583405",
+  "11559031",
+  "8706544",
+  "4050205",
+  "1350335",
+  "4328290846",
+  "75041",
+  "12918",
+  "412",
+  "12562316",
+  "447246",
+  "1424821",
+  "75798",
+  "405",
+  "13",
+  "542",
+  "259",
+  "4020872",
+  "133863",
+  "1018354",
+  "567442",
+  "4443465",
+  "4794268"
+];
 
 const Accountsettings = () => {
   const { text } = useLanguage()
   const { authState } = useAuthContext()
 
+  const reloadDatabase = (e) => {
+    e.preventDefault();
+    axios.get("http://localhost:4000/admin")
+    .then((response) => {
+
+    }).catch(err => {
+
+    })
+  }
+
   return (
 
     <div className='h-full flex flex-col md:ml-20 lg:ml-52'>
       <div className="headphones-image"></div>
-      <div className= "flex flex-col justify-around items-center pt-16 md:pt-56 gap-7 w-full m-auto mt-10 p-4 md:p-10 md:max-w-xl lg:max-w-3xl xl:max-w-6xl">
+      <div className="flex flex-col justify-around items-center pt-16 md:pt-56 gap-7 w-full m-auto mt-10 p-4 md:p-10 md:max-w-xl lg:max-w-3xl xl:max-w-6xl">
         <div className='grid grid-cols-1 md:grid-cols-3 justify-start items-start py-4 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 w-full'>
           <div className='flex flex-col'>
 
@@ -41,7 +83,7 @@ const Accountsettings = () => {
         <div className='grid grid-cols-3 justify-start items-center pb-6 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 w-full h-1/3'>
           <div><p>{text.account.security_p}</p></div>
           <div><p>{text.account.security_o}</p></div>
-          <div><a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{text.account.security_o}</a></div>
+          <div><a href="#" onClick={reloadDatabase} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Reload Database</a></div>
         </div>
       </div>
     </div>
