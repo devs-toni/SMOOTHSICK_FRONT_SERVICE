@@ -1,52 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { ACCOUNT, CHANGEPASS } from '../../router/paths'
 import axios from 'axios';
 
-const ourArtists = [
-  "271722",
-  "5541552",
-  "4474",
-  "1853921",
-  "1216573",
-  "10583405",
-  "11559031",
-  "8706544",
-  "4050205",
-  "1350335",
-  "4328290846",
-  "75041",
-  "12918",
-  "412",
-  "12562316",
-  "447246",
-  "1424821",
-  "75798",
-  "405",
-  "13",
-  "542",
-  "259",
-  "4020872",
-  "133863",
-  "1018354",
-  "567442",
-  "4443465",
-  "4794268"
-];
 
 const Accountsettings = () => {
   const { text } = useLanguage()
   const { authState } = useAuthContext()
 
-  const reloadDatabase = (e) => {
-    e.preventDefault();
-    axios.get("http://localhost:4000/admin")
-    .then((response) => {
-
-    }).catch(err => {
-
-    })
+  const reloadDb = () => {
+    axios.get(`http://localhost:4000/admin/reload`)
+      .then((response) => console.log(response))
   }
 
   return (
@@ -83,7 +48,7 @@ const Accountsettings = () => {
         <div className='grid grid-cols-3 justify-start items-center pb-6 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 w-full h-1/3'>
           <div><p>{text.account.security_p}</p></div>
           <div><p>{text.account.security_o}</p></div>
-          <div><a href="#" onClick={reloadDatabase} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Reload Database</a></div>
+          <div><a href="" onClick={reloadDb}>Reload Database</a></div>
         </div>
       </div>
     </div>
