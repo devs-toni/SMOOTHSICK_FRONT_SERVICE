@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import { useGlobalContext } from '../../context/GlobalContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { FILTER_TYPES } from './filterTypes';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,41 +7,40 @@ import "./Search.css";
 import Filters from '../Filters/Filters';
 import HomeSongCard from '../HomeSongCard/HomeSongCard';
 import SearchSection from '../SearchSection/SearchSection';
+import { useGlobalContext } from '../../context/GlobalContext';
 
 const Search = () => {
 
+  const { dataState } = useGlobalContext();
+
   const initialState = {
-    playlists: [],
-    tracks: [],
-/*     users: [],
- */    albums: [],
-    artists: [],
+    playlists: dataState.playlists,
+    albums: dataState.albums,
+    artists: dataState.artists,
+    tracks: []
   }
 
-  const { dataState } = useGlobalContext();
-  const { playlists, tracks, users, albums, artists } = dataState;
   const all = [
     false,
-    [...playlists],
-    [...tracks],
-/*     [...users],
- */    [...albums],
-    [...artists],
+    [...dataState.playlists],
+    [...dataState.albums],
+    [...dataState.artists],
+
   ]
 
   const items = {
-    playlists,
-    tracks,
-/*     users,
- */    albums,
-    artists,
+    playlists: dataState.playlists,
+    albums: dataState.albums,
+    artists: dataState.artists,
     all
   }
 
   const { text } = useLanguage();
+
   const [active, setActive] = useState(FILTER_TYPES.ALL);
   const [nameFilter, setNameFilter] = useState(text.filters.all)
   const [currentSearch, setCurrentSearch] = useState(all);
+
   const [results, setResults] = useState([]);
   const [allResults, setAllResults] = useState(initialState);
 
@@ -65,27 +63,27 @@ const Search = () => {
         setAllResults({
           playlists: playlists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
           tracks: tracks.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-          /*           users: users.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())), */
           albums: albums.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
           artists: artists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
         })
         setNameFilter(text.filters.all)
       } else {
-        let firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
-        switch (active.toLowerCase()) {
-          case "playlists":
+        let firstResults = [];
+        switch (active) {
+          case FILTER_TYPES.PLAYLISTS:
+            firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
             setNameFilter(text.filters.playlists)
             break;
-          case "albums":
+          case FILTER_TYPES.ALBUMS:
+            firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
             setNameFilter(text.filters.albums)
             break;
-          case "tracks":
+          case FILTER_TYPES.TRACKS:
+            firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
             setNameFilter(text.filters.tracks)
             break;
-          /*           case "users":
-
-                      break; */
-          case "artists":
+          case FILTER_TYPES.ARTISTS:
+            firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
             setNameFilter(text.filters.artists)
             break;
         }
@@ -110,35 +108,31 @@ const Search = () => {
   }, [strSearch.length])
 
   useEffect(() => {
-    if (currentSearch.length > 0 && strSearch.length > 0) {
+    if (currentSearch?.length > 0 && strSearch.length > 0) {
       let firstResults = [];
 
-      switch (active.toLowerCase()) {
-        case "playlists":
+      switch (active) {
+        case FILTER_TYPES.PLAYLISTS:
           setNameFilter(text.filters.playlists)
-          firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
+          firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(strSearch.toLowerCase()));
           break;
-        case "albums":
+        case FILTER_TYPES.ALBUMS:
           setNameFilter(text.filters.albums)
-          firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
+          firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(strSearch.toLowerCase()));
           break;
-        case "tracks":
+        case FILTER_TYPES.TRACKS:
           setNameFilter(text.filters.tracks)
-          firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
+          firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(strSearch.toLowerCase()));
           break;
-        /*         case "users":
-                  firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
-                  break; */
-        case "artists":
+        case FILTER_TYPES.ARTISTS:
           setNameFilter(text.filters.artists)
           firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
           break;
-        case "all":
+        case FILTER_TYPES.ALL:
           setNameFilter(text.filters.all)
           setAllResults({
             playlists: playlists.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
             tracks: tracks.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
-            /*             users: users.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())), */
             albums: albums.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
             artists: artists.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
           })
@@ -177,7 +171,6 @@ const Search = () => {
                   {allResults.playlists.length > 0 && <SearchSection check={FILTER_TYPES.PLAYLISTS} list={allResults.playlists} name={text.filters.playlists} />}
                   {allResults.artists.length > 0 && <SearchSection check={FILTER_TYPES.ARTISTS} list={allResults.artists} name={text.filters.artists} />}
                   {allResults.albums.length > 0 && <SearchSection check={FILTER_TYPES.ALBUMS} list={allResults.albums} name={text.filters.albums} />}
-                  {/*                       {allResults.users.length > 0 && <SearchSection name="Users" list={allResults.users} name={text.filters.users} />} */}
                 </>
               )
               :
@@ -195,6 +188,7 @@ const Search = () => {
                             obj={obj}
                             targetClass="search"
                             type={nameFilter.toUpperCase()}
+                            isSearch={true}
                           />
                         )
                       })

@@ -7,7 +7,6 @@ import axios from "axios";
 import { Button, TextInput } from "flowbite-react";
 import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png";
 import { useAuthContext } from '../../context/AuthContext';
-import { useGlobalContext } from '../../context/GlobalContext';
 import { useLanguage } from '../../context/LanguageContext';
 
 const Login = () => {

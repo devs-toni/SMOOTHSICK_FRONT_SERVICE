@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 
-export const useFetchAllTracks = () => {
+export const useFetchAllHomeTracks = () => {
 
   const [tracks, setTracks] = useState([]);
   const [tracksLoaded, setTracksLoaded] = useState(false)

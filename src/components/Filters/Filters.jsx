@@ -10,6 +10,7 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
     const { dataset } = target;
     setActive(dataset.type);
 
+
     switch (dataset.type) {
       case FILTER_TYPES.ALL:
         setCurrentSearch(items.all);
@@ -21,13 +22,8 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
         setCurrentSearch(items.albums);
         break;
       case FILTER_TYPES.ARTISTS:
+        console.log(items)
         setCurrentSearch(items.artists);
-        break;
-      /*      case FILTER_TYPES.USERS:
-              setCurrentSearch(items.users);
-              break; */
-      case FILTER_TYPES.GENRES:
-        setCurrentSearch(items.genres);
         break;
       case FILTER_TYPES.TRACKS:
         setCurrentSearch(items.tracks);
@@ -40,7 +36,6 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
 
   const filters = [
     {
-
       id: 0,
       type: FILTER_TYPES.ALL,
       name: text.filters.all
@@ -64,12 +59,7 @@ const Filters = ({ active, setActive, setCurrentSearch, items }) => {
       id: 4,
       type: FILTER_TYPES.TRACKS,
       name: text.filters.tracks
-    },
-    /*     {
-      id: 5,
-          type: FILTER_TYPES.USERS
-          name: text.filters.users
-        } */
+    }
   ]
 
   return (

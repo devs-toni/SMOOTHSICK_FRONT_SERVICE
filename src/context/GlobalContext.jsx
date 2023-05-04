@@ -1,10 +1,7 @@
 import { useContext, createContext, useReducer, useMemo, useEffect } from "react"
-import db from "../api/db.json"
-import { useFetchAllArtists } from "../hooks/useFetchAllArtists";
 import { TYPES } from "./types";
-import { useFetchAllTracks } from "../hooks/useFetchAllTracks";
-import { useFetchAllPlaylists } from "../hooks/useFetchAllPlaylists";
-import { useFetchAllAlbums } from "../hooks/useFetchAllAlbums";
+import { useFetchAllAlbums, useFetchAllPlaylists, useFetchAllArtists } from "../hooks";
+
 
 const GlobalContext = createContext();
 
@@ -14,13 +11,26 @@ export const useGlobalContext = () => {
 
 export const GlobalProvider = ({ children }) => {
 
+  const { albums, albumsLoaded } = useFetchAllAlbums();
+  const { artists, artistsLoaded } = useFetchAllArtists();
+  const { playlists, playlistsLoaded } = useFetchAllPlaylists();
+
+  useEffect(() => {
+    albumsLoaded && dispatch({ type: TYPES.LOAD_ALBUMS, payload: albums })
+  }, [albumsLoaded])
+  useEffect(() => {
+    artistsLoaded && dispatch({ type: TYPES.LOAD_ARTISTS, payload: artists })
+  }, [artistsLoaded])
+  useEffect(() => {
+    playlistsLoaded && dispatch({ type: TYPES.LOAD_PLAYLISTS, payload: playlists })
+  }, [playlistsLoaded])
+
+
   const initialState = {
-    playlists: db.playlists,
-    tracks: db.tracks,
-    users: db.users,
-    albums: db.albums,
-    artists: db.artists,
-    //genres: db.genres
+    playlists: [],
+    users: [],
+    albums: [],
+    artists: [],
   }
 
 
@@ -33,7 +43,7 @@ export const GlobalProvider = ({ children }) => {
           playlists: action.payload
         }
 
-      case TYPES.LOAD_TRACKS:
+      case TYPES.LOAD_USERS:
         return {
           ...state,
           tracks: action.payload

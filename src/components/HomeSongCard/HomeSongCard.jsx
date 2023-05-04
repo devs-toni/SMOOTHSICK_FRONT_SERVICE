@@ -9,7 +9,7 @@ import './HomeSongCard.css';
 import './HomeSongBox.css';
 import axios from "axios";
 
-const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
+const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isSearch }) => {
 
   const { playSong } = usePlayer();
   //  const { authState } = useAuthContext();
@@ -34,10 +34,10 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
       })
     } else if (type == SECTIONS.ALBUM) {
       setData({
-        id: obj.album.id,
-        name: obj.album.title,
-        artist: obj.artist.name,
-        picture: obj.album.cover
+        id: isSearch ? obj.id : obj.album.id,
+        name: isSearch ? obj.title : obj.album.title,
+        artist: !isSearch && obj.artist.name,
+        picture: isSearch ? obj.cover : obj.album.cover
       })
 
     } else if (type == SECTIONS.PLAYLIST) {

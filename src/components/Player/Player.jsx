@@ -1,7 +1,6 @@
 
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 import { usePlayer } from '../../context/PlayerContext';
-import { useGlobalContext } from '../../context/GlobalContext';
 import { useState } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { MdQueueMusic } from 'react-icons/md';
@@ -11,18 +10,18 @@ import "./Player.css"
 
 
 const Player = () => {
-  const { dataState } = useGlobalContext();
+
   const { playerState } = usePlayer();
   const [isPlay, setIsPlay] = useState()
   const [showDataSong, setShowDataSong] = useState("")
   const [showDataImg, setShowDataImg] = useState("")
   const [currentSong, setCurrentSong] = useState(0)
 
-  const track = dataState.tracks.find((e) => e.url === playerState.current);
-  const currentSongIndex = dataState.tracks.indexOf(track)
+  //const track = dataState.tracks.find((e) => e.url === playerState.current);
+  //const currentSongIndex = dataState.tracks.indexOf(track)
 
 
-  const handleClickNext = () => {
+/*   const handleClickNext = () => {
     setCurrentSong(currentSong < dataState.tracks.length - 1 ? currentSong + 1 : 0);
     if (currentSongIndex + 1 === dataState.tracks.length) {
       playerState.current = dataState.tracks[0].url
@@ -44,7 +43,7 @@ const Player = () => {
     setShowDataSong("hidden")
     setShowDataImg("hidden")
 
-  };
+  }; */
 
 
   const handleIsPlaying = () => {
@@ -56,7 +55,7 @@ const Player = () => {
   const handleIsPaused = () => {
     setIsPlay(false)
 
-    console.log(currentSongIndex + 1 !== dataState.tracks.length);
+    //console.log(currentSongIndex + 1 !== dataState.tracks.length);
   }
 
 
@@ -90,8 +89,8 @@ const Player = () => {
           showFilledVolume
           onPlaying={handleIsPlaying}
           onPause={handleIsPaused}
-          onClickNext={handleClickNext}
-          onClickPrevious={handleClickPrevious}
+          //onClickNext={handleClickNext}
+          //onClickPrevious={handleClickPrevious}
           showJumpControls={false}
           customControlsSection=
           {
