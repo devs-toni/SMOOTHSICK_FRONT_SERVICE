@@ -8,6 +8,10 @@ import Filters from '../Filters/Filters';
 import HomeSongCard from '../HomeSongCard/HomeSongCard';
 import SearchSection from '../SearchSection/SearchSection';
 import axios from 'axios';
+import { useFetchAllHomeArtists } from '../../hooks/useFetchAllHomeArtists';
+import { useFetchAllHomeAlbums } from '../../hooks/useFetchAllHomeAlbums';
+import { useFetchAllHomeTracks } from '../../hooks/useFetchAllHomeTracks';
+import { useFetchAllHomePlaylists } from '../../hooks/useFetchAllHomePlaylists';
 
 const Search = () => {
 
@@ -24,6 +28,37 @@ const Search = () => {
     albums: []
   }
   const [allResults, setAllResults] = useState(initialState);
+  const [allEmptyResults, setAllEmptyResults] = useState([]);
+
+  const getEmptyResults = async () => {
+    const emptyArtists = await axios.get(import.meta.env.VITE_BACKEND + "artists/home")
+      .then(({ data }) => {
+        return data;
+      })
+    const emptyAlbums = await axios.get(import.meta.env.VITE_BACKEND + "albums/home")
+      .then(({ data }) => {
+        return data;
+      })
+    const emptyPlaylists = await axios.get(import.meta.env.VITE_BACKEND + "playlists/home")
+      .then(({ data }) => {
+        return data;
+      })
+    const emptyTracks = await axios.get(import.meta.env.VITE_BACKEND + "tracks/home")
+      .then(({ data }) => {
+        return data;
+      })
+    setAllEmptyResults({
+      tracks: emptyTracks,
+      artists: emptyArtists,
+      albums: emptyAlbums,
+      playlists: emptyPlaylists,
+    })
+  }
+
+  useEffect(() => {
+    getEmptyResults();
+  }, [])
+
 
   const [searchParams, setSearchParams] = useSearchParams();
   const strSearch = searchParams.get('q') ?? '';
@@ -31,13 +66,6 @@ const Search = () => {
   useEffect(() => {
     setSearchParams({ q: '' })
   }, [])
-
-  useEffect(() => {
-    if (strSearch.length === 0) {
-      setAllResults(initialState);
-      setResults([]);
-    }
-  }, [strSearch.length])
 
   const fetchSearch = async (active, value) => {
 
@@ -72,20 +100,23 @@ const Search = () => {
     }
   }
 
-
   const handleSearch = ({ target }) => {
     const { value } = target;
     setSearchParams({ q: value });
 
-    if (value.length !== 0)
+    if (value.length !== 0) {
       fetchSearch(active, value);
-    else
+      setAllEmptyResults(initialState)
+    } else {
+      getEmptyResults();
+      setAllResults(initialState);
       setResults([]);
+    }
   };
 
   useEffect(() => {
     setAllResults(initialState)
-    if (strSearch.length > 0) fetchSearch(active, strSearch);
+    strSearch.length > 0 && fetchSearch(active, strSearch);
   }, [active])
 
   const styleInput = {
@@ -94,6 +125,8 @@ const Search = () => {
     textAlign: 'center',
     borderBottom: "1px solid #4d4d4d"
   };
+
+  const empty = allResults.albums.length === 0 && allResults.tracks.length === 0 && allResults.artists.length === 0 && allResults.playlists.length === 0 && results.length === 0;
 
   return (
     <div className='flex w-full pb-32'>
@@ -117,41 +150,52 @@ const Search = () => {
         />
         <div className='max-w-81rem'>
           {
-            active === FILTER_TYPES.ALL
+            empty
               ?
               (
                 <>
-                  {allResults.artists.length > 0 && <SearchSection check={FILTER_TYPES.ARTISTS} list={allResults.artists} name={text.filters.artists} />}
-                  {allResults.playlists.length > 0 && <SearchSection check={FILTER_TYPES.PLAYLISTS} list={allResults.playlists} name={text.filters.playlists} />}
-                  {allResults.albums.length > 0 && <SearchSection check={FILTER_TYPES.ALBUMS} list={allResults.albums} name={text.filters.albums} />}
-                  {allResults.tracks.length > 0 && <SearchSection check={FILTER_TYPES.TRACKS} list={allResults.tracks} name={text.filters.tracks} />}
+                  {allEmptyResults.artists?.length > 0 && <SearchSection check={FILTER_TYPES.ARTISTS} list={allEmptyResults.artists} name={text.filters.artists} />}
+                  {allEmptyResults.playlists?.length > 0 && <SearchSection check={FILTER_TYPES.PLAYLISTS} list={allEmptyResults.playlists} name={text.filters.playlists} />}
+                  {allEmptyResults.albums?.length > 0 && <SearchSection check={FILTER_TYPES.ALBUMS} list={allEmptyResults.albums} name={text.filters.albums} />}
+                  {allEmptyResults.tracks?.length > 0 && <SearchSection check={FILTER_TYPES.TRACKS} list={allEmptyResults.tracks} name={text.filters.tracks} />}
                 </>
               )
               :
-              (
-                <>
-                  {
-                    results.length > 0 &&
-                    <>
-                      <h1 className='search__title'>{showNameFilter}</h1>
-                      <div className='search__section'>
-                        {
-                          results.map(obj => {
-                            return (
-                              <HomeSongCard
-                                key={uuidv4()}
-                                obj={obj}
-                                targetClass="search"
-                                type={active}
-                              />
-                            )
-                          })
-                        }
-                      </div>
-                    </>
-                  }
-                </>
-              )
+              active === FILTER_TYPES.ALL
+                ?
+                (
+                  <>
+                    {allResults.artists.length > 0 && <SearchSection check={FILTER_TYPES.ARTISTS} list={allResults.artists} name={text.filters.artists} />}
+                    {allResults.playlists.length > 0 && <SearchSection check={FILTER_TYPES.PLAYLISTS} list={allResults.playlists} name={text.filters.playlists} />}
+                    {allResults.albums.length > 0 && <SearchSection check={FILTER_TYPES.ALBUMS} list={allResults.albums} name={text.filters.albums} />}
+                    {allResults.tracks.length > 0 && <SearchSection check={FILTER_TYPES.TRACKS} list={allResults.tracks} name={text.filters.tracks} />}
+                  </>
+                )
+                :
+                (
+                  <>
+                    {
+                      results.length > 0 &&
+                      <>
+                        <h1 className='search__title'>{showNameFilter}</h1>
+                        <div className='search__section'>
+                          {
+                            results.map(obj => {
+                              return (
+                                <HomeSongCard
+                                  key={uuidv4()}
+                                  obj={obj}
+                                  targetClass="search"
+                                  type={active}
+                                />
+                              )
+                            })
+                          }
+                        </div>
+                      </>
+                    }
+                  </>
+                )
           }
         </div>
       </div>

@@ -8,8 +8,10 @@ const Filters = ({ active, setActive, showNameFilter, setShowNameFilter, setResu
 
   const handleClick = ({ target }) => {
     const { dataset } = target;
-    setActive(dataset.type);
-    setResults([]);
+    if (active !== dataset.type) {
+      setResults([]);
+      setActive(dataset.type);
+    }
 
     switch (dataset.type) {
       case FILTER_TYPES.ALL:
