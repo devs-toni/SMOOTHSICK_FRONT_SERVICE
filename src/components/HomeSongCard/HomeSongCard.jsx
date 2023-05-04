@@ -25,11 +25,11 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
       })
     } else if (type == SECTIONS.TRACK) {
       setCanPlay(true);
-      console.log(obj);
       setData({
         id: obj.track.id,
         name: obj.track.title,
-        picture: obj.artist.picture,
+        picture: obj.album.cover,
+        artist: obj.album.title,
         preview: obj.track.preview
       })
     } else if (type == SECTIONS.ALBUM) {

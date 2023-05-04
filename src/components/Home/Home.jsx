@@ -145,7 +145,7 @@ const Home = () => {
         <div className="first-row">
           <Slider
             name="The best!"
-            list={dataState.artists}
+            list={artistsLoaded && artists}
             type={SECTIONS.ARTIST}
             isFirstRowSection={true}
           />
