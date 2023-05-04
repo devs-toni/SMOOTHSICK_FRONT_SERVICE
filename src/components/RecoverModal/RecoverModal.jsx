@@ -46,7 +46,7 @@ const RecoverModal = ({ open, setOpen }) => {
                         <Dialog.Title as="h3" className="font-semibold leading-6 mt-2 mb-10 text-center text-2xl">
                           {text.register.recover}
                         </Dialog.Title>
-                      
+
                         <div className="mt-2">
                           <input type="text" className='border-solid rounded border-black w-full' placeholder={text.register.email} style={style} />
                         </div>

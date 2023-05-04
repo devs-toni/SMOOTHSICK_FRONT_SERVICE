@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { SIGNUP } from "../../router/paths";
+import { HOME, SIGNUP } from "../../router/paths";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { Button, TextInput } from "flowbite-react";
@@ -9,10 +9,10 @@ import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 
+
 const Login = () => {
 
   const { text } = useLanguage();
-  const { dataState } = useGlobalContext();
   const { reset, login } = useAuthContext();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -26,33 +26,64 @@ const Login = () => {
     reset();
   };
 
-  const handleSubmit = (e) => {
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const userFound = dataState.users.find(
-      (user) =>
-        user.email === userData.email && user.password === userData.password
-    );
-    if (userFound) {
-      login(userFound.id, {
-        id: userFound.id,
-        firstName: userFound.first_name,
-        lastName: userFound.last_name,
-        email: userFound.email,
-        profilePicture: defaultUserPicture,
-      });
-      navigate("/");
-    } else {
-      toast.error("Something Wrong...!", {
-        style: {
-          borderRadius: "10px",
-          background: "#333",
-          color: "#fff",
-        },
-        error: {
-          duration: 2000,
-        },
-      });
+    try {
+      await axios.post(import.meta.env.VITE_DB_URI_AUTHENTICATE, { userData })
+        .then(({ data, status }) => {
+          const {token, currentUser} = data;
+          if (status === 200) {
+            login(currentUser._id, {
+              id: currentUser._id,
+              firstName: currentUser.name,
+              lastName: currentUser.last_name,
+              email: currentUser.email,
+              profilePicture: defaultUserPicture,
+            });
+            localStorage.setItem("userToken", token)
+            navigate(HOME); 
+
+          } else {
+            toast.error("Something went wrong!", {
+              style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+              error: {
+                duration: 2000,
+              },
+            });
+          }
+        }).catch((err) => {
+          if (err.response.status === 401) {
+            toast.error("Incorrect login data!", {
+              style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+              error: {
+                duration: 2000,
+              },
+            });
+          }
+          else {
+            toast.error("Something went wrong!", {
+              style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+              error: {
+                duration: 2000,
+              },
+            });
+
+          }
+        })
+    } catch (error) {
+      console.error(error)
     }
   };
 

@@ -1,6 +1,6 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import { FaEye } from 'react-icons/fa';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import { LOGIN } from "../../router/paths";
 import { useEffect, useState } from "react";
 import { useAuthContext } from '../../context/AuthContext';
@@ -8,30 +8,25 @@ import { useForm } from '../../hooks/useForm';
 import { useLanguage } from '../../context/LanguageContext';
 import RecoverModal from "../RecoverModal/RecoverModal";
 import Error from "../Error/Error";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 
 
 const Register = () => {
 
+
+  const button_register = document.getElementById('send_data')
   const { authState } = useAuthContext();
   const navigate = useNavigate();
   const [eyeClicked, setEyeClicked] = useState(false);
+  const [buttonBehavior, setButtonBehavior] = useState("")
 
 
   useEffect(() => {
     authState.isAuthenticated &&
       navigate('/');
   }, [])
-
-  useEffect(() => {
-    if (eyeClicked) {
-      setTimeout(() => {
-        setEyeClicked(false)
-      }, 3000);
-    }
-
-  }, [eyeClicked])
-
 
   const { text } = useLanguage();
   const { form, handleChange, handleBlur, validate, errors } = useForm({
@@ -42,15 +37,63 @@ const Register = () => {
     password: '',
     repeatPassword: ''
   });
+
+  useEffect(() => {
+    if (eyeClicked) {
+      setTimeout(() => {
+        setEyeClicked(false)
+      }, 3000);
+    }
+    if (errors.name || errors.lastname || errors.email || errors.username || errors.password || errors.repeatPassword) {
+      setButtonBehavior("opacity-30")
+      button_register.disabled = true;
+    } else {
+      if (button_register) {
+        setButtonBehavior("")
+        button_register.disabled = false;
+      }
+    }
+
+  }, [eyeClicked, errors])
+
+
   const [open, setOpen] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const currentErrors = validate();
-
-    if (Object.keys(currentErrors).map(v => currentErrors[v].length).filter(e => e !== 0).length === 0) {
-      console.log('Registrando usuario');
+    try {
+      await axios.post(import.meta.env.VITE_DB_URI_REGISTER, { form })
+        .then(({ status }) => {
+          if (status === 200) {
+            navigate(LOGIN);
+          } else if (status == 204) {
+            toast.error("User already exist!", {
+              style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+              error: {
+                duration: 2000,
+              },
+            });
+          } else {
+            toast.error("Something went wrong!", {
+              style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+              error: {
+                duration: 2000,
+              },
+            });
+          }
+        });
+    } catch (error) {
+      console.log(error)
     }
+
   }
 
   const styleInput = (err) => {
@@ -60,6 +103,9 @@ const Register = () => {
       color: err ? 'red' : 'white'
     }
   };
+
+
+
 
   return (
     <div className="h-full flex justify-center items-center mb-44 md:ml-20 lg:ml-52">
@@ -179,9 +225,11 @@ const Register = () => {
                     </button>
                   </Label>
                 </div>
-                <Button type="submit" className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+
+                <Button type="submit" id="send_data" className={`${buttonBehavior} bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500`}>
                   {text.register.submit}
                 </Button>
+
                 <div className="flex flex-row justify-left text-xs md:text-sm mt-1">
                   <span className="w-fit">{text.register.already}</span>
                   <Link to={`${LOGIN}`} className="ml-2 text-pink-300 hover:underline w-fit text-left">{text.register.login}</Link>

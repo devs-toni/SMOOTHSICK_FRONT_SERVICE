@@ -22,7 +22,6 @@ import { useLanguage } from '../../context/LanguageContext';
 
 
 export const NavBar = () => {
-
   const { logout, authState } = useAuthContext();
   const { handleLanguage, text } = useLanguage();
   const [asideLinks, setAsideLinks] = useState([])
