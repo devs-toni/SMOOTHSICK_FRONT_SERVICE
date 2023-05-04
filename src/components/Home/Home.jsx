@@ -8,8 +8,12 @@ import Slider from '../Slider/Slider';
 import Cover from '../Cover/Cover';
 import { SECTIONS } from '../../context/types';
 import Section from '../Section/Section';
+import { useFetchAllArtists } from '../../hooks/useFetchAllArtists';
+import { useFetchAllAlbums } from '../../hooks/useFetchAllAlbums';
+import { useFetchAllPlaylists } from '../../hooks/useFetchAllPlaylists';
+import { useFetchAllTracks } from '../../hooks/useFetchAllTracks';
 
-const tracks = [
+const mianTracks = [
   [
     {
       "id": 10,
@@ -104,8 +108,14 @@ const Home = () => {
 
   const { text } = useLanguage();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedTracks, setSelectedTracks] = useState(tracks[0]);
+  const [selectedTracks, setSelectedTracks] = useState(mianTracks[0]);
   const [loaded, setLoaded] = useState(false);
+
+
+  const { artists, artistsLoaded } = useFetchAllArtists();
+  const { albums, albumsLoaded } = useFetchAllAlbums();
+  const { playlists, playlistsLoaded } = useFetchAllPlaylists();
+  const { tracks, tracksLoaded } = useFetchAllTracks();
 
 
   const { authState, resetFirstTime } = useAuthContext();
@@ -152,7 +162,7 @@ const Home = () => {
               setLoaded={setLoaded}
             />
           </div>
-          <div className='home__sections'>
+{/*           <div className='home__sections'>
             <Section
               tracks={selectedTracks}
               loaded={loaded}
@@ -161,27 +171,27 @@ const Home = () => {
               tracks={selectedTracks}
               loaded={loaded}
             />
-          </div>
+          </div> */}
         </div>
         <div className="rows">
           <Slider
             name={text.filters.playlists}
-            list={dataState.playlists}
+            list={playlistsLoaded && playlists}
             type={SECTIONS.PLAYLIST}
           />
           <Slider
             name={text.filters.tracks}
-            list={dataState.tracks}
+            list={tracksLoaded && tracks}
             type={SECTIONS.TRACK}
           />
           <Slider
             name={text.filters.albums}
-            list={dataState.albums}
+            list={albumsLoaded && albums}
             type={SECTIONS.ALBUM}
           />
           <Slider
             name={text.filters.artists}
-            list={dataState.artists}
+            list={artistsLoaded && artists}
             type={SECTIONS.ARTIST}
           />
 

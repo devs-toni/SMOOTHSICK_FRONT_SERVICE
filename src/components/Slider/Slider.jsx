@@ -50,7 +50,6 @@ const Slider = ({ list, name, type, isFirstRowSection }) => {
                   )
                 })
               }
-
             </div>
           </>
         )
