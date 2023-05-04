@@ -57,6 +57,16 @@
     "charts": {
       "title": "Las mejores listas"
     },
+    "home": {
+      "top_artists": "Artistas Top",
+      "top_playlists": "Playlists Top",
+      "top_albums": "Albums Top",
+      "top_tracks": "Canciones Top",
+      "less_playlists": "Playlists Alternativas",
+      "less_artists": "Más Artistas",
+      "less_albums": "Más Albums",
+      "less_tracks": "Más Canciones"
+    },
     "liked": {
       "name": "Favoritos",
       "title": "Canciones que te gustan",
@@ -153,6 +163,16 @@
     "charts": {
       "title": "Top Charts"
     },
+    "home": {
+      "top_artists": "Top Artists",
+      "top_playlists": "Top Playlists",
+      "top_albums": "Top Albums",
+      "top_tracks": "Top Tracks",
+      "less_playlists": "More Playlists",
+      "less_artists": "More Artists",
+      "less_albums": "More Albums",
+      "less_tracks": "More Tracks"
+    },
     "liked": {
       "title": "Liked Songs",
       "title_table": "Title",
@@ -190,7 +210,6 @@
       "new_pass": "New password",
       "r_new_pass": "Repeat new password",
       "btn_save_pass": "Save your changes"
-      
     }
   },
   "fr": {
@@ -247,6 +266,16 @@
     },
     "charts": {
       "title": "Le hit-parade"
+    },
+    "home": {
+      "top_artists": "Top",
+      "top_playlists": "Top",
+      "top_albums": "Top",
+      "top_tracks": "Top",
+      "less_playlists": "Play",
+      "less_artists": "Más",
+      "less_albums": "Más",
+      "less_tracks": "Más"
     },
     "liked": {
       "title": "Chansons Favoris",
@@ -340,6 +369,16 @@
     },
     "charts": {
       "title": "推荐歌单"
+    },
+    "home": {
+      "top_artists": "Top",
+      "top_playlists": "Top",
+      "top_albums": "Top",
+      "top_tracks": "Top",
+      "less_playlists": "Play",
+      "less_artists": "Más",
+      "less_albums": "Más",
+      "less_tracks": "Más"
     },
     "liked": {
       "title": "喜爱的歌曲",

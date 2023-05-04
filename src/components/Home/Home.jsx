@@ -6,10 +6,7 @@ import { toast } from 'react-hot-toast';
 import './Home.css';
 import Slider from '../Slider/Slider';
 import Cover from '../Cover/Cover';
-import { useFetchAllHomeArtists } from '../../hooks';
-import { useFetchAllHomeAlbums } from '../../hooks';
-import { useFetchAllHomePlaylists } from '../../hooks';
-import { useFetchAllHomeTracks } from '../../hooks';
+import { useFetchAllHomeArtists, useFetchAllHomeAlbums, useFetchAllHomePlaylists, useFetchAllHomeTracks, useFetchLessHomePlaylists, useFetchMoreHomeArtists, useFetchLessHomeAlbums, useFetchLessHomeTracks } from '../../hooks';
 import { FILTER_TYPES } from '../Search/filterTypes';
 
 
@@ -19,8 +16,12 @@ const Home = () => {
   const [loaded, setLoaded] = useState(false);
 
   const { artists, artistsLoaded } = useFetchAllHomeArtists();
+  const { moreArtists, moreArtistsLoaded } = useFetchMoreHomeArtists();
   const { albums, albumsLoaded } = useFetchAllHomeAlbums();
   const { playlists, playlistsLoaded } = useFetchAllHomePlaylists();
+  const { lessPlaylists, lessPlaylistsLoaded } = useFetchLessHomePlaylists();
+  const { lessAlbums, lessAlbumsLoaded } = useFetchLessHomeAlbums();
+  const { lessTracks, lessTracksLoaded } = useFetchLessHomeTracks();
   const { tracks, tracksLoaded } = useFetchAllHomeTracks();
 
 
@@ -76,24 +77,44 @@ const Home = () => {
         </div>
         <div className="rows">
           <Slider
-            name={text.filters.playlists}
+            name={text.home.top_playlists}
             list={playlistsLoaded && playlists}
             type={FILTER_TYPES.PLAYLISTS}
           />
           <Slider
-            name={text.filters.tracks}
+            name={text.home.top_artists}
+            list={artistsLoaded && artists}
+            type={FILTER_TYPES.ARTISTS}
+          />
+          <Slider
+            name={text.home.top_tracks}
             list={tracksLoaded && tracks}
             type={FILTER_TYPES.TRACKS}
           />
           <Slider
-            name={text.filters.albums}
+            name={text.home.top_albums}
             list={albumsLoaded && albums}
             type={FILTER_TYPES.ALBUMS}
           />
           <Slider
-            name={text.filters.artists}
-            list={artistsLoaded && artists}
+            name={text.home.less_playlists}
+            list={lessPlaylistsLoaded && lessPlaylists}
+            type={FILTER_TYPES.PLAYLISTS}
+          />
+          <Slider
+            name={text.home.less_artists}
+            list={moreArtistsLoaded && moreArtists}
             type={FILTER_TYPES.ARTISTS}
+          />
+          <Slider
+            name={text.home.less_albums}
+            list={lessAlbumsLoaded && lessAlbums}
+            type={FILTER_TYPES.ALBUMS}
+          />
+          <Slider
+            name={text.home.less_tracks}
+            list={lessTracksLoaded && lessTracks}
+            type={FILTER_TYPES.TRACKS}
           />
 
         </div>

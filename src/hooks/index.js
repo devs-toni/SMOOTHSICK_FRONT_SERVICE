@@ -5,4 +5,8 @@ export * from './useFetchAllHomeArtists';
 export * from './useFetchAllHomePlaylists';
 export * from './useFetchAllHomeTracks';
 export * from './useFetchAllPlaylists';
+export * from './useFetchLessHomeAlbums';
+export * from './useFetchLessHomePlaylists';
+export * from './useFetchLessHomeTracks';
+export * from './useFetchMoreHomeArtists';
 export * from './useForm';
