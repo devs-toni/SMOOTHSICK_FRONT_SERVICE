@@ -120,7 +120,7 @@
     font-size: 0.6em;
   }
   .list__link {
-    margin-right: 0;
+    margin-right: 5px;
   }
 }
 
@@ -135,5 +135,8 @@
     border-radius: 0;
     padding: 5px;
     margin-right: 5px;
+  }
+    .list__link {
+    margin-right: 0;
   }
 }

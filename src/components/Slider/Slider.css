@@ -46,16 +46,6 @@
   background-color: transparent;
 }
 
-@media screen and (max-width: 1580px) {
-  .row__arrows {
-    height: 80%;
-  }
-  .row__arrows--arrow {
-    width: 20px;
-    height: 100px;
-  }
-}
-
 @media screen and (max-width: 920px) {
   .row {
     margin: 40px 0 40px 0;
