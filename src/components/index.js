@@ -1,5 +1,10 @@
 export { default as AccountSettings } from './AccountSettings/AccountSettings';
+export * from './Albums/Albums';
+export * from './Artists/Artists';
 export * from './Categories/Categories';
+export { default as CreatePlaylistModal } from './Categories/CreatePlaylistModal/CreatePlaylistModal';
+export { default as ListCard } from './Categories/ListCard/ListCard';
+export { default as ListContent } from './Categories/ListContent/ListContent';
 export * from './CategoriesSongCard/CategoriesSongCard';
 export * from './ChangePassword/ChangePassword';
 export { default as Cover } from './Cover/Cover';

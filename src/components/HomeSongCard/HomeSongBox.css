@@ -53,7 +53,7 @@
   transition: all 0.3s ease-in-out;
 }
 .list__img-container--play-container:hover {
-  opacity: 0.7;
+  opacity: 1;
 }
 .list__img-container--play-container-play {
   width: 60px;
