@@ -1,9 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
-
 import './Section.css';
 import HomeSongCard from '../HomeSongCard/HomeSongCard';
 import { useLanguage } from '../../context/LanguageContext';
-import { SECTIONS } from '../../context/types';
+import { FILTER_TYPES } from '../Search/filterTypes';
 
 const Section = ({ tracks, loaded }) => {
   const { text } = useLanguage();
@@ -18,7 +17,7 @@ const Section = ({ tracks, loaded }) => {
                 key={uuidv4()}
                 obj={obj}
                 targetClass="chart"
-                type={SECTIONS.TRACK}
+                type={FILTER_TYPES.TRACKS}
               />
             )
           })

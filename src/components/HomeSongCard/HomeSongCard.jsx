@@ -1,29 +1,26 @@
 import { useLayoutEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { usePlayer } from "../../context/PlayerContext";
-import { SECTIONS } from "../../context/types";
 import { ALBUM, DETAILS } from "../../router/paths";
 import { FaPlayCircle } from 'react-icons/fa';
-import { useAuthContext } from "../../context/AuthContext";
 import './HomeSongCard.css';
 import './HomeSongBox.css';
-import axios from "axios";
+import { FILTER_TYPES } from "../Search/filterTypes";
 
-const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isSearch }) => {
+const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
 
   const { playSong } = usePlayer();
-  //  const { authState } = useAuthContext();
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
 
   useLayoutEffect(() => {
-    if (type == SECTIONS.ARTIST) {
+    if (type == FILTER_TYPES.ARTISTS) {
       setData({
         id: obj.id,
         name: obj.name,
         picture: obj.picture,
       })
-    } else if (type == SECTIONS.TRACK) {
+    } else if (type == FILTER_TYPES.TRACKS) {
       setCanPlay(true);
       setData({
         id: obj.track.id,
@@ -32,15 +29,15 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isSearch }) =
         artist: obj.album.title,
         preview: obj.track.preview
       })
-    } else if (type == SECTIONS.ALBUM) {
+    } else if (type == FILTER_TYPES.ALBUMS) {
       setData({
-        id: isSearch ? obj.id : obj.album.id,
-        name: isSearch ? obj.title : obj.album.title,
-        artist: !isSearch && obj.artist.name,
-        picture: isSearch ? obj.cover : obj.album.cover
+        id: obj.album.id,
+        name: obj.album.title,
+        artist: obj.artist.name,
+        picture: obj.album.cover
       })
 
-    } else if (type == SECTIONS.PLAYLIST) {
+    } else if (type == FILTER_TYPES.PLAYLISTS) {
       setData({
         id: obj.id,
         name: obj.title,
@@ -50,8 +47,8 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isSearch }) =
     }
   }, [])
 
-  const isTrack = type === SECTIONS.TRACK ? true : false;
-  const isArtist = type === SECTIONS.ARTIST ? true : false;
+  const isTrack = type === FILTER_TYPES.TRACKS ? true : false;
+  const isArtist = type === FILTER_TYPES.ARTISTS ? true : false;
 
   return (
     <NavLink to={isTrack ? '' : `${DETAILS}${ALBUM}/${data.id}`} className="link">

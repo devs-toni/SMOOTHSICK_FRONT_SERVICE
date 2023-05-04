@@ -7,98 +7,30 @@ import "./Search.css";
 import Filters from '../Filters/Filters';
 import HomeSongCard from '../HomeSongCard/HomeSongCard';
 import SearchSection from '../SearchSection/SearchSection';
-import { useGlobalContext } from '../../context/GlobalContext';
+import axios from 'axios';
 
 const Search = () => {
-
-  const { dataState } = useGlobalContext();
-
-  const initialState = {
-    playlists: dataState.playlists,
-    albums: dataState.albums,
-    artists: dataState.artists,
-    tracks: []
-  }
-
-  const all = [
-    false,
-    [...dataState.playlists],
-    [...dataState.albums],
-    [...dataState.artists],
-
-  ]
-
-  const items = {
-    playlists: dataState.playlists,
-    albums: dataState.albums,
-    artists: dataState.artists,
-    all
-  }
 
   const { text } = useLanguage();
 
   const [active, setActive] = useState(FILTER_TYPES.ALL);
-  const [nameFilter, setNameFilter] = useState(text.filters.all)
-  const [currentSearch, setCurrentSearch] = useState(all);
+  const [showNameFilter, setShowNameFilter] = useState(text.filters.all);
 
   const [results, setResults] = useState([]);
+  const initialState = {
+    playlists: [],
+    tracks: [],
+    artists: [],
+    albums: []
+  }
   const [allResults, setAllResults] = useState(initialState);
-
-  const styleInput = {
-    backgroundColor: "#00000000",
-    color: 'white',
-    textAlign: 'center',
-    borderBottom: "1px solid #4d4d4d"
-  };
 
   const [searchParams, setSearchParams] = useSearchParams();
   const strSearch = searchParams.get('q') ?? '';
 
-
-  const handleSearch = ({ target }) => {
-    const { value } = target;
-    setSearchParams({ q: value });
-    if (value.length !== 0) {
-      if (active === FILTER_TYPES.ALL) {
-        setAllResults({
-          playlists: playlists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-          tracks: tracks.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-          albums: albums.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-          artists: artists.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-        })
-        setNameFilter(text.filters.all)
-      } else {
-        let firstResults = [];
-        switch (active) {
-          case FILTER_TYPES.PLAYLISTS:
-            firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
-            setNameFilter(text.filters.playlists)
-            break;
-          case FILTER_TYPES.ALBUMS:
-            firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
-            setNameFilter(text.filters.albums)
-            break;
-          case FILTER_TYPES.TRACKS:
-            firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
-            setNameFilter(text.filters.tracks)
-            break;
-          case FILTER_TYPES.ARTISTS:
-            firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
-            setNameFilter(text.filters.artists)
-            break;
-        }
-        setResults(firstResults)
-      }
-    } else {
-      setResults([]);
-      setAllResults(initialState);
-    }
-  };
-
   useEffect(() => {
     setSearchParams({ q: '' })
   }, [])
-
 
   useEffect(() => {
     if (strSearch.length === 0) {
@@ -107,40 +39,61 @@ const Search = () => {
     }
   }, [strSearch.length])
 
-  useEffect(() => {
-    if (currentSearch?.length > 0 && strSearch.length > 0) {
-      let firstResults = [];
+  const fetchSearch = async (active, value) => {
 
-      switch (active) {
-        case FILTER_TYPES.PLAYLISTS:
-          setNameFilter(text.filters.playlists)
-          firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(strSearch.toLowerCase()));
-          break;
-        case FILTER_TYPES.ALBUMS:
-          setNameFilter(text.filters.albums)
-          firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(strSearch.toLowerCase()));
-          break;
-        case FILTER_TYPES.TRACKS:
-          setNameFilter(text.filters.tracks)
-          firstResults = currentSearch.filter((item) => item.title.toLowerCase().includes(strSearch.toLowerCase()));
-          break;
-        case FILTER_TYPES.ARTISTS:
-          setNameFilter(text.filters.artists)
-          firstResults = currentSearch.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase()));
-          break;
-        case FILTER_TYPES.ALL:
-          setNameFilter(text.filters.all)
-          setAllResults({
-            playlists: playlists.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
-            tracks: tracks.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
-            albums: albums.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
-            artists: artists.filter((item) => item.name.toLowerCase().includes(strSearch.toLowerCase())),
-          })
-          break;
-      }
-      setResults(firstResults)
+    const fetch = async (entity, isAll) => {
+      return await axios.get(import.meta.env.VITE_BACKEND + entity + "/search", { params: { search: value } })
+        .then(({ data }) => {
+          return !isAll ? setResults(data) : data;
+        })
     }
+
+    switch (active) {
+
+      case FILTER_TYPES.PLAYLISTS:
+        return fetch(FILTER_TYPES.PLAYLISTS.toLowerCase(), false)
+      case FILTER_TYPES.ALBUMS:
+        return fetch(FILTER_TYPES.ALBUMS.toLowerCase(), false)
+      case FILTER_TYPES.TRACKS:
+        if (value.length > 2)
+          return fetch(FILTER_TYPES.TRACKS.toLowerCase(), false)
+        else break;
+      case FILTER_TYPES.ARTISTS:
+        return fetch(FILTER_TYPES.ARTISTS.toLowerCase(), false)
+      case FILTER_TYPES.ALL:
+        const playlists = await fetch(FILTER_TYPES.PLAYLISTS.toLowerCase(), true)
+        const albums = await fetch(FILTER_TYPES.ALBUMS.toLowerCase(), true)
+        const tracks = value.length > 2 && await fetch(FILTER_TYPES.TRACKS.toLowerCase(), true)
+        const artists = await fetch(FILTER_TYPES.ARTISTS.toLowerCase(), true);
+        setAllResults({ playlists, albums, tracks, artists });
+        return;
+
+      default: break;
+    }
+  }
+
+
+  const handleSearch = ({ target }) => {
+    const { value } = target;
+    setSearchParams({ q: value });
+
+    if (value.length !== 0)
+      fetchSearch(active, value);
+    else
+      setResults([]);
+  };
+
+  useEffect(() => {
+    setAllResults(initialState)
+    if (strSearch.length > 0) fetchSearch(active, strSearch);
   }, [active])
+
+  const styleInput = {
+    backgroundColor: "#00000000",
+    color: 'white',
+    textAlign: 'center',
+    borderBottom: "1px solid #4d4d4d"
+  };
 
   return (
     <div className='flex w-full pb-32'>
@@ -158,8 +111,9 @@ const Search = () => {
         <Filters
           active={active}
           setActive={setActive}
-          setCurrentSearch={setCurrentSearch}
-          items={items}
+          showNameFilter={showNameFilter}
+          setShowNameFilter={setShowNameFilter}
+          setResults={setResults}
         />
         <div className='max-w-81rem'>
           {
@@ -167,33 +121,35 @@ const Search = () => {
               ?
               (
                 <>
-                  {allResults.tracks.length > 0 && <SearchSection check={FILTER_TYPES.TRACKS} list={allResults.tracks} name={text.filters.tracks} />}
-                  {allResults.playlists.length > 0 && <SearchSection check={FILTER_TYPES.PLAYLISTS} list={allResults.playlists} name={text.filters.playlists} />}
                   {allResults.artists.length > 0 && <SearchSection check={FILTER_TYPES.ARTISTS} list={allResults.artists} name={text.filters.artists} />}
+                  {allResults.playlists.length > 0 && <SearchSection check={FILTER_TYPES.PLAYLISTS} list={allResults.playlists} name={text.filters.playlists} />}
                   {allResults.albums.length > 0 && <SearchSection check={FILTER_TYPES.ALBUMS} list={allResults.albums} name={text.filters.albums} />}
+                  {allResults.tracks.length > 0 && <SearchSection check={FILTER_TYPES.TRACKS} list={allResults.tracks} name={text.filters.tracks} />}
                 </>
               )
               :
               (
                 <>
                   {
-                    results.length > 0 && <h1 className='search__title'>{nameFilter}</h1>
+                    results.length > 0 &&
+                    <>
+                      <h1 className='search__title'>{showNameFilter}</h1>
+                      <div className='search__section'>
+                        {
+                          results.map(obj => {
+                            return (
+                              <HomeSongCard
+                                key={uuidv4()}
+                                obj={obj}
+                                targetClass="search"
+                                type={active}
+                              />
+                            )
+                          })
+                        }
+                      </div>
+                    </>
                   }
-                  <div className='search__section'>
-                    {
-                      results.map(obj => {
-                        return (
-                          <HomeSongCard
-                            key={uuidv4()}
-                            obj={obj}
-                            targetClass="search"
-                            type={nameFilter.toUpperCase()}
-                            isSearch={true}
-                          />
-                        )
-                      })
-                    }
-                  </div>
                 </>
               )
           }

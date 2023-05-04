@@ -2,32 +2,30 @@ import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from '../../context/LanguageContext';
 import { FILTER_TYPES } from '../Search/filterTypes';
 
-const Filters = ({ active, setActive, setCurrentSearch, items }) => {
+const Filters = ({ active, setActive, showNameFilter, setShowNameFilter, setResults }) => {
 
   const { text } = useLanguage();
 
   const handleClick = ({ target }) => {
     const { dataset } = target;
     setActive(dataset.type);
-
+    setResults([]);
 
     switch (dataset.type) {
       case FILTER_TYPES.ALL:
-        setCurrentSearch(items.all);
-        break;
-      case FILTER_TYPES.PLAYLISTS:
-        setCurrentSearch(items.playlists);
-        break;
+        return setShowNameFilter(text.filters.all);
+
       case FILTER_TYPES.ALBUMS:
-        setCurrentSearch(items.albums);
-        break;
+        return setShowNameFilter(text.filters.albums);
+
       case FILTER_TYPES.ARTISTS:
-        console.log(items)
-        setCurrentSearch(items.artists);
-        break;
+        return setShowNameFilter(text.filters.artists);
+
+      case FILTER_TYPES.PLAYLISTS:
+        return setShowNameFilter(text.filters.playlists);
+
       case FILTER_TYPES.TRACKS:
-        setCurrentSearch(items.tracks);
-        break;
+        return setShowNameFilter(text.filters.tracks);
 
       default:
         break;

@@ -6,12 +6,11 @@ import { toast } from 'react-hot-toast';
 import './Home.css';
 import Slider from '../Slider/Slider';
 import Cover from '../Cover/Cover';
-import { SECTIONS } from '../../context/types';
-import Section from '../Section/Section';
 import { useFetchAllHomeArtists } from '../../hooks';
 import { useFetchAllHomeAlbums } from '../../hooks';
 import { useFetchAllHomePlaylists } from '../../hooks';
 import { useFetchAllHomeTracks } from '../../hooks';
+import { FILTER_TYPES } from '../Search/filterTypes';
 
 
 const Home = () => {
@@ -53,7 +52,7 @@ const Home = () => {
           <Slider
             name="The best!"
             list={artistsLoaded && artists}
-            type={SECTIONS.ARTIST}
+            type={FILTER_TYPES.ARTISTS}
             isFirstRowSection={true}
           />
         </div>
@@ -79,22 +78,22 @@ const Home = () => {
           <Slider
             name={text.filters.playlists}
             list={playlistsLoaded && playlists}
-            type={SECTIONS.PLAYLIST}
+            type={FILTER_TYPES.PLAYLISTS}
           />
           <Slider
             name={text.filters.tracks}
             list={tracksLoaded && tracks}
-            type={SECTIONS.TRACK}
+            type={FILTER_TYPES.TRACKS}
           />
           <Slider
             name={text.filters.albums}
             list={albumsLoaded && albums}
-            type={SECTIONS.ALBUM}
+            type={FILTER_TYPES.ALBUMS}
           />
           <Slider
             name={text.filters.artists}
             list={artistsLoaded && artists}
-            type={SECTIONS.ARTIST}
+            type={FILTER_TYPES.ARTISTS}
           />
 
         </div>

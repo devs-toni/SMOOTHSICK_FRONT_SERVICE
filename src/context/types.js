@@ -26,11 +26,3 @@ export const LANGUAGES = {
   FRA: "fr"
 }
 
-export const SECTIONS = {
-  ARTIST: "ARTISTS",
-  ALBUM: "ALBUMS",
-  TRACK: "TRACKS",
-  USER: "USERS",
-  PLAYLIST: "PLAYLISTS"
-}
-

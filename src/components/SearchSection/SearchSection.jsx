@@ -16,7 +16,7 @@ const SearchSection = ({ check, name, list }) => {
                   key={uuidv4()}
                   obj={obj}
                   targetClass="search"
-                  type={check.toUpperCase()}
+                  type={check}
                 />
               )
             })
