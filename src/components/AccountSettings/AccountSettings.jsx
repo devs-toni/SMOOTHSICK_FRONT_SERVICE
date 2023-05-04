@@ -41,12 +41,13 @@ const Accountsettings = () => {
 
   const reloadDatabase = (e) => {
     e.preventDefault();
-    axios.get("http://localhost:4000/admin")
-    .then((response) => {
-
-    }).catch(err => {
-
-    })
+    // axios.get("http://localhost:4000/admin")
+    axios.get("https://connect.deezer.com/oauth/auth.php?app_id=599664&redirect_uri=http://localhost:5173/&perms=basic_access")
+      .then((response) => {
+        console.log(response);
+      }).catch(err => {
+        console.log(err);
+      })
   }
 
   return (

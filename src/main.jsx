@@ -10,11 +10,10 @@ import { AuthProvider } from './context/AuthContext';
 import { UserProvider } from './context/UserContext';
 import { PlayerProvider } from './context/PlayerContext';
 import { LanguageProvider } from './context/LanguageContext';
-import { CLIENT_ID } from './config';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
-  <GoogleOAuthProvider clientId={CLIENT_ID}>
+  <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID}>
     <GlobalProvider>
       <AuthProvider>
         <UserProvider>
