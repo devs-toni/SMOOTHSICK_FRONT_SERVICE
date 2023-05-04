@@ -10,6 +10,7 @@ import { CategoriesPage } from '../pages/CategoriesPage';
 import { HomePage } from '../pages/HomePage';
 import PrivateRoute from '../router/PrivateRoute/PrivateRoute';
 import { FavouritesPage } from '../pages/FavouritesPage';
+import ListContent from '../components/Categories/ListContent/ListContent';
 
 
 export const MyRouter = () => {
@@ -18,7 +19,7 @@ export const MyRouter = () => {
       <Route path='/'>
         <Route index element={<HomePage />} />
         <Route path={`/${SIGNUP}`} element={<Register />} />
-        <Route path={`/${LOGIN}`} element={<Login />} /> 
+        <Route path={`/${LOGIN}`} element={<Login />} />
         <Route path={`/${CATEGORIES}`} element=
           {
             <PrivateRoute>
@@ -27,12 +28,23 @@ export const MyRouter = () => {
           }
         />
 
+        <Route path={`${CATEGORIES}/:name`} element=
+          {
+            <PrivateRoute>
+              <ListContent />
+            </PrivateRoute>
+          }
+        />
+
+
+
         <Route path={`/${VIDEO}`} element={<VideoPage />} />
         <Route path={`/${RADIO}`} element={<RadioPage />} />
         <Route path={`/${SEARCH}`} element={<Search />} />
         <Route path={`/${DETAILS}`}>
           <Route path=':type/:id' element={<DetailsPage />} />
         </Route>
+
 
 
 
