@@ -60,7 +60,7 @@
   align-self: center;
 }
 
-.link {
+.chart__link {
   width: 100%;
 }
 
@@ -106,7 +106,7 @@
   .chart__data--artist {
     font-size: 0.7em;
   }
-  .link {
+  .chart__link {
     display: block;
     width: 50% !important;
     margin: 0 !important;

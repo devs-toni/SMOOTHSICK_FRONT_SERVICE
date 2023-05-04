@@ -51,7 +51,7 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   const isArtist = type === FILTER_TYPES.ARTISTS ? true : false;
 
   return (
-    <NavLink to={isTrack ? '' : `${DETAILS}${ALBUM}/${data.id}`} className="link">
+    <NavLink to={isTrack ? '' : `${DETAILS}${ALBUM}/${data.id}`} className={`${targetClass}__link`}>
       <div className={`${!isFirstRowSection ? `row__${targetClass}--item bg-zinc-900` : `row__${targetClass}--firstItem`}`}>
         <div className={`${targetClass}__img-container`}>
           {

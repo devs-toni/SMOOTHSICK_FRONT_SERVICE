@@ -8,10 +8,6 @@ import Filters from '../Filters/Filters';
 import HomeSongCard from '../HomeSongCard/HomeSongCard';
 import SearchSection from '../SearchSection/SearchSection';
 import axios from 'axios';
-import { useFetchAllHomeArtists } from '../../hooks/useFetchAllHomeArtists';
-import { useFetchAllHomeAlbums } from '../../hooks/useFetchAllHomeAlbums';
-import { useFetchAllHomeTracks } from '../../hooks/useFetchAllHomeTracks';
-import { useFetchAllHomePlaylists } from '../../hooks/useFetchAllHomePlaylists';
 
 const Search = () => {
 
@@ -129,7 +125,7 @@ const Search = () => {
   const empty = allResults.albums.length === 0 && allResults.tracks.length === 0 && allResults.artists.length === 0 && allResults.playlists.length === 0 && results.length === 0;
 
   return (
-    <div className='flex w-full pb-32'>
+    <div className='flex justify-center'>
       <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-24 overflow-hidden z-10 md:ml-20 lg:ml-52">
         <form className='flex w-full justify-center mt-10'>
           <input

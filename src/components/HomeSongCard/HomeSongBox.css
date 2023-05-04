@@ -7,11 +7,11 @@
   overflow: hidden;
 }
 
-.link {
+.list__link {
   margin-right: 10px;
 }
 
-.link:last-child {
+.list__link:last-child {
   margin-right: 0;
 }
 
@@ -72,6 +72,9 @@
 .list__data--artist {
   font-size: 0.8em;
   font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 1880px) {
@@ -90,6 +93,7 @@
   }
   .row__list--item {
     padding: 10px;
+    max-width: 100px;
   }
   .list__data {
     font-size: 0.8em;
@@ -114,6 +118,9 @@
   }
   .list__data {
     font-size: 0.6em;
+  }
+  .list__link {
+    margin-right: 0;
   }
 }
 
