@@ -29,7 +29,8 @@ module.exports = {
         "270": "270px",
       },
       backgroundColor: {
-        "chart": "#1a1e1f"
+        "chart": "#1a1e1f",
+        "deezer": "#ef5567"
       },
       colors: {
         "deezer": "#ef5567"

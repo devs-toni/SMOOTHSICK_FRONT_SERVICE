@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { FILTER_TYPES } from '../Search/filterTypes';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { ArtistHeader } from '../ArtistHeader/ArtistHeader';
 
 export const Details = () => {
 
@@ -17,14 +18,22 @@ export const Details = () => {
           })
 
       case FILTER_TYPES.ARTISTS:
-      
-        break;
+        return axios.get(import.meta.env.VITE_BACKEND + "artists/" + id)
+          .then(({ data }) => {
+            setData({
+              id: data.id,
+              title: data.name,
+              total: data.nb_album,
+              picture: data.picture,
+              fans: data.nb_fan
+            });
+          })
 
       case FILTER_TYPES.PLAYLISTS:
         return axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
-        .then(({ data }) => {
-          setData(data);
-        })
+          .then(({ data }) => {
+            setData(data);
+          })
 
 
       case FILTER_TYPES.TRACKS:
@@ -43,8 +52,19 @@ export const Details = () => {
         {
           Object.keys(data).length > 0
             ?
-            <p>{data.title}</p>
+            FILTER_TYPES.ARTISTS === type.charAt(0).toUpperCase() + type.slice(1)
+              ?
+              (
+                <>
+                  <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} />
+                </>
+              )
+              :
+              (
+                <>
 
+                </>
+              )
             :
             <p>Cargando</p>
         }
