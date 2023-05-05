@@ -21,7 +21,11 @@ export const Details = () => {
         break;
 
       case FILTER_TYPES.PLAYLISTS:
-        break;
+        return axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
+        .then(({ data }) => {
+          setData(data);
+        })
+
 
       case FILTER_TYPES.TRACKS:
         break;
@@ -40,6 +44,7 @@ export const Details = () => {
           Object.keys(data).length > 0
             ?
             <p>{data.title}</p>
+
             :
             <p>Cargando</p>
         }
