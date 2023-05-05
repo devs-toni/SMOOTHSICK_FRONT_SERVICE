@@ -1,17 +1,19 @@
 import { useLayoutEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { usePlayer } from "../../context/PlayerContext";
-import { ALBUM, DETAILS } from "../../router/paths";
+import { ALBUM, ARTIST, DETAILS, PLAYLIST } from "../../router/paths";
 import { FaPlayCircle } from 'react-icons/fa';
 import './HomeSongCard.css';
 import './HomeSongBox.css';
 import { FILTER_TYPES } from "../Search/filterTypes";
+import { useAuthContext } from "../../context/AuthContext";
 
 const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
 
   const { playSong } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
+  const { authState } = useAuthContext();
 
   useLayoutEffect(() => {
     if (type == FILTER_TYPES.ARTISTS) {
@@ -49,9 +51,23 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
 
   const isTrack = type === FILTER_TYPES.TRACKS ? true : false;
   const isArtist = type === FILTER_TYPES.ARTISTS ? true : false;
+  const isAlbum = type === FILTER_TYPES.ALBUMS ? true : false;
+  const isPlaylist = type === FILTER_TYPES.PLAYLISTS ? true : false;
 
   return (
-    <NavLink to={isTrack ? '' : `${DETAILS}${ALBUM}/${data.id}`} className={`${targetClass}__link`}>
+    <NavLink to={
+      isAlbum
+        ?
+        `${DETAILS}${ALBUM}/${data.id}`
+        :
+        isPlaylist
+          ?
+          `${DETAILS}${PLAYLIST}/${data.id}`
+          :
+          isArtist
+          &&
+          `${DETAILS}${ARTIST}/${data.id}`
+    } className={`${targetClass}__link`}>
       <div className={`${!isFirstRowSection ? `row__${targetClass}--item bg-zinc-900` : `row__${targetClass}--firstItem`}`}>
         <div className={`${targetClass}__img-container`}>
           {
@@ -77,12 +93,12 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
             <p className={`${targetClass}__data--artist`}>{data.artist}</p>
           </div>
         }
-        {/*         {
+        {
           (targetClass === 'chart' && authState.isAuthenticated) &&
           <div className={`${liked ? "border-red-500" : "border-gray-400"} chart__data--like`}>
             <FaHeart className={liked ? "text-red-500" : "text-gray-600"} />
           </div>
-        } */}
+        }
       </div>
     </NavLink>
   )

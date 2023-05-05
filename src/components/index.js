@@ -8,7 +8,7 @@ export { default as ListContent } from './Categories/ListContent/ListContent';
 export * from './CategoriesSongCard/CategoriesSongCard';
 export * from './ChangePassword/ChangePassword';
 export { default as Cover } from './Cover/Cover';
-export { default as Details } from './Details/Details';
+export * from './Details/Details';
 export { default as Error } from './Error/Error';
 export * from './Favourites/Favourites';
 export * from './FavouritesSongCard/FavouritesSongCard';
