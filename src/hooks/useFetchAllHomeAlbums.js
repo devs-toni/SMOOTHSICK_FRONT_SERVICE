@@ -7,7 +7,9 @@ export const useFetchAllHomeAlbums = () => {
   const [albumsLoaded, setAlbumsLoaded] = useState(false)
 
   const getAllAlbums = () => {
-    axios.get(import.meta.env.VITE_BACKEND + "albums/home")
+    axios.get(import.meta.env.VITE_BACKEND + "albums/home", {
+      headers: { Authorization: localStorage.getItem("userToken") }
+    })
       .then(({ data }) => {
         setAlbums(data);
         setAlbumsLoaded(true);

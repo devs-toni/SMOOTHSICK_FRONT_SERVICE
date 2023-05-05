@@ -28,6 +28,7 @@ export const NavBar = () => {
 
   const { user } = authState
 
+
   const lenguageSelected = [
     { key: 1, name: "spain", code: "es", country: flagSpain },
     { key: 2, name: "united-kingdom", code: "en", country: flagEngland },

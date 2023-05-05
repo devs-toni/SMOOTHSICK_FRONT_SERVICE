@@ -31,17 +31,18 @@ const Login = () => {
     try {
       await axios.post(import.meta.env.VITE_DB_URI_AUTHENTICATE, { userData })
         .then(({ data, status }) => {
-          const {token, currentUser} = data;
+          const { token, currentUser } = data;
           if (status === 200) {
             login(currentUser._id, {
               id: currentUser._id,
               firstName: currentUser.name,
               lastName: currentUser.last_name,
               email: currentUser.email,
+              role: currentUser.role,
               profilePicture: defaultUserPicture,
             });
             localStorage.setItem("userToken", token)
-            navigate(HOME); 
+            navigate(HOME);
 
           } else {
             toast.error("Something went wrong!", {
