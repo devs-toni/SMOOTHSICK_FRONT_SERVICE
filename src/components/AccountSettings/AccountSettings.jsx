@@ -3,16 +3,29 @@ import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { ACCOUNT, CHANGEPASS } from '../../router/paths'
 import axios from 'axios';
+import { useState } from 'react';
 
 
 const Accountsettings = () => {
   const { text } = useLanguage()
   const { authState } = useAuthContext()
+  const { user } = authState
+  const [userRole, setUserRole] = useState(Boolean)
+
+
+  try {
+    axios.post(import.meta.env.VITE_DB_URI_AUTHORIZATE, { user })
+      .then((res) => setUserRole(res.data))
+  } catch (error) {
+
+  }
 
   const reloadDb = () => {
     axios.get(`http://localhost:4000/admin/reload`)
-      .then((response) => console.log(response))
+      .then((res) => console.log(res))
   }
+
+
 
   return (
 
@@ -46,9 +59,16 @@ const Accountsettings = () => {
           <div><a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{text.account.change_plan}</a></div>
         </div>
         <div className='grid grid-cols-3 justify-start items-center pb-6 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 w-full h-1/3'>
-          <div><p>{text.account.security_p}</p></div>
-          <div><p>{text.account.security_o}</p></div>
-          <div><a href="" onClick={reloadDb}>Reload Database</a></div>
+          <p>{text.account.security_p}</p>
+          <p>{text.account.security_o}</p>
+          {
+            userRole
+              ?
+              <button onClick={reloadDb}>Reload Database</button>
+              :
+              ""
+          }
+
         </div>
       </div>
     </div>

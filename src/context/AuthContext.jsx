@@ -1,16 +1,10 @@
-import { createContext, useContext, useReducer, useCallback, useMemo } from "react";
+import { createContext, useContext, useReducer, useCallback, useMemo, useLayoutEffect, useEffect, useState } from "react";
 import { TYPES } from "./types";
 import defaultUserPicture from "../assets/imgs/default_pictures/default_user_img.png"
+import axios from "axios";
 
-const init = () => {
-  const auth = JSON.parse(localStorage.getItem('auth'));
-  return {
-    isAuthenticated: !!auth,
-    id: auth ? auth.id : -1,
-    user: auth ? auth : {},
-    error: ""
-  }
-}
+const token = localStorage.getItem('userToken') || undefined;
+
 
 const AuthContext = createContext();
 
@@ -19,8 +13,42 @@ export const useAuthContext = () => {
 };
 
 export const AuthProvider = ({ children }) => {
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        if (token) {
+          axios.post(import.meta.env.VITE_DB_URI_CURRENT_USER, {}, {
+            headers: {
+              "Authorization": token
+            }
+          })
+            .then(res => {
+              const { data, status } = res
+              if (status === 200) {
+                
+                refresh(data.id, {
+                  id: data.id,
+                  firstName: data.name,
+                  lastName: data.last_name,
+                  email: data.email,
+                  role: data.role,
+                  profilePicture: defaultUserPicture,
+                });
+              }
+            })
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    if (token) checkUser();
+  }, [])
+
+
+
   const initialState = {
-    isAuthenticated: false,
+    isAuthenticated: token ? true : false,
     firstTime: false,
     id: -1,
     user: {
@@ -30,18 +58,20 @@ export const AuthProvider = ({ children }) => {
       email: "",
       profilePicture: defaultUserPicture,
     },
+    token: "",
     error: "",
   };
 
   const reducer = (state, action) => {
     switch (action.type) {
+
       case TYPES.LOGIN_SUCCESS:
         return {
           isAuthenticated: true,
           id: action.payload.id,
           user: action.payload.user,
           firstTime: true,
-          error: ""
+          token: action.payload.token,
         };
       case TYPES.LOGIN_UNSUCCESS:
         return {
@@ -53,7 +83,9 @@ export const AuthProvider = ({ children }) => {
           ...state,
           isAuthenticated: false,
           id: "",
-          user: initialState.user,
+          user: "",
+          token: "",
+          error: "",
         };
       case TYPES.RESET_ERROR:
         return {
@@ -65,24 +97,49 @@ export const AuthProvider = ({ children }) => {
         return {
           ...state,
           firstTime: false
-        }
+        };
+
+      case TYPES.REFRESH_PAGE:
+        return {
+          isAuthenticated: true,
+          id: action.payload.id,
+          user: action.payload.user,
+          firstTime: true,
+          token: action.payload.token,
+        };
+
+
+
       default:
         return state;
     }
   };
 
-  const [authState, dispatch] = useReducer(reducer, initialState, init);
+  const [authState, dispatch] = useReducer(
+    reducer,
+    initialState,
+    // init
+  );
+
+
 
   const login = useCallback((id, user, error) => {
     if (!error) {
-      dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { id, user } })
-      localStorage.setItem('auth', JSON.stringify(user));
+      dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { id, user, token } })
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
   }, [])
 
+  const refresh = useCallback((id, user, error) => {
+    if (!error) {
+      dispatch({ type: TYPES.REFRESH_PAGE, payload: { id, user, token } })
+    } else
+      dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
+
+  }, [])
+
   const logout = useCallback(() => {
-    localStorage.removeItem('auth');
+    localStorage.removeItem('userToken');
     dispatch({ type: TYPES.LOGOUT })
   }, []);
 
