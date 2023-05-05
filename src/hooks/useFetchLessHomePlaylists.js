@@ -7,7 +7,7 @@ export const useFetchLessHomePlaylists = () => {
   const [lessPlaylistsLoaded, setLessPlaylistsLoaded] = useState(false)
 
   const getAllPlaylists = () => {
-    axios.get(import.meta.env.VITE_BACKEND + "playlists/less")
+    axios.get(import.meta.env.VITE_BACKEND + "playlists/more")
       .then(({ data }) => {
         setLessPlaylists(data);
         setLessPlaylistsLoaded(true);

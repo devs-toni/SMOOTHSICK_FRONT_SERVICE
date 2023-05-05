@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { CATEGORIES, RADIO, SIGNUP, LOGIN, VIDEO, ACCOUNT, FAVOURITES, SEARCH, DETAILS, CHANGEPASS, ARTIST, ALBUM } from './paths'
+import { CATEGORIES, RADIO, SIGNUP, LOGIN, VIDEO, ACCOUNT, FAVOURITES, SEARCH, DETAILS, CHANGEPASS, ARTIST, ALBUM, PLAYLIST } from './paths'
 import { Register, Login, Search } from '../components';
 import { AccountSettingsPage } from '../pages/AccountSettingsPage';
 import { ChangePasswordPage } from '../pages/ChangePasswordPage';
@@ -13,6 +13,7 @@ import { FavouritesPage } from '../pages/FavouritesPage';
 import ListContent from '../components/Categories/ListContent/ListContent';
 import { ArtistsPage } from '../pages/ArtistsPage';
 import { AlbumsPage } from '../pages/AlbumsPage';
+import { PlaylistsPage } from '../pages/PlaylistsPage';
 
 
 export const MyRouter = () => {
@@ -20,9 +21,9 @@ export const MyRouter = () => {
     <Routes>
       <Route path='/'>
         <Route index element={<HomePage />} />
-        <Route path={`/${SIGNUP}`} element={<Register />} />
-        <Route path={`/${LOGIN}`} element={<Login />} />
-        <Route path={`/${CATEGORIES}`} element=
+        <Route path={`${SIGNUP}`} element={<Register />} />
+        <Route path={`${LOGIN}`} element={<Login />} />
+        <Route path={`${CATEGORIES}`} element=
           {
             <PrivateRoute>
               <CategoriesPage />
@@ -40,19 +41,20 @@ export const MyRouter = () => {
 
 
 
-        <Route path={`/${VIDEO}`} element={<VideoPage />} />
-        <Route path={`/${RADIO}`} element={<RadioPage />} />
-        <Route path={`/${SEARCH}`} element={<Search />} />
-        <Route path={`/${ARTIST}`} element={<ArtistsPage />} />
-        <Route path={`/${ALBUM}`} element={<AlbumsPage />} />
-        <Route path={`/${DETAILS}`}>
+        <Route path={`${VIDEO}`} element={<VideoPage />} />
+        <Route path={`${RADIO}`} element={<RadioPage />} />
+        <Route path={`${SEARCH}`} element={<Search />} />
+        <Route path={`${ARTIST}`} element={<ArtistsPage />} />
+        <Route path={`${ALBUM}`} element={<AlbumsPage />} />
+        <Route path={`${PLAYLIST}`} element={<PlaylistsPage />} />
+        <Route path={`${DETAILS}`}>
           <Route path=':type/:id' element={<DetailsPage />} />
         </Route>
 
 
 
 
-        <Route path={`/${ACCOUNT}`} element=
+        <Route path={`${ACCOUNT}`} element=
           {
             <PrivateRoute>
               <AccountSettingsPage />
@@ -66,7 +68,7 @@ export const MyRouter = () => {
           </PrivateRoute>
         } />
 
-        <Route path={`/${FAVOURITES}`} element=
+        <Route path={`${FAVOURITES}`} element=
           {
             <PrivateRoute>
               <FavouritesPage />

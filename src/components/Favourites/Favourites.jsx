@@ -17,7 +17,7 @@ export const Favourites = () => {
   const [totalTracks, setTotalTracks] = useState([])
   
   useEffect(() => {
-    setTotalTracks(dataState.tracks);
+    //setTotalTracks(dataState.tracks);
   }, [])
 
 
@@ -47,7 +47,7 @@ export const Favourites = () => {
           </div>
         </div>
         
-        {
+       {/*  {
           dataState.tracks.map(({ id, name, artist, url, thumbnail, genre }, index) => {
             
             return (
@@ -64,7 +64,7 @@ export const Favourites = () => {
               />
             )
           })
-        }
+        } */}
       </div>
     </div>
   )
