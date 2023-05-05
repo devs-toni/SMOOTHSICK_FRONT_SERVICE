@@ -2,13 +2,14 @@ import { useLayoutEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { usePlayer } from "../../context/PlayerContext";
 import { ALBUM, ARTIST, DETAILS, PLAYLIST } from "../../router/paths";
-import { FaPlayCircle } from 'react-icons/fa';
+import { FaHeart, FaPlayCircle } from 'react-icons/fa';
 import './HomeSongCard.css';
+import './ArtistSongCard.css';
 import './HomeSongBox.css';
 import { FILTER_TYPES } from "../Search/filterTypes";
 import { useAuthContext } from "../../context/AuthContext";
 
-const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
+const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isLike }) => {
 
   const { playSong } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
@@ -94,9 +95,9 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
           </div>
         }
         {
-          (targetClass === 'chart' && authState.isAuthenticated) &&
-          <div className={`${liked ? "border-red-500" : "border-gray-400"} chart__data--like`}>
-            <FaHeart className={liked ? "text-red-500" : "text-gray-600"} />
+          authState.isAuthenticated &&
+          <div className={`${isLike ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`}>
+            <FaHeart className={isLike ? "text-red-500" : "text-gray-600"} />
           </div>
         }
       </div>

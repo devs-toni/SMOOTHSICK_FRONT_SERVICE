@@ -1,6 +1,7 @@
 export { default as AccountSettings } from './AccountSettings/AccountSettings';
 export * from './Albums/Albums';
 export * from './ArtistHeader/ArtistHeader';
+export * from './ArtistOptions/ArtistOptions';
 export * from './Artists/Artists';
 export * from './Categories/Categories';
 export { default as CreatePlaylistModal } from './Categories/CreatePlaylistModal/CreatePlaylistModal';

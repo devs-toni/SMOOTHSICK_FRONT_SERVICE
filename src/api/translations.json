@@ -67,6 +67,11 @@
       "less_albums": "Más Albums",
       "less_tracks": "Más Canciones"
     },
+    "details": {
+      "mix": "MIX",
+      "fans": "fans",
+      "albums": "Discografía"
+    },
     "liked": {
       "name": "Favoritos",
       "title": "Canciones que te gustan",
@@ -172,6 +177,11 @@
       "less_artists": "More Artists",
       "less_albums": "More Albums",
       "less_tracks": "More Tracks"
+    },
+    "details": {
+      "mix": "MIX",
+      "fans": "fans",
+      "albums": "Albums"
     },
     "liked": {
       "title": "Liked Songs",

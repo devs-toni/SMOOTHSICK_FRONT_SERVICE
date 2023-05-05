@@ -1,0 +1,42 @@
+.artists-tracks-section {
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.artists-tracks-section .section__title {
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: block !important;
+}
+
+.artists-tracks-section .section__cont {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  background-color: rgba(65, 65, 65, 0.459);
+  padding: 25px 40px;
+}
+
+@media screen and (max-width: 1940px) {
+  .artists-tracks-section {
+    width: 47%;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .artists-tracks-section {
+    width: 100%;
+    gap: 0;
+  }
+  .artists-tracks-section .section__title {
+    margin-bottom: 5px;
+    margin-top: 25px;
+    font-size: 1em;
+  }
+}

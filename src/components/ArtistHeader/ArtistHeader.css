@@ -1,5 +1,5 @@
 .artist-header {
-  width: 85%;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
 }
@@ -58,5 +58,5 @@
 }
 .artist-like.isLike {
   color: #ef5567;
-  border-color: #ef5567;
+  border: 2px solid rgba(255, 255, 255, 0.438);
 }

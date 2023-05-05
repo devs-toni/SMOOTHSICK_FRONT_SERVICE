@@ -1,0 +1,15 @@
+.artist-options {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 40px;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.13);
+}
+.artist-options__option {
+  margin: 0 25px 0 50px;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+.artist-options__option.selected {
+  border-bottom: 2px solid #ef5567;
+}
