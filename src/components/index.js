@@ -1,4 +1,5 @@
 export { default as AccountSettings } from './AccountSettings/AccountSettings';
+export * from './Admin/Admin';
 export * from './Albums/Albums';
 export * from './ArtistHeader/ArtistHeader';
 export * from './ArtistOptions/ArtistOptions';
@@ -21,7 +22,6 @@ export { default as Login } from './Login/Login';
 export * from './NavBar/NavBar';
 export { default as Player } from './Player/Player';
 export * from './Playlists/Playlists';
-export * from './Radio/Radio';
 export { default as RecoverModal } from './RecoverModal/RecoverModal';
 export { default as Register } from './Register/Register';
 export { default as Search } from './Search/Search';
@@ -30,4 +30,3 @@ export { default as SearchSection } from './SearchSection/SearchSection';
 export { default as Section } from './Section/Section';
 export { default as Slider } from './Slider/Slider';
 export { default as Song } from './Song/Song';
-export * from './Video/Video';

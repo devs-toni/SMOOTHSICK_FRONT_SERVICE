@@ -28,8 +28,7 @@
     "navbar": {
       "home": "Home",
       "categories": "Categorias",
-      "radio": "Radio",
-      "video": "Video",
+      "admin": "Admin",
       "login": "Iniciar sesión",
       "logout": "Cerrar sesión",
       "register": "Registrate",
@@ -139,8 +138,7 @@
     "navbar": {
       "home": "Home",
       "categories": "Categories",
-      "radio": "Radio",
-      "video": "Video",
+      "admin": "Admin",
       "login": "Log in",
       "logout": "Log out",
       "register": "Sign up",
@@ -248,8 +246,7 @@
     "navbar": {
       "home": "Page d'accueil",
       "categories": "Catégories",
-      "radio": "Radio",
-      "video": "Video",
+      "admin": "Admin",
       "login": "Se connecter",
       "logout": "Se déconnecter",
       "register": "S'inscrire'",
@@ -351,8 +348,7 @@
     "navbar": {
       "home": "主页",
       "categories": "分类",
-      "radio": "电台",
-      "video": "视频",
+      "admin": "Admin",
       "login": "登录",
       "logout": "退出",
       "register": "注册",

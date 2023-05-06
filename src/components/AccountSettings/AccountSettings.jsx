@@ -17,7 +17,7 @@ const Accountsettings = () => {
     axios.post(import.meta.env.VITE_DB_URI_AUTHORIZATE, { user })
       .then((res) => setUserRole(res.data))
   } catch (error) {
-
+    console.error(error)
   }
 
   const reloadDb = () => {

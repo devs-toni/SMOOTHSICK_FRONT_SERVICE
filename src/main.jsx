@@ -19,9 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <UserProvider>
           <PlayerProvider>
             <LanguageProvider>
-              <BrowserRouter>
+              <HashRouter>
                 <App />
-              </BrowserRouter>
+              </HashRouter>
             </LanguageProvider>
           </PlayerProvider>
         </UserProvider>

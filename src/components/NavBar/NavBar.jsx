@@ -1,32 +1,31 @@
 import { Dropdown } from 'flowbite-react';
 import { Toaster, toast } from "react-hot-toast";
-import { FaPhotoVideo, FaUserShield, FaUserPlus, FaSearch } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi"
+import { FaUserShield, FaUserPlus, FaKey } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai"
 import { RiFolderMusicFill, RiLoginBoxLine, RiMenu4Fill } from "react-icons/ri"
-import { BiLogOut, BiRadio } from "react-icons/bi"
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
 import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import logo from '../../assets/imgs/logo/logo-no-background.svg'
 import logo_text from '../../assets/imgs/logo/logo-text-no-background.svg'
-import { SIGNUP, LOGIN, SEARCH, ACCOUNT, FAVOURITES, HOME, CATEGORIES, RADIO, VIDEO, ALBUM, PLAYLIST, ARTIST } from '../../router/paths'
+import { SIGNUP, ADMIN, LOGIN, SEARCH, ACCOUNT, FAVOURITES, HOME, CATEGORIES, ALBUM, PLAYLIST, ARTIST } from '../../router/paths'
 import { Fragment, useEffect, useState } from 'react';
 import { HiUserCircle } from "react-icons/hi"
 import { TbSearch } from "react-icons/tb"
 import { MdOutlineLogout } from 'react-icons/md';
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
+import axios from 'axios';
 
 
 export const NavBar = () => {
   const { logout, authState } = useAuthContext();
   const { handleLanguage, text } = useLanguage();
   const [asideLinks, setAsideLinks] = useState([])
-
-  const { user } = authState
+  const { user } = authState;
+  const [adminRole, setAdminRole] = useState(false)
 
 
   const lenguageSelected = [
@@ -39,13 +38,18 @@ export const NavBar = () => {
 
 
   useEffect(() => {
+    try {
+      axios.post(import.meta.env.VITE_DB_URI_AUTHORIZATE, { user })
+        .then((res) => setAdminRole(res.data))
+    } catch (error) {
+      console.error(error)
+    }
+
     authState.isAuthenticated
       ? setAsideLinks(
         [
           { key: 1, path: HOME, icon: <AiFillHome className="h-6 w-6 " />, text: text.navbar.home },
           { key: 2, path: CATEGORIES, icon: <RiFolderMusicFill className="h-6 w-6 " />, text: text.navbar.categories },
-          { key: 3, path: RADIO, icon: <BiRadio className="h-6 w-6 " />, text: text.navbar.radio },
-          { key: 4, path: VIDEO, icon: <FaPhotoVideo className="h-6 w-6 " />, text: text.navbar.video },
           { key: 5, path: SEARCH, icon: <TbSearch className="h-6 w-6" />, text: text.navbar.search }
         ]
       )
@@ -150,7 +154,7 @@ export const NavBar = () => {
                             <Dropdown.Divider />
                           </>
                       }
-                      
+
                       <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
                         <div className=" flex flex-row justify-center pl-2 items-center">
                           {
@@ -184,7 +188,7 @@ export const NavBar = () => {
           </div>
         </nav >
       </div >
-sdfg
+
       <aside id="logo-sidebar" className="flex bg-zinc-900 flex-col justify-center h-full w-full items-center fixed top-0 z-40 bg-primary-color transition-transform -translate-x-full md:translate-x-0 md:w-20 md:border-r md:border-neutral-700 lg:w-52" aria-label="Sidebar">
         <div className='flex flex-row mt-4 justify-content-center h-10 items-center '>
           <NavLink to="/" className="hidden md:block lg:hidden cursor-pointer">
@@ -207,6 +211,15 @@ sdfg
                   </NavLink>
                 ))
               }
+              {
+                adminRole &&
+                <NavLink key="3" to={ADMIN} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar" >
+                  <li className='inline-flex gap-2 items-center w-full lg:w-32 justify-left '>
+                    <FaKey />
+                    <span className=" md:hidden lg:block">{text.navbar.admin}</span>
+                  </li>
+                </NavLink>
+              }
 
             </section>
             <section className='flex items-center justify-center gap-20 w-full'>
@@ -215,7 +228,6 @@ sdfg
                   authState.isAuthenticated
                     ?
                     <>
-
                       <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-16 md:justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
@@ -247,6 +259,11 @@ sdfg
                       <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
+                        </li>
+                      </NavLink>
+                      <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
                         </li>
                       </NavLink>
                     </>

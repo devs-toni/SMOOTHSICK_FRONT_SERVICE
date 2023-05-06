@@ -1,11 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
-import { CATEGORIES, RADIO, SIGNUP, LOGIN, VIDEO, ACCOUNT, FAVOURITES, SEARCH, DETAILS, CHANGEPASS, ARTIST, ALBUM, PLAYLIST } from './paths'
+import { CATEGORIES, ADMIN, SIGNUP, LOGIN, ACCOUNT, FAVOURITES, SEARCH, DETAILS, CHANGEPASS, ARTIST, ALBUM, PLAYLIST } from './paths'
 import { Register, Login, Search } from '../components';
 import { AccountSettingsPage } from '../pages/AccountSettingsPage';
 import { ChangePasswordPage } from '../pages/ChangePasswordPage';
 import { DetailsPage } from '../pages/DetailsPage';
-import { RadioPage } from '../pages/RadioPage';
-import { VideoPage } from '../pages/VideoPage';
+import { AdminPage } from '../pages/AdminPage';
 import { CategoriesPage } from '../pages/CategoriesPage';
 import { HomePage } from '../pages/HomePage';
 import PrivateRoute from '../router/PrivateRoute/PrivateRoute';
@@ -14,6 +13,7 @@ import ListContent from '../components/Categories/ListContent/ListContent';
 import { ArtistsPage } from '../pages/ArtistsPage';
 import { AlbumsPage } from '../pages/AlbumsPage';
 import { PlaylistsPage } from '../pages/PlaylistsPage';
+import { PrivateAdminRoute } from './PrivateAdminRoute/PrivateAdminRoute';
 
 
 export const MyRouter = () => {
@@ -39,10 +39,6 @@ export const MyRouter = () => {
           }
         />
 
-
-
-        <Route path={`${VIDEO}`} element={<VideoPage />} />
-        <Route path={`${RADIO}`} element={<RadioPage />} />
         <Route path={`${SEARCH}`} element={<Search />} />
         <Route path={`${ARTIST}`} element={<ArtistsPage />} />
         <Route path={`${ALBUM}`} element={<AlbumsPage />} />
@@ -52,13 +48,18 @@ export const MyRouter = () => {
         </Route>
 
 
+        <Route path={`${ADMIN}`} element={
+          <PrivateRoute>
+            <AdminPage />
+          </PrivateRoute>
+        } />
 
 
         <Route path={`${ACCOUNT}`} element=
           {
-            <PrivateRoute>
+            <PrivateAdminRoute>
               <AccountSettingsPage />
-            </PrivateRoute>
+            </PrivateAdminRoute>
           }
         />
 
