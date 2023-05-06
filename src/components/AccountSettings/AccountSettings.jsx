@@ -4,12 +4,14 @@ import { useLanguage } from '../../context/LanguageContext';
 import { ACCOUNT, CHANGEPASS } from '../../router/paths'
 import axios from 'axios';
 import { useState } from 'react';
+import { Button } from 'flowbite-react';
 
 
 const Accountsettings = () => {
   const { text } = useLanguage()
   const { authState } = useAuthContext()
   const { user } = authState
+  const { email } = user
   const [userRole, setUserRole] = useState(Boolean)
 
 
@@ -17,7 +19,7 @@ const Accountsettings = () => {
     axios.post(import.meta.env.VITE_DB_URI_AUTHORIZATE, { user })
       .then((res) => setUserRole(res.data))
   } catch (error) {
-
+    console.error(error)
   }
 
   const reloadDb = () => {
@@ -25,6 +27,16 @@ const Accountsettings = () => {
       .then((res) => console.log(res))
   }
 
+  
+
+  const forgotPassword = () => {
+    try {
+      axios.post(import.meta.env.VITE_DB_URI_FORGOT_PASSWORD, { email })
+        .then((res) => console.log(res))
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 
   return (
@@ -68,7 +80,11 @@ const Accountsettings = () => {
               :
               ""
           }
-
+          <Button
+            onClick={forgotPassword}>
+            {/* {text.account.forgot_password} */}
+            Forgot Password
+          </Button>
         </div>
       </div>
     </div>

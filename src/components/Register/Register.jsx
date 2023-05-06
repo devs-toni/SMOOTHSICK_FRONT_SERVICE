@@ -104,7 +104,7 @@ const Register = () => {
     }
   };
 
-
+// HANDLE EMAIL TO USER FOR RECOVERY PASS
 
 
   return (
