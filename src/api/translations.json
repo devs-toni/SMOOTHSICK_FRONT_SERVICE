@@ -25,6 +25,12 @@
       "singingoogle": "Iniciar sesión con Google 🚀",
       "singin": "Iniciar Sesión"
     },
+    "recover": {
+      "title": "Recupera tu Contraseña",
+      "new1": "Nueva Contraseña",
+      "new2": "Repite Nueva Contraseña",
+      "submit": "Cambiar Contraseña"
+    },
     "navbar": {
       "home": "Home",
       "categories": "Categorias",
@@ -135,6 +141,12 @@
       "singingoogle": "Sign in with Google 🚀 ",
       "singin": "Sing In"
     },
+    "recover": {
+      "title": "Recover your password",
+      "new1": "New Password",
+      "new2": "Repeat New Password",
+      "submit": "Change Password"
+    },
     "navbar": {
       "home": "Home",
       "categories": "Categories",
@@ -243,6 +255,12 @@
       "singingoogle": "S'enregistrer avec Google 🚀",
       "singin": "S'identifier'"
     },
+    "recover": {
+      "title": "Recover your password",
+      "new1": "New Password",
+      "new2": "Repeat New Password",
+      "submit": "Change Password"
+    },
     "navbar": {
       "home": "Page d'accueil",
       "categories": "Catégories",
@@ -344,6 +362,12 @@
       "register": "注册",
       "singingoogle": "用Google账户登录 🚀",
       "singin": "登录"
+    },
+    "recover": {
+      "title": "Recover your password",
+      "new1": "New Password",
+      "new2": "Repeat New Password",
+      "submit": "Change Password"
     },
     "navbar": {
       "home": "主页",

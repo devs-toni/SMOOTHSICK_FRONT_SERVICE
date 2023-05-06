@@ -51,17 +51,17 @@ export const MyRouter = () => {
 
 
         <Route path={`${ADMIN}`} element={
-          <PrivateRoute>
+          <PrivateAdminRoute>
             <AdminPage />
-          </PrivateRoute>
+          </PrivateAdminRoute>
         } />
 
 
         <Route path={`${ACCOUNT}`} element=
           {
-            <PrivateAdminRoute>
+            <PrivateRoute>
               <AccountSettingsPage />
-            </PrivateAdminRoute>
+            </PrivateRoute>
           }
         />
 
