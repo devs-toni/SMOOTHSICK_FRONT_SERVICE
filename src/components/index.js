@@ -22,6 +22,7 @@ export { default as Login } from './Login/Login';
 export * from './NavBar/NavBar';
 export { default as Player } from './Player/Player';
 export * from './Playlists/Playlists';
+export * from './Recover/Recover';
 export { default as RecoverModal } from './RecoverModal/RecoverModal';
 export { default as Register } from './Register/Register';
 export { default as Search } from './Search/Search';

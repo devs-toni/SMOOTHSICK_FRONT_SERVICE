@@ -26,7 +26,6 @@ export const AuthProvider = ({ children }) => {
             .then(res => {
               const { data, status } = res
               if (status === 200) {
-                
                 refresh(data.id, {
                   id: data.id,
                   firstName: data.name,
@@ -117,26 +116,22 @@ export const AuthProvider = ({ children }) => {
 
   const [authState, dispatch] = useReducer(
     reducer,
-    initialState,
-    // init
+    initialState
   );
-
-
 
   const login = useCallback((id, user, error) => {
     if (!error) {
       dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { id, user, token } })
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
-  }, [])
+  }, [token])
 
   const refresh = useCallback((id, user, error) => {
     if (!error) {
       dispatch({ type: TYPES.REFRESH_PAGE, payload: { id, user, token } })
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
-
-  }, [])
+  }, [token])
 
   const logout = useCallback(() => {
     localStorage.removeItem('userToken');

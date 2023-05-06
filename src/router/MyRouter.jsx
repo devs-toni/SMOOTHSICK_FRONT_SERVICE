@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { CATEGORIES, ADMIN, SIGNUP, LOGIN, ACCOUNT, FAVOURITES, SEARCH, DETAILS, CHANGEPASS, ARTIST, ALBUM, PLAYLIST } from './paths'
+import { CATEGORIES, ADMIN, SIGNUP, LOGIN, ACCOUNT, FAVOURITES, SEARCH, DETAILS, CHANGEPASS, ARTIST, ALBUM, PLAYLIST, RECOVER } from './paths'
 import { Register, Login, Search } from '../components';
 import { AccountSettingsPage } from '../pages/AccountSettingsPage';
 import { ChangePasswordPage } from '../pages/ChangePasswordPage';
@@ -13,6 +13,7 @@ import ListContent from '../components/Categories/ListContent/ListContent';
 import { ArtistsPage } from '../pages/ArtistsPage';
 import { AlbumsPage } from '../pages/AlbumsPage';
 import { PlaylistsPage } from '../pages/PlaylistsPage';
+import { RecoverPage } from '../pages/RecoverPage';
 import { PrivateAdminRoute } from './PrivateAdminRoute/PrivateAdminRoute';
 
 
@@ -42,6 +43,7 @@ export const MyRouter = () => {
         <Route path={`${SEARCH}`} element={<Search />} />
         <Route path={`${ARTIST}`} element={<ArtistsPage />} />
         <Route path={`${ALBUM}`} element={<AlbumsPage />} />
+        <Route path={`${RECOVER}`} element={<RecoverPage />} />
         <Route path={`${PLAYLIST}`} element={<PlaylistsPage />} />
         <Route path={`${DETAILS}`}>
           <Route path=':type/:id' element={<DetailsPage />} />

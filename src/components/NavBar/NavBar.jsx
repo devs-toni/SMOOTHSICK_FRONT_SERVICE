@@ -2,7 +2,7 @@ import { Dropdown } from 'flowbite-react';
 import { Toaster, toast } from "react-hot-toast";
 import { FaUserShield, FaUserPlus, FaKey } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai"
-import { RiFolderMusicFill, RiLoginBoxLine, RiMenu4Fill } from "react-icons/ri"
+import { RiFolderMusicFill, RiMenu4Fill } from "react-icons/ri"
 import { NavLink } from 'react-router-dom';
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
@@ -17,15 +17,12 @@ import { TbSearch } from "react-icons/tb"
 import { MdOutlineLogout } from 'react-icons/md';
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
-import axios from 'axios';
 
 
 export const NavBar = () => {
   const { logout, authState } = useAuthContext();
   const { handleLanguage, text } = useLanguage();
   const [asideLinks, setAsideLinks] = useState([])
-  const { user } = authState;
-  const [adminRole, setAdminRole] = useState(false)
 
 
   const lenguageSelected = [
@@ -35,16 +32,7 @@ export const NavBar = () => {
     { key: 4, name: "china", code: "chn", country: flagChina }
   ];
 
-
-
   useEffect(() => {
-    try {
-      axios.post(import.meta.env.VITE_DB_URI_AUTHORIZATE, { user })
-        .then((res) => setAdminRole(res.data))
-    } catch (error) {
-      console.error(error)
-    }
-
     authState.isAuthenticated
       ? setAsideLinks(
         [
@@ -109,7 +97,7 @@ export const NavBar = () => {
                   className='bg-zinc-700 border-none px-0 py-0'
                   inline
                   id="user-drop-id"
-                  label={authState.isAuthenticated ? <img src={user.profilePicture} className="w-10 rounded-full" /> : <HiUserCircle size={40}
+                  label={authState.isAuthenticated ? <img src={authState.user.profilePicture} className="w-10 rounded-full" /> : <HiUserCircle size={40}
                   />}
                   placement="top-start"
                   arrowIcon={false}
@@ -120,7 +108,7 @@ export const NavBar = () => {
                         authState.isAuthenticated &&
                         <>
                           <div className=" py-1 text-sm text-white text-center">
-                            <span>{text.navbar.welcome} {user.firstName}!</span>
+                            <span>{text.navbar.welcome} {authState.user.firstName}!</span>
                           </div>
                           <Dropdown.Divider />
                         </>
@@ -212,7 +200,7 @@ export const NavBar = () => {
                 ))
               }
               {
-                adminRole &&
+                authState.user.role === "A" &&
                 <NavLink key="3" to={ADMIN} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar" >
                   <li className='inline-flex gap-2 items-center w-full lg:w-32 justify-left '>
                     <FaKey />

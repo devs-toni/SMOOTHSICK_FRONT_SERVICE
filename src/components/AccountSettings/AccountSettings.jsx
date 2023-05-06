@@ -9,16 +9,6 @@ import { useState } from 'react';
 const Accountsettings = () => {
   const { text } = useLanguage()
   const { authState } = useAuthContext()
-  const { user } = authState
-  const [userRole, setUserRole] = useState(Boolean)
-
-
-  try {
-    axios.post(import.meta.env.VITE_DB_URI_AUTHORIZATE, { user })
-      .then((res) => setUserRole(res.data))
-  } catch (error) {
-    console.error(error)
-  }
 
   const reloadDb = () => {
     axios.get(`http://localhost:4000/admin/reload`)
@@ -62,7 +52,7 @@ const Accountsettings = () => {
           <p>{text.account.security_p}</p>
           <p>{text.account.security_o}</p>
           {
-            userRole
+            authState.user.role === "A"
               ?
               <button onClick={reloadDb}>Reload Database</button>
               :
