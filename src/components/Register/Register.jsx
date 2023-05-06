@@ -57,7 +57,7 @@ const Register = () => {
   }, [eyeClicked, errors])
 
 
-  const [open, setOpen] = useState(false)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -104,16 +104,12 @@ const Register = () => {
     }
   };
 
-
-
-
   return (
     <div className="h-full flex justify-center items-center mb-44 md:ml-20 lg:ml-52">
       {
         !authState.isAuthenticated &&
         (
           <>
-            <RecoverModal open={open} setOpen={setOpen} />
             <div className="headphones-image"></div>
             <div className="flex flex-col items-center justify-center h-full pt-20 w-full">
               <p className="text-lg md:text-4xl font-semibold pt-20 mb-10">{text.register.title}</p>
@@ -217,13 +213,6 @@ const Register = () => {
                     onBlur={handleBlur}
                     placeholder={text.register.repeat}
                   />
-                </div>
-                <div>
-                  <Label htmlFor="agree" color="white" className="w-full text-xs md:text-sm font-normal text-pink-300 mt-4  flex justify-left">
-                    <button type="button" onClick={() => setOpen(true)}>
-                      {text.register.forget}
-                    </button>
-                  </Label>
                 </div>
 
                 <Button type="submit" id="send_data" className={`${buttonBehavior} bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500`}>

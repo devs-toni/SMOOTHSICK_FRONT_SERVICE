@@ -4,10 +4,11 @@ import { toast } from "react-hot-toast";
 import { HOME, SIGNUP } from "../../router/paths";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { Button, TextInput } from "flowbite-react";
+import { Button, Label, TextInput } from "flowbite-react";
 import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png";
 import { useAuthContext } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
+import RecoverModal from "../RecoverModal/RecoverModal";
 
 
 const Login = () => {
@@ -137,10 +138,13 @@ const Login = () => {
     backgroundColor: "#00000000"
   };
 
+  const [open, setOpen] = useState(false)
+
 
   return (
     <div className="h-full flex justify-center items-center md:ml-20 lg:ml-52">
       <div className="headphones-image"></div>
+      <RecoverModal open={open} setOpen={setOpen} />
       <div className="flex flex-col items-center justify-center h-full pt-20 w-full">
         <p className="text-lg md:text-4xl font-semibold mb-12">{text.login.title}</p>
         <form
@@ -184,6 +188,13 @@ const Login = () => {
               {text.login.register}
             </Link>
           </p>
+          <div>
+            <Label htmlFor="agree" color="white" className="w-full text-xs md:text-sm font-normal text-pink-300 mt-4  flex justify-left">
+              <button type="button" onClick={() => setOpen(true)}>
+                {text.register.forget}
+              </button>
+            </Label>
+          </div>
 
           <Button
             className="text-xs md:text-sm bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out transform text-white font-bold"
