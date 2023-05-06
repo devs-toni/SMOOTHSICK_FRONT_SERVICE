@@ -14,14 +14,11 @@ const RecoverModal = ({ open, setOpen }) => {
   const { register, handleSubmit, reset } = useForm()
 
 
-  const onSubmit = async (data) => {
-    const { email } = data
+  const onSubmit = async ({email}) => {
     setIsLoading(true)
     await axios.post(import.meta.env.VITE_DB_URI_FORGOT_PASSWORD, { email })
-      .then((data) => {
-        const { status } = data
+      .then(({status}) => {
         if (status === 200) {
-
           setIsLoading(false)
           toast.success("Check your email to generate a new password!", {
             style: {
@@ -34,6 +31,7 @@ const RecoverModal = ({ open, setOpen }) => {
             },
           })
           reset()
+          setOpen(false)
         }
         if (status === 403) {
           setIsLoading(false)
