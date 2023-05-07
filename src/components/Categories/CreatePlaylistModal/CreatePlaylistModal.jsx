@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 const CreatePlaylistModal = ({ setOpen, open, setNewList }) => {
     const { register, handleSubmit, reset } = useForm()
-
+    
     const onSubmit = (data) => {
         setNewList(data)
         setOpen(false)

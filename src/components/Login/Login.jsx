@@ -189,7 +189,7 @@ const Login = () => {
             </Link>
           </p>
           <div>
-            <Label htmlFor="agree" color="white" className="w-full text-xs md:text-sm font-normal text-pink-300 mt-4  flex justify-left">
+            <Label htmlFor="agree" color="white" className="w-full text-xs md:text-sm font-normal text-pink-300  flex justify-left">
               <button type="button" onClick={() => setOpen(true)}>
                 {text.register.forget}
               </button>
