@@ -8,7 +8,6 @@ import './ArtistSongCard.css';
 import './HomeSongBox.css';
 import { FILTER_TYPES } from "../Search/filterTypes";
 import { useAuth } from "../../context/AuthContext";
-import axios from "axios";
 import { useUser } from "../../context/UserContext";
 
 const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
@@ -17,7 +16,7 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
   const { authState } = useAuth();
-  const { getFavourites, removeFromFavourites } = useUser();
+  const { toggleLike } = useUser();
   const [isLike, setIsLike] = useState(false);
 
   useLayoutEffect(() => {
@@ -54,21 +53,6 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
       })
     }
   }, [])
-
-  const toggleLike = () => {
-    axios.patch(import.meta.env.VITE_BACKEND + type.toLowerCase() + "/like/" + data.id, {}, {
-      headers: {
-        "Authorization": `${authState.token}`
-      }
-    }).then(() => {
-      if (data.isLike) {
-        setIsLike(false)
-        removeFromFavourites(data.id)
-      } else
-        setIsLike(true)
-
-    })
-  }
 
   const isTrack = type === FILTER_TYPES.TRACKS ? true : false;
   const isArtist = type === FILTER_TYPES.ARTISTS ? true : false;
@@ -116,7 +100,7 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         }
         {
           (authState.isAuthenticated && isTrack) &&
-          <div className={`${(isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={toggleLike}>
+          <div className={`${(isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={() => toggleLike(type, data, setIsLike)}>
             <FaHeart className={(isLike) ? "text-red-500" : "text-gray-600"} />
           </div>
         }

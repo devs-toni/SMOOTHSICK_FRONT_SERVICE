@@ -23,6 +23,20 @@ export const UserProvider = ({ children }) => {
       })
   }, [authState.token]);
 
+  const toggleLike = (type, data, setIsLike) => {
+    axios.patch(import.meta.env.VITE_BACKEND + type.toLowerCase() + "/like/" + data.id, {}, {
+      headers: {
+        "Authorization": `${authState.token}`
+      }
+    }).then(() => {
+      if (data.isLike) {
+        setIsLike(false)
+        removeFromFavourites(data.id)
+      } else
+        setIsLike(true)
+    })
+  }
+
   useEffect(() => {
     if (authState.token) getFavourites();
   }, [authState.token])
@@ -64,7 +78,8 @@ export const UserProvider = ({ children }) => {
     userState,
     getFavourites,
     removeFromFavourites,
-  }), [userState, getFavourites, removeFromFavourites]);
+    toggleLike
+  }), [userState, getFavourites, removeFromFavourites, toggleLike]);
 
   return <userContext.Provider value={data}>{children}</userContext.Provider>;
 };
