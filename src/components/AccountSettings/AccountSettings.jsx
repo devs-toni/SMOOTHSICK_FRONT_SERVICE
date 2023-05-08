@@ -18,14 +18,14 @@ const Accountsettings = () => {
 
 
   // try {
-  //   axios.post(import.meta.env.VITE_DB_URI_AUTHORIZATE, { user })
+  //   axios.post(import.meta.env.VITE_BACKEND + "users/authorizate", { user })
   //     .then((res) => setUserRole(res.data))
   // } catch (error) {
   //   console.error(error)
   // }
 
   const reloadDb = () => {
-    axios.get(`http://localhost:4000/admin/reload`)
+    axios.get(`${import.meta.env.VITE_BACKEND}admin/reload`)
       .then((res) => console.log(res))
   }
 

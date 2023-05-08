@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     const checkUser = async () => {
       try {
         if (token) {
-          axios.post(import.meta.env.VITE_DB_URI_CURRENT_USER, {}, {
+          axios.post(import.meta.env.VITE_BACKEND + "users/userData", {}, {
             headers: {
               "Authorization": token
             }

@@ -1,4 +1,5 @@
 export { default as AccountSettings } from './AccountSettings/AccountSettings';
+export * from './AccountSettings/ChangePasswordModal/ChangePasswordModal';
 export * from './Admin/Admin';
 export * from './Albums/Albums';
 export * from './ArtistHeader/ArtistHeader';
@@ -16,6 +17,7 @@ export { default as Error } from './Error/Error';
 export * from './Favourites/Favourites';
 export * from './FavouritesSongCard/FavouritesSongCard';
 export { default as Filters } from './Filters/Filters';
+export * from './ForgotPassword/ForgotPassword';
 export { default as Home } from './Home/Home';
 export { default as HomeSongCard } from './HomeSongCard/HomeSongCard';
 export { default as Login } from './Login/Login';

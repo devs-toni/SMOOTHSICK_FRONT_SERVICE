@@ -30,7 +30,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(import.meta.env.VITE_DB_URI_AUTHENTICATE, { userData })
+      await axios.post(import.meta.env.VITE_BACKEND + "users/authenticate", { userData })
         .then(({ data, status }) => {
           const { token, currentUser } = data;
           if (status === 200) {

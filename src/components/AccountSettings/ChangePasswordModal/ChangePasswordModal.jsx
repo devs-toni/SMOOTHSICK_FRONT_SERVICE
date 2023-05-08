@@ -18,7 +18,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
     const onSubmitCurrentPass = (data) => {
         const { currentPass } = data
         try {
-            axios.post(import.meta.env.VITE_DB_URI_VALIDATE_PASS, { currentPass, id })
+          axios.post(import.meta.env.VITE_BACKEND + "users/validatePassword", { currentPass, id })
                 .then(({ status }) => {
                     if (status === 201) {
                         setHiddenCurrentPassword("hidden")
@@ -49,7 +49,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
             });
         }
         try {
-            axios.patch(import.meta.env.VITE_DB_URI_CHANGE_PASS, { pass, id })
+          axios.patch(import.meta.env.VITE_BACKEND + "users/changePassword", { pass, id })
                 .then(({ status }) => {
                     if (status === 201) {
                         toast.success("Password changed successfully", {

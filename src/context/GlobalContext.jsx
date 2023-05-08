@@ -1,5 +1,6 @@
-import { useContext, createContext, useReducer, useMemo } from "react"
+import { useContext, createContext, useReducer, useMemo, useEffect } from "react"
 import { TYPES } from "./types";
+import axios from "axios";
 
 const GlobalContext = createContext();
 
@@ -13,6 +14,17 @@ export const GlobalProvider = ({ children }) => {
   const initialState = {
     users: [],
   }
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      axios.get(import.meta.env.VITE_BACKEND + 'users')
+        .then(({ data }) => {
+          console.log(data);
+        })
+    }
+    fetchUsers();
+  }, [])
+
 
   const reducer = (state, action) => {
     switch (action.type) {

@@ -60,7 +60,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(import.meta.env.VITE_DB_URI_REGISTER, { form })
+      await axios.post(import.meta.env.VITE_BACKEND + "users/register", { form })
         .then(({ status }) => {
           if (status === 200) {
             navigate(LOGIN);

@@ -18,7 +18,7 @@ const RecoverModal = ({ open, setOpen }) => {
 
   const onSubmit = async ({ email }) => {
     setIsLoading(true)
-    await axios.post(import.meta.env.VITE_DB_URI_FORGOT_PASSWORD, { email })
+    await axios.post(import.meta.env.VITE_BACKEND + "users/forgotPassword", { email })
       .then((res) => {
         const { status, data } = res
         const { token, id } = data

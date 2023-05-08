@@ -27,7 +27,7 @@ export const Recover = () => {
     }
 
     try {
-      await axios.patch(import.meta.env.VITE_DB_URI_FORGOT_RESET_PASS, { pass, userId })
+      await axios.patch(import.meta.env.VITE_BACKEND + "users/resetPassword", { pass, userId })
         .then(({ data, status }) => {
           console.log(status);
           if (status === 201) {
