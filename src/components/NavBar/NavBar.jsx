@@ -10,7 +10,7 @@ import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import logo from '../../assets/imgs/logo/logo-no-background.svg'
 import logo_text from '../../assets/imgs/logo/logo-text-no-background.svg'
-import { SIGNUP, ADMIN, LOGIN, SEARCH, ACCOUNT, FAVOURITES, HOME, CATEGORIES, ALBUM, PLAYLIST, ARTIST } from '../../router/paths'
+import { SIGNUP, ADMIN, LOGIN, SEARCH, ACCOUNT, FAVOURITES, HOME, CATEGORIES, ALBUM, PLAYLIST, ARTIST, MYSONGS } from '../../router/paths'
 import { Fragment, useEffect, useState } from 'react';
 import { HiUserCircle } from "react-icons/hi"
 import { TbSearch } from "react-icons/tb"
@@ -229,6 +229,11 @@ export const NavBar = () => {
                       <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
+                        </li>
+                      </NavLink>
+                      <NavLink to={MYSONGS} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.my}</span>
                         </li>
                       </NavLink>
                       <NavLink to={FAVOURITES} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer " : "flex justify-center hover:text-deezer")}>

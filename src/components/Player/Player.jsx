@@ -6,6 +6,7 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { MdQueueMusic } from 'react-icons/md';
 import { FaRandom } from 'react-icons/fa';
 import "./Player.css"
+import { useUser } from '../../context/UserContext';
 
 
 
@@ -15,7 +16,8 @@ const Player = () => {
   const [isPlay, setIsPlay] = useState()
   const [showDataSong, setShowDataSong] = useState("")
   const [showDataImg, setShowDataImg] = useState("")
-  const [currentSong, setCurrentSong] = useState(0)
+  const [currentSong, setCurrentSong] = useState(0)   
+  const { toggleLike } = useUser();
 
   //const track = dataState.tracks.find((e) => e.url === playerState.current);
   //const currentSongIndex = dataState.tracks.indexOf(track)

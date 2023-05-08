@@ -30,17 +30,18 @@ export const Recover = () => {
       await axios.patch(import.meta.env.VITE_BACKEND + "users/resetPassword", { pass, userId })
         .then(({ data, status }) => {
           console.log(status);
-          if (status === 201) {
-            // toast.error("The password must have: between 8 and 16 characters, 1 number, 1 lowercase letter, 1 uppercase letter, and a special character", {
-            //   style: {
-            //     borderRadius: "10px",
-            //     background: "#333",
-            //     color: "#fff",
-            //   },
-            //   error: {
-            //     duration: 2000,
-            //   },
-            // });
+          if (status === 204) {
+            toast.error("The password must have: between 8 and 16 characters, 1 number, 1 lowercase letter, 1 uppercase letter, and a special character", {
+              style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+              error: {
+                duration: 2000,
+              },
+            });
+          } else if (status === 200) {
             toast.success("Password updated successfully", {
               style: {
                 borderRadius: "10px",
@@ -53,10 +54,6 @@ export const Recover = () => {
             });
             reset()
             navigate(LOGIN)
-
-
-
-
           }
         })
     } catch (error) {

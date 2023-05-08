@@ -35,7 +35,6 @@ const CreatePlaylistModal = ({ setOpen, open, setNewList }) => {
                             </form>
                         </div>
                     </div>
-
                 </Modal.Body>
             </Modal>
         </>

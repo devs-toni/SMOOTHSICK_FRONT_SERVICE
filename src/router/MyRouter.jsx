@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { CATEGORIES, ADMIN, SIGNUP, LOGIN, ACCOUNT, FAVOURITES, SEARCH, DETAILS, CHANGEPASS, ARTIST, ALBUM, PLAYLIST, RECOVERY } from './paths'
+import { CATEGORIES, ADMIN, SIGNUP, LOGIN, ACCOUNT, FAVOURITES, SEARCH, DETAILS, CHANGEPASS, ARTIST, ALBUM, PLAYLIST, RECOVERY, MYSONGS } from './paths'
 import { Register, Login, Search } from '../components';
 import { AccountSettingsPage } from '../pages/AccountSettingsPage';
 import { ChangePasswordPage } from '../pages/ChangePasswordPage';
@@ -15,6 +15,7 @@ import { AlbumsPage } from '../pages/AlbumsPage';
 import { PlaylistsPage } from '../pages/PlaylistsPage';
 import { RecoverPage } from '../pages/RecoverPage';
 import { PrivateAdminRoute } from './PrivateAdminRoute/PrivateAdminRoute';
+import MySongsPage from '../pages/MySongsPage';
 
 
 export const MyRouter = () => {
@@ -64,6 +65,14 @@ export const MyRouter = () => {
           {
             <PrivateRoute>
               <AccountSettingsPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path={`${MYSONGS}`} element=
+          {
+            <PrivateRoute>
+              <MySongsPage />
             </PrivateRoute>
           }
         />

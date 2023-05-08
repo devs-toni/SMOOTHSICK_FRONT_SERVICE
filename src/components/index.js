@@ -1,5 +1,6 @@
 export { default as AccountSettings } from './AccountSettings/AccountSettings';
 export * from './AccountSettings/ChangePasswordModal/ChangePasswordModal';
+export { default as AddSongModal } from './AddSongModal/AddSongModal';
 export * from './Admin/Admin';
 export * from './Albums/Albums';
 export * from './ArtistHeader/ArtistHeader';
@@ -21,6 +22,7 @@ export * from './ForgotPassword/ForgotPassword';
 export { default as Home } from './Home/Home';
 export { default as HomeSongCard } from './HomeSongCard/HomeSongCard';
 export { default as Login } from './Login/Login';
+export { default as MySongs } from './MySongs/MySongs';
 export * from './NavBar/NavBar';
 export { default as Player } from './Player/Player';
 export * from './Playlists/Playlists';

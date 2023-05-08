@@ -105,7 +105,8 @@
       "artists": "Artistas",
       "albums": "Albums",
       "tracks": "Tracks",
-      "users": "Usuarios"
+      "users": "Usuarios",
+      "my": "My Songs"
     },
     "changepass": {
       "title": "Cambia tu contrasña",
@@ -139,7 +140,7 @@
       "dontHaveAnAccount": "Don't have a Smoothsick account?",
       "register": "Register",
       "singingoogle": "Sign in with Google 🚀 ",
-      "singin": "Sing In"
+      "singin": "Sign In"
     },
     "recover": {
       "title": "Recover your password",
@@ -222,7 +223,8 @@
       "artists": "Artists",
       "albums": "Albums",
       "tracks": "Tracks",
-      "users": "Users"
+      "users": "Users",
+      "my": "My Songs"
     },
     "changepass": {
       "title": "Change your password",
@@ -330,7 +332,8 @@
       "artists": "Artistes",
       "albums": "Albums",
       "tracks": "Pistes",
-      "users": "Utilisateurs"
+      "users": "Utilisateurs",
+      "my": "My Songs"
     },
     "changepass": {
       "title": "Change your password",
@@ -438,7 +441,8 @@
       "artists": "歌手",
       "albums": "专辑",
       "tracks": "歌曲",
-      "users": "用户"
+      "users": "用户",
+      "my": "My Songs"
     },
     "changepass": {
       "title": "Change your password",
