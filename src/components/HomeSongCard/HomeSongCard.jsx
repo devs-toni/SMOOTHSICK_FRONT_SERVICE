@@ -8,8 +8,9 @@ import './ArtistSongCard.css';
 import './HomeSongBox.css';
 import { FILTER_TYPES } from "../Search/filterTypes";
 import { useAuth } from "../../context/AuthContext";
+import axios from "axios";
 
-const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isLike }) => {
+const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
 
   const { playSong } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
@@ -30,7 +31,8 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isLike }) => 
         name: obj.track.title,
         picture: obj.album.cover,
         artist: obj.album.title,
-        preview: obj.track.preview
+        preview: obj.track.preview,
+        isLike: obj.track.likes.filter(ids => ids === authState.user.id).length > 0 ? true : false
       })
     } else if (type == FILTER_TYPES.ALBUMS) {
       setData({
@@ -49,6 +51,20 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isLike }) => 
       })
     }
   }, [])
+
+  const addLike = () => {
+    axios.patch(import.meta.env.VITE_BACKEND + "tracks/like/" + data.id, {}, {
+      headers: {
+        "Authorization": `${authState.token}`
+      }
+    }).then((res) => {
+
+      setData({
+        ...data,
+        isLike: !data.isLike
+      })
+    })
+  }
 
   const isTrack = type === FILTER_TYPES.TRACKS ? true : false;
   const isArtist = type === FILTER_TYPES.ARTISTS ? true : false;
@@ -96,8 +112,8 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isLike }) => 
         }
         {
           authState.isAuthenticated && isTrack &&
-          <div className={`${isLike ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`}>
-            <FaHeart className={isLike ? "text-red-500" : "text-gray-600"} />
+          <div className={`${(data.isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={addLike}>
+            <FaHeart className={(data.isLike) ? "text-red-500" : "text-gray-600"} />
           </div>
         }
       </div>
