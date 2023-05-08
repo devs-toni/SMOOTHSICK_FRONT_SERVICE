@@ -25,6 +25,7 @@ export const AuthProvider = ({ children }) => {
           })
             .then(res => {
               const { data, status } = res
+              
               if (status === 200) {
                 refresh(data.id, {
                   id: data.id,
@@ -32,6 +33,7 @@ export const AuthProvider = ({ children }) => {
                   lastName: data.last_name,
                   email: data.email,
                   role: data.role,
+                  userName: data.user_name,
                   profilePicture: defaultUserPicture,
                 });
               }
@@ -54,6 +56,7 @@ export const AuthProvider = ({ children }) => {
       id: -1,
       firstName: "",
       lastName: "",
+      userName: "",
       email: "",
       profilePicture: defaultUserPicture,
     },
@@ -71,6 +74,7 @@ export const AuthProvider = ({ children }) => {
           user: action.payload.user,
           firstTime: true,
           token: action.payload.token,
+          error: "",
         };
       case TYPES.LOGIN_UNSUCCESS:
         return {

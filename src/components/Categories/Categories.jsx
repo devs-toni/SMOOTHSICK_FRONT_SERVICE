@@ -21,6 +21,7 @@ export const Categories = () => {
   const { text } = useLanguage();
   const { authState } = useAuth();
 
+  
   const [selectedList, setSelectedList] = useState();
   const [currentList, setCurrentList] = useState();
   const [selectedListId, setSelectedListId] = useState([]);
@@ -32,7 +33,6 @@ export const Categories = () => {
   const [open, setOpen] = useState(false);
   const [newList, setNewList] = useState("");
   const [listName, setListName] = useState([]);
-
 
 
   const handleSetBgImg = ({ target }) => {

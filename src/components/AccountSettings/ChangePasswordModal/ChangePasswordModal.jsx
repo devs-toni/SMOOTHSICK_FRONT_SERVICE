@@ -6,6 +6,7 @@ import axios from "axios"
 import { toast } from "react-hot-toast"
 
 export const ChangePasswordModal = ({ setOpen, open }) => {
+    
     const { register, handleSubmit, reset } = useForm()
     const [hiddenCurrentPassword, setHiddenCurrentPassword] = useState("")
     const [hiddenNewPassword, setHiddenNewPassword] = useState("hidden")
@@ -17,6 +18,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
 
     const onSubmitCurrentPass = (data) => {
         const { currentPass } = data
+
         try {
           axios.post(import.meta.env.VITE_BACKEND + "users/validatePassword", { currentPass, id })
                 .then(({ status }) => {
@@ -76,7 +78,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
     }
 
 
-
+    
 
     return (
         <>
@@ -123,7 +125,6 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                             </form>
                         </div>
                     </div>
-
                 </Modal.Body>
             </Modal>
         </>

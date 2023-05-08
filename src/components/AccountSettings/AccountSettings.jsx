@@ -1,22 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { ACCOUNT, CHANGEPASS } from '../../router/paths'
+import { ACCOUNT, CHANGEPASS, HOME } from '../../router/paths'
 import axios from 'axios';
 import { useState } from 'react';
-import { Button } from 'flowbite-react';
+import { Avatar, Button, TextInput } from 'flowbite-react';
 import { ChangePasswordModal } from './ChangePasswordModal/ChangePasswordModal';
+import { ChangeUserNameModal } from './ChangeUserDataModal/ChangeUserDataModal';
 
 
 const Accountsettings = () => {
   const { text } = useLanguage()
   const { authState } = useAuth()
   const { user } = authState
-  const { email } = user
+  const { email, userName } = user
   const [userRole, setUserRole] = useState(Boolean)
-  const [open, setOpen] = useState(false);
-
-
+  const [openChangePassModal, setOpenChangePassModal] = useState(false);
+  const [openUserDataModal, setOpenUserDataModal] = useState(false);
+  const [modalData, setModalData] = useState("")
+  const navigate = useNavigate()
   // try {
   //   axios.post(import.meta.env.VITE_BACKEND + "users/authorizate", { user })
   //     .then((res) => setUserRole(res.data))
@@ -38,18 +40,83 @@ const Accountsettings = () => {
   //   }
   // }
 
-  const handleOpenModal = () => {
-    setOpen(true);
+  const handleOpenChangePassModal = () => {
+    setOpenChangePassModal(true)
+  }
+
+  const handleOpenUserDataModal = (reference) => {
+    setModalData(reference)
+    setOpenUserDataModal(true)
+  }
+
+
+
+  const handleRedirect = () => {
+    navigate(HOME)
   }
 
 
   return (
     <>
-      <ChangePasswordModal setOpen={setOpen} open={open} />
-      <div className='h-full flex flex-col md:ml-20 lg:ml-52'>
-        <div className="headphones-image"></div>
-        <div className="flex flex-col justify-around items-center pt-16 md:pt-56 gap-7 w-full m-auto mt-10 p-4 md:p-10 md:max-w-xl lg:max-w-3xl xl:max-w-6xl">
-          <div className='grid grid-cols-1 md:grid-cols-3 justify-start items-start py-4 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 w-full'>
+      <ChangePasswordModal setOpen={setOpenChangePassModal} open={openChangePassModal} />
+      <ChangeUserNameModal setOpen={setOpenUserDataModal} open={openUserDataModal} modalData={modalData} />
+      <div className="headphones-image"></div>
+      <div className="flex flex-col h-screen justify-center items-center md:ml-20 lg:ml-52">
+        <div className="flex flex-col items-start md:px-20 w-full justify-center gap-5">
+          <div className='flex flex-col gap-10 w-full pb-5 border-b border-neutral-500'>
+            <div className='mb-10'>
+              <h3 className='text-5xl'>Tu Cuenta</h3>
+            </div>
+            <div className="flex items-center gap-10">
+              <Avatar
+                img={user.profilePicture}
+                rounded={true}
+                size="lg"
+                className='border  border-neutral-500 rounded-full p-5'
+              />
+
+              <div className="flex flex-col gap-3">
+                <span className="text-3xl inline-block">{`Nombre: ${user.firstName}`}</span>
+                <span className="text-3xl inline-block">{`Apellidos: ${user.lastName}`}</span>
+              </div>
+            </div>
+            <h3 className='text-3xl'>Datos de usuario</h3>
+          </div>
+          <div className='flex gap-10 w-full pb-5 items-end'>
+            <div className='flex flex-col w-full gap-3'>
+              <span>User name</span>
+              <input type="text" name="userName" defaultValue={user.userName} className='bg-zinc-900 w-full' />
+            </div>
+            <Button type='submit' className='bg-deezer w-40' name='userName' onClick={() => handleOpenUserDataModal("userName")}>Modificar</Button>
+          </div>
+          <div className='flex gap-10 w-full pb-5 items-end'>
+            <div className='flex flex-col w-full gap-3'>
+              <span>Email</span>
+              <input type="email" name="userEmail" defaultValue={user.email} className='bg-zinc-900 w-full' />
+            </div>
+            <Button className='bg-deezer w-40' name='userEmail' onClick={() => handleOpenUserDataModal("userEmail")}>Modificar</Button>
+          </div>
+          <div className='flex gap-10 w-full pb-5 items-end border-b border-neutral-500 '>
+            <div className='flex flex-col w-full gap-3'>
+              <span>Password</span>
+              <input type="password" name="userPassword" defaultValue={"*****"} className='bg-zinc-900 w-full'/>
+            </div>
+            <Button className='bg-deezer hover:bg-deezer-dark w-40' onClick={handleOpenChangePassModal}>Modificar </Button>
+          </div>
+          {
+            authState.user.role === "A"
+              ?
+              <Button className='bg-deezer w-40' onClick={reloadDb}>Reload Database</Button>
+              :
+              ""
+          }
+          <div className='flex gap-10 justify-between w-full'>
+            <Button className='bg-rose-800 w-40'>Borrar cuenta</Button>
+            <Button className='bg-deezer w-40' onClick={handleRedirect}>Volver a Home</Button>
+          </div>
+
+
+          {/* <div className='grid grid-cols-1 md:grid-cols-3 justify-start items-start py-4 gap-7 border border-t-transparent border-l-transparent border-r-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500 w-full'>
             <div className='flex flex-col'>
 
               <span> {text.account.account} </span>
@@ -89,13 +156,16 @@ const Accountsettings = () => {
               onClick={handleOpenModal}
               className='bg-deezer w-50'
             >
-              {/* {text.account.forgot_password} */}
+              {text.account.forgot_password}
 
               Forgot Password
             </Button>
-          </div>
+          </div> */}
+
+
         </div>
       </div>
+
     </>
   )
 }

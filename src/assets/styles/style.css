@@ -26,5 +26,6 @@
 }
 
 svg:hover {
-  fill: #ef5567
+  fill: #ef5567;
+  color: #a3313e
 }

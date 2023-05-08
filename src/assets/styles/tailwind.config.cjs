@@ -30,10 +30,12 @@ module.exports = {
       },
       backgroundColor: {
         "chart": "#1a1e1f",
-        "deezer": "#ef5567"
+        "deezer": "#ef5567",
+        "deezer-dark": "#a3313e"
       },
       colors: {
-        "deezer": "#ef5567"
+        "deezer": "#ef5567",
+        "deezer-dark": "#a3313e"
       },
       borderColor: {
         "deezer": "#ef5567"

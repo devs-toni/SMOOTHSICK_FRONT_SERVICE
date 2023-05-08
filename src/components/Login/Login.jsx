@@ -27,17 +27,22 @@ const Login = () => {
     reset();
   };
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post(import.meta.env.VITE_BACKEND + "users/authenticate", { userData })
         .then(({ data, status }) => {
+
           const { token, currentUser } = data;
+          console.log(currentUser);
           if (status === 200) {
             login(currentUser._id, {
               id: currentUser._id,
               firstName: currentUser.name,
               lastName: currentUser.last_name,
+              userName: currentUser.user_name,
               email: currentUser.email,
               role: currentUser.role,
               profilePicture: defaultUserPicture,
