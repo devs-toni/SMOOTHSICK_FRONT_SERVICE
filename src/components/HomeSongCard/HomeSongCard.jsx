@@ -28,7 +28,7 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
       })
     } else if (type == FILTER_TYPES.TRACKS) {
       setCanPlay(true);
-      setIsLike(obj.likes.filter(ids => ids === authState.user.id).length > 0 ? true : false)
+      setIsLike(obj.likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false)
       setData({
         id: obj.id,
         name: obj.title,

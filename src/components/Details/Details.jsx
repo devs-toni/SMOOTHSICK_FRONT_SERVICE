@@ -50,8 +50,8 @@ export const Details = () => {
       case FILTER_TYPES.PLAYLISTS:
         return axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
           .then(({ data }) => {
-            setData(data);
-          })
+            setData(data[0]);
+            })
 
 
       case FILTER_TYPES.TRACKS:
@@ -112,6 +112,12 @@ export const Details = () => {
               :
               (
                 <>
+                <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10">
+                    <div className='max-w-81rem'>
+                <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true}/>
+                </div>
+                </div>
+                
 
                 </>
               )
