@@ -95,7 +95,7 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isLike }) => 
           </div>
         }
         {
-          authState.isAuthenticated &&
+          authState.isAuthenticated && isTrack &&
           <div className={`${isLike ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`}>
             <FaHeart className={isLike ? "text-red-500" : "text-gray-600"} />
           </div>

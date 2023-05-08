@@ -5,6 +5,7 @@
   transition: all 0.3s ease-in;
   max-width: fit-content;
   overflow: hidden;
+  position: relative;
 }
 
 .list__link {
@@ -68,6 +69,16 @@
 }
 .list__data--name {
   font-weight: 500;
+}
+.list__data--like {
+  width: 100%;  
+  position: absolute;
+  bottom: 15px;
+  left: 80%;
+}
+.list__data--like svg {
+  font-size: 1.2em;
+
 }
 .list__data--artist {
   font-size: 0.8em;
