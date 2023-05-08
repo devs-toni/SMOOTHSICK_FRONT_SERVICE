@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { useAuthContext } from "./AuthContext";
-import { useGlobalContext } from "./GlobalContext";
+import { useAuth } from "./AuthContext";
 
 const userContext = createContext();
 export const useUser = () => {
@@ -10,23 +9,10 @@ export const useUser = () => {
 export const UserProvider = ({ children }) => {
   const [userLists, setUserLists] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
-
-  const { authState } = useAuthContext();
-  const { dataState } = useGlobalContext();
+  const { authState } = useAuth();
 
   useEffect(() => {
-    if (authState.isAuthenticated) {
-      const userFinded = dataState.users.find(
-        (e) => authState.user.id === e.id
-      );
-      if (userFinded) {
-        setCurrentUser(userFinded);
-        setUserLists(userFinded.user_lists);
-      }
-    } else {
-      setUserLists([])
-      setCurrentUser({});
-    }
+
   }, [authState.isAuthenticated]);
 
   const data = useMemo(() => ({

@@ -7,14 +7,14 @@ import './HomeSongCard.css';
 import './ArtistSongCard.css';
 import './HomeSongBox.css';
 import { FILTER_TYPES } from "../Search/filterTypes";
-import { useAuthContext } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection, isLike }) => {
 
   const { playSong } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
-  const { authState } = useAuthContext();
+  const { authState } = useAuth();
 
   useLayoutEffect(() => {
     if (type == FILTER_TYPES.ARTISTS) {

@@ -3,7 +3,7 @@ import { TYPES } from "./types"
 
 const RecoveryContext = createContext()
 
-export const useRecoveryContext = () => {
+export const useRecovery = () => {
     return useContext(RecoveryContext)
 }
 
@@ -16,6 +16,7 @@ export const RecoveryProvider = ({ children }) => {
 
     const reducer = (state, action) => {
         switch (action.type) {
+          
             case TYPES.SET_USER_ID:
                 return {
                     ...state,

@@ -1,13 +1,13 @@
 import { Button, TextInput } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { FaEye } from 'react-icons/fa';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 
 
 export const ChangePassword = () => {
 	const { text } = useLanguage()
-	const { authState } = useAuthContext()
+  const { authState } = useAuth()
 	const [eyeClicked, setEyeClicked] = useState(false);
 
 

@@ -7,12 +7,12 @@ import { BsClock } from 'react-icons/bs';
 import { Favourites } from '../../Favourites/Favourites';
 import { Avatar, Button } from 'flowbite-react';
 import { SEARCH } from '../../../router/paths';
-import { useAuthContext } from '../../../context/AuthContext';
+import { useAuth } from '../../../context/AuthContext';
 
 const ListContent = () => {
   const { text } = useLanguage();
   const { userLists } = useUser();
-  const { authState } = useAuthContext();
+  const { authState } = useAuth();
   const listName = useParams()
   
   return (

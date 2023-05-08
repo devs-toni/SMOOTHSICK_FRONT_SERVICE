@@ -8,7 +8,7 @@ const token = localStorage.getItem('userToken') || undefined;
 
 const AuthContext = createContext();
 
-export const useAuthContext = () => {
+export const useAuth = () => {
   return useContext(AuthContext);
 };
 

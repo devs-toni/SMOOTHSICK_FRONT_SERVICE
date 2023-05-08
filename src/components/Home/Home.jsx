@@ -1,5 +1,4 @@
-import { useAuthContext } from '../../context/AuthContext';
-import { useGlobalContext } from '../../context/GlobalContext';
+import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -27,8 +26,7 @@ const Home = () => {
   const { tracks, tracksLoaded } = useFetchAllHomeTracks();
 
 
-  const { authState, resetFirstTime } = useAuthContext();
-  const { dataState } = useGlobalContext();
+  const { authState, resetFirstTime } = useAuth();
 
   useEffect(() => {
     if (authState.firstTime) {

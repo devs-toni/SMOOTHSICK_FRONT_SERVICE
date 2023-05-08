@@ -1,5 +1,4 @@
-import { useGlobalContext } from '../../context/GlobalContext';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -11,8 +10,7 @@ import { BsClock } from 'react-icons/bs'
 
 
 export const Favourites = () => {
-  const { dataState } = useGlobalContext();
-  const { authState } = useAuthContext();
+  const { authState } = useAuth();
   const { text } = useLanguage();
   const [totalTracks, setTotalTracks] = useState([])
   

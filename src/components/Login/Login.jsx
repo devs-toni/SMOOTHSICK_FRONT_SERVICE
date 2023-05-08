@@ -6,7 +6,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { Button, Label, TextInput } from "flowbite-react";
 import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_img.png";
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import RecoverModal from "../RecoverModal/RecoverModal";
 
@@ -14,7 +14,7 @@ import RecoverModal from "../RecoverModal/RecoverModal";
 const Login = () => {
 
   const { text } = useLanguage();
-  const { reset, login } = useAuthContext();
+  const { reset, login } = useAuth();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
     email: "",

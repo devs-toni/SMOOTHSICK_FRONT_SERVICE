@@ -1,7 +1,7 @@
 
 import { SongCard } from "../CategoriesSongCard/CategoriesSongCard";
 import { useEffect, useState, Fragment } from "react";
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { useUser } from '../../context/UserContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ import NewListCard from "./ListCard/ListCard";
 export const Categories = () => {
   const { userLists } = useUser();
   const { text } = useLanguage();
-  const { authState } = useAuthContext();
+  const { authState } = useAuth();
 
   const [selectedList, setSelectedList] = useState();
   const [currentList, setCurrentList] = useState();

@@ -15,12 +15,12 @@ import { Fragment, useEffect, useState } from 'react';
 import { HiUserCircle } from "react-icons/hi"
 import { TbSearch } from "react-icons/tb"
 import { MdOutlineLogout } from 'react-icons/md';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 
 
 export const NavBar = () => {
-  const { logout, authState } = useAuthContext();
+  const { logout, authState } = useAuth();
   const { handleLanguage, text } = useLanguage();
   const [asideLinks, setAsideLinks] = useState([])
 

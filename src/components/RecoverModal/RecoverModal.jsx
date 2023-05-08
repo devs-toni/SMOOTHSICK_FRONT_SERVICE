@@ -6,14 +6,14 @@ import { useForm } from 'react-hook-form';
 import { Bars } from "react-loader-spinner";
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { useRecoveryContext } from '../../context/RecoveryContext';
+import { useRecovery } from '../../context/RecoveryContext';
 
 const RecoverModal = ({ open, setOpen }) => {
 
   const { text } = useLanguage();
   const [isLoading, setIsLoading] = useState(false)
   const { register, handleSubmit, reset } = useForm()
-  const { dataState } = useRecoveryContext();
+  const { dataState } = useRecovery();
 
 
   const onSubmit = async ({ email }) => {

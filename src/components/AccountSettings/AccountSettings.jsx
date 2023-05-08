@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { ACCOUNT, CHANGEPASS } from '../../router/paths'
 import axios from 'axios';
@@ -10,7 +10,7 @@ import { ChangePasswordModal } from './ChangePasswordModal/ChangePasswordModal';
 
 const Accountsettings = () => {
   const { text } = useLanguage()
-  const { authState } = useAuthContext()
+  const { authState } = useAuth()
   const { user } = authState
   const { email } = user
   const [userRole, setUserRole] = useState(Boolean)

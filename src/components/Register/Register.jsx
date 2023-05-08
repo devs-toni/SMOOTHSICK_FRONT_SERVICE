@@ -3,7 +3,7 @@ import { FaEye } from 'react-icons/fa';
 import { Link, redirect, useNavigate } from "react-router-dom";
 import { LOGIN } from "../../router/paths";
 import { useEffect, useState } from "react";
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { useForm } from '../../hooks/useForm';
 import { useLanguage } from '../../context/LanguageContext';
 import RecoverModal from "../RecoverModal/RecoverModal";
@@ -17,7 +17,7 @@ const Register = () => {
 
 
   const button_register = document.getElementById('send_data')
-  const { authState } = useAuthContext();
+  const { authState } = useAuth();
   const navigate = useNavigate();
   const [eyeClicked, setEyeClicked] = useState(false);
   const [buttonBehavior, setButtonBehavior] = useState("")

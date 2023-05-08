@@ -1,7 +1,7 @@
 import { Modal, Button } from "flowbite-react"
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
-import { useAuthContext } from "../../../context/AuthContext"
+import { useAuth } from "../../../context/AuthContext"
 import axios from "axios"
 import { toast } from "react-hot-toast"
 
@@ -10,7 +10,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
     const [hiddenCurrentPassword, setHiddenCurrentPassword] = useState("")
     const [hiddenNewPassword, setHiddenNewPassword] = useState("hidden")
     const [modaltitle, setModalTitle] = useState("Confirm your current password")
-    const { authState } = useAuthContext()
+    const { authState } = useAuth()
     const { user } = authState
     const { id } = user
 
