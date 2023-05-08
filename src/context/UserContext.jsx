@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useReducer, useState } from "react";
 import { useAuth } from "./AuthContext";
+import { TYPES } from "./types";
 
 const userContext = createContext();
 export const useUser = () => {
@@ -7,17 +8,31 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  const [userLists, setUserLists] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
-  const { authState } = useAuth();
 
-  useEffect(() => {
 
-  }, [authState.isAuthenticated]);
+  const initialState = {
+    lists: [],
+  }
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+
+      case TYPES.SET_LISTS:
+        return {
+          ...state,
+          lists: action.payload
+        }
+
+      default:
+        return state
+    }
+  }
+
+  const [userState, dispatch] = useReducer(reducer, initialState)
 
   const data = useMemo(() => ({
-    userLists,
-  }), [userLists]);
+    lists: userState.lists,
+  }), [userState.lists]);
 
   return <userContext.Provider value={data}>{children}</userContext.Provider>;
 };

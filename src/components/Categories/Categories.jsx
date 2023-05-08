@@ -17,7 +17,7 @@ import NewListCard from "./ListCard/ListCard";
 
 
 export const Categories = () => {
-  const { userLists } = useUser();
+  const { lists } = useUser();
   const { text } = useLanguage();
   const { authState } = useAuth();
 
@@ -37,7 +37,7 @@ export const Categories = () => {
 
   const handleSetBgImg = ({ target }) => {
     const { id } = target;
-    const hoverList = userLists.find((i) => i.id === parseInt(id));
+    const hoverList = lists.find((i) => i.id === parseInt(id));
     const newArray = hoverList.songs.slice(0, 4);
     setImgs(newArray.map(img => img.thumbnail));
   }
@@ -55,10 +55,10 @@ export const Categories = () => {
   };
 
   useEffect(() => {
-    if (userLists) {
-      setSelectedList(userLists.find((i) => i.id === parseInt(currentList)));
+    if (lists) {
+      setSelectedList(lists.find((i) => i.id === parseInt(currentList)));
       setHoverList(
-        userLists.find((i) => i.id === parseInt(selectedListId))
+        lists.find((i) => i.id === parseInt(selectedListId))
       );
       if (hoverList) {
         setChangeImg(hoverList.songs[0].thumbnail);
@@ -110,8 +110,8 @@ export const Categories = () => {
 
           </div>
 
-          // userLists &&
-          // userLists.map((element) => (
+          // lists &&
+          // lists.map((element) => (
           //   <Fragment key={uuidv4()}>
           //     <div className="flex flex-row justify-between items-center rounded-lg bg-box-icons h-36 lg:h-40 lg:p-5  ">
           //       <div className="flex ml-6 h-full items-center">

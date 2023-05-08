@@ -7,7 +7,6 @@ export const TYPES = {
   LOAD_ARTISTS: "LOAD_ARTISTS",
   LOAD_GENRES: "LOAD_GENRES",
 
-
   // Auth reducer types
   LOGIN_SUCCESS: "LOGIN_SUCCESS",
   LOGIN_UNSUCCESS: "LOGIN_UNSUCCESS",
@@ -23,6 +22,9 @@ export const TYPES = {
   // Recovery reducer types
   SET_USER_ID: "SET_USER_ID",
   SET_TOKEN: "SET_TOKEN",
+
+  // User reducer types
+  SET_LISTS: "SET_LISTS",
 };
 
 export const LANGUAGES = {

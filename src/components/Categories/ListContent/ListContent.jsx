@@ -11,7 +11,7 @@ import { useAuth } from '../../../context/AuthContext';
 
 const ListContent = () => {
   const { text } = useLanguage();
-  const { userLists } = useUser();
+  const { lists } = useUser();
   const { authState } = useAuth();
   const listName = useParams()
   
@@ -49,7 +49,7 @@ const ListContent = () => {
         </div>
       </div >
       {
-        userLists.length > 0
+        lists.length > 0
           ?
           ""
           :
