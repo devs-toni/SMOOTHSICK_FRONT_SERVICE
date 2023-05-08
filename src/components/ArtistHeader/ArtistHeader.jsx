@@ -2,7 +2,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import './ArtistHeader.css';
 import { FaHeart, FaPlay } from "react-icons/fa";
 
-export const ArtistHeader = ({ img, name, fans, isLike }) => {
+export const ArtistHeader = ({ img, name, fans, isLike, description }) => {
 
   const { text } = useLanguage();
 
@@ -20,6 +20,10 @@ export const ArtistHeader = ({ img, name, fans, isLike }) => {
           <FaHeart className={`artist-like ${isLike && 'isLike'}`} />
         </div>
       </div>
+      {
+        description &&
+        <p>{description}</p>
+      }
     </div>
   )
 }
