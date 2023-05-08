@@ -14,14 +14,14 @@ const RecoverModal = ({ open, setOpen }) => {
   const [isLoading, setIsLoading] = useState(false)
   const { register, handleSubmit, reset } = useForm()
   const { dataState } = useRecoveryContext();
-  const {userId, token} = dataState
+
 
   const onSubmit = async ({ email }) => {
     setIsLoading(true)
     await axios.post(import.meta.env.VITE_DB_URI_FORGOT_PASSWORD, { email })
       .then((res) => {
-        const {status, data} = res
-        const {token, id} = data
+        const { status, data } = res
+        const { token, id } = data
         if (status === 200) {
           dataState.userId = id
           dataState.token = token
