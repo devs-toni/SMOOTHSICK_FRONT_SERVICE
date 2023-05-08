@@ -19,6 +19,10 @@ export const TYPES = {
   //Player reducer types
   ADD_SONG: "ADD_SONG",
   PLAY_SONG: "PLAY_SONG",
+
+  // Recovery reducer types
+  SET_USER_ID: "SET_USER_ID",
+  SET_TOKEN: "SET_TOKEN",
 };
 
 export const LANGUAGES = {

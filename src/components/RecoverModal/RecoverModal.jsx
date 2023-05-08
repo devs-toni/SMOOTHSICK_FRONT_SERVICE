@@ -6,19 +6,25 @@ import { useForm } from 'react-hook-form';
 import { Bars } from "react-loader-spinner";
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { useRecoveryContext } from '../../context/RecoveryContext';
 
 const RecoverModal = ({ open, setOpen }) => {
 
   const { text } = useLanguage();
   const [isLoading, setIsLoading] = useState(false)
   const { register, handleSubmit, reset } = useForm()
+  const { dataState } = useRecoveryContext();
+  const {userId, token} = dataState
 
-
-  const onSubmit = async ({email}) => {
+  const onSubmit = async ({ email }) => {
     setIsLoading(true)
     await axios.post(import.meta.env.VITE_DB_URI_FORGOT_PASSWORD, { email })
-      .then(({status}) => {
+      .then((res) => {
+        const {status, data} = res
+        const {token, id} = data
         if (status === 200) {
+          dataState.userId = id
+          dataState.token = token
           setIsLoading(false)
           toast.success("Check your email to generate a new password!", {
             style: {
@@ -131,7 +137,7 @@ const RecoverModal = ({ open, setOpen }) => {
                       </>
                       :
                       <div className="flex justify-center items-center p-20">
-                        <Bars color='#ef5567'/>
+                        <Bars color='#ef5567' />
                       </div>
                   }
                 </Dialog.Panel>

@@ -1,24 +1,67 @@
-import { Button, TextInput } from "flowbite-react";
+import axios from "axios";
+import { LOGIN } from "../../router/paths";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { useLanguage } from "../../context/LanguageContext";
-import { useState } from "react";
+import { Button, TextInput } from "flowbite-react";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const Recover = () => {
-
-  const [userData, setUserData] = useState({
-    new1: "",
-    new2: "",
-  });
+  const { register, handleSubmit, reset } = useForm()
   const { text } = useLanguage();
+  const { userId } = useParams()
+  const navigate = useNavigate()
 
-  const handleInput = ({ target }) => {
-    const { name, value } = target;
-    setUserData({ ...userData, [name]: value });
-    reset();
-  };
+  const onSubmit = async ({ pass, repeatPass }) => {
+    if (pass !== repeatPass) {
+      toast.error("Passwords do not match", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+        error: {
+          duration: 2000,
+        },
+      });
+    }
+
+    try {
+      await axios.patch(import.meta.env.VITE_DB_URI_FORGOT_RESET_PASS, { pass, userId })
+        .then(({ data, status }) => {
+          console.log(status);
+          if (status === 201) {
+            // toast.error("The password must have: between 8 and 16 characters, 1 number, 1 lowercase letter, 1 uppercase letter, and a special character", {
+            //   style: {
+            //     borderRadius: "10px",
+            //     background: "#333",
+            //     color: "#fff",
+            //   },
+            //   error: {
+            //     duration: 2000,
+            //   },
+            // });
+            toast.success("Password updated successfully", {
+              style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+              error: {
+                duration: 10000,
+              },
+            });
+            reset()
+            navigate(LOGIN)
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+
+          }
+        })
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const styleInput = {
@@ -32,20 +75,18 @@ export const Recover = () => {
       <div className="flex flex-col items-center justify-center h-full pt-20 w-full">
         <p className="text-lg md:text-4xl font-semibold mb-12">{text.recover.title}</p>
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className="flex item-center flex-col gap-4 max-w-xl w-full px-10 pt-10 m-4 rounded-md register image-z"
         >
           <div>
             <TextInput
-              type="text"
+              type="password"
               id="newPass1"
-              name="new1"
               placeholder={text.recover.new1}
               className=" border border-t-transparent border-l-transparent border-r-transparent bg-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
-              onChange={handleInput}
+              {...register("pass")}
               color="white"
               required={true}
-              value={userData.email}
               style={styleInput}
             />
           </div>
@@ -53,13 +94,11 @@ export const Recover = () => {
             <TextInput
               type="password"
               id="newPass2"
-              name="new2"
               placeholder={text.recover.new2}
               color="white"
               className="text-white border border-t-transparent border-l-transparent border-r-transparent bg-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
-              onChange={handleInput}
+              {...register("repeatPass")}
               required={true}
-              value={userData.password}
               style={styleInput}
             />
           </div>

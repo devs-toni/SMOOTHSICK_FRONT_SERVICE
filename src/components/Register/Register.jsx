@@ -57,8 +57,6 @@ const Register = () => {
   }, [eyeClicked, errors])
 
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -10,7 +10,9 @@ import { useFetchAllHomeArtists, useFetchAllHomeAlbums, useFetchAllHomePlaylists
 import { FILTER_TYPES } from '../Search/filterTypes';
 
 
+
 const Home = () => {
+  
 
   const { text } = useLanguage();
   const [loaded, setLoaded] = useState(false);

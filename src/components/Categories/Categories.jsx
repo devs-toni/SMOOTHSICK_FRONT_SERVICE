@@ -15,6 +15,7 @@ import { Avatar, Button } from "flowbite-react";
 import { FaRandom } from "react-icons/fa";
 import NewListCard from "./ListCard/ListCard";
 
+
 export const Categories = () => {
   const { userLists } = useUser();
   const { text } = useLanguage();

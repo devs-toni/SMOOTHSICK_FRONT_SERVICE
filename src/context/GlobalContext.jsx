@@ -1,4 +1,4 @@
-import { useContext, createContext, useReducer, useMemo, useEffect } from "react"
+import { useContext, createContext, useReducer, useMemo } from "react"
 import { TYPES } from "./types";
 
 const GlobalContext = createContext();
