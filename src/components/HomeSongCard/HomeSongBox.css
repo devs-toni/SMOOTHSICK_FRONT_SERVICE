@@ -72,13 +72,13 @@
 }
 .list__data--like {
   width: 100%;  
+  margin-top: 20px;
   position: absolute;
   bottom: 15px;
   left: 80%;
 }
 .list__data--like svg {
   font-size: 1.2em;
-
 }
 .list__data--artist {
   font-size: 0.8em;

@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
         console.error(error)
       }
     }
-    if (token) checkUser();
+    checkUser();
   }, [])
 
 

@@ -56,8 +56,16 @@
   font-style: italic;
 }
 .chart__data--like {
+  width: 100%;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 15px;
+  left: 80%;
   padding-right: 20px;
   align-self: center;
+}
+.chart__data--like svg {
+  font-size: 1.2em;
 }
 
 .chart__link {

@@ -62,6 +62,11 @@
   font-size: 1.4em;
   border-radius: 50%;
   border: 2px solid rgba(168, 168, 168, 0.459);
+  margin-top: 20px;
+  display: none;
+}
+.artists-tracks-chart__data--like svg {
+  font-size: 1em;
 }
 
 .artists-tracks-chart__link {

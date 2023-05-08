@@ -1,25 +1,23 @@
 import { useAuth } from '../../context/AuthContext';
-
 import { useLanguage } from '../../context/LanguageContext';
-
-import { v4 as uuidv4 } from 'uuid';
-import { FavouritesSongCard } from '../FavouritesSongCard/FavouritesSongCard';
 import { useEffect, useState } from 'react';
 import { BsClock } from 'react-icons/bs'
+import { useUser } from '../../context/UserContext';
+import { FavouritesSongCard } from '../index';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
 export const Favourites = () => {
   const { authState } = useAuth();
   const { text } = useLanguage();
-  const [totalTracks, setTotalTracks] = useState([])
-  
+  const { userState, getFavourites } = useUser();
+  const [totalTracks, setTotalTracks] = useState([]);
+
   useEffect(() => {
-    //setTotalTracks(dataState.tracks);
+    getFavourites();
   }, [])
-
-
-
+  
   return (
     <div className="flex w-full items-center justify-center pb-24">
       <div className='w-full h-full  p-6 md:max-w-2xl md:pl-20 lg:max-w-3xl mt-14 md:mt-20 min-w-[75%]'>
@@ -34,33 +32,26 @@ export const Favourites = () => {
         </div>
         <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
           <div className='flex items-center justify-between border-b border-b-gray-300'>
+            <p className="w-1/12">#</p>
             <p className="w-2/12">{text.liked.track}</p>
             <p className="w-2/12"></p>
             <p className="w-3/12">Options</p>
             <p className="w-3/12">{text.liked.album_table}</p>
             <p className="w-2/12">{text.liked.gender}</p>
-            <p className="w-2/12"><BsClock className='w-11/12'/></p>
+            <p className="w-2/12"><BsClock className='w-11/12' /></p>
           </div>
         </div>
-        
-       {/*  {
-          dataState.tracks.map(({ id, name, artist, url, thumbnail, genre }, index) => {
-            
+        {
+          userState.favourites.length > 0 && userState.favourites.map((track, index) => {
             return (
               <FavouritesSongCard
                 key={uuidv4()}
-                id={id}
+                track={track}
                 count={index}
-                name={name}
-                artist={artist}
-                url={url}
-                thumbnail={thumbnail}
-                genre={genre}
-                isLike={true}
               />
             )
           })
-        } */}
+        }
       </div>
     </div>
   )

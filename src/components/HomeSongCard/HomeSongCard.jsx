@@ -9,6 +9,7 @@ import './HomeSongBox.css';
 import { FILTER_TYPES } from "../Search/filterTypes";
 import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
+import { useUser } from "../../context/UserContext";
 
 const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
 
@@ -16,6 +17,8 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
   const { authState } = useAuth();
+  const { getFavourites, removeFromFavourites } = useUser();
+  const [isLike, setIsLike] = useState(false);
 
   useLayoutEffect(() => {
     if (type == FILTER_TYPES.ARTISTS) {
@@ -26,13 +29,13 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
       })
     } else if (type == FILTER_TYPES.TRACKS) {
       setCanPlay(true);
+      setIsLike(obj.likes.filter(ids => ids === authState.user.id).length > 0 ? true : false)
       setData({
-        id: obj.track.id,
-        name: obj.track.title,
-        picture: obj.album.cover,
-        artist: obj.album.title,
-        preview: obj.track.preview,
-        isLike: obj.track.likes.filter(ids => ids === authState.user.id).length > 0 ? true : false
+        id: obj.id,
+        name: obj.title,
+        picture: obj.album_cover,
+        artist: obj.title,
+        preview: obj.preview,
       })
     } else if (type == FILTER_TYPES.ALBUMS) {
       setData({
@@ -52,17 +55,18 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
     }
   }, [])
 
-  const addLike = () => {
-    axios.patch(import.meta.env.VITE_BACKEND + "tracks/like/" + data.id, {}, {
+  const toggleLike = () => {
+    axios.patch(import.meta.env.VITE_BACKEND + type.toLowerCase() + "/like/" + data.id, {}, {
       headers: {
         "Authorization": `${authState.token}`
       }
-    }).then((res) => {
+    }).then(() => {
+      if (data.isLike) {
+        setIsLike(false)
+        removeFromFavourites(data.id)
+      } else
+        setIsLike(true)
 
-      setData({
-        ...data,
-        isLike: !data.isLike
-      })
     })
   }
 
@@ -111,9 +115,9 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
           </div>
         }
         {
-          authState.isAuthenticated && isTrack &&
-          <div className={`${(data.isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={addLike}>
-            <FaHeart className={(data.isLike) ? "text-red-500" : "text-gray-600"} />
+          (authState.isAuthenticated && isTrack) &&
+          <div className={`${(isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={toggleLike}>
+            <FaHeart className={(isLike) ? "text-red-500" : "text-gray-600"} />
           </div>
         }
       </div>
