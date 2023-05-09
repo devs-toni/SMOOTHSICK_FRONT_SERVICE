@@ -2,7 +2,7 @@ import { Button, Modal } from "flowbite-react"
 import { useForm } from "react-hook-form"
 import { v4 as uuidv4 } from 'uuid';
 import { useAuth } from "../../context/AuthContext";
-import axios from "axios";
+import axios, { Axios } from "axios";
 
 const AddSongModal = ({ open, setOpen }) => {
 
@@ -10,36 +10,42 @@ const AddSongModal = ({ open, setOpen }) => {
   const { authState } = useAuth();
 
   const onSubmit = async ({ file }) => {
+
+    const uploadFile = file[0];
+    const fd = new FormData();
+    fd.append("audio", uploadFile);
+
+    const response = await fetch(import.meta.env.VITE_BACKEND + "tracks/upload", {
+      method: "POST",
+      body: fd,
+      headers: {
+        "Authorization": authState.token
+      }
+    })
+    const finalData = await response.json();
+
     const data = {
       id: uuidv4(),
-      title: file[0].name.split(".mp3")[0],
-      title_short: file[0].name.split(".mp3")[0],
-      duration: 0,
+      readable: true,
+      title: uploadFile.name.split(".mp3")[0],
+      title_short: uploadFile.name.split(".mp3")[0],
+      duration: finalData.duration,
       track_position: -1,
       disk_number: -1,
       rank: 0,
-      preview: "",
+      preview: finalData.url,
       artist_id: authState.user.id,
       album_id: "",
     }
-    let form = new FormData();
-    form.append("file", file[0]);
-    const headers = {
-      "Content-Type": "multipart/form-data"
-    }
-
-    fetch(import.meta.env.VITE_BACKEND + "tracks/", {
-      method: "POST",
+    axios.post(import.meta.env.VITE_BACKEND + "tracks/", {
+      data
+    }, {
       headers: {
-        "Content-Type": "multipart/form-data"
-      },
-      body: { form }
-    }
-      , headers)
-      .then(res => {
-        console.log(res);
-      })
-
+        "Authorization": authState.token
+      }
+    }).then(({ data }) => {
+      console.log(data);
+    })
   }
 
   return (
@@ -53,7 +59,7 @@ const AddSongModal = ({ open, setOpen }) => {
                 <span className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                   File
                 </span>
-                <input type="file" placeholder='Playlist name' className='bg-zinc-600 rounded mb-5'
+                <input type="file" accept="image/*, audio/*" placeholder='Playlist name' className='bg-zinc-600 rounded mb-5'
                   {...register("file")}
                 />
                 <Button

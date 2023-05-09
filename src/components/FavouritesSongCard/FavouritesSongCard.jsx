@@ -1,21 +1,24 @@
-import { FaHeart } from 'react-icons/fa'
+import { FaHeart, FaPencilAlt } from 'react-icons/fa'
 import { SlOptions } from 'react-icons/sl'
 import { GiMicrophone } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import { useUser } from '../../context/UserContext';
+import { AiFillDelete } from 'react-icons/ai';
+import { usePlayer } from '../../context/PlayerContext';
 
 
 
 
 
-export const FavouritesSongCard = ({  track, count }) => {
+export const FavouritesSongCard = ({ track, count, ownerImage }) => {
 
-  const { id, title, duration, rank, preview, artist_name, album_cover } = track;
+  const { id, title, duration, rank, preview, artist_name, album_cover, artist_id } = track;
   const { authState } = useAuth();
   const { removeFromFavourites } = useUser();
-  
+  const { playSong } = usePlayer();
+
   const isLike = true;
 
   const removeLike = () => {
@@ -35,10 +38,17 @@ export const FavouritesSongCard = ({  track, count }) => {
         <div className='flex items-center rounded-xl bg-box-icons h-16'>
           <span className='w-1/12 text-center'>{count + 1}</span>
           <div className=' flex w-2/12 items-center justify-center'>
-            <img className="rounded-lg w-16 " src={album_cover} alt="image description" width="" height="" />
+            <img className="rounded-lg w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} onClick={() => playSong(preview)} alt="image description" width="" height="" />
           </div>
           <span className="text-xs text-center w-2/12 md:text-md grow truncate">{title}</span>
           <div className={`${isLike ? "border-red-500" : "border-gray-400"} w-3/12 flex items-center justify-center text-xs md:text-2xl rounded-full my-auto cursor-pointer `}>
+            {
+              (ownerImage && artist_id === authState.id) &&
+              <>
+                <AiFillDelete className='ml-4 mr-4 text-3xl' />
+                <FaPencilAlt className='mr-4 text-2xl' />
+              </>
+            }
             <FaHeart className={`${isLike ? "text-red-400" : "text-gray-600"} mr-4`} onClick={removeLike} />
             <Link to="/">
               <GiMicrophone
@@ -48,7 +58,7 @@ export const FavouritesSongCard = ({  track, count }) => {
             </Link>
             <SlOptions className="text-withe-600" />
           </div>
-          <p className="text-xs text-center font-normal w-3/12 md:text-md truncate">{artist_name}</p>
+          <p className="text-xs text-center font-normal w-3/12 md:text-md truncate">{!ownerImage ? artist_name : "Owner"}</p>
           <span className="text-xs text-center w-2/12 md:text-md grow">Genero</span>
           <span className="text-xs text-center w-2/12 md:text-md grow">{(duration / 60).toFixed(2)} min</span>
 

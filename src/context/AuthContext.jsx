@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
           })
             .then(res => {
               const { data, status } = res
-              
+
               if (status === 200) {
                 refresh(data.id, {
                   id: data.id,
@@ -105,10 +105,11 @@ export const AuthProvider = ({ children }) => {
       case TYPES.REFRESH_PAGE:
         return {
           isAuthenticated: true,
+          firstTime: true,
           id: action.payload.id,
           user: action.payload.user,
-          firstTime: true,
           token: action.payload.token,
+          error: ""
         };
 
 
