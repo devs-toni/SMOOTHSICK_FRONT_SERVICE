@@ -24,7 +24,7 @@ const Home = () => {
   const { lessAlbums, lessAlbumsLoaded } = useFetchLessHomeAlbums();
   const { lessTracks, lessTracksLoaded } = useFetchLessHomeTracks();
   const { tracks, tracksLoaded } = useFetchAllHomeTracks();
-
+  
 
   const { authState, resetFirstTime } = useAuth();
 
