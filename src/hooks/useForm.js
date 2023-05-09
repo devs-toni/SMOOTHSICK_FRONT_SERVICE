@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-export const useFormHandler = (initialForm) => {
+export const useForm = (initialForm) => {
 
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
@@ -72,7 +72,7 @@ const validateName = (value) => {
   let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
   let error = '';
   if (!regexName.test(value.trim()) && value.length > 0) {
-    error = 'Only accepts letters and whitespace';
+    error = 'Solo acepta letras y espacios en blanco';
   }
   return error;
 }

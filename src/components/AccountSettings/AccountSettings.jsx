@@ -17,12 +17,9 @@ const Accountsettings = () => {
   const { text } = useLanguage()
   const { authState } = useAuth()
   const { user } = authState
-  const { email, userName, id } = user
-  const [userRole, setUserRole] = useState(Boolean)
   const [openChangePassModal, setOpenChangePassModal] = useState(false);
   const [openUserDataModal, setOpenUserDataModal] = useState(false);
   const [openEmaiModal, setOpenEmaiModal] = useState(false);
-  const [modalData, setModalData] = useState("")
   const navigate = useNavigate()
   const { deleteUser } = useFetchUserData()
 
