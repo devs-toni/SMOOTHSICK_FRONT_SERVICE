@@ -17,7 +17,7 @@ export const Details = () => {
   const [data, setData] = useState({});
   const [tracks, setTracks] = useState([]);
   const [albums, setAlbums] = useState([]);
-
+  
 
   const getDetails = async () => {
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
@@ -74,6 +74,7 @@ export const Details = () => {
                 })
             }))
             setTracks(finalData);
+            
           })
 
 
@@ -171,7 +172,7 @@ export const Details = () => {
                   <>
                     <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10">
                       <div className='max-w-81rem'>
-                        <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} />
+                        <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true}  tracks={tracks}/>
                       </div>
                       <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
                         <div className='flex items-center justify-between border-b border-b-gray-300'>
