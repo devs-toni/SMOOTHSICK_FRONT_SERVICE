@@ -130,59 +130,6 @@ export const useFetchUserData = () => {
     }
 
 
-    // CHANGE USER NAME
-
-    const changeUserName = async (data) => {
-        const { type } = data
-        try {
-            axios.patch(import.meta.env.VITE_DB_URI_CHANGE_USERNAME, { type, id })
-                .then(({ status }) => {
-                    if (status === 201) {
-                        toast.success("New user name saved!", {
-                            style: {
-                                borderRadius: "10px",
-                                background: "#333",
-                                color: "#fff",
-                            },
-                            error: {
-                                duration: 5000,
-                            },
-                        });
-                        
-                    }
-                })
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    // CHANGE USER EMAIL
-    const changeUserEmail = async (data) => {
-        const { type } = data
-        try {
-            axios.patch(import.meta.env.VITE_DB_URI_CHANGE_EMAIL, { type, id })
-                .then(({ status }) => {
-                    if (status === 201) {
-                        toast.success("New user email saved!", {
-                            style: {
-                                borderRadius: "10px",
-                                background: "#333",
-                                color: "#fff",
-                            },
-                            error: {
-                                duration: 5000,
-                            },
-                        });
-                        
-                    }
-                })
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-
-
 
 
     return {
@@ -190,8 +137,7 @@ export const useFetchUserData = () => {
         deleteUser,
         checkCurrentPass,
         saveNewPass,
-        changeUserName,
-        changeUserEmail
+        
     }
 
 }

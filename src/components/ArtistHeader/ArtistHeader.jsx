@@ -12,7 +12,7 @@ export const ArtistHeader = ({ img, name, fans, isLike, description, tracks }) =
   const handleSetNewPlaylist = () => {
     playerState.queue = tracks;
   }
-
+ 
 
 
   return (

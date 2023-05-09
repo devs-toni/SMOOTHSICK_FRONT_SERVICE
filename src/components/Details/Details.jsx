@@ -8,6 +8,7 @@ import { useFetchAllAlbums } from '../../hooks';
 import { useLanguage } from '../../context/LanguageContext';
 import { v4 as uuidv4 } from 'uuid';
 import { BsClock } from 'react-icons/bs';
+import { usePlayer } from '../../context/PlayerContext';
 
 
 export const Details = () => {
@@ -17,7 +18,8 @@ export const Details = () => {
   const [data, setData] = useState({});
   const [tracks, setTracks] = useState([]);
   const [albums, setAlbums] = useState([]);
-  
+  const { playerState } = usePlayer();
+    
 
   const getDetails = async () => {
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
