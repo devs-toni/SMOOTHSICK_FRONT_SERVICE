@@ -9,4 +9,4 @@ export * from './useFetchLessHomeAlbums';
 export * from './useFetchLessHomePlaylists';
 export * from './useFetchLessHomeTracks';
 export * from './useFetchMoreHomeArtists';
-export * from './useForm';
+export * from './useFormHandler';

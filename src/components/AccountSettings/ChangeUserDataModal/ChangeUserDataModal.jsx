@@ -1,112 +1,74 @@
 import { Button, Modal } from "flowbite-react"
-import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-import { useAuth} from "../../../context/AuthContext"
+import { useAuth } from "../../../context/AuthContext"
 import axios from "axios"
 import { toast } from "react-hot-toast"
 
 
-export const ChangeUserNameModal = ({ setOpen, open, modalData }) => {
-  const { register, handleSubmit, reset } = useForm();
-  const [modalTitle, setModalTitle] = useState("");
-  const [inputData, setinputData] = useState("");
-  const [inputType, setinputType] = useState("");
+export const ChangeUserNameModal = ({ setOpen, open }) => {
+
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const { authState } = useAuth()
   const { user } = authState
   const { id } = user
 
 
-  useEffect(() => {
-    if (modalData === "userName") {
-      setinputData("Enter a new user name")
-      setModalTitle("Change user name")
-      setinputType("text")
-      reset()
-    } else {
-      setinputData("Enter a new email")
-      setModalTitle("Change email")
-      setinputType("email")
-      reset()
-    }
-  }, [modalData])
-
-
-  const onSubmit = (data) => {
-    if (modalData === "userName") {
-      const { type } = data
-      try {
-        axios.patch(import.meta.env.VITE_DB_URI_CHANGE_USERNAME, { type, id })
-          .then(({ status }) => {
-            if (status === 201) {
-              toast.success("New user name saved!", {
-                style: {
-                  borderRadius: "10px",
-                  background: "#333",
-                  color: "#fff",
-                },
-                error: {
-                  duration: 5000,
-                },
-              });
-              reset()
-              setOpen(false)
-            }
-          })
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      const { type } = data
-      try {
-        axios.patch(import.meta.env.VITE_DB_URI_CHANGE_EMAIL, { type, id })
-          .then(({ status }) => {
-            if (status === 201) {
-              toast.success("New user email saved!", {
-                style: {
-                  borderRadius: "10px",
-                  background: "#333",
-                  color: "#fff",
-                },
-                error: {
-                  duration: 5000,
-                },
-              });
-              reset()
-              setOpen(false)
-            }
-          })
-      } catch (error) {
-        console.error(error);
-      }
+  const onSubmitUserName = (data) => {
+    const { userName } = data
+    try {
+      axios.patch(import.meta.env.VITE_DB_URI_CHANGE_USERNAME, { userName, id })
+        .then(({ status }) => {
+          if (status === 201) {
+            toast.success("New user name saved!", {
+              style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+              error: {
+                duration: 5000,
+              },
+            });
+            user.userName = userName
+            reset()
+            setOpen(false)
+          }
+        })
+    } catch (error) {
+      console.error(error);
     }
   }
 
-
   return (
     <>
-      <Modal show={open} onClose={() => setOpen(false)} className='rounded-xl' dismissible>
+      <Modal show={open} onClose={() => setOpen(false)} dismissible>
         <Modal.Body className='bg-zinc-900'>
           <div className='flex justify-center flex-col items-center gap-5'>
-            <span className='text-white'>{modalTitle}</span>
-            <div className=" flex flex-col gap-5 items-center">
-              <form onSubmit={handleSubmit(onSubmit)} className="mb-5">
-                <input type={inputType} placeholder={inputData} className="bg-zinc-600 rounded mb-5"
-                  {...register("type")}
+            <span className='text-white'>Change user name</span>
+            <div className={`flex flex-col gap-5 items-center`}>
+              <form onSubmit={handleSubmit(onSubmitUserName)} className={'mb-5'}>
+                <input type="text" placeholder="Enter a new user name" className={'bg-zinc-600 rounded mb-5'}
+                  {...register("userName", {
+                    required: true,
+                    maxLength: 10,
+                    pattern: /^[a-zA-Z]+$/
+                  })}
                 />
+                {errors?.userName?.type === "required" && <p className="text-red-500">First name is required</p>}
+                {errors?.userName?.type === "pattern" && <p className="text-red-500">Alphabetical characters only</p>}
+                <div className="mt-5 flex justify-center">
+                  <Button
+                    className='bg-deezer'
+                    onClick={handleSubmit(onSubmitUserName)}
+                  >
+                    Update
+                  </Button>
+                </div>
               </form>
-              <div className="mt-5 flex justify-center">
-                <Button
-                  className='bg-deezer'
-                  onClick={handleSubmit(onSubmit)}
-                >
-                  Update
-                </Button>
-              </div>
             </div>
           </div>
-
         </Modal.Body>
-      </Modal>
+      </Modal >
     </>
   )
 }

@@ -6,7 +6,7 @@ import axios from "axios"
 import { toast } from "react-hot-toast"
 
 export const ChangePasswordModal = ({ setOpen, open }) => {
-    
+
     const { register, handleSubmit, reset } = useForm()
     const [hiddenCurrentPassword, setHiddenCurrentPassword] = useState("")
     const [hiddenNewPassword, setHiddenNewPassword] = useState("hidden")
@@ -20,20 +20,30 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
         const { currentPass } = data
 
         try {
-          axios.post(import.meta.env.VITE_BACKEND + "users/validatePassword", { currentPass, id })
+            axios.post(import.meta.env.VITE_BACKEND + "users/validatePassword", { currentPass, id })
                 .then(({ status }) => {
                     if (status === 201) {
                         setHiddenCurrentPassword("hidden")
                         setHiddenNewPassword("")
                         setModalTitle("Create a new password")
                         reset()
+                    } else {
+                        toast.error("Incorrect password", {
+                            style: {
+                                borderRadius: "10px",
+                                background: "#333",
+                                color: "#fff",
+                            },
+                            error: {
+                                duration: 5000,
+                            },
+                        });
                     }
-
                 })
         } catch (error) {
             console.error(error);
         }
-        
+
     }
 
     const onSubmitNewPass = (data) => {
@@ -49,36 +59,38 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                     duration: 5000,
                 },
             });
-        }
-        try {
-          axios.patch(import.meta.env.VITE_BACKEND + "users/changePassword", { pass, id })
-                .then(({ status }) => {
-                    if (status === 201) {
-                        toast.success("Password changed successfully", {
-                            style: {
-                                borderRadius: "10px",
-                                background: "#333",
-                                color: "#fff",
-                            },
-                            error: {
-                                duration: 5000,
-                            },
-                        });
-                        setHiddenCurrentPassword("")
-                        setHiddenNewPassword("hidden")
-                        setModalTitle("Confirm your current password")
-                        setOpen(false)
+        } else {
+            try {
+                axios.patch(import.meta.env.VITE_BACKEND + "users/changePassword", { pass, id })
+                    .then(({ status }) => {
+                        if (status === 201) {
+                            toast.success("Password changed successfully", {
+                                style: {
+                                    borderRadius: "10px",
+                                    background: "#333",
+                                    color: "#fff",
+                                },
+                                error: {
+                                    duration: 5000,
+                                },
+                            });
+                            setHiddenCurrentPassword("")
+                            setHiddenNewPassword("hidden")
+                            setModalTitle("Confirm your current password")
+                            setOpen(false)
+                        }
 
-                    }
-                })
-        } catch (error) {
-            console.error(error);
+                    })
+            } catch (error) {
+                console.error(error);
+            }
         }
+
 
     }
 
 
-    
+
 
     return (
         <>

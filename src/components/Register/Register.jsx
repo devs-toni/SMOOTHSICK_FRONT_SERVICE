@@ -4,7 +4,7 @@ import { Link, redirect, useNavigate } from "react-router-dom";
 import { LOGIN } from "../../router/paths";
 import { useEffect, useState } from "react";
 import { useAuth } from '../../context/AuthContext';
-import { useForm } from '../../hooks/useForm';
+import { useFormHandler } from '../../hooks/useFormHandler';
 import { useLanguage } from '../../context/LanguageContext';
 import RecoverModal from "../RecoverModal/RecoverModal";
 import Error from "../Error/Error";
@@ -29,7 +29,7 @@ const Register = () => {
   }, [])
 
   const { text } = useLanguage();
-  const { form, handleChange, handleBlur, validate, errors } = useForm({
+  const { form, handleChange, handleBlur, validate, errors } = useFormHandler({
     name: '',
     lastname: '',
     email: '',

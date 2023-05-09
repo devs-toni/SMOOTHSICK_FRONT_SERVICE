@@ -36,7 +36,6 @@ const Login = () => {
         .then(({ data, status }) => {
 
           const { token, currentUser } = data;
-          console.log(currentUser);
           if (status === 200) {
             login(currentUser._id, {
               id: currentUser._id,

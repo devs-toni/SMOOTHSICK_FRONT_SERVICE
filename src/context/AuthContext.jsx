@@ -25,7 +25,6 @@ export const AuthProvider = ({ children }) => {
           })
             .then(res => {
               const { data, status } = res
-              
               if (status === 200) {
                 refresh(data.id, {
                   id: data.id,
@@ -151,7 +150,9 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const authData = useMemo(() => ({
+
     authState,
+    refresh,
     login,
     logout,
     reset,
