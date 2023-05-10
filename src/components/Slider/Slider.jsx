@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useRef, useState } from 'react';
 import './Slider.css';
-import BoxSongCard from '../BoxSongCard/BoxSongCard';
+import BoxCard from '../partials/BoxCard/BoxCard';
 
 const Slider = ({ list, name, type, isFirstRowSection }) => {
 
@@ -40,7 +40,7 @@ const Slider = ({ list, name, type, isFirstRowSection }) => {
               {
                 list.map((obj) => {
                   return (
-                    <BoxSongCard
+                    <BoxCard
                       key={uuidv4()}
                       obj={obj}
                       targetClass="list"

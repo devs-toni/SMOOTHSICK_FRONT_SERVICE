@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { FILTER_TYPES } from '../Search/filterTypes';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ArtistHeader, DetailsSongCard, BoxSongCard, Section } from '../index';
+import { ArtistHeader, DetailsCard, BoxCard, Section } from '../index';
 import { ArtistOptions } from '../index';
 import { useFetchAllAlbums } from '../../hooks';
 import { useLanguage } from '../../context/LanguageContext';
@@ -137,7 +137,7 @@ export const Details = () => {
                                 {
                                   albums.map(obj => {
                                     return (
-                                      <BoxSongCard
+                                      <BoxCard
                                         key={uuidv4()}
                                         obj={obj}
                                         targetClass="albums"
@@ -178,7 +178,7 @@ export const Details = () => {
                     {
                       tracks.length > 0 && tracks.map((track, index) => {
                         return (
-                          <DetailsSongCard
+                          <DetailsCard
                             key={uuidv4()}
                             track={track}
                             count={index}
@@ -211,7 +211,7 @@ export const Details = () => {
                       {
                         tracks.length > 0 && tracks.map((track, index) => {
                           return (
-                            <DetailsSongCard
+                            <DetailsCard
                               key={uuidv4()}
                               track={track}
                               count={index}

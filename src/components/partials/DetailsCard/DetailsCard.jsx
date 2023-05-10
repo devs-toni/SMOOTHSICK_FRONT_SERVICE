@@ -3,17 +3,12 @@ import { SlOptions } from 'react-icons/sl'
 import { GiMicrophone } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import { useAuth } from '../../context/AuthContext';
-import { useUser } from '../../context/UserContext';
+import { useAuth } from '../../../context/AuthContext';
+import { useUser } from '../../../context/UserContext';
 import { AiFillDelete } from 'react-icons/ai';
-import { usePlayer } from '../../context/PlayerContext';
-import { trim } from '@cloudinary/url-gen/actions/reshape';
+import { usePlayer } from '../../../context/PlayerContext';
 
-
-
-
-
-export const DetailsSongCard = ({ track, count, ownerImage, tracks, playlistName }) => {
+export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName }) => {
 
   const { id, title, duration, rank, preview, artist_name, album_cover, artist_id } = track;
   const { authState } = useAuth();
