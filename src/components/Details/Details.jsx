@@ -20,7 +20,6 @@ export const Details = () => {
   const [albums, setAlbums] = useState([]);
   const { playerState } = usePlayer();
 
-
   const getDetails = async () => {
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
       case FILTER_TYPES.ALBUMS:
@@ -35,10 +34,10 @@ export const Details = () => {
             });
 
           })
-          await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs" + id)
-            .then(res => {
-              console.log(res)
-            })
+        await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs" + id)
+          .then(res => {
+            console.log(res)
+          })
 
 
       case FILTER_TYPES.ARTISTS:
@@ -67,6 +66,7 @@ export const Details = () => {
         let finalData = [];
         await axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
           .then(async ({ data }) => {
+            const title_playlist = data.title
             const image = data.picture
             setData({
               id: data.id,
@@ -79,10 +79,11 @@ export const Details = () => {
             await Promise.all(data.tracklist.map(async (id) => {
               await axios.get(import.meta.env.VITE_BACKEND + "tracks/" + id)
                 .then(({ data }) => {
-
+                  console.log(data);
                   const newData = {
                     ...data,
-                    album_cover: image
+                    album_cover: image,
+                    title_playlist
                   }
                   finalData.push(newData)
                 })

@@ -39,7 +39,6 @@ export const UserProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    console.log(authState.token)
     if (authState.token && authState.isAuthenticated) getFavourites();
   }, [authState.token, authState.isAuthenticated])
 

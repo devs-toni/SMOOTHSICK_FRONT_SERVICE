@@ -47,7 +47,10 @@ export const DetailsSongCard = ({ track, count, ownerImage, tracks, playlistName
         tr.artist_name = playlistName
       }
     })
-    addQueue(tracks.filter(tr => tr.id !== id))
+    addQueue(
+      tracks
+        // .filter(tr => tr.id !== id)
+    )
   }
 
   return (

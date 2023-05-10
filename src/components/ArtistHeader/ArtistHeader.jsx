@@ -15,9 +15,8 @@ export const ArtistHeader = ({ img, name, fans, isLike, description, tracks }) =
       name: tracks[0].title,
       artist: name
     })
-    addQueue(tracks.slice(1, tracks.length))
+    addQueue(tracks)
   }
-
 
 
   return (
