@@ -26,7 +26,8 @@ export const TYPES = {
 
   // User reducer types
   SET_LISTS: "SET_LISTS",
-  SET_FAVOURITES: "SET_FAVOURITES"
+  SET_FAVOURITES: "SET_FAVOURITES",
+  DELETE_FAVOURITES: "DELETE_FAVOURITES"
 };
 
 export const LANGUAGES = {

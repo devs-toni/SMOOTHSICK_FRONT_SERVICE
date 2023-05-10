@@ -45,7 +45,7 @@ const Login = () => {
               email: currentUser.email,
               role: currentUser.role,
               profilePicture: defaultUserPicture,
-            });
+            }, token);
             localStorage.setItem("userToken", token)
             navigate(HOME);
 
