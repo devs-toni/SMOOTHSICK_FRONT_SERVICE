@@ -7,6 +7,7 @@ export const ArtistHeader = ({ img, name, fans, isLike, description, tracks }) =
 
   const { text } = useLanguage();
   const { addList, addQueue, playSong } = usePlayer();
+  
 
   const handleSetNewPlaylist = () => {
     playSong({

@@ -25,6 +25,7 @@ const Player = () => {
   const track = queue.find((e) => e.preview === current.preview);
   const currentSongIndex = queue.indexOf(track)
 
+  console.log(queue);
 
   const handleClickNext = () => {
     setCurrentSong(currentSong < queue.length - 1 ? currentSong + 1 : 0);
@@ -32,14 +33,14 @@ const Player = () => {
       playSong({
         name: queue[0].title,
         picture: queue[0].album_cover,
-        artist: queue[0].title_playlist,
+        artist: queue[0].title_playlist || queue[0].artist_name,
         preview: queue[0].preview,
       })
     } else {
       playSong({
         name: queue[currentSongIndex + 1].title,
         picture: queue[currentSongIndex + 1].album_cover,
-        artist: queue[currentSongIndex + 1].title_playlist,
+        artist: queue[currentSongIndex + 1].title_playlist || queue[currentSongIndex + 1].artist_name,
         preview: queue[currentSongIndex + 1].preview,
       })
     }
@@ -55,12 +56,12 @@ const Player = () => {
       current.preview = queue[queue.length - 1].preview
       current.picture = queue[queue.length - 1].album_cover
       current.name = queue[queue.length - 1].title
-      current.artist = queue[queue.length - 1].title_playlist
+      current.artist = queue[queue.length - 1].title_playlist || queue[queue.length - 1].artist_name
     } else {
       current.preview = queue[currentSongIndex - 1].preview
       current.picture = queue[currentSongIndex - 1].album_cover
       current.name = queue[currentSongIndex - 1].title
-      current.artist = queue[currentSongIndex - 1].title_playlist
+      current.artist = queue[currentSongIndex - 1].title_playlist || queue[currentSongIndex - 1].artist_name
     }
     setShowDataSong("hidden")
     setShowDataImg("hidden")
@@ -79,12 +80,12 @@ const Player = () => {
   }
 
   const handleFinish = (e) => {
-    const track = queue[0]
+    // const track = queue[0]
     playSong({
       id: queue[currentSongIndex + 1].id,
       name: queue[currentSongIndex + 1].title,
       picture: queue[currentSongIndex + 1].album_cover,
-      artist: queue[currentSongIndex + 1].title_playlist,
+      artist: queue[currentSongIndex + 1].title_playlist || queue[currentSongIndex + 1].artist_name,
       preview: queue[currentSongIndex + 1].preview,
     })
     setShowDataSong("hidden")

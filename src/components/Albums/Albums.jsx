@@ -9,7 +9,6 @@ export const Albums = () => {
 
   const { albums, albumsLoaded } = useFetchAllAlbums();
   const { text } = useLanguage();
-
   return (
     <div className='flex justify-center'>
       <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-24 overflow-hidden z-10 md:ml-20 lg:ml-52">

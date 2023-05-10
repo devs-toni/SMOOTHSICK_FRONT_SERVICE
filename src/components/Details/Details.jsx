@@ -18,13 +18,12 @@ export const Details = () => {
   const [data, setData] = useState({});
   const [tracks, setTracks] = useState([]);
   const [albums, setAlbums] = useState([]);
-  const { playerState } = usePlayer();
 
   const getDetails = async () => {
     let finalData = [];
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
       case FILTER_TYPES.ALBUMS:
-        let img ;
+        let img;
         await axios.get(import.meta.env.VITE_BACKEND + "albums/" + id)
           .then(({ data }) => {
             img = data.cover
@@ -40,13 +39,11 @@ export const Details = () => {
 
         await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs/" + id)
           .then(({ data }) => {
-            data.map(tr => {
-              tr.album_cover = img
+            data.map(track => {
+              track.album_cover = img
             })
             setTracks(data);
-
           })
-
         break;
 
 
@@ -73,7 +70,6 @@ export const Details = () => {
 
 
       case FILTER_TYPES.PLAYLISTS:
-
         await axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
           .then(async ({ data }) => {
             const title_playlist = data.title
@@ -184,6 +180,7 @@ export const Details = () => {
                             track={track}
                             count={index}
                             tracks={tracks}
+
                           />
                         )
                       })
@@ -211,6 +208,7 @@ export const Details = () => {
                       </div>
                       {
                         tracks.length > 0 && tracks.map((track, index) => {
+                         
                           return (
                             <DetailsCard
                               key={uuidv4()}
