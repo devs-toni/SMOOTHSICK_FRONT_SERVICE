@@ -3,7 +3,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useEffect, useState } from 'react';
 import { BsClock } from 'react-icons/bs'
 import { useUser } from '../../context/UserContext';
-import { FavouritesSongCard } from '../index';
+import { DetailsSongCard } from '../index';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -41,10 +41,11 @@ export const Favourites = () => {
         {
           userState.favourites.length > 0 && userState.favourites.map((track, index) => {
             return (
-              <FavouritesSongCard
+              <DetailsSongCard
                 key={uuidv4()}
                 track={track}
                 count={index}
+                tracks={userState.favourites}
               />
             )
           })

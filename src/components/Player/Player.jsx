@@ -13,7 +13,7 @@ import { Audio } from 'react-loader-spinner';
 
 const Player = () => {
 
-  const { playerState } = usePlayer();
+  const { playerState, playSong, addQueue } = usePlayer();
   const { current, queue, list } = playerState
   const [isPlay, setIsPlay] = useState()
   const [showDataSong, setShowDataSong] = useState("")
@@ -21,7 +21,7 @@ const Player = () => {
   const [currentSong, setCurrentSong] = useState(0)
   const { toggleLike } = useUser();
   
-  console.log(playerState);
+  //console.log(playerState);
 
   current.preview = current.preview ? current.preview : list[0]?.preview
 
@@ -66,6 +66,18 @@ const Player = () => {
     setIsPlay(false)
   }
 
+  const handleFinish = (e) => {
+    const track = playerState.queue[0]
+    playSong({
+      id: track.id,
+      name: track.title,
+      picture: track.album_cover,
+      artist: track.artist_name,
+      preview: track.preview,
+    })
+    addQueue(playerState.queue.filter((q, ind) => ind !== 0))
+  }
+
 
   return (
     playerState.current === null ? '' :
@@ -80,6 +92,7 @@ const Player = () => {
           onClickNext={handleClickNext}
           onClickPrevious={handleClickPrevious}
           showJumpControls={false}
+          onEnded={handleFinish}
           customControlsSection=
           {
             [
@@ -91,7 +104,7 @@ const Player = () => {
                       <img className={`h-8 w-8 md:h-9 md:w-9 rounded-full  ${!isPlay ? '' : "animate-[spin_3s_linear_infinite] "}`} src={current.picture} />
                       <div className='hidden w-14 truncate relative select-none md:flex md:flex-col md:w-20 lg:w-40 xl:w-full '>
                         <span className={`text-xs font-bold ${showDataSong}`}>{current ? current.name : ""}</span>
-                        <span className={`text-xs ${showDataSong}`}>{current.artist ? current.artist : current.name_playlist}</span>
+                        <span className={`text-xs ${showDataSong}`}>{current.artist}</span>
                       </div>
                     </>
                     :

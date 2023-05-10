@@ -10,7 +10,7 @@ import { FILTER_TYPES } from "../Search/filterTypes";
 import { useAuth } from "../../context/AuthContext";
 import { useUser } from "../../context/UserContext";
 
-const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
+const BoxSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
 
   const { playSong } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
@@ -18,6 +18,7 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   const { authState } = useAuth();
   const { toggleLike } = useUser();
   const [isLike, setIsLike] = useState(false);
+  
   useLayoutEffect(() => {
     if (type == FILTER_TYPES.ARTISTS) {
       setData({
@@ -108,4 +109,4 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   )
 }
 
-export default HomeSongCard
+export default BoxSongCard

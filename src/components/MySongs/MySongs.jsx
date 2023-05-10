@@ -3,7 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai"
 import AddSongModal from "../AddSongModal/AddSongModal";
 import { useFetchMyTracks } from "../../hooks";
 import { useAuth } from "../../context/AuthContext";
-import { FavouritesSongCard } from "../FavouritesSongCard/FavouritesSongCard";
+import { DetailsSongCard } from "../DetailsSongCard/DetailsSongCard";
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from "../../context/LanguageContext";
 import { BsClock } from "react-icons/bs";
@@ -36,14 +36,15 @@ const MySongs = () => {
             </div>
           </div>
           {
-
             myTracksLoaded && myTracks.map((track, index) => {
               return (
-                <FavouritesSongCard
+                <DetailsSongCard
                   key={uuidv4()}
                   track={track}
                   count={index}
                   ownerImage={unknown}
+                  tracks={myTracks}
+                  playlistName="Owner"
                 />
               )
             })

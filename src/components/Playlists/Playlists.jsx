@@ -1,5 +1,5 @@
 import { useLanguage } from "../../context/LanguageContext";
-import HomeSongCard from "../HomeSongCard/HomeSongCard";
+import BoxSongCard from "../BoxSongCard/BoxSongCard";
 import { FILTER_TYPES } from '../Search/filterTypes';
 import { v4 as uuidv4 } from 'uuid';
 import './Playlists.css';
@@ -22,7 +22,7 @@ export const Playlists = () => {
                 {
                   lessPlaylists.map(obj => {
                     return (
-                      <HomeSongCard
+                      <BoxSongCard
                         key={uuidv4()}
                         obj={obj}
                         targetClass="playlists"

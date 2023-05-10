@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import './Section.css';
 import './ArtistTracksSection.css';
-import HomeSongCard from '../HomeSongCard/HomeSongCard';
+import BoxSongCard from '../BoxSongCard/BoxSongCard';
 import { useLanguage } from '../../context/LanguageContext';
 import { FILTER_TYPES } from '../Search/filterTypes';
 
@@ -14,7 +14,7 @@ const Section = ({ tracks, targetClass }) => {
         {
           tracks.map(obj => {
             return (
-              <HomeSongCard
+              <BoxSongCard
                 key={uuidv4()}
                 obj={obj}
                 targetClass={`${targetClass ? `${targetClass}-chart` : "chart"}`}
