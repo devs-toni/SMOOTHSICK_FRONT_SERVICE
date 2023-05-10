@@ -14,28 +14,29 @@ import { Audio } from 'react-loader-spinner';
 const Player = () => {
 
   const { playerState } = usePlayer();
-  const { current, queue } = playerState
+  const { current, queue, list } = playerState
   const [isPlay, setIsPlay] = useState()
   const [showDataSong, setShowDataSong] = useState("")
   const [showDataImg, setShowDataImg] = useState("")
   const [currentSong, setCurrentSong] = useState(0)
   const { toggleLike } = useUser();
-
-
-  playerState.current = current ? current : queue[0]?.preview
   
+  console.log(playerState);
 
-  const track = queue.find((e) => e.preview === playerState.current);
-  const currentSongIndex = queue.indexOf(track)
+  current.preview = current.preview ? current.preview : list[0]?.preview
 
-  
+
+  const track = list.find((e) => e.preview === current.preview);
+  const currentSongIndex = list.indexOf(track)
+
+
 
   const handleClickNext = () => {
-    setCurrentSong(currentSong < queue.length - 1 ? currentSong + 1 : 0);
-    if (currentSongIndex + 1 === queue.length) {
-      playerState.current = queue[0].preview
+    setCurrentSong(currentSong < list.length - 1 ? currentSong + 1 : 0);
+    if (currentSongIndex + 1 === list.length) {
+      current.preview = list[0].preview
     } else {
-      playerState.current = queue[currentSongIndex + 1].preview
+      current.preview = list[currentSongIndex + 1].preview
     }
     setShowDataSong("hidden")
     setShowDataImg("hidden")
@@ -43,11 +44,11 @@ const Player = () => {
 
 
   const handleClickPrevious = () => {
-    setCurrentSong(currentSong < queue.length - 1 ? currentSong - 1 : 0);
+    setCurrentSong(currentSong < list.length - 1 ? currentSong - 1 : 0);
     if (currentSongIndex === 0) {
-      playerState.current = queue[queue.length - 1].preview
+      current.preview = list[list.length - 1].preview
     } else {
-      playerState.current = queue[currentSongIndex - 1].preview
+      current.preview = list[currentSongIndex - 1].preview
     }
     setShowDataSong("hidden")
     setShowDataImg("hidden")
@@ -71,7 +72,7 @@ const Player = () => {
       <div className='pt-10 pr-6'>
         <AudioPlayer
           autoPlay
-          src={playerState.current}
+          src={current.preview}
           showSkipControls
           showFilledVolume
           onPlaying={handleIsPlaying}
@@ -84,17 +85,19 @@ const Player = () => {
             [
               <div className={` flex justify-center md:items-center md:flex-row flex-col gap-2 md:gap-4 absolute ${showDataImg}`}>
                 {
-                  track
+                  current.preview
                     ?
-                    <img className={`h-8 w-8 md:h-9 md:w-9 rounded-full  ${!isPlay ? '' : "animate-[spin_3s_linear_infinite] "}`} src={track.album_cover} />
+                    <>
+                      <img className={`h-8 w-8 md:h-9 md:w-9 rounded-full  ${!isPlay ? '' : "animate-[spin_3s_linear_infinite] "}`} src={current.picture} />
+                      <div className='hidden w-14 truncate relative select-none md:flex md:flex-col md:w-20 lg:w-40 xl:w-full '>
+                        <span className={`text-xs font-bold ${showDataSong}`}>{current ? current.name : ""}</span>
+                        <span className={`text-xs ${showDataSong}`}>{current.artist ? current.artist : current.name_playlist}</span>
+                      </div>
+                    </>
                     :
                     ""
                 }
 
-                <div className='hidden w-14 truncate relative select-none md:flex md:flex-col md:w-20 lg:w-40 xl:w-full '>
-                  <span className={`text-xs font-bold ${showDataSong}`}>{track ? track.title : ""}</span>
-                  <span className={`text-xs ${showDataSong}`}>{track ? track.artist_name : ""}</span>
-                </div>
               </div>,
               RHAP_UI.ADDITIONAL_CONTROLS,
               <div className='flex md:gap-3'>

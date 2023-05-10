@@ -5,7 +5,6 @@ import axios from "axios";
 
 const token = localStorage.getItem('userToken') || undefined;
 
-
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -123,12 +122,12 @@ export const AuthProvider = ({ children }) => {
     initialState
   );
 
-  const login = useCallback((id, user, error) => {
+  const login = useCallback((id, user, token, error) => {
     if (!error) {
       dispatch({ type: TYPES.LOGIN_SUCCESS, payload: { id, user, token } })
     } else
       dispatch({ type: TYPES.LOGIN_ERROR, payload: error })
-  }, [token])
+  }, [])
 
   const refresh = useCallback((id, user, error) => {
     if (!error) {
@@ -158,7 +157,7 @@ export const AuthProvider = ({ children }) => {
     logout,
     reset,
     resetFirstTime
-  }), [authState, login, logout, reset, resetFirstTime]);
+  }), [authState, login, logout, reset, resetFirstTime, refresh]);
 
   return (
     <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>

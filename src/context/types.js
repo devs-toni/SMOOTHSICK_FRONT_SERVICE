@@ -18,6 +18,7 @@ export const TYPES = {
   //Player reducer types
   ADD_SONG: "ADD_SONG",
   PLAY_SONG: "PLAY_SONG",
+  ADD_LIST: "ADD_LIST",
 
   // Recovery reducer types
   SET_USER_ID: "SET_USER_ID",
@@ -25,7 +26,8 @@ export const TYPES = {
 
   // User reducer types
   SET_LISTS: "SET_LISTS",
-  SET_FAVOURITES: "SET_FAVOURITES"
+  SET_FAVOURITES: "SET_FAVOURITES",
+  DELETE_FAVOURITES: "DELETE_FAVOURITES"
 };
 
 export const LANGUAGES = {

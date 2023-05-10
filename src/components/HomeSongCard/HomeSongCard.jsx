@@ -18,7 +18,6 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   const { authState } = useAuth();
   const { toggleLike } = useUser();
   const [isLike, setIsLike] = useState(false);
-
   useLayoutEffect(() => {
     if (type == FILTER_TYPES.ARTISTS) {
       setData({
@@ -33,7 +32,7 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         id: obj.id,
         name: obj.title,
         picture: obj.album_cover,
-        artist: obj.title,
+        artist: obj.artist_name        ,
         preview: obj.preview,
       })
     } else if (type == FILTER_TYPES.ALBUMS) {
@@ -77,7 +76,7 @@ const HomeSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         <div className={`${targetClass}__img-container`}>
           {
             isTrack &&
-            <div className={`${targetClass}__img-container--play-container`} onClick={() => playSong(data.preview)}>
+            <div className={`${targetClass}__img-container--play-container`} onClick={() => playSong(data)}>
               <FaPlayCircle className={`${targetClass}__img-container--play-container-play`} />
             </div>
           }
