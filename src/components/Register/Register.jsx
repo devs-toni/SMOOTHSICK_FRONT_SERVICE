@@ -1,13 +1,13 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import { FaEye } from 'react-icons/fa';
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LOGIN } from "../../router/paths";
 import { useEffect, useState } from "react";
 import { useAuth } from '../../context/AuthContext';
 import { useForm } from '../../hooks/useForm';
 import { useLanguage } from '../../context/LanguageContext';
 import RecoverModal from "../RecoverModal/RecoverModal";
-import Error from "../Error/Error";
+import Error from "../partials/Error/Error";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 

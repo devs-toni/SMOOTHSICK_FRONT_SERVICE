@@ -1,6 +1,6 @@
 import { useLanguage } from "../../context/LanguageContext";
 import { useFetchAllAlbums } from "../../hooks";
-import BoxSongCard from "../BoxSongCard/BoxSongCard";
+import BoxCard from "../partials/BoxCard/BoxCard";
 import { FILTER_TYPES } from '../Search/filterTypes';
 import { v4 as uuidv4 } from 'uuid';
 import './Albums.css';
@@ -22,7 +22,7 @@ export const Albums = () => {
                 {
                   albums.map(obj => {
                     return (
-                      <BoxSongCard
+                      <BoxCard
                         key={uuidv4()}
                         obj={obj}
                         targetClass="albums"

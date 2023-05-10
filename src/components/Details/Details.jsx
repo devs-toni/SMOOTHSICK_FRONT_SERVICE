@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { FILTER_TYPES } from '../Search/filterTypes';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ArtistHeader, DetailsSongCard, BoxSongCard, Section } from '../index';
+import { ArtistHeader, DetailsCard, BoxCard, Section } from '../index';
 import { ArtistOptions } from '../index';
 import { useFetchAllAlbums } from '../../hooks';
 import { useLanguage } from '../../context/LanguageContext';
@@ -21,10 +21,13 @@ export const Details = () => {
   const { playerState } = usePlayer();
 
   const getDetails = async () => {
+    let finalData = [];
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
       case FILTER_TYPES.ALBUMS:
-        await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs" + id)
+        let img ;
+        await axios.get(import.meta.env.VITE_BACKEND + "albums/" + id)
           .then(({ data }) => {
+            img = data.cover
             setData({
               id: data.id,
               title: data.title,
@@ -34,10 +37,17 @@ export const Details = () => {
             });
 
           })
-        await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs" + id)
-          .then(res => {
-            console.log(res)
+
+        await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs/" + id)
+          .then(({ data }) => {
+            data.map(tr => {
+              tr.album_cover = img
+            })
+            setTracks(data);
+
           })
+
+        break;
 
 
       case FILTER_TYPES.ARTISTS:
@@ -63,7 +73,7 @@ export const Details = () => {
 
 
       case FILTER_TYPES.PLAYLISTS:
-        let finalData = [];
+
         await axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
           .then(async ({ data }) => {
             const title_playlist = data.title
@@ -79,7 +89,6 @@ export const Details = () => {
             await Promise.all(data.tracklist.map(async (id) => {
               await axios.get(import.meta.env.VITE_BACKEND + "tracks/" + id)
                 .then(({ data }) => {
-                  console.log(data);
                   const newData = {
                     ...data,
                     album_cover: image,
@@ -89,9 +98,8 @@ export const Details = () => {
                 })
             }))
             setTracks(finalData);
-
           })
-
+        break;
 
       case FILTER_TYPES.TRACKS:
         break;
@@ -130,7 +138,7 @@ export const Details = () => {
                                 {
                                   albums.map(obj => {
                                     return (
-                                      <BoxSongCard
+                                      <BoxCard
                                         key={uuidv4()}
                                         obj={obj}
                                         targetClass="albums"
@@ -154,7 +162,7 @@ export const Details = () => {
                 (
                   <>
                     <div className='sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10'></div>
-                    <div className='max-w-81rem'>
+                    <div className='max-w-81rem mb-12'>
                       <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} />
                     </div>
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
@@ -171,7 +179,7 @@ export const Details = () => {
                     {
                       tracks.length > 0 && tracks.map((track, index) => {
                         return (
-                          <DetailsSongCard
+                          <DetailsCard
                             key={uuidv4()}
                             track={track}
                             count={index}
@@ -187,7 +195,7 @@ export const Details = () => {
                 (
                   <>
                     <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10">
-                      <div className='max-w-81rem'>
+                      <div className='max-w-81rem mb-12'>
                         <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} tracks={tracks} />
                       </div>
                       <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
@@ -204,7 +212,7 @@ export const Details = () => {
                       {
                         tracks.length > 0 && tracks.map((track, index) => {
                           return (
-                            <DetailsSongCard
+                            <DetailsCard
                               key={uuidv4()}
                               track={track}
                               count={index}

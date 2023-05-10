@@ -13,7 +13,6 @@ export const UserProvider = ({ children }) => {
   const { authState } = useAuth();
 
   const getFavourites = useCallback(() => {
-    console.log("Favboritossssssss");
     axios.get(import.meta.env.VITE_BACKEND + 'users/favourites', {
       headers: {
         "Authorization": `${authState.token}`
@@ -24,13 +23,13 @@ export const UserProvider = ({ children }) => {
       })
   }, [authState.token]);
 
-  const toggleLike = (type, data, setIsLike) => {
+  const toggleLike = (type, data, isLike, setIsLike) => {
     axios.patch(import.meta.env.VITE_BACKEND + type.toLowerCase() + "/like/" + data.id, {}, {
       headers: {
         "Authorization": `${authState.token}`
       }
     }).then(() => {
-      if (data.isLike) {
+      if (isLike) {
         setIsLike(false)
         removeFromFavourites(data.id)
       } else

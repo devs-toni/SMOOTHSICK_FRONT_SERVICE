@@ -1,16 +1,16 @@
 import { useLayoutEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { usePlayer } from "../../context/PlayerContext";
-import { ALBUM, ARTIST, DETAILS, PLAYLIST } from "../../router/paths";
+import { usePlayer } from "../../../context/PlayerContext";
+import { ALBUM, ARTIST, DETAILS, PLAYLIST } from "../../../router/paths";
 import { FaHeart, FaPlayCircle } from 'react-icons/fa';
-import './HomeSongCard.css';
-import './ArtistSongCard.css';
-import './HomeSongBox.css';
-import { FILTER_TYPES } from "../Search/filterTypes";
-import { useAuth } from "../../context/AuthContext";
-import { useUser } from "../../context/UserContext";
+import './HomeBox.css';
+import './ArtistBox.css';
+import './HomeBoxCard.css';
+import { FILTER_TYPES } from "../../Search/filterTypes";
+import { useAuth } from "../../../context/AuthContext";
+import { useUser } from "../../../context/UserContext";
 
-const BoxSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
+const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
 
   const { playSong } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
@@ -100,7 +100,7 @@ const BoxSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         }
         {
           (authState.isAuthenticated && isTrack) &&
-          <div className={`${(isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={() => toggleLike(type, data, setIsLike)}>
+          <div className={`${(isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={() => toggleLike(type, data, isLike, setIsLike)}>
             <FaHeart className={(isLike) ? "text-red-500" : "text-gray-600"} />
           </div>
         }
@@ -109,4 +109,4 @@ const BoxSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   )
 }
 
-export default BoxSongCard
+export default BoxCard

@@ -5,7 +5,7 @@ import { FILTER_TYPES } from './filterTypes';
 import { v4 as uuidv4 } from 'uuid';
 import "./Search.css";
 import Filters from '../Filters/Filters';
-import BoxSongCard from '../BoxSongCard/BoxSongCard';
+import BoxCard from '../partials/BoxCard/BoxCard';
 import SearchSection from '../SearchSection/SearchSection';
 import axios from 'axios';
 
@@ -178,7 +178,7 @@ const Search = () => {
                           {
                             results.map(obj => {
                               return (
-                                <BoxSongCard
+                                <BoxCard
                                   key={uuidv4()}
                                   obj={obj}
                                   targetClass="search"
