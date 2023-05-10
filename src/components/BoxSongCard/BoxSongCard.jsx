@@ -100,7 +100,7 @@ const BoxSongCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         }
         {
           (authState.isAuthenticated && isTrack) &&
-          <div className={`${(isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={() => toggleLike(type, data, setIsLike)}>
+          <div className={`${(isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={() => toggleLike(type, data, isLike, setIsLike)}>
             <FaHeart className={(isLike) ? "text-red-500" : "text-gray-600"} />
           </div>
         }
