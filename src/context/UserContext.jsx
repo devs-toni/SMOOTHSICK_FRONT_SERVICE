@@ -13,6 +13,7 @@ export const UserProvider = ({ children }) => {
   const { authState } = useAuth();
 
   const getFavourites = useCallback(() => {
+    console.log("Favboritossssssss");
     axios.get(import.meta.env.VITE_BACKEND + 'users/favourites', {
       headers: {
         "Authorization": `${authState.token}`
@@ -38,8 +39,15 @@ export const UserProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (authState.token) getFavourites();
-  }, [authState.token])
+    console.log(authState.token)
+    if (authState.token && authState.isAuthenticated) getFavourites();
+  }, [authState.token, authState.isAuthenticated])
+
+  useEffect(() => {
+    if (!authState.isAuthenticated) {
+      dispatch({ type: TYPES.DELETE_FAVOURITES })
+    };
+  }, [authState.isAuthenticated])
 
 
   const initialState = {
@@ -60,6 +68,11 @@ export const UserProvider = ({ children }) => {
           ...state,
           favourites: action.payload
         }
+      case TYPES.DELETE_FAVOURITES:
+        return {
+          ...state,
+          favourites: []
+        }
 
       default:
         return state
@@ -72,6 +85,7 @@ export const UserProvider = ({ children }) => {
     const filteredTracks = userState.favourites.filter(t => t.id !== trackId);
     dispatch({ type: TYPES.SET_FAVOURITES, payload: filteredTracks })
   }, [userState.favourites]);
+
 
 
   const data = useMemo(() => ({

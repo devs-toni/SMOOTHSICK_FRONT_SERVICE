@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useMemo, useCallback } from "react";
-import translations from '../api/translations.json';
+import translations from '../translations.json';
 
 const LanguageContext = createContext();
 export const useLanguage = () => {
