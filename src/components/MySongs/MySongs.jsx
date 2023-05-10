@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai"
 import AddSongModal from "../AddSongModal/AddSongModal";
-import { useFetchMyTracks } from "../../hooks";
 import { DetailsCard } from "../partials/DetailsCard/DetailsCard";
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from "../../context/LanguageContext";
 import { BsClock } from "react-icons/bs";
 import unknown from '../../assets/imgs/UnkownAlbum.jpg';
+import { useUser } from "../../context/UserContext";
 
 const MySongs = () => {
 
   const [open, setOpen] = useState(false);
   const { text } = useLanguage();
-  const { myTracks, myTracksLoaded } = useFetchMyTracks();
+  const { userState } = useUser();
+
 
   return (
     <div className="flex w-full items-center justify-center pb-24">
@@ -35,14 +36,14 @@ const MySongs = () => {
             </div>
           </div>
           {
-            myTracksLoaded && myTracks.map((track, index) => {
+            userState?.myTracks.length > 0 && userState?.myTracks.map((track, index) => {
               return (
                 <DetailsCard
                   key={uuidv4()}
                   track={track}
                   count={index}
                   ownerImage={unknown}
-                  tracks={myTracks}
+                  tracks={userState.myTracks}
                   playlistName="Owner"
                 />
               )

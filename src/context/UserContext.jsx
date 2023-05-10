@@ -23,6 +23,13 @@ export const UserProvider = ({ children }) => {
       })
   }, [authState.token]);
 
+  const getMyTracks = useCallback(() => {
+    axios.get(import.meta.env.VITE_BACKEND + "tracks/my", { headers: { "Authorization": authState.token } })
+      .then(({ data }) => {
+        dispatch({ type: TYPES.SET_MY_TRACKS, payload: data })
+      })
+  }, [authState.token]);
+
   const toggleLike = (type, data, isLike, setIsLike) => {
     axios.patch(import.meta.env.VITE_BACKEND + type.toLowerCase() + "/like/" + data.id, {}, {
       headers: {
@@ -38,7 +45,10 @@ export const UserProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (authState.token && authState.isAuthenticated) getFavourites();
+    if (authState.token && authState.isAuthenticated) {
+      getFavourites();
+      getMyTracks();
+    }
   }, [authState.token, authState.isAuthenticated])
 
   useEffect(() => {
@@ -51,6 +61,7 @@ export const UserProvider = ({ children }) => {
   const initialState = {
     lists: [],
     favourites: [],
+    myTracks: []
   }
 
   const reducer = (state, action) => {
@@ -71,6 +82,11 @@ export const UserProvider = ({ children }) => {
           ...state,
           favourites: []
         }
+      case TYPES.SET_MY_TRACKS:
+        return {
+          ...state,
+          myTracks: action.payload
+        }
 
       default:
         return state
@@ -83,15 +99,20 @@ export const UserProvider = ({ children }) => {
     const filteredTracks = userState.favourites.filter(t => t.id !== trackId);
     dispatch({ type: TYPES.SET_FAVOURITES, payload: filteredTracks })
   }, [userState.favourites]);
-  
 
+  const removeFromMyTracks = useCallback((trackId) => {
+    const filteredTracks = userState.myTracks.filter(t => t.id !== trackId);
+    dispatch({ type: TYPES.SET_MY_TRACKS, payload: filteredTracks })
+  }, [userState.myTracks]);
 
   const data = useMemo(() => ({
     userState,
     getFavourites,
+    getMyTracks,
     removeFromFavourites,
+    removeFromMyTracks,
     toggleLike
-  }), [userState, getFavourites, removeFromFavourites, toggleLike]);
+  }), [userState, getFavourites, removeFromFavourites, toggleLike, removeFromMyTracks, getMyTracks]);
 
   return <userContext.Provider value={data}>{children}</userContext.Provider>;
 };

@@ -12,7 +12,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName }) 
 
   const { id, title, duration, rank, preview, artist_name, album_cover, artist_id } = track;
   const { authState } = useAuth();
-  const { removeFromFavourites } = useUser();
+  const { removeFromFavourites, removeFromMyTracks } = useUser();
   const { playSong, addQueue } = usePlayer();
 
   const isLike = true;
@@ -45,6 +45,18 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName }) 
     addQueue(tracks.filter(tr => tr.id !== id))
   }
 
+  const removeSong = () => {
+    axios.delete(import.meta.env.VITE_BACKEND + "tracks/" + id, {
+      headers: {
+        "Authorization": authState.token
+      }
+    })
+      .then(({ data }) => {
+        console.log(data);
+        removeFromMyTracks(id)
+      })
+  }
+
   return (
     <div className='flex w-full items-center justify-center h-full'>
       <div className='w-full md:max-w-2xl lg:max-w-3xl min-w-[100%] pt-2'>
@@ -58,7 +70,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName }) 
             {
               (ownerImage && artist_id === authState.id) &&
               <>
-                <AiFillDelete className='ml-4 mr-4 text-3xl' />
+                <AiFillDelete className='ml-4 mr-4 text-3xl' onClick={removeSong} />
                 <FaPencilAlt className='mr-4 text-2xl' />
               </>
             }
