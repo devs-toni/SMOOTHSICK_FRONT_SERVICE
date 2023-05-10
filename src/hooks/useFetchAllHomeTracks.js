@@ -12,7 +12,6 @@ export const useFetchAllHomeTracks = () => {
   const getAllTracks = () => {
     axios.get(import.meta.env.VITE_BACKEND + "tracks/home")
       .then(({ data }) => {
-        playerState.queue = data
         setTracks(data);
         setTracksLoaded(true);
       })

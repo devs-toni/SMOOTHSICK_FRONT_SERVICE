@@ -12,8 +12,9 @@ export const usePlayer = () => {
 export const PlayerProvider = ({ children }) => {
 
   const initialState = {
-    current: null,
-    queue: []
+    current: {},
+    queue: [],
+    list: []
   }
 
   const reducer = (state, action) => {
@@ -29,13 +30,21 @@ export const PlayerProvider = ({ children }) => {
           ...state,
           queue: [...queue, action.payload]
         }
-
+      case TYPES.ADD_LIST:
+        return {
+          ...state,
+          list: action.payload
+        }
       default:
         return state;
     }
   }
 
   const [playerState, dispatch] = useReducer(reducer, initialState);
+
+  const addList = useCallback((list) => {
+    dispatch({ type: TYPES.ADD_LIST, payload: list })
+  }, [])
 
   const playSong = useCallback((mp3) => {
     dispatch({ type: TYPES.PLAY_SONG, payload: mp3 })
@@ -50,8 +59,9 @@ export const PlayerProvider = ({ children }) => {
   const data = useMemo(() => ({
     playerState,
     addSong,
-    playSong
-  }), [playerState, addSong, playSong]);
+    playSong,
+    addList
+  }), [playerState, addSong, playSong, addList]);
 
   return (
     <PlayerContext.Provider value={data}>{children}</PlayerContext.Provider>

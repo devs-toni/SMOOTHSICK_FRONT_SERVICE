@@ -158,7 +158,7 @@ export const AuthProvider = ({ children }) => {
     logout,
     reset,
     resetFirstTime
-  }), [authState, login, logout, reset, resetFirstTime]);
+  }), [authState, login, logout, reset, resetFirstTime, refresh]);
 
   return (
     <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>

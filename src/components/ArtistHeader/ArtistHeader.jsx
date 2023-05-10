@@ -6,13 +6,22 @@ import { FaHeart, FaPlay } from "react-icons/fa";
 export const ArtistHeader = ({ img, name, fans, isLike, description, tracks }) => {
 
   const { text } = useLanguage();
-  const { playerState } = usePlayer();
+  const { addList, playSong } = usePlayer();
 
+  
 
   const handleSetNewPlaylist = () => {
-    playerState.queue = tracks;
+    addList(tracks)
+
+    playSong({
+      picture: tracks[0].album_cover,
+      preview: tracks[0].preview,
+      name: tracks[0].title,
+      name_playlist: name
+
+    })
   }
- 
+
 
 
   return (

@@ -72,7 +72,7 @@ export const UserProvider = ({ children }) => {
     const filteredTracks = userState.favourites.filter(t => t.id !== trackId);
     dispatch({ type: TYPES.SET_FAVOURITES, payload: filteredTracks })
   }, [userState.favourites]);
-
+  
 
   const data = useMemo(() => ({
     userState,
