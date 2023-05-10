@@ -22,10 +22,13 @@ export const Details = () => {
 
 
   const getDetails = async () => {
+    let finalData = [];
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
       case FILTER_TYPES.ALBUMS:
-        await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs" + id)
+        let img ;
+        await axios.get(import.meta.env.VITE_BACKEND + "albums/" + id)
           .then(({ data }) => {
+            img = data.cover
             setData({
               id: data.id,
               title: data.title,
@@ -35,10 +38,17 @@ export const Details = () => {
             });
 
           })
-          await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs" + id)
-            .then(res => {
-              console.log(res)
+
+        await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs/" + id)
+          .then(({ data }) => {
+            data.map(tr => {
+              tr.album_cover = img
             })
+            setTracks(data);
+
+          })
+
+        break;
 
 
       case FILTER_TYPES.ARTISTS:
@@ -64,7 +74,7 @@ export const Details = () => {
 
 
       case FILTER_TYPES.PLAYLISTS:
-        let finalData = [];
+
         await axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
           .then(async ({ data }) => {
             const image = data.picture
@@ -79,7 +89,6 @@ export const Details = () => {
             await Promise.all(data.tracklist.map(async (id) => {
               await axios.get(import.meta.env.VITE_BACKEND + "tracks/" + id)
                 .then(({ data }) => {
-
                   const newData = {
                     ...data,
                     album_cover: image
@@ -88,9 +97,8 @@ export const Details = () => {
                 })
             }))
             setTracks(finalData);
-
           })
-
+        break;
 
       case FILTER_TYPES.TRACKS:
         break;
@@ -153,7 +161,7 @@ export const Details = () => {
                 (
                   <>
                     <div className='sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10'></div>
-                    <div className='max-w-81rem'>
+                    <div className='max-w-81rem mb-12'>
                       <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} />
                     </div>
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
@@ -186,7 +194,7 @@ export const Details = () => {
                 (
                   <>
                     <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10">
-                      <div className='max-w-81rem'>
+                      <div className='max-w-81rem mb-12'>
                         <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} tracks={tracks} />
                       </div>
                       <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
