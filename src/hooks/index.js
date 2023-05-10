@@ -10,4 +10,5 @@ export * from './useFetchLessHomePlaylists';
 export * from './useFetchLessHomeTracks';
 export * from './useFetchMoreHomeArtists';
 export * from './useFetchMyTracks';
+export * from './useFetchUserData';
 export * from './useForm';

@@ -1,16 +1,14 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { ACCOUNT, CHANGEPASS, HOME } from '../../router/paths'
+import { HOME } from '../../router/paths'
 import axios from 'axios';
 import { useState } from 'react';
-import { Avatar, Button, TextInput } from 'flowbite-react';
+import { Avatar, Button } from 'flowbite-react';
 import { ChangePasswordModal } from './ChangePasswordModal/ChangePasswordModal';
 import { ChangeUserNameModal } from './ChangeUserDataModal/ChangeUserDataModal';
 import { ChangeEmailModal } from './ChangeEmailModal/ChangeEmailModal';
-import Swal from 'sweetalert2';
-import { useFetchUserData } from '../../context/useFetchUserData';
-import { set } from 'react-hook-form';
+import { useFetchUserData } from '../../hooks/useFetchUserData';
 
 
 const Accountsettings = () => {

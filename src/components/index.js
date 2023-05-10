@@ -32,7 +32,6 @@ export * from './Search/filterTypes';
 export { default as SearchSection } from './SearchSection/SearchSection';
 export { default as Section } from './Section/Section';
 export { default as Slider } from './Slider/Slider';
-export { default as Song } from './Song/Song';
 export { default as BoxCard } from './partials/BoxCard/BoxCard';
 export * from './partials/DetailsCard/DetailsCard';
 export { default as Error } from './partials/Error/Error';
