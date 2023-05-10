@@ -24,10 +24,22 @@ export const Details = () => {
   const getDetails = async () => {
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
       case FILTER_TYPES.ALBUMS:
-        return axios.get(import.meta.env.VITE_BACKEND + "albums/" + id)
+        await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs" + id)
           .then(({ data }) => {
-            setData(data);
+            setData({
+              id: data.id,
+              title: data.title,
+              total: data.nb_tracks,
+              picture: data.cover,
+              fans: data.fans
+            });
+
           })
+          await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs" + id)
+            .then(res => {
+              console.log(res)
+            })
+
 
       case FILTER_TYPES.ARTISTS:
         await axios.get(import.meta.env.VITE_BACKEND + "artists/" + id)
