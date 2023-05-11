@@ -90,7 +90,6 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName }) 
           <p className="text-xs text-center font-normal w-3/12 md:text-md truncate">{!ownerImage ? artist_name : "Owner"}</p>
           <span className="text-xs text-center w-2/12 md:text-md grow">Genero</span>
           <span className="text-xs text-center w-2/12 md:text-md grow">{(duration / 60).toFixed(2)} min</span>
-
         </div>
       </div>
     </div>
