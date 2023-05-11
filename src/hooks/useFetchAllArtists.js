@@ -8,6 +8,7 @@ export const useFetchAllArtists = () => {
   const getAllArtists = () => {
     axios.get(import.meta.env.VITE_BACKEND + "artists")
       .then(({ data }) => {
+        
         setArtists(data);
         setArtistsLoaded(true);
       })

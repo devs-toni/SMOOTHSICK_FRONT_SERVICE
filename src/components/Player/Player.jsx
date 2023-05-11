@@ -20,35 +20,48 @@ const Player = () => {
   const [showDataImg, setShowDataImg] = useState("")
   const [currentSong, setCurrentSong] = useState(0)
   const { toggleLike } = useUser();
-  
-  //console.log(playerState);
 
-  current.preview = current.preview ? current.preview : list[0]?.preview
+  current.preview = current.preview ? current.preview : queue[0]?.preview
+  const track = queue.find((e) => e.preview === current.preview);
+  const currentSongIndex = queue.indexOf(track)
 
-
-  const track = list.find((e) => e.preview === current.preview);
-  const currentSongIndex = list.indexOf(track)
-
-
+  console.log(queue);
 
   const handleClickNext = () => {
-    setCurrentSong(currentSong < list.length - 1 ? currentSong + 1 : 0);
-    if (currentSongIndex + 1 === list.length) {
-      current.preview = list[0].preview
+    setCurrentSong(currentSong < queue.length - 1 ? currentSong + 1 : 0);
+    if (currentSongIndex + 1 === queue.length) {
+      playSong({
+        name: queue[0].title,
+        picture: queue[0].album_cover,
+        artist: queue[0].title_playlist || queue[0].artist_name,
+        preview: queue[0].preview,
+      })
     } else {
-      current.preview = list[currentSongIndex + 1].preview
+      playSong({
+        name: queue[currentSongIndex + 1].title,
+        picture: queue[currentSongIndex + 1].album_cover,
+        artist: queue[currentSongIndex + 1].title_playlist || queue[currentSongIndex + 1].artist_name,
+        preview: queue[currentSongIndex + 1].preview,
+      })
     }
     setShowDataSong("hidden")
     setShowDataImg("hidden")
   };
 
 
+
   const handleClickPrevious = () => {
-    setCurrentSong(currentSong < list.length - 1 ? currentSong - 1 : 0);
+    setCurrentSong(currentSong < queue.length - 1 ? currentSong - 1 : 0);
     if (currentSongIndex === 0) {
-      current.preview = list[list.length - 1].preview
+      current.preview = queue[queue.length - 1].preview
+      current.picture = queue[queue.length - 1].album_cover
+      current.name = queue[queue.length - 1].title
+      current.artist = queue[queue.length - 1].title_playlist || queue[queue.length - 1].artist_name
     } else {
-      current.preview = list[currentSongIndex - 1].preview
+      current.preview = queue[currentSongIndex - 1].preview
+      current.picture = queue[currentSongIndex - 1].album_cover
+      current.name = queue[currentSongIndex - 1].title
+      current.artist = queue[currentSongIndex - 1].title_playlist || queue[currentSongIndex - 1].artist_name
     }
     setShowDataSong("hidden")
     setShowDataImg("hidden")
@@ -67,15 +80,17 @@ const Player = () => {
   }
 
   const handleFinish = (e) => {
-    const track = playerState.queue[0]
+    // const track = queue[0]
     playSong({
-      id: track.id,
-      name: track.title,
-      picture: track.album_cover,
-      artist: track.artist_name,
-      preview: track.preview,
+      id: queue[currentSongIndex + 1].id,
+      name: queue[currentSongIndex + 1].title,
+      picture: queue[currentSongIndex + 1].album_cover,
+      artist: queue[currentSongIndex + 1].title_playlist || queue[currentSongIndex + 1].artist_name,
+      preview: queue[currentSongIndex + 1].preview,
     })
-    addQueue(playerState.queue.filter((q, ind) => ind !== 0))
+    setShowDataSong("hidden")
+    setShowDataImg("hidden")
+    // addQueue(queue.filter((q, ind) => ind !== 0))
   }
 
 

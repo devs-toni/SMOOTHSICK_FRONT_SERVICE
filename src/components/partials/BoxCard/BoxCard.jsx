@@ -11,14 +11,13 @@ import { useAuth } from "../../../context/AuthContext";
 import { useUser } from "../../../context/UserContext";
 
 const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
-
+  
   const { playSong } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
   const { authState } = useAuth();
   const { toggleLike } = useUser();
   const [isLike, setIsLike] = useState(false);
-  
   useLayoutEffect(() => {
     if (type == FILTER_TYPES.ARTISTS) {
       setData({
@@ -33,7 +32,7 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         id: obj.id,
         name: obj.title,
         picture: obj.album_cover,
-        artist: obj.artist_name        ,
+        artist: obj.artist_name,
         preview: obj.preview,
       })
     } else if (type == FILTER_TYPES.ALBUMS) {

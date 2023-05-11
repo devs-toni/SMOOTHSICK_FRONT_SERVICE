@@ -65,7 +65,7 @@ const Accountsettings = () => {
         <div className="flex flex-col items-start md:px-20 w-9/12 justify-center gap-5">
           <div className='flex flex-col gap-10 w-full pb-5 border-b border-neutral-500'>
             <div className=''>
-              <h3 className='text-5xl'>Tu Cuenta</h3>
+              <h3 className='text-5xl'> {} </h3>
             </div>
             <div className="flex items-center gap-10">
               <Avatar
@@ -79,28 +79,28 @@ const Accountsettings = () => {
                 <span className="text-2xl font-thin inline-block">{`Apellidos: ${user.lastName}`}</span>
               </div>
             </div>
-            <h3 className='text-3xl'>Datos de usuario</h3>
+            <h3 className='text-3xl'> {text.account.account} </h3>
           </div>
           <div className='flex gap-10 w-full pb-5 items-end'>
             <div className='flex flex-col w-full gap-3 border-b border-zinc-700'>
-              <span>User name:</span>
+              <span>{text.register.username}</span>
               <input type="text" readOnly name="userName" defaultValue={user.userName} className='bg-transparent text-xl w-96' />
             </div>
-            <Button type='submit' className='bg-deezer hover:bg-deezer-dark w-40' name='userName' onClick={handleOpenUserDataModal}>Modificar</Button>
+            <Button type='submit' className='bg-deezer hover:bg-deezer-dark w-40' name='userName' onClick={handleOpenUserDataModal}>{text.account.button_m}</Button>
           </div>
           <div className='flex gap-10 w-full pb-5 items-end'>
             <div className='flex flex-col w-full gap-3 border-b border-zinc-700'>
-              <span>Email:</span>
+              <span> {text.account.email} </span>
               <input type="email" readOnly name="userEmail" defaultValue={user.email} className='bg-transparent text-xl w-96' />
             </div>
-            <Button className='bg-deezer hover:bg-deezer-dark w-40' name='userEmail' onClick={handleOpenEmaiModal}>Modificar</Button>
+            <Button className='bg-deezer hover:bg-deezer-dark w-40' name='userEmail' onClick={handleOpenEmaiModal}>{text.account.button_m}</Button>
           </div>
           <div className='flex gap-10 w-full pb-10 items-end '>
             <div className='flex flex-col w-full gap-3 border-b border-zinc-700'>
-              <span>Password:</span>
+              <span> {text.account.password2}</span>
               <input type="password" readOnly name="userPassword" defaultValue={"*****"} className='bg-transparent text-xl w-96' />
             </div>
-            <Button className='bg-deezer hover:bg-deezer-dark w-40' onClick={handleOpenChangePassModal}>Modificar </Button>
+            <Button className='bg-deezer hover:bg-deezer-dark w-40' onClick={handleOpenChangePassModal}>{text.account.button_m}</Button>
           </div>
           {
             authState.user.role === "A"
@@ -110,8 +110,8 @@ const Accountsettings = () => {
               ""
           }
           <div className='flex gap-10 justify-between w-full bg-zinc-900 rounded-xl p-10'>
-            <Button className='bg-rose-700 hover:bg-rose-900 w-40' onClick={handleDeleteUser}>Borrar cuenta</Button>
-            <Button className='bg-deezer hover:bg-deezer-dark w-40' onClick={handleRedirect}>Volver a Home</Button>
+            <Button className='bg-rose-700 hover:bg-rose-900 w-40' onClick={handleDeleteUser}>{text.account.erase_acc}</Button>
+            <Button className='bg-deezer hover:bg-deezer-dark w-40' onClick={handleRedirect}>{text.account.backtohome}</Button>
           </div>
         </div>
       </div>
