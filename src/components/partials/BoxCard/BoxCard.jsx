@@ -11,8 +11,8 @@ import { useAuth } from "../../../context/AuthContext";
 import { useUser } from "../../../context/UserContext";
 
 const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
-  
-  const { playSong } = usePlayer();
+
+  const { playSong, addQueue } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
   const { authState } = useAuth();
@@ -35,6 +35,8 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         artist: obj.artist_name,
         preview: obj.preview,
       })
+
+      
     } else if (type == FILTER_TYPES.ALBUMS) {
       setData({
         id: obj.album.id,
@@ -42,12 +44,12 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         artist: obj.artist.name,
         picture: obj.album.cover
       })
+      
 
     } else if (type == FILTER_TYPES.PLAYLISTS) {
       setData({
         id: obj.id,
         name: obj.title,
-        artist: obj.description,
         picture: obj.picture
       })
     }
@@ -87,14 +89,12 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
             style={isArtist ? { borderRadius: "50%" } : {}}
             width=""
             height=""
-
           />
         </div>
         {
           !isFirstRowSection &&
           <div className={`${targetClass}__data ${isArtist && 'text-center'}`}>
-            <p className={`${targetClass}__data--name`}>{data.name}</p>
-            <p className={`${targetClass}__data--artist`}>{data.artist}</p>
+            <p className={`truncate ${targetClass}__data--name`}>{data.name}</p>
           </div>
         }
         {

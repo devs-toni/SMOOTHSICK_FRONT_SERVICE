@@ -26,25 +26,25 @@ const Home = () => {
   const { tracks, tracksLoaded } = useFetchAllHomeTracks();
   
 
-  const { authState, resetFirstTime } = useAuth();
+  // const { authState, resetFirstTime } = useAuth();
 
-  useEffect(() => {
-    if (authState.firstTime) {
-      toast.success('Log in successfully!',
-        {
-          style: {
-            borderRadius: '10px',
-            background: '#333',
-            color: '#fff',
-          },
-          success: {
-            duration: 2000
-          }
-        }
-      )
-      resetFirstTime();
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (authState.firstTime) {
+  //     toast.success('Log in successfully!',
+  //       {
+  //         style: {
+  //           borderRadius: '10px',
+  //           background: '#333',
+  //           color: '#fff',
+  //         },
+  //         success: {
+  //           duration: 2000
+  //         }
+  //       }
+  //     )
+  //     resetFirstTime();
+  //   }
+  // }, [])
 
   return (
     <div className='pb-20 main-home'>

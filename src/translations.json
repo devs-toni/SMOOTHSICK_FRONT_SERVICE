@@ -35,7 +35,7 @@
     },
     "navbar": {
       "home": "Home",
-      "categories": "Categorias",
+      "playlists": "Playlists",
       "admin": "Admin",
       "login": "Iniciar sesión",
       "logout": "Cerrar sesión",
@@ -44,7 +44,8 @@
       "dashboard": "Perfil",
       "favourites": "Favoritos",
       "search": "Buscar",
-      "welcome": "Hola"
+      "welcome": "Hola",
+      "mysongs": "Mis canciones"
     },
     "account": {
       "account": "Ajustes de la Cuenta",
@@ -112,7 +113,7 @@
       "albums": "Albums",
       "tracks": "Tracks",
       "users": "Usuarios",
-      "my": "My Songs"
+      "mysongs": "Mis canciones"
     },
     "changepass": {
       "title": "Cambia tu contrasña",
@@ -156,7 +157,7 @@
     },
     "navbar": {
       "home": "Home",
-      "categories": "Categories",
+      "playlists": "Playlists",
       "admin": "Admin",
       "login": "Log in",
       "logout": "Log out",
@@ -165,7 +166,9 @@
       "dashboard": "Profile",
       "favourites": "Favourites",
       "search": "Search",
-      "welcome": "Welcome"
+      "welcome": "Welcome",
+      "mysongs": "My songs"
+      
     },
     "account": {
       "account": "Account settings",
@@ -233,7 +236,7 @@
       "albums": "Albums",
       "tracks": "Tracks",
       "users": "Users",
-      "my": "My Songs"
+      "my": "My songs"
     },
     "changepass": {
       "title": "Change your password",
@@ -274,16 +277,17 @@
     },
     "navbar": {
       "home": "Page d'accueil",
-      "categories": "Catégories",
+      "playlists": "Playlists",
       "admin": "Admin",
       "login": "Se connecter",
-      "logout": "Se déconnecter",
+      "logout": "Sortir",
       "register": "S'inscrire'",
       "input_p_holder": "Trouvez nouvelle musique...",
       "dashboard": "Profil",
       "favourites": "Favoris",
       "search": "Chercher",
-      "welcome": "Bienvenue"
+      "welcome": "Bienvenue",
+      "mysongs": "Mes chansons"
     },
     "account": {
       "account": "Paramètres du compte",
@@ -345,7 +349,7 @@
       "albums": "Albums",
       "tracks": "Pistes",
       "users": "Utilisateurs",
-      "my": "My Songs"
+      "my": "My songs"
     },
     "changepass": {
       "title": "Change your password",
@@ -386,7 +390,7 @@
     },
     "navbar": {
       "home": "主页",
-      "categories": "分类",
+      "playlists": "播放列表",
       "admin": "Admin",
       "login": "登录",
       "logout": "退出",
@@ -395,7 +399,8 @@
       "dashboard": "账户",
       "favourites": "我的最爱",
       "search": "搜索",
-      "welcome": "欢迎"
+      "welcome": "欢迎",
+      "mysongs": "误选"
     },
     "account": {
       "account": "账户设置",
@@ -454,7 +459,7 @@
       "albums": "专辑",
       "tracks": "歌曲",
       "users": "用户",
-      "my": "My Songs"
+      "my": "My songs"
     },
     "changepass": {
       "title": "Change your password",

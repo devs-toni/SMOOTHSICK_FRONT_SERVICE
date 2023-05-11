@@ -6,8 +6,6 @@ export const useFetchAllHomeTracks = () => {
 
   const [tracks, setTracks] = useState([]);
   const [tracksLoaded, setTracksLoaded] = useState(false)
-  const { playerState } = usePlayer()
-
 
   const getAllTracks = () => {
     axios.get(import.meta.env.VITE_BACKEND + "tracks/home")

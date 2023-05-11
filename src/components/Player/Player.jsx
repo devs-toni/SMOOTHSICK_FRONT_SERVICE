@@ -8,24 +8,26 @@ import { FaRandom } from 'react-icons/fa';
 import "./Player.css"
 import { useUser } from '../../context/UserContext';
 import { Audio } from 'react-loader-spinner';
+import Login from '../Login/Login';
 
 
 
 const Player = () => {
-
   const { playerState, playSong, addQueue } = usePlayer();
-  const { current, queue, list } = playerState
+  const { current, queue } = playerState
+
+
   const [isPlay, setIsPlay] = useState()
   const [showDataSong, setShowDataSong] = useState("")
   const [showDataImg, setShowDataImg] = useState("")
   const [currentSong, setCurrentSong] = useState(0)
-  const { toggleLike } = useUser();
+  const [randomActive, setRandomActive] = useState(false)
 
   current.preview = current.preview ? current.preview : queue[0]?.preview
   const track = queue.find((e) => e.preview === current.preview);
   const currentSongIndex = queue.indexOf(track)
 
-  console.log(queue);
+  
 
   const handleClickNext = () => {
     setCurrentSong(currentSong < queue.length - 1 ? currentSong + 1 : 0);
@@ -33,21 +35,20 @@ const Player = () => {
       playSong({
         name: queue[0].title,
         picture: queue[0].album_cover,
-        artist: queue[0].title_playlist || queue[0].artist_name,
+        artist: queue[0].title_playlist || queue[0].artist_name || queue[0].album_name,
         preview: queue[0].preview,
       })
     } else {
       playSong({
         name: queue[currentSongIndex + 1].title,
         picture: queue[currentSongIndex + 1].album_cover,
-        artist: queue[currentSongIndex + 1].title_playlist || queue[currentSongIndex + 1].artist_name,
+        artist: queue[currentSongIndex + 1].title_playlist || queue[currentSongIndex + 1].artist_name || queue[currentSongIndex + 1].album_name,
         preview: queue[currentSongIndex + 1].preview,
       })
     }
     setShowDataSong("hidden")
     setShowDataImg("hidden")
   };
-
 
 
   const handleClickPrevious = () => {
@@ -80,7 +81,6 @@ const Player = () => {
   }
 
   const handleFinish = (e) => {
-    // const track = queue[0]
     playSong({
       id: queue[currentSongIndex + 1].id,
       name: queue[currentSongIndex + 1].title,
@@ -90,8 +90,20 @@ const Player = () => {
     })
     setShowDataSong("hidden")
     setShowDataImg("hidden")
-    // addQueue(queue.filter((q, ind) => ind !== 0))
   }
+
+
+  const handleRandomSong = () => {
+    const randomList = queue.sort(() => { return Math.random() - 0.5 });
+    if (randomActive === true) {
+      addQueue(queue)
+      setRandomActive(false)
+    } else {
+      setRandomActive(true)
+      addQueue(randomList)
+    }
+  }
+
 
 
   return (
@@ -129,12 +141,12 @@ const Player = () => {
               </div>,
               RHAP_UI.ADDITIONAL_CONTROLS,
               <div className='flex md:gap-3'>
-                <FaRandom color='#868686' size={23} />
+                <FaRandom color={`${randomActive ? "#ef5567" : "#868686"}`} className='cursor-pointer' size={23} onClick={handleRandomSong} />
               </div>,
               RHAP_UI.MAIN_CONTROLS,
               <div className='hidden md:flex md:gap-1 items-center'>
-                <AiOutlineHeart color='#868686' size={25} />
-                <MdQueueMusic color='#868686' size={25} />
+                <AiOutlineHeart color='#868686' size={25} className='cursor-pointer' />
+                <MdQueueMusic color='#868686' size={25} className='cursor-pointer' />
               </div>,
               RHAP_UI.VOLUME_CONTROLS,
             ]

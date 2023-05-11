@@ -46,6 +46,18 @@ const Login = () => {
               role: currentUser.role,
               profilePicture: defaultUserPicture,
             }, token);
+            toast.success('Log in successfully!',
+              {
+                style: {
+                  borderRadius: '10px',
+                  background: '#333',
+                  color: '#fff',
+                },
+                success: {
+                  duration: 2000
+                }
+              }
+            )
             localStorage.setItem("userToken", token)
             navigate(HOME);
 

@@ -18,7 +18,6 @@ export const Details = () => {
   const [data, setData] = useState({});
   const [tracks, setTracks] = useState([]);
   const [albums, setAlbums] = useState([]);
-
   const getDetails = async () => {
     let finalData = [];
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
@@ -34,7 +33,7 @@ export const Details = () => {
               picture: data.cover,
               fans: data.fans
             });
-
+            
           })
 
         await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs/" + id)
@@ -45,7 +44,6 @@ export const Details = () => {
             setTracks(data);
           })
         break;
-
 
       case FILTER_TYPES.ARTISTS:
         await axios.get(import.meta.env.VITE_BACKEND + "artists/" + id)
@@ -68,7 +66,6 @@ export const Details = () => {
           })
         break;
 
-
       case FILTER_TYPES.PLAYLISTS:
         await axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
           .then(async ({ data }) => {
@@ -79,8 +76,8 @@ export const Details = () => {
               title: data.title,
               total: data.nb_tracks,
               picture: data.picture,
-              fans: data.fans
-
+              fans: data.fans,
+              description: data.description
             });
             await Promise.all(data.tracklist.map(async (id) => {
               await axios.get(import.meta.env.VITE_BACKEND + "tracks/" + id)
@@ -88,7 +85,7 @@ export const Details = () => {
                   const newData = {
                     ...data,
                     album_cover: image,
-                    title_playlist
+                    title_playlist,
                   }
                   finalData.push(newData)
                 })
@@ -106,10 +103,9 @@ export const Details = () => {
     getDetails();
   }, [])
 
-
   return (
-    <div className='flex justify-center'>
-      <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-24 overflow-hidden z-10 md:ml-20 lg:ml-52">
+    <div className='flex w-full items-center justify-center pb-24'>
+      <div className="w-[80%] h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">
         {
           Object.keys(data).length > 0
             ?
@@ -117,37 +113,33 @@ export const Details = () => {
               ?
               (
                 <>
-                  <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10">
-                    <div className='max-w-81rem'>
-                      <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} />
-                      <ArtistOptions />
-                      <div>
-                        <Section tracks={tracks} targetClass="artists-tracks" />
-                      </div>
-                      <div>
-                        <div>
-                          {
-                            albums.length > 0 &&
-                            <>
-                              <h1 className='albums__title'>{text.filters.albums}</h1>
-                              <div className='albums__section'>
-                                {
-                                  albums.map(obj => {
-                                    return (
-                                      <BoxCard
-                                        key={uuidv4()}
-                                        obj={obj}
-                                        targetClass="albums"
-                                        type={FILTER_TYPES.ALBUMS}
-                                      />
-                                    )
-                                  })
-                                }
-                              </div>
-                            </>
-                          }
-                        </div>
-                      </div>
+                  <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} />
+                  <ArtistOptions />
+                  <div>
+                    <Section tracks={tracks} targetClass="artists-tracks" />
+                  </div>
+                  <div>
+                    <div>
+                      {
+                        albums.length > 0 &&
+                        <>
+                          <h1 className='albums__title'>{text.filters.albums}</h1>
+                          <div className='albums__section'>
+                            {
+                              albums.map(obj => {
+                                return (
+                                  <BoxCard
+                                    key={uuidv4()}
+                                    obj={obj}
+                                    targetClass="albums"
+                                    type={FILTER_TYPES.ALBUMS}
+                                  />
+                                )
+                              })
+                            }
+                          </div>
+                        </>
+                      }
                     </div>
                   </div>
                 </>
@@ -159,7 +151,7 @@ export const Details = () => {
                   <>
                     <div className='sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10'></div>
                     <div className='max-w-81rem mb-12'>
-                      <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} />
+                      <ArtistHeader img={data.picture} tracks={tracks} name={data.title} fans={data.fans} isLike={true} />
                     </div>
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
                       <div className='flex items-center justify-between border-b border-b-gray-300'>
@@ -191,36 +183,36 @@ export const Details = () => {
                 :
                 (
                   <>
-                    <div className="sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10">
-                      <div className='max-w-81rem mb-12'>
-                        <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} tracks={tracks} />
-                      </div>
-                      <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
-                        <div className='flex items-center justify-between border-b border-b-gray-300'>
-                          <p className="w-1/12">#</p>
-                          <p className="w-2/12">{text.liked.track}</p>
-                          <p className="w-2/12"></p>
-                          <p className="w-3/12">Options</p>
-                          <p className="w-3/12">{text.liked.album_table}</p>
-                          <p className="w-2/12">{text.liked.gender}</p>
-                          <p className="w-2/12"><BsClock className='w-11/12' /></p>
-                        </div>
-                      </div>
-                      {
-                        tracks.length > 0 && tracks.map((track, index) => {
-                         
-                          return (
-                            <DetailsCard
-                              key={uuidv4()}
-                              track={track}
-                              count={index}
-                              playlistName={data.title}
-                              tracks={tracks}
-                            />
-                          )
-                        })
-                      }
+
+                    <div className='mb-12'>
+                      <ArtistHeader img={data.picture} description={data.description} name={data.title} fans={data.fans} isLike={true} tracks={tracks} />
                     </div>
+                    <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
+                      <div className='flex items-center justify-between border-b border-b-gray-300'>
+                        <p className="w-1/12">#</p>
+                        <p className="w-2/12">{text.liked.track}</p>
+                        <p className="w-2/12"></p>
+                        <p className="w-3/12">Options</p>
+                        <p className="w-3/12">{text.liked.album_table}</p>
+                        <p className="w-2/12">{text.liked.gender}</p>
+                        <p className="w-2/12"><BsClock className='w-11/12' /></p>
+                      </div>
+                    </div>
+                    {
+                      tracks.length > 0 && tracks.map((track, index) => {
+
+                        return (
+                          <DetailsCard
+                            key={uuidv4()}
+                            track={track}
+                            count={index}
+                            playlistName={data.title}
+                            tracks={tracks}
+                          />
+                        )
+                      })
+                    }
+
 
 
 

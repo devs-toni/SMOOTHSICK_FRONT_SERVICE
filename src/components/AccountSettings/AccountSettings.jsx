@@ -21,6 +21,7 @@ const Accountsettings = () => {
   const navigate = useNavigate()
   const { deleteUser } = useFetchUserData()
 
+  
 
   // try {
   //   axios.post(import.meta.env.VITE_BACKEND + "users/authorizate", { user })
@@ -65,7 +66,7 @@ const Accountsettings = () => {
         <div className="flex flex-col items-start md:px-20 w-9/12 justify-center gap-5">
           <div className='flex flex-col gap-10 w-full pb-5 border-b border-neutral-500'>
             <div className=''>
-              <h3 className='text-5xl'> {} </h3>
+              <h3 className='text-5xl'>{text.account.account}</h3>
             </div>
             <div className="flex items-center gap-10">
               <Avatar

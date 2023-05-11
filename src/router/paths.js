@@ -1,6 +1,6 @@
 export const SIGNUP = '/signup';
 export const LOGIN = '/login';
-export const CATEGORIES = '/categories';
+export const PLAYLISTS = '/playlists';
 export const MYSONGS = '/my-songs';
 export const ADMIN = '/admin';
 export const RECOVERY = '/recover';

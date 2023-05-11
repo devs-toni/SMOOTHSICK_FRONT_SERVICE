@@ -10,7 +10,7 @@ import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import logo from '../../assets/imgs/logo/logo-no-background.svg'
 import logo_text from '../../assets/imgs/logo/logo-text-no-background.svg'
-import { SIGNUP, ADMIN, LOGIN, SEARCH, ACCOUNT, FAVOURITES, HOME, CATEGORIES, ALBUM, PLAYLIST, ARTIST, MYSONGS } from '../../router/paths'
+import { SIGNUP, ADMIN, LOGIN, SEARCH, ACCOUNT, FAVOURITES, HOME, PLAYLISTS, ALBUM, PLAYLIST, ARTIST, MYSONGS } from '../../router/paths'
 import { Fragment, useEffect, useState } from 'react';
 import { HiUserCircle } from "react-icons/hi"
 import { TbSearch } from "react-icons/tb"
@@ -26,27 +26,28 @@ export const NavBar = () => {
 
 
   const lenguageSelected = [
-    { key: 1, name: "spain", code: "es", country: flagSpain },
-    { key: 2, name: "united-kingdom", code: "en", country: flagEngland },
-    { key: 3, name: "france", code: "fr", country: flagFrance },
-    { key: 4, name: "china", code: "chn", country: flagChina }
+    { name: "spain", code: "es", country: flagSpain },
+    { name: "united-kingdom", code: "en", country: flagEngland },
+    { name: "france", code: "fr", country: flagFrance },
+    { name: "china", code: "chn", country: flagChina }
   ];
 
   useEffect(() => {
     authState.isAuthenticated
       ? setAsideLinks(
         [
-          { key: 1, path: HOME, icon: <AiFillHome className="h-6 w-6 " />, text: text.navbar.home },
-          { key: 2, path: CATEGORIES, icon: <RiFolderMusicFill className="h-6 w-6 " />, text: text.navbar.categories },
-          { key: 5, path: SEARCH, icon: <TbSearch className="h-6 w-6" />, text: text.navbar.search }
+          { path: HOME, icon: <AiFillHome className="h-6 w-6 " />, text: text.navbar.home },
+          { path: PLAYLISTS, icon: <RiFolderMusicFill className="h-6 w-6 " />, text: text.navbar.playlists },
+          { path: SEARCH, icon: <TbSearch className="h-6 w-6" />, text: text.navbar.search }
         ]
       )
       : setAsideLinks(
         [
-          { key: 1, path: HOME, icon: <AiFillHome className="h-6 w-6 " />, text: text.navbar.home },
-          { key: 2, path: SEARCH, icon: <TbSearch className="h-6 w-6 " />, text: text.navbar.search },
-          { key: 3, path: LOGIN, icon: <FaUserShield className="h-6 w-6 " />, text: text.navbar.login },
-          { key: 4, path: SIGNUP, icon: <FaUserPlus className="h-6 w-6 " />, text: text.navbar.register }
+          { path: HOME, icon: <AiFillHome className="h-6 w-6 " />, text: text.navbar.home },
+          { path: PLAYLISTS, icon: <RiFolderMusicFill className="h-6 w-6 " />, text: text.navbar.playlists },
+          { path: SEARCH, icon: <TbSearch className="h-6 w-6 " />, text: text.navbar.search },
+          { path: LOGIN, icon: <FaUserShield className="h-6 w-6 " />, text: text.navbar.login },
+          { path: SIGNUP, icon: <FaUserPlus className="h-6 w-6 " />, text: text.navbar.register }
         ]
       )
   }, [authState.isAuthenticated])
@@ -70,7 +71,6 @@ export const NavBar = () => {
   }
 
   const handleApplyLenguage = ({ target }) => {
-
     if (target.name === "spain") {
       handleLanguage(target)
     } else if (target.name === "united-kingdom") {
@@ -146,9 +146,9 @@ export const NavBar = () => {
                       <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white py-0 h-10'>
                         <div className=" flex flex-row justify-center pl-2 items-center">
                           {
-                            lenguageSelected.map((item) => (
+                            lenguageSelected.map((item, i) => (
                               <img
-                                key={item.key}
+                                key={i}
                                 src={item.country}
                                 alt={item.name + " flag"}
                                 name={item.code}
@@ -190,9 +190,9 @@ export const NavBar = () => {
           <ul className="space-y-2 flex flex-col gap-7 h-full justify-start mt-28 items-center ">
             <section className='flex flex-col gap-6 lg:w-full items-left text-sm  '>
               {
-                asideLinks.map((item) => (
-                  <NavLink key={item.key} to={item.path} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar" >
-                    <li className='inline-flex gap-2 items-center w-full lg:w-32 justify-left '>
+                asideLinks.map((item, i) => (
+                  <NavLink key={i} to={item.path} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar" >
+                    <li className='inline-flex gap-2 items-center w-full lg:w-full ml-10 justify-left '>
                       {item.icon}
                       <span className=" md:hidden lg:block">{item.text}</span>
                     </li>
@@ -202,7 +202,7 @@ export const NavBar = () => {
               {
                 authState.user.role === "A" &&
                 <NavLink key="3" to={ADMIN} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar" >
-                  <li className='inline-flex gap-2 items-center w-full lg:w-32 justify-left '>
+                  <li className='inline-flex gap-2 items-center w-full lg:w-full  justify-left '>
                     <FaKey />
                     <span className=" md:hidden lg:block">{text.navbar.admin}</span>
                   </li>
@@ -216,49 +216,49 @@ export const NavBar = () => {
                   authState.isAuthenticated
                     ?
                     <>
-                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-3 w-full lg:w-16 md:justify-left'>
+                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
                         </li>
                       </NavLink>
-                      <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                      <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
                         </li>
                       </NavLink>
-                      <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                      {/* <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-3 w-full lg:w-full ml-14 justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
                         </li>
-                      </NavLink>
-                      <NavLink to={MYSONGS} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
-                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.my}</span>
+                      </NavLink> */}
+                      <NavLink to={MYSONGS} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer " : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
+                          <span className='md:hidden lg:block cursor-pointer'>{text.navbar.mysongs}</span>
                         </li>
                       </NavLink>
                       <NavLink to={FAVOURITES} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer " : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
                           <span className='md:hidden lg:block cursor-pointer'>{text.liked.name}</span>
                         </li>
                       </NavLink>
                     </>
                     :
                     <>
-                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-3 w-full lg:w-16 md:justify-left'>
+                      <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
                         </li>
                       </NavLink>
                       <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
                         </li>
                       </NavLink>
-                      <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-3 w-full lg:w-16 justify-left'>
+                      {/* <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-3 w-full lg:w-full ml-14 justify-left'>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
                         </li>
-                      </NavLink>
+                      </NavLink> */}
                     </>
                 }
               </div>
@@ -266,8 +266,8 @@ export const NavBar = () => {
             {
               authState.isAuthenticated &&
               <div className='flex flex-col items-center gap-6 md:pt-4 lg:w-full  hover:text-deezer'>
-                <li className='inline-flex pr-2 md:pr-0 gap-3 w-full lg:w-32 cursor-pointer text-center ' onClick={handleLogout} data-drawer-hide="logo-sidebar">
-                  <MdOutlineLogout className="inline-flex h-6 w-6 justify-center lg:justify-left" />
+                <li className='inline-flex gap-2 items-center w-full lg:w-full ml-20 justify-left ' onClick={handleLogout} data-drawer-hide="logo-sidebar">
+                  <MdOutlineLogout className="h-6 w-6" />
                   <span className=' md:hidden lg:block'> {text.navbar.logout}</span>
                 </li>
               </div>

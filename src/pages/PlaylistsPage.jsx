@@ -1,7 +1,9 @@
-import { Playlists } from "../components"
+import {  Playlists } from "../components"
+
+
 
 export const PlaylistsPage = () => {
-  return (
-    <Playlists />
-  )
+    return (
+        <Playlists />
+    )
 }

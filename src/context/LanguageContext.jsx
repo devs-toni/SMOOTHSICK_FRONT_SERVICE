@@ -13,7 +13,6 @@ export const LanguageProvider = ({ children }) => {
 
 
   const handleLanguage = useCallback(({ name }) => {
-    console.log(name);
     setLang(name);
     if (name === "es")
       setText(translations.es)

@@ -8,7 +8,6 @@ export const ArtistOptions = () => {
   return (
     <div className='artist-options'>
       <p className='artist-options__option selected'>{text.details.albums}</p>
-
     </div>
   )
 }

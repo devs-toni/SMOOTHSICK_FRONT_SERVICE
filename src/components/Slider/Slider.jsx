@@ -5,7 +5,6 @@ import './Slider.css';
 import BoxCard from '../partials/BoxCard/BoxCard';
 
 const Slider = ({ list, name, type, isFirstRowSection }) => {
-
   const divRef = useRef();
   const [rightIsMoved, setRightIsMoved] = useState(false);
   const [leftIsMoved, setLeftIsMoved] = useState(true);
@@ -22,6 +21,7 @@ const Slider = ({ list, name, type, isFirstRowSection }) => {
       setRightIsMoved(false);
     }
   }
+
 
   return (
     <div className='row'>
