@@ -15,6 +15,8 @@
       "recover": "Recuperar contraseña",
       "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password",
       "send": "Enviar correo de recuperación"
+      
+      
     },
     "login": {
       "title": "Inicia sesión en Smoothsick",
@@ -57,7 +59,11 @@
       "email": "Email:",
       "password2": "Contraseña",
       "security_p": "Seguridad y Privacidad",
-      "security_o": "Opciones de Privacidad"
+      "security_o": "Opciones de Privacidad",
+      "button_m": "Modificar",
+      "erase_acc": "Elimina tu cuenta",
+      "backtohome": "Volver al Menú Principal"
+
     },
     "charts": {
       "title": "Las mejores listas"
@@ -171,10 +177,13 @@
       "subscription": "Type subscription",
       "cancel": "Cancel subscription",
       "name": "Name:",
-      "email": "Email:",
+      "email": "E-mail:",
       "password2": "Password",
       "security_p": "Security and Privacy",
-      "security_o": "Security Options"
+      "security_o": "Security Options",
+      "button_m": "Modify",
+      "erase_acc": "Delete Account",
+      "backtohome": "Back to Home"
     },
     "charts": {
       "title": "Top Charts"
@@ -286,10 +295,13 @@
       "subscription": "Genre d'abonnement'",
       "cancel": "Annuler abonnement",
       "name": "Prénom:",
-      "email": "Email:",
+      "email": "Courrier électronique:",
       "password2": "Mot de passe",
       "security_p": "Sécurité et Confidentialité",
-      "security_o": "Options de Sécurité"
+      "security_o": "Options de Sécurité",
+      "button_m": "Modifier",
+      "erase_acc": "Supprimer le Compte",
+      "backtohome": "Rentrer à la Maison"
     },
     "charts": {
       "title": "Le hit-parade"
