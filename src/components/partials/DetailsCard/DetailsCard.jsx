@@ -45,7 +45,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
     addList(tracks)
     addQueue(tracks)
   }
-
+  console.log(track.title_playlist);
   const removeSong = () => {
     axios.delete(import.meta.env.VITE_BACKEND + "tracks/" + id, {
       headers: {
@@ -80,7 +80,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
             <FaHeart className={`${isLike ? "text-red-400" : "text-gray-600"} mr-4`} onClick={removeLike} />
             <SlOptions className="text-withe-600" />
           </div>
-          <span className="text-xs text-center font-normal hidden md:block md:w-3/12 md:text-md truncate">{album_name}</span>
+          <span className="text-xs text-center font-normal hidden md:block md:w-3/12 md:text-md truncate">{track.title_playlist ? track.title_playlist : album_name}</span>
           <span className="text-xs text-center hidden lg:block lg:w-2/12 md:text-md grow truncate">{track.label}</span>
           <span className="text-xs text-center w-2/12 md:text-md grow truncate">{(duration / 60).toFixed(2)} min</span>
         </div>

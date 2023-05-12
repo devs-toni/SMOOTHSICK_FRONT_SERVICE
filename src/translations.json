@@ -141,6 +141,9 @@
       "track_name": "Track",
       "album_name": "Album",
       "record_company": "Discográfica"
+    },
+    "playlists": {
+      "playlist": "Playlist"
     }
   },
   "en": {
@@ -285,6 +288,9 @@
       "track_name": "Track",
       "album_name": "Album",
       "record_company": "Record company"
+    },
+    "playlists": {
+      "playlist": "Playlist"
     }
   },
   "fr": {
@@ -419,6 +425,9 @@
       "track_name": "Chanson",
       "album_name": "Album",
       "record_company": "Maison de disques"
+    },
+    "playlists": {
+      "playlist": "Playlist"
     }
   },
   "chn": {
@@ -553,6 +562,9 @@
       "track_name": "曲目",
       "album_name": "相册",
       "record_company": "标签"
+    },
+    "playlists": {
+      "playlist": "播放列表"
     }
   }
 }

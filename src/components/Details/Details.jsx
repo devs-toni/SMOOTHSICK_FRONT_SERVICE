@@ -105,6 +105,7 @@ export const Details = () => {
   useEffect(() => {
     getDetails();
   }, [])
+  console.log(tracks);
   return (
     <div className='flex w-full items-center justify-center pb-12'>
       <div className="w-[80%] h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">
@@ -176,7 +177,7 @@ export const Details = () => {
                         <BsClock className='w-3/12 md:w-2/12' />
                       </div>
                     </div>
-                   
+
                     {
                       tracks.length > 0 && tracks.map((track, index) => {
                         return (
@@ -203,17 +204,16 @@ export const Details = () => {
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
                       <div className='flex items-center justify-between border-b border-b-gray-300'>
                         <p className="w-1/12">#</p>
-                        <p className="w-2/12">{text.liked.track}</p>
+                        <p className="w-2/12">{text.album.track_name}</p>
                         <p className="w-2/12"></p>
                         <p className="w-3/12">Options</p>
-                        <p className="w-3/12">{text.liked.album_table}</p>
+                        <p className="w-3/12">{text.playlists.playlist}</p>
                         <p className="w-2/12">{text.liked.gender}</p>
-                        <p className="w-2/12"><BsClock className='w-11/12' /></p>
+                        <BsClock className='w-2/12' />
                       </div>
                     </div>
                     {
                       tracks.length > 0 && tracks.map((track, index) => {
-
                         return (
                           <DetailsCard
                             key={uuidv4()}

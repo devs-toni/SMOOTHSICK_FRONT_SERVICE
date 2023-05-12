@@ -33,13 +33,14 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
   const handlePause = () => {
     setChangeIcon(<FaPlay className='' size={20} />)
   }
+  
   return (
     <>
       {
         <div className='inline-flex w-full items-center justify-between'>
           <div className='flex flex-col  md:flex-row gap-10 h-full items-center justify-start'>
             <img
-              src={album_picture}
+              src={type === "playlists" ? artist_picture : album_picture}
               className='w-44 md:w-52 rounded-xl'
             />
             <div className='flex flex-col h-full justify-start items-center md:items-start gap-5'>
@@ -47,7 +48,13 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
                 <span className='md:text-lg lg:text-3xl font-bold truncate'>{album_name}</span>
                 <div className='inline-flex w-40 md:w-full justify-left items-left '>
                   <NavLink to={`${DETAILS}${ARTIST}/${artist_id}`} className='inline-flex items-center hover:underline gap-3'>
-                    <Avatar img={artist_picture} size="xs" rounded />
+                    {
+                      type === "playlists"
+                        ?
+                        ""
+                        :
+                        <Avatar img={artist_picture} size="xs" rounded />
+                    }
                     <span className={`${type === "artists" || type === "playlists" ? "text-2xl font-bold" : "text-xs md:text-lg"}`}>{artist_name}</span>
                   </NavLink>
                 </div>
