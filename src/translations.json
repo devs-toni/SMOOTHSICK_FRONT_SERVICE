@@ -29,7 +29,24 @@
       "title": "Recupera tu Contraseña",
       "new1": "Nueva Contraseña",
       "new2": "Repite Nueva Contraseña",
-      "submit": "Cambiar Contraseña"
+      "submit": "Cambiar Contraseña",
+      "re_mail": "Cambiar email",
+      "re_send_mail": "Escribe una dirreción de correo válida",
+      "placeholder": "Añada su nuevo email"
+    },
+
+    "toast": {
+      "toast1": "Nuevo usuario guardado",
+      "toast2": "Este usuario ya existe"
+    },
+
+    "username": {
+      "new_username_added": "Nuevo usuario guardado",
+      "username": "Este usuario ya existe",
+      "c_user": "Cambiar nombre del usuario",
+      "placeholder": "Escribe tu nuevo usuario",
+      "required_name": "Se requiere el nombre",
+      "required_ok": "Solo caracteres alfabéticos"
     },
     "navbar": {
       "home": "Home",
@@ -54,7 +71,8 @@
       "change_plan": "Cambiar Plan",
       "subscription": "Tipo de Suscripción",
       "cancel": "Cancelar Suscripción",
-      "name": "Nombre:",
+      "name": "Nombre",
+      "lastname": "Apellidos",
       "email": "Email:",
       "password2": "Contraseña",
       "security_p": "Seguridad y Privacidad",
@@ -155,7 +173,23 @@
       "title": "Recover your password",
       "new1": "New Password",
       "new2": "Repeat New Password",
-      "submit": "Change Password"
+      "submit": "Change Password",
+      "re_mail": "Change E-mail",
+      "re_send_mail": "Please write a correct e-mail adress",
+      "placeholder": "Add your new e-mail adress"
+    },
+    "toast": {
+      "toast1": "Nuevo usuario guardado",
+      "toast2": "Este usuario ya existe"
+    },
+    "username": {
+      "new_username_added": "New user saved",
+      "username_exists": "This user already exists",
+      "c_user": "Change username",
+      "placeholder": "Type your new username",
+      "required_name": "First name is required",
+      "required_ok": "Alphabetical characters only"
+     
     },
     "navbar": {
       "home": "Home",
@@ -180,7 +214,8 @@
       "change_plan": "Change Plan",
       "subscription": "Type subscription",
       "cancel": "Cancel subscription",
-      "name": "Name:",
+      "name": "Name",
+      "lastname": "Last Name",
       "email": "E-mail:",
       "password2": "Password",
       "security_p": "Security and Privacy",
@@ -279,7 +314,22 @@
       "title": "Recover your password",
       "new1": "New Password",
       "new2": "Repeat New Password",
-      "submit": "Change Password"
+      "submit": "Change Password",
+      "re_mail": "Changer l'adresse email",
+      "re_send_mail": "Veuillez écrire une adresse e-mail correcte",
+      "placeholder": "Ajoutez votre nouvelle e-mail"
+    },
+    "toast": {
+      "toast1": "Nuevo usuario guardado",
+      "toast2": "Este usuario ya existe"
+    },
+    "username": {
+      "new_username_added": "Nouvel utilisateur enregistré",
+      "username_exists": "Cet utilisateur existe déjà",
+      "c_user": "Changer le nom d'utilisateur",
+      "placeholder": "Tapez votre nouveau nom d'utilisateur",
+      "required_name": "Le prénom est requis",
+      "required_ok": "Caractères alphabétiques uniquement"
     },
     "navbar": {
       "home": "Page d'accueil",
@@ -304,7 +354,8 @@
       "change_plan": "Changez votre plan",
       "subscription": "Genre d'abonnement'",
       "cancel": "Annuler abonnement",
-      "name": "Prénom:",
+      "name": "Prénom",
+      "lastname": "Nom de famille",
       "email": "Courrier électronique:",
       "password2": "Mot de passe",
       "security_p": "Sécurité et Confidentialité",
@@ -394,15 +445,30 @@
       "singin": "登录"
     },
     "recover": {
-      "title": "Recover your password",
-      "new1": "New Password",
-      "new2": "Repeat New Password",
-      "submit": "Change Password"
+      "title": "恢复你的密码",
+      "new1": "新密码",
+      "new2": "重复新密码",
+      "submit": "更改密码",
+      "re_mail": "更改电子邮件地址",
+      "re_send_mail": "请填写正确的邮箱地址",
+      "placeholder": "添加您的新电子邮件"
+    },
+    "toast": {
+      "toast1": "Nuevo usuario guardado",
+      "toast2": "Este usuario ya existe"
+    },
+    "username": {
+      "new_username_added": "新注册用户",
+      "username_exists": "该用户已存在",
+      "c_user": "更改用户名",
+      "placeholder": "输入您的新用户名",
+      "required_name": "名字是必需的",
+      "required_ok": "仅限字母字符"
     },
     "navbar": {
       "home": "主页",
       "playlists": "播放列表",
-      "admin": "Admin",
+      "admin": "行政",
       "login": "登录",
       "logout": "退出",
       "register": "注册",
@@ -422,11 +488,15 @@
       "change_plan": "更改套餐",
       "subscription": "订阅类型",
       "cancel": "取消订阅",
-      "name": "名字:",
-      "email": "电子邮箱:",
+      "name": "名字",
+      "lastname": "姓",
+      "email": "电子邮箱",
       "password2": "密码",
       "security_p": "安全和隐私",
-      "security_o": "安全选项"
+      "security_o": "安全选项",
+      "button_m": "调整",
+      "erase_acc": "删除你的帐户",
+      "backtohome": "回到家"
     },
     "charts": {
       "title": "推荐歌单"
