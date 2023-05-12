@@ -1,12 +1,12 @@
 import { Button, Modal } from "flowbite-react"
 import { useForm } from "react-hook-form"
 import { v4 as uuidv4 } from 'uuid';
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../../context/AuthContext";
 import axios, { Axios } from "axios";
 
 const AddSongModal = ({ open, setOpen }) => {
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const { authState } = useAuth();
 
   const onSubmit = async ({ file }) => {

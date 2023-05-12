@@ -13,7 +13,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
   const { id, title, duration, preview, artist_name, album_cover, artist_id } = track;
   const { authState } = useAuth();
   const { removeFromFavourites, removeFromMyTracks } = useUser();
-  const { playSong, addQueue } = usePlayer();
+  const { playSong, addQueue, addList } = usePlayer();
 
   const isLike = true;
 
@@ -27,12 +27,12 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
         removeFromFavourites(id);
       })
   }
-  
+
   const addSongToPlayer = () => {
     const newTrack = {
       id,
       name: title,
-      picture: album_cover,
+      picture: album_cover ? album_cover : ownerImage,
       artist: artist_name ? artist_name : playlistName,
       preview,
     }
@@ -42,6 +42,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
         tr.artist_name = playlistName
       }
     })
+    addList(tracks)
     addQueue(tracks)
   }
 

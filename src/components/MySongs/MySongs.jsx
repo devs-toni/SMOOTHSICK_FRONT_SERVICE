@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai"
-import AddSongModal from "../AddSongModal/AddSongModal";
+import AddSongModal from "./AddSongModal/AddSongModal";
 import { DetailsCard } from "../partials/DetailsCard/DetailsCard";
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from "../../context/LanguageContext";
@@ -13,7 +13,7 @@ const MySongs = () => {
   const [open, setOpen] = useState(false);
   const { text } = useLanguage();
   const { userState } = useUser();
-
+  
 
   return (
     <div className="flex w-full items-center justify-center pb-12">

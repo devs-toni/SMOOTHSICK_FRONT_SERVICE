@@ -2,7 +2,7 @@ export { default as AccountSettings } from './AccountSettings/AccountSettings';
 export * from './AccountSettings/ChangeEmailModal/ChangeEmailModal';
 export * from './AccountSettings/ChangePasswordModal/ChangePasswordModal';
 export * from './AccountSettings/ChangeUserDataModal/ChangeUserDataModal';
-export { default as AddSongModal } from './AddSongModal/AddSongModal';
+export { default as AddSongModal } from './MySongs/AddSongModal/AddSongModal';
 export * from './Admin/Admin';
 export * from './Albums/Albums';
 export * from './ArtistHeader/ArtistHeader';

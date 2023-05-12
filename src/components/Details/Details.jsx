@@ -105,7 +105,6 @@ export const Details = () => {
   useEffect(() => {
     getDetails();
   }, [])
-  console.log(tracks);
   return (
     <div className='flex w-full items-center justify-center pb-12'>
       <div className="w-[80%] h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">

@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_name, album_picture, artist_picture, artist_name, artist_id }) => {
   const [changeIcon, setChangeIcon] = useState(<FaPlay className='' size={20} />)
   const { text } = useLanguage();
-  const { addQueue, playSong } = usePlayer();
+  const { addList, addQueue, playSong } = usePlayer();
   const handleSetNewPlaylist = () => {
     playSong({
       picture: tracks[0].album_cover,
@@ -20,6 +20,7 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
       artist: tracks[0].artist_name
     })
     addQueue(tracks)
+    addList(tracks)
     setChangeIcon(
       <Audio
         height="20"
@@ -44,10 +45,12 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
             <div className='flex flex-col h-full justify-start items-center md:items-start gap-5'>
               <div className='flex flex-col gap-2'>
                 <span className='md:text-lg lg:text-3xl font-bold truncate'>{album_name}</span>
-                <NavLink to={`${DETAILS}${ARTIST}/${artist_id}`} className='inline-flex items-center hover:underline gap-3'>
-                  <Avatar img={artist_picture} size="xs" rounded />
-                  <span className={`${type === "artists" || type === "playlists" ? "text-2xl font-bold" : "text-xs md:text-lg"}`}>{artist_name}</span>
-                </NavLink>
+                <div className='inline-flex w-40 md:w-full justify-left items-left '>
+                  <NavLink to={`${DETAILS}${ARTIST}/${artist_id}`} className='inline-flex items-center hover:underline gap-3'>
+                    <Avatar img={artist_picture} size="xs" rounded />
+                    <span className={`${type === "artists" || type === "playlists" ? "text-2xl font-bold" : "text-xs md:text-lg"}`}>{artist_name}</span>
+                  </NavLink>
+                </div>
                 <span className='text-xs md:text-md text-neutral-500'>{fans} {text.details.fans}</span>
               </div>
               <div className='flex justify-center gap-5 items-center'>

@@ -15,7 +15,6 @@ const Home = () => {
 
   const { text } = useLanguage();
   const [loaded, setLoaded] = useState(false);
-
   const { artists, artistsLoaded } = useFetchAllHomeArtists();
   const { moreArtists, moreArtistsLoaded } = useFetchMoreHomeArtists();
   const { albums, albumsLoaded } = useFetchAllHomeAlbums();
