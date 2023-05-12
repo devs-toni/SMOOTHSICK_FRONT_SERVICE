@@ -40,8 +40,15 @@
     "toast": {
       "toast1": "Nuevo usuario guardado",
       "toast2": "Este usuario ya existe"
-      
+    },
 
+    "username": {
+      "new_username_added": "Nuevo usuario guardado",
+      "username": "Este usuario ya existe",
+      "c_user": "Cambiar nombre del usuario",
+      "placeholder": "Escribe tu nuevo usuario",
+      "required_name": "Se requiere el nombre",
+      "required_ok": "Solo caracteres alfabéticos"
     },
     "navbar": {
       "home": "Home",
@@ -66,7 +73,7 @@
       "change_plan": "Cambiar Plan",
       "subscription": "Tipo de Suscripción",
       "cancel": "Cancelar Suscripción",
-      "name": "Nombre:",
+      "name": "Nombre",
       "lastname": "Apellidos",
       "email": "Email:",
       "password2": "Contraseña",
@@ -172,7 +179,15 @@
     "toast": {
       "toast1": "Nuevo usuario guardado",
       "toast2": "Este usuario ya existe"
-      
+    },
+    "username": {
+      "new_username_added": "New user saved",
+      "username_exists": "This user already exists",
+      "c_user": "Change username",
+      "placeholder": "Type your new username",
+      "required_name": "First name is required",
+      "required_ok": "Alphabetical characters only"
+     
     },
     "navbar": {
       "home": "Home",
@@ -198,7 +213,7 @@
       "change_plan": "Change Plan",
       "subscription": "Type subscription",
       "cancel": "Cancel subscription",
-      "name": "Name:",
+      "name": "Name",
       "lastname": "Last Name",
       "email": "E-mail:",
       "password2": "Password",
@@ -301,8 +316,14 @@
     "toast": {
       "toast1": "Nuevo usuario guardado",
       "toast2": "Este usuario ya existe"
-      
-
+    },
+    "username": {
+      "new_username_added": "Nouvel utilisateur enregistré",
+      "username_exists": "Cet utilisateur existe déjà",
+      "c_user": "Changer le nom d'utilisateur",
+      "placeholder": "Tapez votre nouveau nom d'utilisateur",
+      "required_name": "Le prénom est requis",
+      "required_ok": "Caractères alphabétiques uniquement"
     },
     "navbar": {
       "home": "Page d'accueil",
@@ -327,8 +348,8 @@
       "change_plan": "Changez votre plan",
       "subscription": "Genre d'abonnement'",
       "cancel": "Annuler abonnement",
-      "name": "Prénom:",
-      "lastname": "Nom de famille:",
+      "name": "Prénom",
+      "lastname": "Nom de famille",
       "email": "Courrier électronique:",
       "password2": "Mot de passe",
       "security_p": "Sécurité et Confidentialité",
@@ -424,8 +445,14 @@
     "toast": {
       "toast1": "Nuevo usuario guardado",
       "toast2": "Este usuario ya existe"
-      
-
+    },
+    "username": {
+      "new_username_added": "新注册用户",
+      "username_exists": "该用户已存在",
+      "c_user": "更改用户名",
+      "placeholder": "输入您的新用户名",
+      "required_name": "名字是必需的",
+      "required_ok": "仅限字母字符"
     },
     "navbar": {
       "home": "主页",
@@ -450,9 +477,9 @@
       "change_plan": "更改套餐",
       "subscription": "订阅类型",
       "cancel": "取消订阅",
-      "name": "名字:",
+      "name": "名字",
       "lastname": "姓",
-      "email": "电子邮箱:",
+      "email": "电子邮箱",
       "password2": "密码",
       "security_p": "安全和隐私",
       "security_o": "安全选项",

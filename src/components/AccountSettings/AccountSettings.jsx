@@ -75,7 +75,7 @@ const Accountsettings = () => {
                 className='border  border-neutral-500 rounded-full p-5'
               />
               <div className="flex flex-col gap-3">
-                <span className="text-2xl font-thin inline-block">{`${text.account.name}  ${user.firstName}`}</span>
+                <span className="text-2xl font-thin inline-block">{`${text.account.name} : ${user.firstName}`}</span>
                 <span className="text-2xl font-thin inline-block">{`${text.account.lastname}: ${user.lastName}`}</span>
               </div>
             </div>
