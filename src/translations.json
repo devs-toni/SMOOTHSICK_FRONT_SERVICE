@@ -15,8 +15,6 @@
       "recover": "Recuperar contraseña",
       "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password",
       "send": "Enviar correo de recuperación"
-      
-      
     },
     "login": {
       "title": "Inicia sesión en Smoothsick",
@@ -64,7 +62,6 @@
       "button_m": "Modificar",
       "erase_acc": "Elimina tu cuenta",
       "backtohome": "Volver al Menú Principal"
-
     },
     "charts": {
       "title": "Las mejores listas"
@@ -121,6 +118,11 @@
       "new_pass": "Nueva contraseña",
       "r_new_pass": "Repite nueva contraseña",
       "btn_save_pass": "Guarda tus cambios"
+    },
+    "album": {
+      "track_name": "Track",
+      "album_name": "Album",
+      "record_company": "Discográfica"
     }
   },
   "en": {
@@ -168,7 +170,6 @@
       "search": "Search",
       "welcome": "Welcome",
       "mysongs": "My songs"
-      
     },
     "account": {
       "account": "Account settings",
@@ -244,6 +245,11 @@
       "new_pass": "New password",
       "r_new_pass": "Repeat new password",
       "btn_save_pass": "Save your changes"
+    },
+    "album": {
+      "track_name": "Track",
+      "album_name": "Album",
+      "record_company": "Record company"
     }
   },
   "fr": {
@@ -357,6 +363,11 @@
       "new_pass": "New password",
       "r_new_pass": "Repeat new password",
       "btn_save_pass": "Save your changes"
+    },
+    "album": {
+      "track_name": "Chanson",
+      "album_name": "Album",
+      "record_company": "Maison de disques"
     }
   },
   "chn": {
@@ -467,6 +478,11 @@
       "new_pass": "New password",
       "r_new_pass": "Repeat new password",
       "btn_save_pass": "Save your changes"
+    },
+    "album": {
+      "track_name": "曲目",
+      "album_name": "相册",
+      "record_company": "标签"
     }
   }
 }

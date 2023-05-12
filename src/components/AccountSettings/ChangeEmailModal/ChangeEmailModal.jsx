@@ -61,7 +61,7 @@ export const ChangeEmailModal = ({ setOpen, open }) => {
                         <span className='text-white'>Change email</span>
                         <div className={`flex flex-col gap-5 items-center`}>
                             <form onSubmit={handleSubmit(onSubmitEmail)} className='mb-5'>
-                                <input type="email" placeholder="Enter a new email" className={'bg-zinc-600 rounded mb-5'}
+                                <input type="email" placeholder={`Enter a new email`} className={'bg-zinc-600 rounded mb-5'}
                                     {...register("userEmail", {
                                         pattern: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/i
                                     })}

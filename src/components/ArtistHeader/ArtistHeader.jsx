@@ -5,8 +5,10 @@ import './ArtistHeader.css';
 import { FaHeart, FaPlay } from "react-icons/fa";
 import { useState } from 'react';
 import { Audio } from 'react-loader-spinner'
+import { ARTIST, DETAILS } from '../../router/paths';
+import { NavLink } from 'react-router-dom';
 
-export const ArtistHeader = ({ img, name, fans, isLike, description, tracks, }) => {
+export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_name, album_picture, artist_picture, artist_name, artist_id }) => {
   const [changeIcon, setChangeIcon] = useState(<FaPlay className='' size={20} />)
   const { text } = useLanguage();
   const { addQueue, playSong } = usePlayer();
@@ -15,7 +17,7 @@ export const ArtistHeader = ({ img, name, fans, isLike, description, tracks, }) 
       picture: tracks[0].album_cover,
       preview: tracks[0].preview,
       name: tracks[0].title,
-      artist: tracks[0].album_name
+      artist: tracks[0].artist_name
     })
     addQueue(tracks)
     setChangeIcon(
@@ -27,41 +29,47 @@ export const ArtistHeader = ({ img, name, fans, isLike, description, tracks, }) 
       />
     )
   }
-  
-  console.log(tracks);
   const handlePause = () => {
     setChangeIcon(<FaPlay className='' size={20} />)
   }
-
   return (
-    <div className='inline-flex w-full items-center justify-between'>
-      <div className='flex flex-row gap-10 h-full items-center justify-start'>
-        <Avatar
-          img={img}
-          size="xl"
-        />
-        <div className='flex flex-col h-full justify-start items-start gap-5'>
-          <div className='flex flex-col gap-2'>
-            <p className='text-3xl font-bold'>{name}</p>
-            <p className='text-md text-neutral-500'>{fans} {text.details.fans}</p>
-          </div>
-          <div className='flex justify-center gap-5 items-center'>
-            <button className='w-36 inline-flex gap-5 justify-center items-center hover:bg-deezer-dark p-3 rounded-full bg-deezer' onClick={handleSetNewPlaylist} onPauseCapture={handlePause} >
-              {changeIcon}
-              <p className='text-lg font-bold'>{text.details.mix}</p>
-            </button>
-            <FaHeart className={`artist-like ${isLike && 'isLike'}`} size={50} />
-          </div>
-        </div>
-      </div>
+    <>
       {
-        description &&
-        <div className='flex items-left w-[40%] justify-left'>
-          <div className='h-36 p-5 flex justify-center items-center rounded-xl w-full text-xl bg-chart'>
-            <p className=''>{description}</p>
+        <div className='inline-flex w-full items-center justify-between'>
+          <div className='flex flex-col  md:flex-row gap-10 h-full items-center justify-start'>
+            <img
+              src={album_picture}
+              className='w-44 md:w-52 rounded-xl'
+            />
+            <div className='flex flex-col h-full justify-start items-center md:items-start gap-5'>
+              <div className='flex flex-col gap-2'>
+                <span className='md:text-lg lg:text-3xl font-bold truncate'>{album_name}</span>
+                <NavLink to={`${DETAILS}${ARTIST}/${artist_id}`} className='inline-flex items-center hover:underline gap-3'>
+                  <Avatar img={artist_picture} size="xs" rounded />
+                  <span className={`${type === "artists" || type === "playlists" ? "text-2xl font-bold" : "text-xs md:text-lg"}`}>{artist_name}</span>
+                </NavLink>
+                <span className='text-xs md:text-md text-neutral-500'>{fans} {text.details.fans}</span>
+              </div>
+              <div className='flex justify-center gap-5 items-center'>
+                <button className='w-36 inline-flex gap-5 justify-center items-center hover:bg-deezer-dark p-2 md:p-3 rounded-full bg-deezer' onClick={handleSetNewPlaylist} onPauseCapture={handlePause} >
+                  {changeIcon}
+                  <p className='text-lg font-bold'>{text.details.mix}</p>
+                </button>
+                <FaHeart className={`artist-like ${isLike && 'isLike'}`} size={44} />
+              </div>
+            </div>
           </div>
+          {
+            description &&
+            <div className='flex items-left w-[30%] justify-left'>
+              <div className='h-36 p-5 flex justify-center items-center rounded-xl w-full text-md bg-chart'>
+                <p>{description}</p>
+              </div>
+            </div>
+          }
         </div>
       }
-    </div>
+
+    </>
   )
 }

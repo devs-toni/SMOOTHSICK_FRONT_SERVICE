@@ -44,7 +44,7 @@ export const Favourites = () => {
             <p className="w-3/12">Options</p>
             <p className="w-3/12">{text.liked.album_table}</p>
             <p className="w-2/12">{text.liked.gender}</p>
-            <p className="w-2/12 flex justify-center"><BsClock /></p>
+            <BsClock className='w-2/12 ' />
           </div>
         </div>
         {

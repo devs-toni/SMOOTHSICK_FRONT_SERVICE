@@ -27,13 +27,14 @@ export const Details = () => {
           .then(({ data }) => {
             img = data.cover
             setData({
-              id: data.id,
-              title: data.title,
+              id: data.artist_id,
+              album_name: data.title,
               total: data.nb_tracks,
-              picture: data.cover,
-              fans: data.fans
+              album_picture: data.cover,
+              fans: data.fans,
+              artist_picture: data.artist_picture,
+              artist_name: data.artist_name,
             });
-            
           })
 
         await axios.get(import.meta.env.VITE_BACKEND + "albums/getAlbumSongs/" + id)
@@ -42,17 +43,19 @@ export const Details = () => {
               track.album_cover = img
             })
             setTracks(data);
+
           })
         break;
 
       case FILTER_TYPES.ARTISTS:
         await axios.get(import.meta.env.VITE_BACKEND + "artists/" + id)
           .then(({ data }) => {
+
             setData({
               id: data.id,
-              title: data.name,
+              artist_name: data.name,
               total: data.nb_album,
-              picture: data.picture,
+              artist_picture: data.picture,
               fans: data.nb_fan
             });
           });
@@ -64,6 +67,7 @@ export const Details = () => {
           .then(({ data }) => {
             setAlbums(data);
           })
+
         break;
 
       case FILTER_TYPES.PLAYLISTS:
@@ -73,9 +77,9 @@ export const Details = () => {
             const image = data.picture
             setData({
               id: data.id,
-              title: data.title,
+              artist_name: data.title,
               total: data.nb_tracks,
-              picture: data.picture,
+              artist_picture: data.picture,
               fans: data.fans,
               description: data.description
             });
@@ -98,13 +102,12 @@ export const Details = () => {
         break;
     }
   }
-
   useEffect(() => {
     getDetails();
   }, [])
-
+  console.log(tracks);
   return (
-    <div className='flex w-full items-center justify-center pb-24'>
+    <div className='flex w-full items-center justify-center pb-12'>
       <div className="w-[80%] h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">
         {
           Object.keys(data).length > 0
@@ -113,7 +116,7 @@ export const Details = () => {
               ?
               (
                 <>
-                  <ArtistHeader img={data.picture} name={data.title} fans={data.fans} isLike={true} />
+                  <ArtistHeader artist_picture={data.artist_picture} artist_name={data.artist_name} fans={data.fans} isLike={true} type={type} />
                   <ArtistOptions />
                   <div>
                     <Section tracks={tracks} targetClass="artists-tracks" />
@@ -151,19 +154,30 @@ export const Details = () => {
                   <>
                     <div className='sm:w-full flex flex-col items-center justify-center mt-10 md:mt-12 overflow-hidden z-10'></div>
                     <div className='max-w-81rem mb-12'>
-                      <ArtistHeader img={data.picture} tracks={tracks} name={data.title} fans={data.fans} isLike={true} />
+                      <ArtistHeader
+                        artist_name={data.artist_name}
+                        album_name={data.album_name}
+                        artist_picture={data.artist_picture}
+                        album_picture={data.album_picture}
+                        total={data.total}
+                        tracks={tracks} fans={data.fans}
+                        type={type}
+                        isLike={true}
+                        artist_id={data.id}
+                      />
                     </div>
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
                       <div className='flex items-center justify-between border-b border-b-gray-300'>
-                        <p className="w-1/12">#</p>
-                        <p className="w-2/12">{text.liked.track}</p>
+                        <p className="hidden md:block w-1/12">#</p>
+                        <p className="w-2/12">{text.album.track_name}</p>
                         <p className="w-2/12"></p>
-                        <p className="w-3/12">Options</p>
-                        <p className="w-3/12">{text.liked.album_table}</p>
-                        <p className="w-2/12">{text.liked.gender}</p>
-                        <p className="w-2/12"><BsClock className='w-11/12' /></p>
+                        <p className="w-2/12 md:w-3/12">Options</p>
+                        <p className="hidden md:block md:w-3/12">{text.album.album_name}</p>
+                        <p className="hidden lg:block lg:w-2/12">{text.album.record_company}</p>
+                        <BsClock className='w-3/12 md:w-2/12' />
                       </div>
                     </div>
+                   
                     {
                       tracks.length > 0 && tracks.map((track, index) => {
                         return (
@@ -172,7 +186,7 @@ export const Details = () => {
                             track={track}
                             count={index}
                             tracks={tracks}
-
+                            album_name={data.album_name}
                           />
                         )
                       })
@@ -185,7 +199,7 @@ export const Details = () => {
                   <>
 
                     <div className='mb-12'>
-                      <ArtistHeader img={data.picture} description={data.description} name={data.title} fans={data.fans} isLike={true} tracks={tracks} />
+                      <ArtistHeader artist_picture={data.artist_picture} artist_name={data.artist_name} description={data.description} type={type} fans={data.fans} isLike={true} tracks={tracks} />
                     </div>
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
                       <div className='flex items-center justify-between border-b border-b-gray-300'>

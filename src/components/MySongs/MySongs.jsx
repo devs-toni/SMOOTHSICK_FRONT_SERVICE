@@ -16,7 +16,7 @@ const MySongs = () => {
 
 
   return (
-    <div className="flex w-full items-center justify-center pb-24">
+    <div className="flex w-full items-center justify-center pb-12">
       <div className="w-full h-full  p-6 md:max-w-2xl md:pl-20 lg:max-w-3xl mt-14 md:mt-20 min-w-[75%]">
         <AddSongModal setOpen={setOpen} open={open} />
         <div className="flex flex-col items-center justify-center h-full pt-20 w-full">
@@ -32,7 +32,7 @@ const MySongs = () => {
               <p className="w-3/12">Options</p>
               <p className="w-3/12">{text.liked.album_table}</p>
               <p className="w-2/12">{text.liked.gender}</p>
-              <p className="w-2/12"><BsClock className='w-11/12' /></p>
+              <BsClock className='w-2/12' />
             </div>
           </div>
           {
