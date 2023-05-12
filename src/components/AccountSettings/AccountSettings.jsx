@@ -71,13 +71,12 @@ const Accountsettings = () => {
             <div className="flex items-center gap-10">
               <Avatar
                 img={user.profilePicture}
-                rounded={true}
                 size="lg"
                 className='border  border-neutral-500 rounded-full p-5'
               />
               <div className="flex flex-col gap-3">
-                <span className="text-2xl font-thin inline-block">{`Nombre: ${user.firstName}`}</span>
-                <span className="text-2xl font-thin inline-block">{`Apellidos: ${user.lastName}`}</span>
+                <span className="text-2xl font-thin inline-block">{`${text.account.name} : ${user.firstName}`}</span>
+                <span className="text-2xl font-thin inline-block">{`${text.account.lastname}: ${user.lastName}`}</span>
               </div>
             </div>
             <h3 className='text-3xl'> {text.account.account} </h3>

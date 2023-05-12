@@ -57,6 +57,7 @@
       "subscription": "Tipo de Suscripción",
       "cancel": "Cancelar Suscripción",
       "name": "Nombre:",
+      "lastname": "Apellidos",
       "email": "Email:",
       "password2": "Contraseña",
       "security_p": "Seguridad y Privacidad",
@@ -180,6 +181,7 @@
       "subscription": "Type subscription",
       "cancel": "Cancel subscription",
       "name": "Name:",
+      "lastname": "Last Name",
       "email": "E-mail:",
       "password2": "Password",
       "security_p": "Security and Privacy",
@@ -299,6 +301,7 @@
       "subscription": "Genre d'abonnement'",
       "cancel": "Annuler abonnement",
       "name": "Prénom:",
+      "lastname": "Nom de famille:",
       "email": "Courrier électronique:",
       "password2": "Mot de passe",
       "security_p": "Sécurité et Confidentialité",
@@ -412,10 +415,14 @@
       "subscription": "订阅类型",
       "cancel": "取消订阅",
       "name": "名字:",
+      "lastname": "姓",
       "email": "电子邮箱:",
       "password2": "密码",
       "security_p": "安全和隐私",
-      "security_o": "安全选项"
+      "security_o": "安全选项",
+      "button_m": "调整",
+      "erase_acc": "删除你的帐户",
+      "backtohome": "回到家"
     },
     "charts": {
       "title": "推荐歌单"
