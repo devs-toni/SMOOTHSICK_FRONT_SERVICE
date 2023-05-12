@@ -31,7 +31,17 @@
       "title": "Recupera tu Contraseña",
       "new1": "Nueva Contraseña",
       "new2": "Repite Nueva Contraseña",
-      "submit": "Cambiar Contraseña"
+      "submit": "Cambiar Contraseña",
+      "re_mail": "Cambiar email",
+      "re_send_mail": "Escribe una dirreción de correo válida",
+      "placeholder": "Añada su nuevo email"
+    },
+
+    "toast": {
+      "toast1": "Nuevo usuario guardado",
+      "toast2": "Este usuario ya existe"
+      
+
     },
     "navbar": {
       "home": "Home",
@@ -154,7 +164,15 @@
       "title": "Recover your password",
       "new1": "New Password",
       "new2": "Repeat New Password",
-      "submit": "Change Password"
+      "submit": "Change Password",
+      "re_mail": "Change E-mail",
+      "re_send_mail": "Please write a correct e-mail adress",
+      "placeholder": "Add your new e-mail adress"
+    },
+    "toast": {
+      "toast1": "Nuevo usuario guardado",
+      "toast2": "Este usuario ya existe"
+      
     },
     "navbar": {
       "home": "Home",
@@ -275,7 +293,16 @@
       "title": "Recover your password",
       "new1": "New Password",
       "new2": "Repeat New Password",
-      "submit": "Change Password"
+      "submit": "Change Password",
+      "re_mail": "Changer l'adresse email",
+      "re_send_mail": "Veuillez écrire une adresse e-mail correcte",
+      "placeholder": "Ajoutez votre nouvelle e-mail"
+    },
+    "toast": {
+      "toast1": "Nuevo usuario guardado",
+      "toast2": "Este usuario ya existe"
+      
+
     },
     "navbar": {
       "home": "Page d'accueil",
@@ -386,15 +413,24 @@
       "singin": "登录"
     },
     "recover": {
-      "title": "Recover your password",
-      "new1": "New Password",
-      "new2": "Repeat New Password",
-      "submit": "Change Password"
+      "title": "恢复你的密码",
+      "new1": "新密码",
+      "new2": "重复新密码",
+      "submit": "更改密码",
+      "re_mail": "更改电子邮件地址",
+      "re_send_mail": "请填写正确的邮箱地址",
+      "placeholder": "添加您的新电子邮件"
+    },
+    "toast": {
+      "toast1": "Nuevo usuario guardado",
+      "toast2": "Este usuario ya existe"
+      
+
     },
     "navbar": {
       "home": "主页",
       "playlists": "播放列表",
-      "admin": "Admin",
+      "admin": "行政",
       "login": "登录",
       "logout": "退出",
       "register": "注册",

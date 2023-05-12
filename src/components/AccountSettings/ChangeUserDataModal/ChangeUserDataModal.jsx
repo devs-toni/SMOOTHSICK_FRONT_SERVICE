@@ -16,7 +16,7 @@ export const ChangeUserNameModal = ({ setOpen, open }) => {
   const onSubmitUserName = (data) => {
     const { userName } = data
     try {
-      axios.patch(import.meta.env.VITE_DB_URI_CHANGE_USERNAME, { userName, id })
+      axios.patch(import.meta.env.VITE_BACKEND + "users/changeUserName", { userName, id })
         .then(({ status }) => {
           if (status === 201) {
             toast.success("New user name saved!", {

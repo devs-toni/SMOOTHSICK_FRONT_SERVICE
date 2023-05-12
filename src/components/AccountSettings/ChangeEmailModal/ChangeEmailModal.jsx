@@ -3,6 +3,7 @@ import { useAuth } from "../../../context/AuthContext";
 import { toast } from "react-hot-toast";
 import { Button, Modal } from "flowbite-react";
 import axios from "axios";
+import { useLanguage } from "../../../context/LanguageContext"
 
 
 
@@ -12,17 +13,18 @@ export const ChangeEmailModal = ({ setOpen, open }) => {
     const { authState } = useAuth()
     const { user } = authState
     const { id } = user
-
+    const { text } = useLanguage()
+    
 
 
     const onSubmitEmail = (data) => {
         const { userEmail } = data
-        console.log(userEmail);
+        
         try {
-            axios.patch(import.meta.env.VITE_DB_URI_CHANGE_EMAIL, { userEmail, id })
+            axios.patch(import.meta.env.VITE_BACKEND + "users/changeUserEmail", { userEmail, id })
                 .then(({ status }) => {
                     if (status === 201) {
-                        toast.success("New user email saved!", {
+                        toast.success(text.toast.toast1, {
                             style: {
                                 borderRadius: "10px",
                                 background: "#333",
@@ -36,7 +38,7 @@ export const ChangeEmailModal = ({ setOpen, open }) => {
                         reset()
                         setOpen(false)
                     } else {
-                        toast.error("User email already exists!", {
+                        toast.error(text.toast.toast2, {
                             style: {
                                 borderRadius: "10px",
                                 background: "#333",
@@ -58,15 +60,15 @@ export const ChangeEmailModal = ({ setOpen, open }) => {
             <Modal show={open} onClose={() => setOpen(false)} dismissible>
                 <Modal.Body className='bg-zinc-900'>
                     <div className='flex justify-center flex-col items-center gap-5'>
-                        <span className='text-white'>Change email</span>
+                        <span className='text-white'>{text.recover.re_mail}</span>
                         <div className={`flex flex-col gap-5 items-center`}>
                             <form onSubmit={handleSubmit(onSubmitEmail)} className='mb-5'>
-                                <input type="email" placeholder="Enter a new email" className={'bg-zinc-600 rounded mb-5'}
+                                <input type="email" placeholder={text.recover.placeholder} className={'bg-zinc-600 rounded mb-5'}
                                     {...register("userEmail", {
                                         pattern: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/i
                                     })}
                                 />
-                                {errors?.userEmail?.type === "pattern" && <p className="text-red-500">Please write correct email address</p>}
+                                {errors?.userEmail?.type === "pattern" && <p className="text-red-500">{text.recover.re_send_mail}</p>}
                                 <div className="mt-5 flex justify-center">
                                     <Button
                                         className='bg-deezer'
