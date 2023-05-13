@@ -98,8 +98,10 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
                 <FaPencilAlt className='mr-4 text-xl' />
               </>
             }
-            <FaHeart className={`${isLike ? "text-red-400" : "text-gray-600"} mr-4`} onClick={removeLike} />
-            <SlOptions className="text-withe-600" />
+            {
+              !ownerImage &&
+              <FaHeart className={`${isLike ? "text-red-400" : "text-gray-600"} mr-4`} onClick={removeLike} />
+            }
           </div>
           <span className="text-xs text-center font-normal hidden md:block md:w-3/12 md:text-md truncate">{track.title_playlist ? track.title_playlist : album_name || artist_name}</span>
           <span className="text-xs text-center hidden lg:block lg:w-2/12 md:text-md grow truncate">{track.label}</span>
