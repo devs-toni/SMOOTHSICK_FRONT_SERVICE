@@ -19,6 +19,7 @@ export const Details = () => {
   const [tracks, setTracks] = useState([]);
   const [albums, setAlbums] = useState([]);
   const getDetails = async () => {
+    
     let finalData = [];
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
       case FILTER_TYPES.ALBUMS:
@@ -50,7 +51,7 @@ export const Details = () => {
       case FILTER_TYPES.ARTISTS:
         await axios.get(import.meta.env.VITE_BACKEND + "artists/" + id)
           .then(({ data }) => {
-
+            
             setData({
               id: data.id,
               artist_name: data.name,
@@ -70,6 +71,7 @@ export const Details = () => {
 
         break;
 
+       
       case FILTER_TYPES.PLAYLISTS:
         await axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
           .then(async ({ data }) => {
@@ -95,6 +97,7 @@ export const Details = () => {
                 })
             }))
             setTracks(finalData);
+           
           })
         break;
 
@@ -105,12 +108,12 @@ export const Details = () => {
   useEffect(() => {
     getDetails();
   }, [])
-
   return (
     <div className='flex w-full items-center justify-center pb-12'>
       <div className="w-[80%] h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">
         {
           Object.keys(data).length > 0
+          
             ?
             FILTER_TYPES.ARTISTS === type.charAt(0).toUpperCase() + type.slice(1)
               ?
