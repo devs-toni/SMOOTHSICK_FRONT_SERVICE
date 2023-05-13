@@ -1,4 +1,4 @@
-import { FaHeart, FaPencilAlt } from 'react-icons/fa'
+import { FaHeart, FaPencilAlt, FaPlayCircle } from 'react-icons/fa'
 import { SlOptions } from 'react-icons/sl'
 import axios from 'axios';
 import { useAuth } from '../../../context/AuthContext';
@@ -82,13 +82,17 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
       <div className='w-full md:max-w-2xl lg:max-w-3xl min-w-[100%] pt-2'>
         <div className='flex items-center rounded-xl hover:bg-chart h-12 md:h-16'>
           <span className='hidden md:block md:w-1/12 text-center'>{count + 1}</span>
-          <div className=' flex w-2/12 items-center justify-center'>
-            <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} onClick={addSongToPlayer} alt="image description" width="" height="" />
+          <div className=' flex w-2/12 items-center justify-center relative'>
+            <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} alt="image description" width="" height="" />
             {
-              playerState.current.name === title &&
-              <div className="absolute w-10">
-                <Bars color='#ef5567' />
-              </div>
+              playerState.current.name === title ?
+                <div className="absolute w-10">
+                  <Bars color='#ef5567' />
+                </div>
+                :
+                <div className="opacity-0 absolute object-cover w-full h-full flex justify-center items-center transition-all cursor-pointer hover:opacity-60" onClick={addSongToPlayer}>
+                  <FaPlayCircle className="w-10 h-10" />
+                </div>
             }
           </div>
           <div className='inline-flex w-4/12 justify-center truncate md:w-2/12'>
