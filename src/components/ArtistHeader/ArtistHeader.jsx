@@ -41,7 +41,7 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
         <div className='inline-flex w-full items-center justify-between'>
           <div className='flex flex-col  md:flex-row gap-10 h-full items-center justify-start'>
             <img
-              src={type === "playlists" || type === "artists" ? artist_picture : album_picture}
+              src={type === "playlist" || type === "artists" ? artist_picture : album_picture}
               className='w-44 md:w-52 rounded-xl'
             />
             <div className='flex flex-col h-full justify-start items-center md:items-start gap-5'>
@@ -50,7 +50,7 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
                 <div className='inline-flex w-40 md:w-full justify-left items-left '>
                   <NavLink to={`${DETAILS}${ARTIST}/${artist_id}`} className='inline-flex items-center hover:underline gap-3'>
                     {
-                      type === "playlists" || type === "artists"
+                      type === "playlist" || type === "artists"
                         ?
                         ""
                         :
