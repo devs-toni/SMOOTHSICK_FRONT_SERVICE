@@ -9,22 +9,22 @@ import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { Audio, Bars } from 'react-loader-spinner';
 
-export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, album_name, setId, setUpdateIsOpen }) => {
+export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, album_name, setId, setUpdateIsOpen, isPlaylist }) => {
 
-  const { id, title, duration, preview, artist_name, album_cover, artist_id } = track;
+  const { id, title, duration, preview, artist_name, album_cover, artist_id, likes } = track;
   const { authState } = useAuth();
   const { removeFromFavourites, removeFromMyTracks } = useUser();
   const { playerState, playSong, addQueue, addList } = usePlayer();
+  const [isLike, setIsLike] = useState(likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false)
 
-  const isLike = true;
-
-  const removeLike = () => {
+  const toggleLike = () => {
     axios.patch(import.meta.env.VITE_BACKEND + "tracks/like/" + id, {}, {
       headers: {
         "Authorization": authState.token
       }
     })
       .then(({ data }) => {
+        setIsLike(!isLike);
         removeFromFavourites(id);
       })
   }
@@ -111,8 +111,8 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
               </>
             }
             {
-              !ownerImage &&
-              <FaHeart className={`${isLike ? "text-red-400" : "text-gray-600"} mr-4`} onClick={removeLike} />
+              (!ownerImage && !isPlaylist) &&
+              <FaHeart className={`${isLike ? "text-red-400" : "text-gray-600"} mr-4`} onClick={toggleLike} />
             }
           </div>
           <span className="text-xs text-center font-normal hidden md:block md:w-3/12 md:text-md truncate">{track.title_playlist ? track.title_playlist : album_name || artist_name}</span>

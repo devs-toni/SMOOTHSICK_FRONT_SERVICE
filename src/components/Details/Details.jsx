@@ -35,6 +35,7 @@ export const Details = () => {
               fans: data.fans,
               artist_picture: data.artist_picture,
               artist_name: data.artist_name,
+              likes: data.likes
             });
           })
 
@@ -44,7 +45,6 @@ export const Details = () => {
               track.album_cover = img
             })
             setTracks(data);
-
           })
         break;
 
@@ -224,6 +224,7 @@ export const Details = () => {
                             count={index}
                             playlistName={data.title}
                             tracks={tracks}
+                            isPlaylist={true}
                           />
                         )
                       })

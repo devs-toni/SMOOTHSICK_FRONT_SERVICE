@@ -29,17 +29,18 @@ const Player = () => {
   const [isLike, setIsLike] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
   const [isChanged, setIsChanged] = useState(false);
+  const [isPlaylistSong, setIsPlaylistSong] = useState(false);
 
   useEffect(() => {
     (isChanged || current) &&
       axios.get(import.meta.env.VITE_BACKEND + "tracks/" + current.id)
         .then(({ data }) => {
+          setIsPlaylistSong(data.album_id ? false : true)
           setIsOwner((data.disk_number === -1 && authState.user.id === data.artist_id) ? true : false)
           setIsLike(data.likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false);
         })
     return setIsChanged(false);
   }, [isChanged, current])
-
 
   const handleIsPlaying = () => {
     setIsPlay(true)
@@ -129,7 +130,7 @@ const Player = () => {
               RHAP_UI.MAIN_CONTROLS,
               <div className='hidden md:flex md:gap-1 items-center'>
                 {
-                  !isOwner && 
+                  (!isOwner && !isPlaylistSong) &&
                   <AiOutlineHeart color='#868686' size={25} style={heartStyles} className='cursor-pointer' onClick={() => toggleLike(FILTER_TYPES.TRACKS, playerState.current, isLike, setIsLike)} />
                 }
                 <MdQueueMusic color='#868686' size={25} className='cursor-pointer' />
