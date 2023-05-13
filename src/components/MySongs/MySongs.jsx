@@ -19,12 +19,12 @@ const MySongs = () => {
 
   return (
     <>
-      <h3 className="text-left text-4xl py-6 m-auto">{text.categories.my_songs}</h3>
+      <h3 className="text-left text-4xl py-6">{text.categories.my_songs}</h3>
       <div className="flex w-full items-center justify-center pb-12">
         <div className="w-full h-full ">
           <UpdateSongModal id={id} setOpen={setUpdateIsOpen} open={updateIsOpen} getMyTracks={getMyTracks} />
           <AddSongModal setOpen={setAddIsOpen} open={addIsOpen} getMyTracks={getMyTracks}  />
-            <div className=" h-40 w-40 flex flex-col gap-2 rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 m-auto hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200 mb-12" onClick={setAddIsOpen}>
+            <div className=" h-60 w-60 flex flex-col gap-2 rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200 mb-12" onClick={setAddIsOpen}>
               <AiOutlinePlus size={40} color="black" className="hover:rounded-full hover:bg-opacity-10 hover:bg-slate-500 mt-8" />
               <span>Add</span>
             </div>
