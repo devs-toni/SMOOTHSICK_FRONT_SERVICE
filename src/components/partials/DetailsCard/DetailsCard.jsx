@@ -82,7 +82,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
             <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} onClick={addSongToPlayer} alt="image description" width="" height="" />
             {
               playerState.current.name === title &&
-              <div className="absolute w-5">
+              <div className="absolute w-10">
                 <Bars color='#ef5567' />
               </div>
             }
@@ -94,8 +94,8 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
             {
               (ownerImage && artist_id === authState.id) &&
               <>
-                <AiFillDelete className='ml-4 mr-4 text-3xl' onClick={removeSong} />
-                <FaPencilAlt className='mr-4 text-2xl' />
+                <AiFillDelete className='ml-4 mr-4 text-2xl' onClick={removeSong} />
+                <FaPencilAlt className='mr-4 text-xl' />
               </>
             }
             <FaHeart className={`${isLike ? "text-red-400" : "text-gray-600"} mr-4`} onClick={removeLike} />

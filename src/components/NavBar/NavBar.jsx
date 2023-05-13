@@ -231,7 +231,7 @@ export const NavBar = () => {
                       </NavLink>
                       <NavLink to={`${CATEGORIES}${FAVOURITES}`} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-2 items-center w-full lg:w-full ml-10 justify-left'>
-                          <FaHeart className='h-6 w-6' />
+                          <FaHeart className='h-6 w-5 mr-1' />
                           <span className='md:hidden lg:block cursor-pointer'>{text.liked.name}</span>
                         </li>
                       </NavLink>
