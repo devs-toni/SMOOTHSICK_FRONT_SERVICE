@@ -1,6 +1,6 @@
 import { Dropdown } from 'flowbite-react';
 import { Toaster, toast } from "react-hot-toast";
-import { FaUserShield, FaUserPlus, FaKey } from "react-icons/fa";
+import { FaUserShield, FaUserPlus, FaKey, FaHeart } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai"
 import { RiFolderMusicFill, RiMenu4Fill } from "react-icons/ri"
 import { NavLink } from 'react-router-dom';
@@ -10,13 +10,14 @@ import flagFrance from '../../assets/imgs/flags/france.png'
 import flagChina from '../../assets/imgs/flags/china.png'
 import logo from '../../assets/imgs/logo/logo-no-background.svg'
 import logo_text from '../../assets/imgs/logo/logo-text-no-background.svg'
-import { SIGNUP, ADMIN, LOGIN, SEARCH, ACCOUNT, FAVOURITES, HOME, PLAYLISTS, ALBUM, PLAYLIST, ARTIST, MYSONGS } from '../../router/paths'
+import { SIGNUP, ADMIN, LOGIN, SEARCH, ACCOUNT, FAVOURITES, HOME, ALBUM, ARTIST, MYSONGS, CATEGORIES, PLAYLIST } from '../../router/paths'
 import { Fragment, useEffect, useState } from 'react';
 import { HiUserCircle } from "react-icons/hi"
 import { TbSearch } from "react-icons/tb"
-import { MdOutlineLogout } from 'react-icons/md';
+import { MdDriveFolderUpload, MdOutlineLogout, MdOutlinePlaylistAdd } from 'react-icons/md';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
+import uploadIcon from '../../assets/imgs/music-file.png'
 
 
 export const NavBar = () => {
@@ -37,14 +38,14 @@ export const NavBar = () => {
       ? setAsideLinks(
         [
           { path: HOME, icon: <AiFillHome className="h-6 w-6 " />, text: text.navbar.home },
-          { path: PLAYLISTS, icon: <RiFolderMusicFill className="h-6 w-6 " />, text: text.navbar.playlists },
+          // { path: CATEGORIES, icon: <RiFolderMusicFill className="h-6 w-6 " />, text: text.navbar.playlists },
           { path: SEARCH, icon: <TbSearch className="h-6 w-6" />, text: text.navbar.search }
         ]
       )
       : setAsideLinks(
         [
           { path: HOME, icon: <AiFillHome className="h-6 w-6 " />, text: text.navbar.home },
-          { path: PLAYLISTS, icon: <RiFolderMusicFill className="h-6 w-6 " />, text: text.navbar.playlists },
+          // { path: CATEGORIES, icon: <RiFolderMusicFill className="h-6 w-6 " />, text: text.navbar.playlists },
           { path: SEARCH, icon: <TbSearch className="h-6 w-6 " />, text: text.navbar.search },
           { path: LOGIN, icon: <FaUserShield className="h-6 w-6 " />, text: text.navbar.login },
           { path: SIGNUP, icon: <FaUserPlus className="h-6 w-6 " />, text: text.navbar.register }
@@ -216,6 +217,24 @@ export const NavBar = () => {
                   authState.isAuthenticated
                     ?
                     <>
+                      <NavLink to={`${CATEGORIES}${PLAYLIST}`} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-10 justify-left'>
+                          <MdOutlinePlaylistAdd className='h-6 w-6' />
+                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
+                        </li>
+                      </NavLink>
+                      <NavLink to={`${CATEGORIES}${MYSONGS}`} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-10 justify-left '>
+                          <MdDriveFolderUpload className='h-6 w-6' />
+                          <span className='md:hidden lg:block cursor-pointer'>{text.navbar.mysongs}</span>
+                        </li>
+                      </NavLink>
+                      <NavLink to={`${CATEGORIES}${FAVOURITES}`} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-10 justify-left'>
+                          <FaHeart className='h-6 w-6' />
+                          <span className='md:hidden lg:block cursor-pointer'>{text.liked.name}</span>
+                        </li>
+                      </NavLink>
                       <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
@@ -224,21 +243,6 @@ export const NavBar = () => {
                       <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
-                        </li>
-                      </NavLink>
-                      {/* <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-3 w-full lg:w-full ml-14 justify-left'>
-                          <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
-                        </li>
-                      </NavLink> */}
-                      <NavLink to={MYSONGS} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer " : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
-                          <span className='md:hidden lg:block cursor-pointer'>{text.navbar.mysongs}</span>
-                        </li>
-                      </NavLink>
-                      <NavLink to={FAVOURITES} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer " : "flex justify-center hover:text-deezer")}>
-                        <li className='inline-flex gap-2 items-center w-full lg:w-full ml-14 justify-left '>
-                          <span className='md:hidden lg:block cursor-pointer'>{text.liked.name}</span>
                         </li>
                       </NavLink>
                     </>
@@ -254,11 +258,12 @@ export const NavBar = () => {
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
                         </li>
                       </NavLink>
-                      {/* <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
+                      <NavLink to={PLAYLIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")}>
                         <li className='inline-flex gap-3 w-full lg:w-full ml-14 justify-left'>
+                          <MdOutlinePlaylistAdd />
                           <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
                         </li>
-                      </NavLink> */}
+                      </NavLink>
                     </>
                 }
               </div>

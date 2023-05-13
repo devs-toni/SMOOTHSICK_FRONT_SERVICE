@@ -45,7 +45,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
     addList(tracks)
     addQueue(tracks)
   }
-  console.log(track.title_playlist);
+
   const removeSong = () => {
     axios.delete(import.meta.env.VITE_BACKEND + "tracks/" + id, {
       headers: {
@@ -57,14 +57,14 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
       })
   }
 
-
+ 
   return (
     <div className='flex w-full items-center justify-center h-full'>
       <div className='w-full md:max-w-2xl lg:max-w-3xl min-w-[100%] pt-2'>
-        <div className='flex items-center rounded-xl hover:bg-chart h-16'>
+        <div className='flex items-center rounded-xl hover:bg-chart h-12 md:h-16'>
           <span className='hidden md:block md:w-1/12 text-center'>{count + 1}</span>
           <div className=' flex w-2/12 items-center justify-center'>
-            <img className="rounded-lg w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} onClick={addSongToPlayer} alt="image description" width="" height="" />
+            <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} onClick={addSongToPlayer} alt="image description" width="" height="" />
           </div>
           <div className='inline-flex w-4/12 justify-center truncate md:w-2/12'>
             <span className="text-xs pl-3 md:pl-0 text-center w-2/12 md:text-md grow truncate">{title}</span>
@@ -80,7 +80,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
             <FaHeart className={`${isLike ? "text-red-400" : "text-gray-600"} mr-4`} onClick={removeLike} />
             <SlOptions className="text-withe-600" />
           </div>
-          <span className="text-xs text-center font-normal hidden md:block md:w-3/12 md:text-md truncate">{track.title_playlist ? track.title_playlist : album_name}</span>
+          <span className="text-xs text-center font-normal hidden md:block md:w-3/12 md:text-md truncate">{track.title_playlist ? track.title_playlist : album_name || artist_name}</span>
           <span className="text-xs text-center hidden lg:block lg:w-2/12 md:text-md grow truncate">{track.label}</span>
           <span className="text-xs text-center w-2/12 md:text-md grow truncate">{(duration / 60).toFixed(2)} min</span>
         </div>

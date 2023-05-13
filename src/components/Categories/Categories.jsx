@@ -4,10 +4,9 @@ import { useEffect, useState, Fragment } from "react";
 import { useAuth } from '../../context/AuthContext';
 import { useUser } from '../../context/UserContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FAVOURITES } from '../../router/paths'
 import { v4 as uuidv4 } from 'uuid';
-import "./Playlists.css";
 import { BsClock } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import CreatePlaylistModal from "./CreatePlaylistModal/CreatePlaylistModal";
@@ -18,13 +17,16 @@ import { ComunityPlaylists } from "./ComunityPlaylists/ComunityPlaylists";
 import headPhone from "../../assets/imgs/background-headphones.jpg";
 import { opacity } from "@cloudinary/url-gen/actions/adjust";
 import { MdDesktopAccessDisabled } from "react-icons/md";
+import { MenuCategories } from "./MenuCategories/MenuCategories";
+import { Favourites } from "../Favourites/Favourites";
+import MySongs from "../MySongs/MySongs";
 
 
-export const Playlists = () => {
+export const Categories = () => {
   const { lists } = useUser();
   const { text } = useLanguage();
   const { authState } = useAuth();
-
+  const { } = useParams();
 
   const [selectedList, setSelectedList] = useState();
   const [currentList, setCurrentList] = useState();
@@ -33,11 +35,11 @@ export const Playlists = () => {
   const [changeImg, setChangeImg] = useState();
   const [imgs, setImgs] = useState([]);
 
-
   const [open, setOpen] = useState(false);
   const [newList, setNewList] = useState("");
   const [listName, setListName] = useState([]);
 
+  const { path } = useParams();
 
   const handleSetBgImg = ({ target }) => {
     const { id } = target;
@@ -51,7 +53,6 @@ export const Playlists = () => {
       setListName([...listName, newList])
     }
   }, [newList])
-
 
   const handleLists = (e) => {
     handleSetBgImg(e);
@@ -69,12 +70,7 @@ export const Playlists = () => {
       }
     }
   }, [currentList, selectedListId, hoverList]);
-
-
-
-
   return (
-
     <div className="w-full min-h-screen bg-no-repeat bg-cover bg-fixed"
       style={{
         backgroundImage: `url(${headPhone})`,
@@ -105,25 +101,35 @@ export const Playlists = () => {
                     </Button>
                   </div>
                 </div>
-                <h1 className="text-left text-4xl py-6">{text.categories.lists}</h1>
-
-                <div className="grid grid-cols-6 gap-10">
-                  <div className=" h-60 w-60 flex flex-col gap-2 rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200" onClick={() => setOpen(true)}>
-                    <AiOutlinePlus size={40} color="black" className="hover:rounded-full hover:bg-opacity-10 hover:bg-slate-500 mt-8" />
-                    <span>Create new playlist</span>
-                  </div>
-
-                  {
-                    listName.map((item, index) => (
-                      <NewListCard
-                        key={index}
-                        name={item.text}
-                      />
-                    ))
-                  }
-
-                </div>
-                <ComunityPlaylists />
+                <MenuCategories />
+                {
+                  path === "playlist"
+                    ?
+                    <>
+                      <h3 className="text-left text-4xl py-6">{text.categories.lists}</h3>
+                      <div className="grid grid-cols-6 gap-10">
+                        <div className=" h-60 w-60 flex flex-col gap-2 rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200" onClick={() => setOpen(true)}>
+                          <AiOutlinePlus size={40} color="black" className="hover:rounded-full hover:bg-opacity-10 hover:bg-slate-500 mt-8" />
+                          <span>Create new playlist</span>
+                        </div>
+                        {
+                          listName.map((item, index) => (
+                            <NewListCard
+                              key={index}
+                              name={item.text}
+                            />
+                          ))
+                        }
+                      </div>
+                      <ComunityPlaylists />
+                    </>
+                    :
+                    path === "favourites"
+                      ?
+                      < Favourites />
+                      :
+                      <MySongs />
+                }
               </>
               :
               <ComunityPlaylists />

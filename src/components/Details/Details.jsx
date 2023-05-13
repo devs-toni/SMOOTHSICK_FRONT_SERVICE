@@ -14,6 +14,7 @@ import { usePlayer } from '../../context/PlayerContext';
 export const Details = () => {
 
   const { type, id } = useParams();
+  console.log(type);
   const { text } = useLanguage();
   const [data, setData] = useState({});
   const [tracks, setTracks] = useState([]);
@@ -105,7 +106,7 @@ export const Details = () => {
   useEffect(() => {
     getDetails();
   }, [])
-  console.log(tracks);
+
   return (
     <div className='flex w-full items-center justify-center pb-12'>
       <div className="w-[80%] h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">

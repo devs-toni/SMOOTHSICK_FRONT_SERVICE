@@ -7,7 +7,7 @@ import { useLanguage } from '../../context/LanguageContext';
 
 export const ChangePassword = () => {
 	const { text } = useLanguage()
-  const { authState } = useAuth()
+	const { authState } = useAuth()
 	const [eyeClicked, setEyeClicked] = useState(false);
 
 
@@ -17,12 +17,12 @@ export const ChangePassword = () => {
 				setEyeClicked(false)
 			}, 3000);
 		}
-
 	}, [eyeClicked])
 
 	const styleInput = {
 		backgroundColor: "#00000000"
 	};
+
 	return (
 		<div className='w-full h-5/6 items-center flex flex-col justify-center'>
 			<div className="headphones-image"></div>
@@ -35,7 +35,6 @@ export const ChangePassword = () => {
 						color="white"
 						style={styleInput}
 						className=" border border-t-transparent border-l-transparent border-r-transparent bg-transparent focus:border-transparent focus:ring-0 border-b-1 border-neutral-500"
-
 						defaultValue={authState.user.firstName}
 					/>
 					<FaEye className="absolute right-2 top-9 opacity-60 hover:opacity-100 cursor-pointer" onClick={() => setEyeClicked(!eyeClicked)} />

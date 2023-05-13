@@ -3,7 +3,7 @@
   display: flex;
   justify-content: flex-start;
   margin-top: 40px;
-  border-bottom: 1px solid rgba(160, 160, 160, 0.13);
+  border-bottom: 1px solid #a0a0a021;
 }
 .artist-options__option {
   margin: 0 25px 0 50px;

@@ -38,7 +38,8 @@ module.exports = {
         "deezer-dark": "#a3313e"
       },
       borderColor: {
-        "deezer": "#ef5567"
+        "deezer": "#ef5567",
+        "line-section": "#a0a0a021"
       }
     },
   },

@@ -34,12 +34,10 @@
       "re_send_mail": "Escribe una dirreción de correo válida",
       "placeholder": "Añada su nuevo email"
     },
-
     "toast": {
       "toast1": "Nuevo usuario guardado",
       "toast2": "Este usuario ya existe"
     },
-
     "username": {
       "new_username_added": "Nuevo usuario guardado",
       "username": "Este usuario ya existe",
@@ -107,7 +105,8 @@
       "gender": "Género",
       "track": "Canción",
       "options": "Opciones",
-      "total": "Canciones"
+      "total": "Canciones",
+      "artist": "Artista"
     },
     "categories": {
       "lists": "Tus listas de reproducción",
@@ -119,7 +118,8 @@
       "track": "Canción",
       "artist": "Artista",
       "duration": "Duración",
-      "options": "Opciones"
+      "options": "Opciones",
+      "my_songs": "Mis canciones"
     },
     "filters": {
       "all": "Todo",
@@ -192,7 +192,6 @@
       "placeholder": "Type your new username",
       "required_name": "First name is required",
       "required_ok": "Alphabetical characters only"
-     
     },
     "navbar": {
       "home": "Home",
@@ -254,7 +253,8 @@
       "options": "Options",
       "total": "Songs",
       "name": "Favourites",
-      "plan": "Plan"
+      "plan": "Plan",
+      "artist": "Artist"
     },
     "categories": {
       "lists": "Your playlists",
@@ -266,7 +266,8 @@
       "track": "Track",
       "artist": "Artist",
       "duration": "Duration",
-      "options": "Options"
+      "options": "Options",
+      "my_songs": "My songs"
     },
     "filters": {
       "all": "All",
@@ -391,7 +392,8 @@
       "track": "Chanson",
       "options": "Options",
       "total": "Chansons",
-      "name": "Favoris"
+      "name": "Favoris",
+      "artist": "Artiste"
     },
     "categories": {
       "lists": "Vos playlists",
@@ -403,7 +405,8 @@
       "track": "Track",
       "artist": "Artist",
       "duration": "Duration",
-      "options": "Options"
+      "options": "Options",
+      "my_songs": "Mes chansons"
     },
     "filters": {
       "all": "Toutes",
@@ -528,7 +531,8 @@
       "track": "歌曲",
       "options": "选项",
       "total": "歌曲",
-      "name": "我的最爱"
+      "name": "我的最爱",
+      "artist": "艺术家"
     },
     "categories": {
       "lists": "您的音乐清单",
@@ -540,7 +544,8 @@
       "track": "Track",
       "artist": "Artist",
       "duration": "Duration",
-      "options": "Options"
+      "options": "Options",
+      "my_songs": "我的歌"
     },
     "filters": {
       "all": "全部",

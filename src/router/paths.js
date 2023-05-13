@@ -1,7 +1,8 @@
 export const SIGNUP = '/signup';
 export const LOGIN = '/login';
-export const PLAYLISTS = '/playlists';
-export const MYSONGS = '/my-songs';
+// export const PLAYLISTS = '/playlists';
+export const CATEGORIES = '/categories';
+export const MYSONGS = '/upload';
 export const ADMIN = '/admin';
 export const RECOVERY = '/recover';
 export const ACCOUNT = '/account';
@@ -11,5 +12,5 @@ export const DETAILS = '/details';
 export const CHANGEPASS = '/changepass';
 export const HOME = '/';
 export const ALBUM = '/albums';
-export const PLAYLIST = '/playlists';
+export const PLAYLIST = '/playlist';
 export const ARTIST = '/artists'

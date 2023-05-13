@@ -8,7 +8,7 @@ export * from './Albums/Albums';
 export * from './ArtistHeader/ArtistHeader';
 export * from './ArtistOptions/ArtistOptions';
 export * from './Artists/Artists';
-export * from './Categories/Playlists';
+export * from './Categories/Categories';
 export { default as CreatePlaylistModal } from './Categories/CreatePlaylistModal/CreatePlaylistModal';
 export { default as ListCard } from './Categories/ListCard/ListCard';
 export { default as ListContent } from './Categories/ListContent/ListContent';

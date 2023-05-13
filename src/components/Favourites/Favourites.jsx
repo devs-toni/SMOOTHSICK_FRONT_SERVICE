@@ -5,6 +5,8 @@ import { BsClock } from 'react-icons/bs'
 import { useUser } from '../../context/UserContext';
 import { DetailsCard } from '../index';
 import { v4 as uuidv4 } from 'uuid';
+import { Avatar, Button } from 'flowbite-react';
+import { FaRandom } from 'react-icons/fa';
 
 
 
@@ -12,7 +14,6 @@ export const Favourites = () => {
   const { userState, getFavourites } = useUser();
   const { favourites } = userState;
   const { authState } = useAuth();
-  const { user } = authState
   const { text } = useLanguage();
   const [totalTracks, setTotalTracks] = useState("");
 
@@ -28,24 +29,17 @@ export const Favourites = () => {
 
 
   return (
-    <div className="flex w-full items-center justify-center pb-24">
-      <div className='w-[80%] h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20'>
-        <h3 className='text-xl text-center font-medium lg:text-4xl lg:mb-3'>{text.liked.title}</h3>
-        <div className='flex items-center my-2 lg:mb-5'>
-          <img src={user.profilePicture} alt="User" className='user-profile-img mr-2 rounded-full w-full' width="" height="" />
-          <span className='mr-3 text-xs capitalize font-bold'>{user.firstName}</span>
-          <span className='text-gray-500 my-2 text-xs'>{totalTracks} {text.liked.total}</span>
-        </div>
-        <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%]">
-          <div className='flex items-center justify-between border-b border-b-gray-300'>
-            <p className="w-1/12">#</p>
-            <p className="w-2/12">{text.liked.track}</p>
-            <p className="w-2/12"></p>
-            <p className="w-3/12">Options</p>
-            <p className="w-3/12">{text.liked.album_table}</p>
-            <p className="w-2/12">{text.liked.gender}</p>
-            <BsClock className='w-2/12 ' />
-          </div>
+    <>
+      <h3 className='text-left text-4xl py-6'>{text.liked.title}</h3>
+      <div className="flex w-full flex-col justify-center pb-24">
+        <div className='flex items-center text-center justify-between border-b border-line-section'>
+          <p className="hidden md:block w-1/12">#</p>
+          <p className="w-2/12">{text.liked.track}</p>
+          <p className="w-2/12"></p>
+          <p className="w-2/12 md:w-3/12">Options</p>
+          <p className="hidden md:block md:w-3/12">{text.album.album_name}</p>
+          <p className="hidden lg:block lg:w-2/12">{text.liked.gender}</p>
+          <BsClock className='w-3/12 md:w-2/12' />
         </div>
         {
           favourites.length > 0 && favourites.map((track, index) => {
@@ -59,8 +53,9 @@ export const Favourites = () => {
             )
           })
         }
+
       </div>
-    </div>
+    </>
   )
 
 };

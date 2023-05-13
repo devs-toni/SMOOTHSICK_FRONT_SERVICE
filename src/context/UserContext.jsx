@@ -11,7 +11,6 @@ export const useUser = () => {
 export const UserProvider = ({ children }) => {
 
   const { authState } = useAuth();
-
   const getFavourites = useCallback(() => {
     axios.get(import.meta.env.VITE_BACKEND + 'users/favourites', {
       headers: {

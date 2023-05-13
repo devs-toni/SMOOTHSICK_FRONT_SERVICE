@@ -1,9 +1,8 @@
 import MySongs from "../components/MySongs/MySongs"
 
-const MySongsPage = () => {
+export const MySongsPage = () => {
   return (
     <MySongs />
   )
 }
 
-export default MySongsPage

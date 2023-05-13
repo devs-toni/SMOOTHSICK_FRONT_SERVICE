@@ -55,6 +55,7 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
     }
   }, [])
 
+
   const isTrack = type === FILTER_TYPES.TRACKS ? true : false;
   const isArtist = type === FILTER_TYPES.ARTISTS ? true : false;
   const isAlbum = type === FILTER_TYPES.ALBUMS ? true : false;
