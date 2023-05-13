@@ -1,57 +1,81 @@
 
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 import { usePlayer } from '../../context/PlayerContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { MdQueueMusic } from 'react-icons/md';
 import { FaRandom } from 'react-icons/fa';
 import "./Player.css"
 import { ProvideContent } from './ProvideContent/ProvideContent';
+import { useUser } from '../../context/UserContext';
+import { TYPES } from '../../context/types';
+import { FILTER_TYPES } from '../Search/filterTypes';
+import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
 
 const Player = () => {
-  const { playerState, playSong, addQueue } = usePlayer();
-  const { nextTrack, prevTrack, searchQueue } = ProvideContent()
+  const { playerState, playSong, addQueue, setIsListening } = usePlayer();
+  const { nextTrack, prevTrack, searchQueue } = ProvideContent();
+  const { toggleLike } = useUser();
+  const { authState } = useAuth();
   const { current, queue, list } = playerState
   const { preview, picture, name, artist } = current
-
 
   const [randomActive, setRandomActive] = useState(false)
   const [showDataSong, setShowDataSong] = useState("")
   const [showDataImg, setShowDataImg] = useState("")
-  const [isPlay, setIsPlay] = useState()
+  const [isPlay, setIsPlay] = useState();
+  const [isLike, setIsLike] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
+  const [isChanged, setIsChanged] = useState(false);
 
+  useEffect(() => {
+    (isChanged || current) &&
+      axios.get(import.meta.env.VITE_BACKEND + "tracks/" + current.id)
+        .then(({ data }) => {
+          setIsOwner((data.disk_number === -1 && authState.user.id === data.artist_id) ? true : false)
+          setIsLike(data.likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false);
+        })
+    return setIsChanged(false);
+  }, [isChanged, current])
 
 
   const handleIsPlaying = () => {
     setIsPlay(true)
     setShowDataSong("data-track-slide")
     setShowDataImg("data-track-slideup")
+    setIsListening(true)
   }
 
   const handleIsPaused = () => {
     setIsPlay(false)
+    setIsListening(false)
   }
 
   const handleClickNext = () => {
     playSong(nextTrack)
     setShowDataSong("hidden")
     setShowDataImg("hidden")
+    setIsChanged(true)
+    setIsListening(true)
   };
 
   const handleClickPrevious = () => {
     playSong(prevTrack)
     setShowDataSong("hidden")
     setShowDataImg("hidden")
+    setIsChanged(true)
+    setIsListening(true)
   };
-
 
   const handleFinish = () => {
     playSong(nextTrack)
     setShowDataSong("hidden")
     setShowDataImg("hidden")
+    setIsChanged(true)
+    setIsListening(false)
   }
-
 
   const handleRandomSong = () => {
     const randomList = queue.toSorted(() => { return Math.random() - 0.5 });
@@ -64,9 +88,7 @@ const Player = () => {
     }
   }
 
-
-
-
+  const heartStyles = isLike ? { color: "#ef5567", } : { color: "gray" }
 
   return (
     playerState.current === null ? '' :
@@ -106,7 +128,10 @@ const Player = () => {
               </div>,
               RHAP_UI.MAIN_CONTROLS,
               <div className='hidden md:flex md:gap-1 items-center'>
-                <AiOutlineHeart color='#868686' size={25} className='cursor-pointer' />
+                {
+                  !isOwner && 
+                  <AiOutlineHeart color='#868686' size={25} style={heartStyles} className='cursor-pointer' onClick={() => toggleLike(FILTER_TYPES.TRACKS, playerState.current, isLike, setIsLike)} />
+                }
                 <MdQueueMusic color='#868686' size={25} className='cursor-pointer' />
               </div>,
               RHAP_UI.VOLUME_CONTROLS,

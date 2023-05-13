@@ -14,7 +14,8 @@ export const PlayerProvider = ({ children }) => {
   const initialState = {
     current: {}, //1ºPRIORIDAD
     queue: [], //2ºPRIORIDAD
-    list: [] //ULTIMA 3º PRIORIDAD
+    list: [], //ULTIMA 3º PRIORIDAD
+    isListening: false
   }
 
   // SI PULSAMOS UN TRACK EN LIBRE --- SETEAMOS LA 3º PRIORIDAD EN LIST --- LAS CANCIONES QUE NOS DE LA GANA
@@ -43,6 +44,11 @@ export const PlayerProvider = ({ children }) => {
           ...state,
           queue: action.payload
         }
+      case TYPES.SET_IS_LISTENING:
+        return {
+          ...state,
+          isListening: action.payload
+        }
       default:
         return state;
     }
@@ -67,14 +73,19 @@ export const PlayerProvider = ({ children }) => {
       dispatch({ type: TYPES.ADD_SONG, payload: mp3 })
   }, [])
 
+  const setIsListening = useCallback((state) => {
+    dispatch({ type: TYPES.SET_IS_LISTENING, payload: state })
+  }, [])
+
 
   const data = useMemo(() => ({
     playerState,
     addSong,
     playSong,
     addList,
-    addQueue
-  }), [playerState, addSong, playSong, addList, addQueue]);
+    addQueue,
+    setIsListening
+  }), [playerState, setIsListening, addSong, playSong, addList, addQueue]);
 
   return (
     <PlayerContext.Provider value={data}>{children}</PlayerContext.Provider>
