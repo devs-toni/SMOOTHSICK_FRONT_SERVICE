@@ -1,19 +1,20 @@
 import { FaHeart, FaPencilAlt } from 'react-icons/fa'
 import { SlOptions } from 'react-icons/sl'
-import { GiMicrophone } from "react-icons/gi";
-import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useAuth } from '../../../context/AuthContext';
 import { useUser } from '../../../context/UserContext';
 import { AiFillDelete } from 'react-icons/ai';
 import { usePlayer } from '../../../context/PlayerContext';
+import Swal from 'sweetalert2';
+import { useState } from 'react';
+import { Bars } from 'react-loader-spinner';
 
 export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, album_name }) => {
 
   const { id, title, duration, preview, artist_name, album_cover, artist_id } = track;
   const { authState } = useAuth();
   const { removeFromFavourites, removeFromMyTracks } = useUser();
-  const { playSong, addQueue, addList } = usePlayer();
+  const { playerState, playSong, addQueue, addList } = usePlayer();
 
   const isLike = true;
 
@@ -47,17 +48,31 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
   }
 
   const removeSong = () => {
-    axios.delete(import.meta.env.VITE_BACKEND + "tracks/" + id, {
-      headers: {
-        "Authorization": authState.token
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      iconColor: '#ef5567',
+      showCancelButton: true,
+      background: '#18181b',
+      confirmButtonColor: '#1a1e20',
+      cancelButtonColor: '#ef5567',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(import.meta.env.VITE_BACKEND + "tracks/" + id, {
+          headers: {
+            "Authorization": authState.token
+          }
+        })
+          .then(({ data }) => {
+            removeFromMyTracks(id)
+          })
       }
     })
-      .then(({ data }) => {
-        removeFromMyTracks(id)
-      })
   }
 
- 
+
   return (
     <div className='flex w-full items-center justify-center h-full'>
       <div className='w-full md:max-w-2xl lg:max-w-3xl min-w-[100%] pt-2'>
@@ -65,6 +80,12 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
           <span className='hidden md:block md:w-1/12 text-center'>{count + 1}</span>
           <div className=' flex w-2/12 items-center justify-center'>
             <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} onClick={addSongToPlayer} alt="image description" width="" height="" />
+            {
+              playerState.current.name === title &&
+              <div className="absolute w-5">
+                <Bars color='#ef5567' />
+              </div>
+            }
           </div>
           <div className='inline-flex w-4/12 justify-center truncate md:w-2/12'>
             <span className="text-xs pl-3 md:pl-0 text-center w-2/12 md:text-md grow truncate">{title}</span>

@@ -1,7 +1,5 @@
-import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
+import { useState } from 'react';
 import './Home.css';
 import Slider from '../Slider/Slider';
 import Cover from '../Cover/Cover';
@@ -11,7 +9,6 @@ import { FILTER_TYPES } from '../Search/filterTypes';
 
 
 const Home = () => {
-  
 
   const { text } = useLanguage();
   const [loaded, setLoaded] = useState(false);
@@ -23,8 +20,6 @@ const Home = () => {
   const { lessAlbums, lessAlbumsLoaded } = useFetchLessHomeAlbums();
   const { lessTracks, lessTracksLoaded } = useFetchLessHomeTracks();
   const { tracks, tracksLoaded } = useFetchAllHomeTracks();
-  
-
 
   return (
     <div className='pb-20 main-home'>

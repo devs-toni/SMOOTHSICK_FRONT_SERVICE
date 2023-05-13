@@ -99,6 +99,7 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: TYPES.SET_FAVOURITES, payload: filteredTracks })
   }, [userState.favourites]);
 
+
   const removeFromMyTracks = useCallback((trackId) => {
     const filteredTracks = userState.myTracks.filter(t => t.id !== trackId);
     dispatch({ type: TYPES.SET_MY_TRACKS, payload: filteredTracks })
