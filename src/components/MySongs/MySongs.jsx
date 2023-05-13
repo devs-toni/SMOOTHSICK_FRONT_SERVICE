@@ -7,21 +7,24 @@ import { useLanguage } from "../../context/LanguageContext";
 import { BsClock } from "react-icons/bs";
 import unknown from '../../assets/imgs/UnkownAlbum.jpg';
 import { useUser } from "../../context/UserContext";
+import UpdateSongModal from "./UpdateSongModal/UpdateSongModal";
 
 const MySongs = () => {
 
-  const [open, setOpen] = useState(false);
+  const [addIsOpen, setAddIsOpen] = useState(false);
+  const [updateIsOpen, setUpdateIsOpen] = useState(false);
+  const [id, setId] = useState("");
   const { text } = useLanguage();
   const { userState, getMyTracks } = useUser();
-
 
   return (
     <>
       <h3 className="text-left text-4xl py-6">{text.categories.my_songs}</h3>
       <div className="flex w-full items-center justify-center pb-12">
         <div className="w-full h-full ">
-          <AddSongModal setOpen={setOpen} open={open} getMyTracks={getMyTracks}  />
-            <div className=" h-60 w-60 flex flex-col gap-2 rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200 mb-12" onClick={setOpen}>
+          <UpdateSongModal id={id} setOpen={setUpdateIsOpen} open={updateIsOpen} getMyTracks={getMyTracks} />
+          <AddSongModal setOpen={setAddIsOpen} open={addIsOpen} getMyTracks={getMyTracks}  />
+            <div className=" h-60 w-60 flex flex-col gap-2 rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200 mb-12" onClick={setAddIsOpen}>
               <AiOutlinePlus size={40} color="black" className="hover:rounded-full hover:bg-opacity-10 hover:bg-slate-500 mt-8" />
               <span>Add</span>
             </div>
@@ -46,11 +49,12 @@ const MySongs = () => {
                     ownerImage={unknown}
                     tracks={userState.myTracks}
                     playlistName="Owner"
+                    setId={setId}
+                    setUpdateIsOpen={setUpdateIsOpen}
                   />
                 )
               })
             }
-          
         </div>
       </div>
     </>

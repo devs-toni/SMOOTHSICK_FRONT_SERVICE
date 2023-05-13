@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { Bars } from 'react-loader-spinner';
 
-export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, album_name }) => {
+export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, album_name, setId, setUpdateIsOpen }) => {
 
   const { id, title, duration, preview, artist_name, album_cover, artist_id } = track;
   const { authState } = useAuth();
@@ -72,6 +72,10 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
     })
   }
 
+  const updateTrack = () => {
+    setUpdateIsOpen(true)
+    setId(id);
+  }
 
   return (
     <div className='flex w-full items-center justify-center h-full'>
@@ -95,7 +99,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
               (ownerImage && artist_id === authState.id) &&
               <>
                 <AiFillDelete className='ml-4 mr-4 text-2xl' onClick={removeSong} />
-                <FaPencilAlt className='mr-4 text-xl' />
+                <FaPencilAlt className='mr-4 text-xl' onClick={updateTrack} />
               </>
             }
             {
