@@ -29,7 +29,6 @@ export const Recover = () => {
     try {
       await axios.patch(import.meta.env.VITE_BACKEND + "users/resetPassword", { pass, userId })
         .then(({ data, status }) => {
-          console.log(status);
           if (status === 204) {
             toast.error("The password must have: between 8 and 16 characters, 1 number, 1 lowercase letter, 1 uppercase letter, and a special character", {
               style: {

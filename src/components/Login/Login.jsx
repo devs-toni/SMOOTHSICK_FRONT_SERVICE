@@ -107,7 +107,7 @@ const Login = () => {
 
   const setProfileOAuthGoogle = (profile) => {
     const { email, id, given_name, family_name, picture } = profile;
-    console.log(email, id, given_name, family_name, picture);
+    //console.log(email, id, given_name, family_name, picture);
     const user = {
       id,
       firstName: given_name,
@@ -125,7 +125,7 @@ const Login = () => {
       );
     }
     const userG = { email, password };
-    console.log(userG);
+    //console.log(userG);
   };
   const loginG = useGoogleLogin({
 

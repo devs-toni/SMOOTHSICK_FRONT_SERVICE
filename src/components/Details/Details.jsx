@@ -14,7 +14,6 @@ import { usePlayer } from '../../context/PlayerContext';
 export const Details = () => {
 
   const { type, id } = useParams();
-  console.log(type);
   const { text } = useLanguage();
   const [data, setData] = useState({});
   const [tracks, setTracks] = useState([]);
