@@ -16,8 +16,7 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
   const { authState } = useAuth();
-  const { toggleLike } = useUser();
-  const [isLike, setIsLike] = useState(false);
+
   useLayoutEffect(() => {
     if (type == FILTER_TYPES.ARTISTS) {
       setData({
@@ -27,7 +26,6 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
       })
     } else if (type == FILTER_TYPES.TRACKS) {
       setCanPlay(true);
-      setIsLike(obj.likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false)
       setData({
         id: obj.id,
         name: obj.title,
@@ -98,12 +96,12 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
             <p className={`truncate ${targetClass}__data--name`}>{data.name}</p>
           </div>
         }
-        {
+        {/*
           (authState.isAuthenticated && isTrack) &&
           <div className={`${(isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={() => toggleLike(type, data, isLike, setIsLike)}>
             <FaHeart className={(isLike) ? "text-red-500" : "text-gray-600"} />
           </div>
-        }
+        */}
       </div>
     </NavLink>
   )
