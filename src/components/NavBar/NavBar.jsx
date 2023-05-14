@@ -211,8 +211,6 @@ export const NavBar = () => {
               }
 
 
-              {/* <section className='flex items-center justify-center gap-20 w-full'>
-              <div className='flex flex-col ml-6 md:ml-0 justify-center gap-6 h-full lg:w-full '> */}
               {
                 authState.isAuthenticated
                   ?
@@ -267,8 +265,6 @@ export const NavBar = () => {
                   </>
               }
             </section>
-            {/* </div>
-            </section> */}
             {
               authState.isAuthenticated &&
               <div className='flex flex-col items-center gap-6 md:pt-4 lg:w-full  hover:text-deezer'>

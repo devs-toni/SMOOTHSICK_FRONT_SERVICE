@@ -17,6 +17,7 @@ import { MySongsPage } from '../pages/MySongsPage';
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
 import { SearchPage } from '../pages/SearchPage';
+import { ListContent } from '../components';
 
 
 export const MyRouter = () => {
@@ -29,14 +30,13 @@ export const MyRouter = () => {
         <Route path={SEARCH} element={<SearchPage />} />
         <Route path={ARTIST} element={<ArtistsPage />} />
         <Route path={ALBUM} element={<AlbumsPage />} />
-        {/* <Route path={PLAYLIST} element={<ComunityPlaylistsPage />} /> */}
 
-        <Route path={`${CATEGORIES}`} element={<CategoriesPage />} >
-          <Route path="path" element={<ComunityPlaylistsPage />} />
+        <Route path={CATEGORIES} element={<CategoriesPage />} >
+          <Route path=":path" element={<ComunityPlaylistsPage />} />
           <Route path=":path" element={<FavouritesPage />} />
           <Route path=":path" element={<MySongsPage />} />
         </Route>
-
+        <Route path={`${CATEGORIES}${PLAYLIST}/:id`} element={<ListContent />} />
 
 
 

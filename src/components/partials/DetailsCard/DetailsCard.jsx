@@ -19,11 +19,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
   const isLike = true;
 
   const removeLike = () => {
-    axios.patch(import.meta.env.VITE_BACKEND + "tracks/like/" + id, {}, {
-      headers: {
-        "Authorization": authState.token
-      }
-    })
+    axios.patch(import.meta.env.VITE_BACKEND + "tracks/like/" + id, {}, { headers: { "Authorization": authState.token } })
       .then(({ data }) => {
         removeFromFavourites(id);
       })
@@ -60,11 +56,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(import.meta.env.VITE_BACKEND + "tracks/" + id, {
-          headers: {
-            "Authorization": authState.token
-          }
-        })
+        axios.delete(import.meta.env.VITE_BACKEND + "tracks/" + id, { headers: { "Authorization": authState.token } })
           .then(({ data }) => {
             removeFromMyTracks(id)
           })

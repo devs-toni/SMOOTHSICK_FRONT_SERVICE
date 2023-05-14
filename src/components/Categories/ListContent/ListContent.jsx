@@ -1,20 +1,54 @@
 import React, { useState } from 'react'
 import Search from '../../Search/Search'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useUser } from '../../../context/UserContext';
 import { useLanguage } from '../../../context/LanguageContext';
 import { BsClock } from 'react-icons/bs';
 import { Favourites } from '../../Favourites/Favourites';
 import { Avatar, Button } from 'flowbite-react';
-import { SEARCH } from '../../../router/paths';
+import { CATEGORIES, PLAYLIST, SEARCH } from '../../../router/paths';
 import { useAuth } from '../../../context/AuthContext';
+import { toast } from 'react-hot-toast';
+import axios from 'axios';
 
 const ListContent = () => {
   const { text } = useLanguage();
-  const { lists } = useUser();
+  const { getMyPlaylists } = useUser();
   const { authState } = useAuth();
-  const listName = useParams()
-  
+  const { id } = useParams()
+  const navigate = useNavigate()
+
+  const handleDeletePlaylist = () => {
+    axios.delete(import.meta.env.VITE_BACKEND + 'users/deletePlaylist/' + id, { headers: { "Authorization": `${authState.token}` } })
+      .then(({ status }) => {
+        if (status === 201) {
+          getMyPlaylists()
+          navigate(`${CATEGORIES}${PLAYLIST}`)
+          toast.success("Playlist deleted successfully", {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+            error: {
+              duration: 5000,
+            },
+          });
+        } else {
+          toast.error("Something went wrong", {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+            error: {
+              duration: 5000,
+            },
+          });
+        }
+      })
+  }
+
   return (
     <>
 
@@ -22,13 +56,14 @@ const ListContent = () => {
         <div className="flex flex-col items-start justify-center ml-20 mr-20 pt-24 gap-10">
           <div className="flex items-left justify-left h-full w-full gap-5">
             <Avatar
-              img={authState.user.profilePicture}
+              img={""}
               rounded={true}
               size="xl"
             />
             <div className="flex flex-col gap-3">
-              <span className='text-4xl'>{listName.name}</span>
+              <span className='text-4xl'>{ }</span>
               <p className="text-md inline-block">{authState.user.firstName + " " + authState.user.lastName}</p>
+              <Button className='' onClick={handleDeletePlaylist}>delete playlist</Button>
             </div>
           </div>
           <div className="z-10 flex flex-col text-center justify-center items-center h-full w-full">
@@ -48,14 +83,14 @@ const ListContent = () => {
           </div>
         </div>
       </div >
-      {
+      {/* {
         lists.length > 0
           ?
           ""
           :
           <>
-            <div className="z-10 flex flex-col justify-center pb-20 gap-3 h-30 text-center w-full xl:w-4/5">
-              {/* {selectedList?.songs &&
+            <div className="z-10 flex flex-col justify-center pb-20 gap-3 h-30 text-center w-full xl:w-4/5"> */}
+      {/* {selectedList?.songs &&
                 selectedList.songs.map((data) => (
                   <SongCard
                     key={uuidv4()}
@@ -66,9 +101,9 @@ const ListContent = () => {
                     track_url={data.url}
                   />
                 ))} */}
-            </div>
+      {/* </div>
           </>
-      }
+      } */}
     </>
 
   )

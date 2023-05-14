@@ -23,53 +23,22 @@ import MySongs from "../MySongs/MySongs";
 
 
 export const Categories = () => {
-  const { lists } = useUser();
   const { text } = useLanguage();
-  const { authState } = useAuth();
-  const { } = useParams();
-
-  const [selectedList, setSelectedList] = useState();
-  const [currentList, setCurrentList] = useState();
-  const [selectedListId, setSelectedListId] = useState([]);
-  const [hoverList, setHoverList] = useState();
-  const [changeImg, setChangeImg] = useState();
-  const [imgs, setImgs] = useState([]);
-
-  const [open, setOpen] = useState(false);
-  const [newList, setNewList] = useState("");
-  const [listName, setListName] = useState([]);
-
   const { path } = useParams();
-
-  const handleSetBgImg = ({ target }) => {
-    const { id } = target;
-    const hoverList = lists.find((i) => i.id === parseInt(id));
-    const newArray = hoverList.songs.slice(0, 4);
-    setImgs(newArray.map(img => img.thumbnail));
-  }
+  const { userState } = useUser();
+  const { authState } = useAuth();
+  const { userPlaylist } = userState
+  const [totalTracks, setTotalTracks] = useState("");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (newList) {
-      setListName([...listName, newList])
+    if (userPlaylist.length > 0) {
+      setTotalTracks(userPlaylist.length)
     }
-  }, [newList])
+  }, [userPlaylist.length])
 
-  const handleLists = (e) => {
-    handleSetBgImg(e);
-    setCurrentList(e.target.id);
-  };
 
-  useEffect(() => {
-    if (lists) {
-      setSelectedList(lists.find((i) => i.id === parseInt(currentList)));
-      setHoverList(
-        lists.find((i) => i.id === parseInt(selectedListId))
-      );
-      if (hoverList) {
-        setChangeImg(hoverList.songs[0].thumbnail);
-      }
-    }
-  }, [currentList, selectedListId, hoverList]);
+
   return (
     <div className="w-full min-h-screen bg-no-repeat bg-cover bg-fixed"
       style={{
@@ -78,7 +47,7 @@ export const Categories = () => {
     >
 
       <div className="h-full p-4 md:ml-20 lg:ml-52">
-        <CreatePlaylistModal setOpen={setOpen} open={open} setNewList={setNewList} />
+        <CreatePlaylistModal setOpen={setOpen} open={open} />
         <div className="flex flex-col items-start justify-center ml-20 mr-20 pt-24 mb-24 gap-5">
           {
             authState.isAuthenticated
@@ -106,17 +75,21 @@ export const Categories = () => {
                   path === "playlist"
                     ?
                     <>
-                      <h3 className="text-left text-4xl py-6">{text.categories.lists}</h3>
+                      <div className="inline-flex items-center">
+                        <h3 className="text-left text-4xl py-6">{text.categories.lists}</h3>
+                        <span>{totalTracks.length}</span>
+                      </div>
                       <div className="grid grid-cols-6 gap-10">
                         <div className=" h-60 w-60 flex flex-col gap-2 rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200" onClick={() => setOpen(true)}>
                           <AiOutlinePlus size={40} color="black" className="hover:rounded-full hover:bg-opacity-10 hover:bg-slate-500 mt-8" />
                           <span>Create new playlist</span>
                         </div>
                         {
-                          listName.map((item, index) => (
+                          userPlaylist.map((list, index) => (
                             <NewListCard
                               key={index}
-                              name={item.text}
+                              id={list._id}
+                              title={list.title}
                             />
                           ))
                         }
