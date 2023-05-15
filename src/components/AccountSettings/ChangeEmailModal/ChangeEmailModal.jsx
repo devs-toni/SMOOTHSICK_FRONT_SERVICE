@@ -74,7 +74,7 @@ export const ChangeEmailModal = ({ setOpen, open }) => {
                                         className='bg-deezer'
                                         onClick={handleSubmit(onSubmitEmail)}
                                     >
-                                        Update
+                                        {text.recover.btn_update}
                                     </Button>
                                 </div>
                             </form>

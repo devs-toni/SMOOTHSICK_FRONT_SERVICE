@@ -14,7 +14,11 @@
       "login": "Iniciar Sesión",
       "recover": "Recuperar contraseña",
       "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password",
-      "send": "Enviar correo de recuperación"
+      "send": "Enviar correo de recuperación",
+      "current_pass": "Confirme su contraseña actual",
+      "n_pass": "Nueva contraseña",
+      "ok_n_pass": "Confirme nueva contraseña",
+      "btn-create": "Crear"
     },
     "login": {
       "title": "Inicia sesión en Smoothsick",
@@ -32,7 +36,11 @@
       "submit": "Cambiar Contraseña",
       "re_mail": "Cambiar email",
       "re_send_mail": "Escribe una dirreción de correo válida",
-      "placeholder": "Añada su nuevo email"
+      "placeholder": "Añada su nuevo email",
+      "pass_notmacht": "Las contraseñas no coinciden",
+      "ok": "Escriba su contraseña",
+      "btn_update": "Actualizar",
+      "btn_ok": "Confirmar"
     },
     "toast": {
       "toast1": "Nuevo usuario guardado",
@@ -45,6 +53,8 @@
       "placeholder": "Escribe tu nuevo usuario",
       "required_name": "Se requiere el nombre",
       "required_ok": "Solo caracteres alfabéticos"
+      
+
     },
     "navbar": {
       "home": "Home",
@@ -78,6 +88,7 @@
       "button_m": "Modificar",
       "erase_acc": "Elimina tu cuenta",
       "backtohome": "Volver al Menú Principal"
+      
     },
     "charts": {
       "title": "Las mejores listas"
@@ -161,7 +172,12 @@
       "login": "Sign in here",
       "recover": "Recover password",
       "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password",
-      "send": "Send recover email"
+      "send": "Send recover email",
+      "current_pass": "Enter your current password",
+      "n_pass": "New password",
+      "ok_n_pass": "Confirm new password",
+      "btn-create": "Create"
+
     },
     "login": {
       "title": "To continue, log in to Smoothsick",
@@ -179,11 +195,16 @@
       "submit": "Change Password",
       "re_mail": "Change E-mail",
       "re_send_mail": "Please write a correct e-mail adress",
-      "placeholder": "Add your new e-mail adress"
+      "placeholder": "Add your new e-mail adress",
+      "pass_notmacht": "Passwords don't match",
+      "ok": "Write your password",
+      "btn_update": "Update",
+      "btn_ok": "Confirm"
+      
     },
     "toast": {
-      "toast1": "Nuevo usuario guardado",
-      "toast2": "Este usuario ya existe"
+      "toast1": "New saved user",
+      "toast2": "This user already exists"
     },
     "username": {
       "new_username_added": "New user saved",
@@ -306,7 +327,11 @@
       "forget": "Mot de passe oublié?",
       "submit": "S'inscrire",
       "already": "Avez-vous déjà un compte?",
-      "login": "Se connecter"
+      "login": "Se connecter",
+      "current_pass": "Entrez votre mot de passe actuel",
+      "n_pass": "Nouveau mot de passe",
+      "ok_n_pass": "Confirmer le mot de passe",
+      "btn-create": "Créer"
     },
     "login": {
       "title": "Pour continuer connectez-vous à Smoothsick",
@@ -318,17 +343,22 @@
       "singin": "S'identifier'"
     },
     "recover": {
-      "title": "Recover your password",
-      "new1": "New Password",
-      "new2": "Repeat New Password",
-      "submit": "Change Password",
+      "title": "Récupérer votre mot de passe",
+      "new1": "Nouveau mot de passe",
+      "new2": "Répéter le nouveau mot de passe",
+      "submit": "Changer le mot de passe",
       "re_mail": "Changer l'adresse email",
       "re_send_mail": "Veuillez écrire une adresse e-mail correcte",
-      "placeholder": "Ajoutez votre nouvelle e-mail"
+      "placeholder": "Ajoutez votre nouvelle e-mail",
+      "pass_notmacht": "Les mots de passe ne correspondent pas",
+      "ok": "Confirmer le mot de passe",
+      "confirm": "Entrez votre mot de passe",
+      "btn_update": "Mettre à jour",
+      "btn_ok": "Confirmer"
     },
     "toast": {
-      "toast1": "Nuevo usuario guardado",
-      "toast2": "Este usuario ya existe"
+      "toast1": "Nouvel utilisateur enregistré",
+      "toast2": "Cet utilisateur existe déjà"
     },
     "username": {
       "new_username_added": "Nouvel utilisateur enregistré",
@@ -445,7 +475,11 @@
       "forget": "忘记了您的密码?",
       "submit": "注册",
       "already": "已经注册了账户?",
-      "login": "在此登录"
+      "login": "在此登录",
+      "current_pass": "输入您的当前密码",
+      "n_pass": "新密码",
+      "ok_n_pass": "确认新密码",
+      "btn-create": "创造"
     },
     "login": {
       "title": "登录Smoothsick以继续",
@@ -463,11 +497,16 @@
       "submit": "更改密码",
       "re_mail": "更改电子邮件地址",
       "re_send_mail": "请填写正确的邮箱地址",
-      "placeholder": "添加您的新电子邮件"
+      "placeholder": "添加您的新电子邮件",
+      "pass_notmacht": "密码不匹配",
+      "ok": "确认密码",
+      "confirm": "确认您的密码",
+      "btn_update": "更新",
+      "btn_ok": "确认"
     },
     "toast": {
-      "toast1": "Nuevo usuario guardado",
-      "toast2": "Este usuario ya existe"
+      "toast1": "新保存的用户",
+      "toast2": "此用户已存在"
     },
     "username": {
       "new_username_added": "新注册用户",
