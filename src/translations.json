@@ -88,7 +88,8 @@
       "backtohome": "Volver al Menú Principal"
     },
     "charts": {
-      "title": "Las mejores listas"
+      "title": "Las mejores listas",
+      "com_playlists": "Listas de la comunidad"
     },
     "home": {
       "top_artists": "Artistas Top",
@@ -102,7 +103,7 @@
     },
     "details": {
       "mix": "MIX",
-      "fans": "fans",
+      "fans": "Seguidores",
       "albums": "Discografía"
     },
     "liked": {
@@ -243,7 +244,8 @@
       "backtohome": "Back to Home"
     },
     "charts": {
-      "title": "Top Charts"
+      "title": "Top Charts",
+      "com_playlists": "Community playlists"
     },
     "home": {
       "top_artists": "Top Artists",
@@ -397,7 +399,8 @@
       "backtohome": "Rentrer à la Maison"
     },
     "charts": {
-      "title": "Le hit-parade"
+      "title": "Le hit-parade",
+      "com_playlists": "Playlists communautaires"
     },
     "home": {
       "top_artists": "Top",
@@ -550,7 +553,9 @@
       "backtohome": "回到家"
     },
     "charts": {
-      "title": "推荐歌单"
+      "title": "推荐歌单",
+      "com_playlists": "社区播放列表"
+
     },
     "home": {
       "top_artists": "Top",

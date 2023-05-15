@@ -21,7 +21,7 @@ export const ComunityPlaylists = () => {
           lessPlaylistsLoaded &&
           <>
             <div className={`w-full ${authState.isAuthenticated ? " border-t border-line-section" : ""}` }>
-              <h1 className=' text-left text-4xl py-11'>Community playlists</h1>
+              <h1 className=' text-left text-4xl py-11'>{text.charts.com_playlists}</h1>
             </div>
             <div className='grid w-full md:grid-cols-8 gap-3'>
               {
