@@ -146,7 +146,7 @@
       "btn_save_pass": "Guarda tus cambios"
     },
     "album": {
-      "track_name": "Track",
+      "track_name": "Canción",
       "album_name": "Album",
       "record_company": "Discográfica"
     },
@@ -432,7 +432,7 @@
       "title_table": "Titre",
       "album_table": "Album",
       "portrait": "Portrait",
-      "track": "Track",
+      "track": "Piste",
       "artist": "Artist",
       "duration": "Duration",
       "options": "Options",
@@ -585,10 +585,10 @@
       "title_table": "歌曲名称",
       "album_table": "专辑",
       "portrait": "封面",
-      "track": "",
-      "artist": "Artist",
-      "duration": "Duration",
-      "options": "Options",
+      "track": "歌",
+      "artist": "艺术家",
+      "duration": "期间",
+      "options": "选项",
       "my_songs": "我的歌"
     },
     "filters": {
