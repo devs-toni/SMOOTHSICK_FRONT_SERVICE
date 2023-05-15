@@ -18,7 +18,7 @@
       "current_pass": "Confirme su contraseña actual",
       "n_pass": "Nueva contraseña",
       "ok_n_pass": "Confirme nueva contraseña",
-      "btn-create": "Crear"
+      "btn_create": "Crear"
     },
     "login": {
       "title": "Inicia sesión en Smoothsick",
@@ -44,7 +44,8 @@
     },
     "toast": {
       "toast1": "Nuevo usuario guardado",
-      "toast2": "Este usuario ya existe"
+      "toast2": "Este usuario ya existe",
+      "toast3": "Lista de reproducción creada con éxito"
     },
     "username": {
       "new_username_added": "Nuevo usuario guardado",
@@ -152,7 +153,10 @@
       "record_company": "Discográfica"
     },
     "playlists": {
-      "playlist": "Playlist"
+      "playlist": "Lista de canciones",
+      "holder_name":"Nombre de la lista",
+      "holder_des":"Descripción de la lista"
+      
     }
   },
   "en": {
@@ -174,7 +178,7 @@
       "current_pass": "Enter your current password",
       "n_pass": "New password",
       "ok_n_pass": "Confirm new password",
-      "btn-create": "Create"
+      "btn_create": "Create"
     },
     "login": {
       "title": "To continue, log in to Smoothsick",
@@ -200,7 +204,8 @@
     },
     "toast": {
       "toast1": "New saved user",
-      "toast2": "This user already exists"
+      "toast2": "This user already exists",
+      "toast3": "Playlist created succcesfully"
     },
     "username": {
       "new_username_added": "New user saved",
@@ -309,7 +314,10 @@
       "record_company": "Record company"
     },
     "playlists": {
-      "playlist": "Playlist"
+      "playlist": "Playlist",
+      "holder_name":"Playlist name",
+      "holder_des":"Playlist description"
+      
     }
   },
   "fr": {
@@ -328,7 +336,7 @@
       "current_pass": "Entrez votre mot de passe actuel",
       "n_pass": "Nouveau mot de passe",
       "ok_n_pass": "Confirmer le mot de passe",
-      "btn-create": "Créer"
+      "btn_create": "Créer"
     },
     "login": {
       "title": "Pour continuer connectez-vous à Smoothsick",
@@ -355,7 +363,8 @@
     },
     "toast": {
       "toast1": "Nouvel utilisateur enregistré",
-      "toast2": "Cet utilisateur existe déjà"
+      "toast2": "Cet utilisateur existe déjà",
+      "toast3": "Playlist créée avec succès"
     },
     "username": {
       "new_username_added": "Nouvel utilisateur enregistré",
@@ -463,7 +472,9 @@
       "record_company": "Maison de disques"
     },
     "playlists": {
-      "playlist": "Playlist"
+      "playlist": "Playlist",
+      "holder_name":"Nom de la playlist",
+      "holder_des":"Description de la playlist"
     }
   },
   "chn": {
@@ -482,7 +493,7 @@
       "current_pass": "输入您的当前密码",
       "n_pass": "新密码",
       "ok_n_pass": "确认新密码",
-      "btn-create": "创造"
+      "btn_create": "创造"
     },
     "login": {
       "title": "登录Smoothsick以继续",
@@ -509,7 +520,8 @@
     },
     "toast": {
       "toast1": "新保存的用户",
-      "toast2": "此用户已存在"
+      "toast2": "此用户已存在",
+      "toast3": "成功创建的播放列表"
     },
     "username": {
       "new_username_added": "新注册用户",
@@ -618,7 +630,9 @@
       "record_company": "标签"
     },
     "playlists": {
-      "playlist": "播放列表"
+      "playlist": "播放列表",
+      "holder_name":"播放列表名称",
+      "holder_des":"播放列表的说明"
     }
   }
 }
