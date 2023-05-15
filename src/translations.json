@@ -53,8 +53,6 @@
       "placeholder": "Escribe tu nuevo usuario",
       "required_name": "Se requiere el nombre",
       "required_ok": "Solo caracteres alfabéticos"
-      
-
     },
     "navbar": {
       "home": "Home",
@@ -88,7 +86,6 @@
       "button_m": "Modificar",
       "erase_acc": "Elimina tu cuenta",
       "backtohome": "Volver al Menú Principal"
-      
     },
     "charts": {
       "title": "Las mejores listas"
@@ -177,7 +174,6 @@
       "n_pass": "New password",
       "ok_n_pass": "Confirm new password",
       "btn-create": "Create"
-
     },
     "login": {
       "title": "To continue, log in to Smoothsick",
@@ -200,7 +196,6 @@
       "ok": "Write your password",
       "btn_update": "Update",
       "btn_ok": "Confirm"
-      
     },
     "toast": {
       "toast1": "New saved user",
@@ -263,7 +258,7 @@
     "details": {
       "mix": "MIX",
       "fans": "fans",
-      "albums": "Albums"
+      "albums": "Discography"
     },
     "liked": {
       "title": "Liked Songs",
@@ -414,6 +409,11 @@
       "less_albums": "Más",
       "less_tracks": "Más"
     },
+    "details": {
+      "mix": "MÉLANGER",
+      "fans": "fans",
+      "albums": "Discographie"
+    },
     "liked": {
       "title": "Chansons Favoris",
       "title_table": "TITRE",
@@ -562,6 +562,11 @@
       "less_albums": "Más",
       "less_tracks": "Más"
     },
+     "details": {
+       "mix": "混合",
+       "fans": "球迷",
+       "albums": "唱片目录"
+    },
     "liked": {
       "title": "喜爱的歌曲",
       "title_table": "歌曲名称",
@@ -580,7 +585,7 @@
       "title_table": "歌曲名称",
       "album_table": "专辑",
       "portrait": "封面",
-      "track": "Track",
+      "track": "",
       "artist": "Artist",
       "duration": "Duration",
       "options": "Options",
