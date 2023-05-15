@@ -445,14 +445,14 @@
       "albums": "Albums",
       "tracks": "Pistes",
       "users": "Utilisateurs",
-      "my": "My songs"
+      "my": "Mes chansons"
     },
     "changepass": {
-      "title": "Change your password",
-      "current_pass": "Current password",
-      "new_pass": "New password",
-      "r_new_pass": "Repeat new password",
-      "btn_save_pass": "Save your changes"
+      "title": "Modifier votre mot de passe",
+      "current_pass": "Mot de passe actuel",
+      "new_pass": "Nouveau mot de passe",
+      "r_new_pass": "Répéter le nouveau mot de passe",
+      "btn_save_pass": "Enregistrez vos modifications"
     },
     "album": {
       "track_name": "Chanson",
