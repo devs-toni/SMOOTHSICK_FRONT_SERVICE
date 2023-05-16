@@ -26,7 +26,7 @@ const RecoverModal = ({ open, setOpen }) => {
           dataState.userId = id
           dataState.token = token
           setIsLoading(false)
-          toast.success("Check your email to generate a new password!", {
+          toast.success("Check your email!", {
             style: {
               borderRadius: "10px",
               background: "#333",

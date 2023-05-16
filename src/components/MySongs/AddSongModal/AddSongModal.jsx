@@ -55,6 +55,7 @@ const AddSongModal = ({ open, setOpen, getMyTracks }) => {
           text: "Your file has been uploaded!",
           icon: 'success',
           background: '#18181b',
+          confirmButtonColor: '#ef5567',
         }
         )
         getMyTracks();
@@ -65,6 +66,7 @@ const AddSongModal = ({ open, setOpen, getMyTracks }) => {
         text: "Something went wrong!",
         icon: 'error',
         background: '#18181b',
+        confirmButtonColor: '#ef5567',
       }
       )
       setOpen(false);

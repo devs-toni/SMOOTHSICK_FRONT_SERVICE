@@ -8,16 +8,16 @@ import { useLanguage } from "../../../context/LanguageContext"
 
 export const ChangePasswordModal = ({ setOpen, open }) => {
     const { text } = useLanguage()
-    const { register, handleSubmit, reset } = useForm()
+    const { register, handleSubmit, reset, formState: { errors } } = useForm()
     const [hiddenCurrentPassword, setHiddenCurrentPassword] = useState("")
     const [hiddenNewPassword, setHiddenNewPassword] = useState("hidden")
     const { authState } = useAuth()
     const { user } = authState
     const { id } = user
 
-   
 
-  
+
+
 
     const onSubmitCurrentPass = (data) => {
         const { currentPass } = data
@@ -47,7 +47,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
         }
 
     }
-   
+
     const onSubmitNewPass = (data) => {
         const { pass, repeatPass } = data
         if (pass !== repeatPass) {
@@ -66,6 +66,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                 axios.patch(import.meta.env.VITE_BACKEND + "users/changePassword", { pass, id })
                     .then(({ status }) => {
                         if (status === 201) {
+                            reset()
                             toast.success(text.recover.pass_notmacht, {
                                 style: {
                                     borderRadius: "10px",
@@ -96,22 +97,21 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
 
     return (
         <>
-            <Modal show={open} onClose={() => setOpen(false)} className='rounded-xl' dismissible>
+            <Modal show={open} onClose={() => setOpen(false)} size="xl" dismissible>
                 <Modal.Body className='bg-zinc-900'>
                     <div className='flex justify-center flex-col items-center gap-5'>
                         <span className='text-white'>{text.recover.submit}</span>
                         <div className=" flex flex-col gap-5 items-center">
-                           
                             <form onSubmit={handleSubmit(onSubmitCurrentPass)} className={`mb-5  ${hiddenCurrentPassword}`}>
                                 <div className="flex gap-5">
-                                    <input type="password" placeholder={text.recover.ok} className="bg-zinc-600 rounded mb-5}"
+                                    <input type="password" placeholder={text.recover.ok} required={true} className="bg-zinc-600 rounded mb-5}"
                                         {...register("currentPass")}
                                     />
                                 </div>
                                 <div className="mt-5 flex justify-center">
                                     <Button
                                         className='bg-deezer'
-                                        onClick={handleSubmit(onSubmitCurrentPass)}
+                                        type="submit"
                                     >
                                         {text.recover.btn_ok}
                                     </Button>
@@ -119,17 +119,25 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                             </form>
                             <form onSubmit={handleSubmit(onSubmitNewPass)} className={`mb-5  ${hiddenNewPassword}`}>
                                 <div className="flex md:flex-row flex-col gap-5">
-                                    <input type="password" placeholder={text.register.n_pass}className="bg-zinc-600 rounded mb-5}"
-                                        {...register("pass")}
+                                    <input type="password" placeholder={text.register.n_pass} required={true} className="bg-zinc-600 rounded mb-5}"
+                                        {...register("pass", {
+                                            pattern: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/
+                                        })}
                                     />
-                                    <input type="password" placeholder={text.register.ok_n_pass} className="bg-zinc-600 rounded mb-5}"
+                                    <input type="password" placeholder={text.register.ok_n_pass} required={true} className="bg-zinc-600 rounded mb-5}"
                                         {...register("repeatPass")}
                                     />
                                 </div>
+                                {
+                                    errors?.pass?.type === "pattern" &&
+                                    <p className="text-red-500 text-xs text-center pt-4">
+                                        Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long
+                                    </p>
+                                }
                                 <div className="mt-5 flex justify-center">
                                     <Button
                                         className='bg-deezer'
-                                        onClick={handleSubmit(onSubmitNewPass)}
+                                        type="submit"
                                     >
                                         Create
                                     </Button>

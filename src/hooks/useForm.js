@@ -72,7 +72,7 @@ const validateName = (value) => {
   let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
   let error = '';
   if (!regexName.test(value.trim()) && value.length > 0) {
-    error = 'Solo acepta letras y espacios en blanco';
+    error = 'Only accepts letters and whitespace';
   }
   return error;
 }
@@ -86,17 +86,18 @@ const validateEmail = (value) => {
   let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
   let error = '';
   if (!regexEmail.test(value.trim()) && value.length > 0) {
-    error = 'El email introducido no és válido';
+    error = 'The email entered is not valid';
   }
   return error;
 }
 
 const validatePassword = (value1, value2) => {
+  let regexPassword = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/
   let error = '';
   if (value1 !== value2) {
-    error = 'Las contraseñas no coinciden'
-  } else if (value1.length < 5 && value1.length > 0) {
-    error = "La contraseña debe tener 5 caracteres como mínimo"
+    error = 'Passwords do not match'
+  } else if (!regexPassword.test(value1.trim()) && value1.length > 0) {
+    error = " Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long"
   }
   return error;
 }

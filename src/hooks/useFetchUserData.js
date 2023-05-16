@@ -23,7 +23,7 @@ export const useFetchUserData = () => {
             iconColor: '#ef5567',
             showCancelButton: true,
             background: '#18181b',
-            confirmButtonColor: '#1a1e20',
+            confirmButtonColor: '#ef5567',
             cancelButtonColor: '#ef5567',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
@@ -37,6 +37,7 @@ export const useFetchUserData = () => {
                                     text: "Your account has been deleted!",
                                     icon: 'success',
                                     background: '#18181b',
+                                    confirmButtonColor: '#ef5567',
                                 }
                                 )
                                 logout()
@@ -129,15 +130,12 @@ export const useFetchUserData = () => {
 
     }
 
-
-
-
     return {
         ReqAccepted,
         deleteUser,
         checkCurrentPass,
         saveNewPass,
-        
+
     }
 
 }

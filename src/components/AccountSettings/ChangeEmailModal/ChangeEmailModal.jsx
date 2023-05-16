@@ -63,16 +63,16 @@ export const ChangeEmailModal = ({ setOpen, open }) => {
                         <span className='text-white'>{text.recover.re_mail}</span>
                         <div className={`flex flex-col gap-5 items-center`}>
                             <form onSubmit={handleSubmit(onSubmitEmail)} className='mb-5'>
-                                <input type="email" placeholder={text.recover.placeholder} className={'bg-zinc-600 rounded mb-5'}
+                                <input type="email" placeholder={text.recover.placeholder} required={true} className={'bg-zinc-600 rounded mb-5'}
                                     {...register("userEmail", {
                                         pattern: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/i
                                     })}
                                 />
-                                {errors?.userEmail?.type === "pattern" && <p className="text-red-500">{text.recover.re_send_mail}</p>}
+                                {errors?.userEmail?.type === "pattern" && <p className="text-red-500 text-xs text-center">{text.recover.re_send_mail}</p>}
                                 <div className="mt-5 flex justify-center">
                                     <Button
                                         className='bg-deezer'
-                                        onClick={handleSubmit(onSubmitEmail)}
+                                        type="submit"
                                     >
                                         {text.recover.btn_update}
                                     </Button>

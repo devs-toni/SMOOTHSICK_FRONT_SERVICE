@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import { useLanguage } from "../../context/LanguageContext";
 import { Button, TextInput } from "flowbite-react";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const Recover = () => {
   const { register, handleSubmit, reset } = useForm()
@@ -12,34 +13,29 @@ export const Recover = () => {
   const { userId } = useParams()
   const navigate = useNavigate()
 
+
   const onSubmit = async ({ pass, repeatPass }) => {
     if (pass !== repeatPass) {
-      toast.error("Passwords do not match", {
-        style: {
-          borderRadius: "10px",
-          background: "#333",
-          color: "#fff",
-        },
-        error: {
-          duration: 2000,
-        },
-      });
+      Swal.fire({
+        title: 'Error!',
+        text: "Passwords do not match",
+        icon: 'error',
+        background: '#18181b',
+        confirmButtonColor: '#ef5567',
+      
+      })
     }
-
     try {
       await axios.patch(import.meta.env.VITE_BACKEND + "users/resetPassword", { pass, userId })
         .then(({ data, status }) => {
           if (status === 204) {
-            toast.error("The password must have: between 8 and 16 characters, 1 number, 1 lowercase letter, 1 uppercase letter, and a special character", {
-              style: {
-                borderRadius: "10px",
-                background: "#333",
-                color: "#fff",
-              },
-              error: {
-                duration: 2000,
-              },
-            });
+            Swal.fire({
+              title: 'Error!',
+              text: "The password must have: between 8 and 16 characters, 1 number, 1 lowercase letter, 1 uppercase letter, and a special character",
+              icon: 'error',
+              background: '#18181b',
+              confirmButtonColor: '#ef5567',
+            })
           } else if (status === 200) {
             toast.success("Password updated successfully", {
               style: {
