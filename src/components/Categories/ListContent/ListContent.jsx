@@ -18,13 +18,14 @@ const ListContent = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
+
   const handleDeletePlaylist = () => {
     axios.delete(import.meta.env.VITE_BACKEND + 'users/deletePlaylist/' + id, { headers: { "Authorization": `${authState.token}` } })
       .then(({ status }) => {
         if (status === 201) {
           getMyPlaylists()
           navigate(`${CATEGORIES}${PLAYLIST}`)
-          toast.success("Playlist deleted successfully", {
+          toast.success(text.toast.toast4, {
             style: {
               borderRadius: "10px",
               background: "#333",
@@ -35,7 +36,7 @@ const ListContent = () => {
             },
           });
         } else {
-          toast.error("Something went wrong", {
+          toast.error(text.toast.toast5, {
             style: {
               borderRadius: "10px",
               background: "#333",
@@ -63,7 +64,7 @@ const ListContent = () => {
             <div className="flex flex-col gap-3">
               <span className='text-4xl'>{ }</span>
               <p className="text-md inline-block">{authState.user.firstName + " " + authState.user.lastName}</p>
-              <Button className='' onClick={handleDeletePlaylist}>delete playlist</Button>
+              <Button className='' onClick={handleDeletePlaylist}>{text.playlists.btn}</Button>
             </div>
           </div>
           <div className="z-10 flex flex-col text-center justify-center items-center h-full w-full">
@@ -76,9 +77,9 @@ const ListContent = () => {
             </div>
           </div>
           <div className='flex flex-col items-center justify-center h-full w-full gap-5'>
-            <p>This playlist looks empty... Search for songs to add to your playlist</p>
+            <p>{text.playlists.text}</p>
             <div className='rounded-full bg-red-600'>
-              <Link to={SEARCH}>Explore music</Link>
+              <Link to={SEARCH}>{text.playlists.btn_explore}</Link>
             </div>
           </div>
         </div>

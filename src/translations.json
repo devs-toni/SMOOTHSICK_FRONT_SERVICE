@@ -45,7 +45,9 @@
     "toast": {
       "toast1": "Nuevo usuario guardado",
       "toast2": "Este usuario ya existe",
-      "toast3": "Lista de reproducción creada con éxito"
+      "toast3": "Lista creada con éxito",
+      "toast4": "Lista borrada correctamente",
+      "toast5": "Algo fué mal"
     },
     "username": {
       "new_username_added": "Nuevo usuario guardado",
@@ -156,7 +158,10 @@
       "playlist": "Lista de canciones",
       "holder_name":"Nombre de la lista",
       "holder_des":"Descripción de la lista",
-      "name": "Nombre"
+      "name": "Nombre",
+      "btn": "Borrar Lista",
+      "text": "Esta lista de reproducción parece vacía... Buscar canciones para agregar a tu lista de reproducción",
+      "btn_explore": "Explora música"
       
     }
   },
@@ -206,7 +211,9 @@
     "toast": {
       "toast1": "New saved user",
       "toast2": "This user already exists",
-      "toast3": "Playlist created succcesfully"
+      "toast3": "Playlist created succcesfully",
+      "toast4": "Playlist deleted successfully",
+      "toast5": "Something went wrong"
     },
     "username": {
       "new_username_added": "New user saved",
@@ -318,7 +325,10 @@
       "playlist": "Playlist",
       "holder_name":"Playlist name",
       "holder_des":"Playlist description",
-      "name": "Name"
+      "name": "Nom",
+      "btn": "Delete playlist",
+      "text": "This playlist looks empty... Search songs to add to your playlist",
+      "btn_explore": "Explore music"
       
     }
   },
@@ -366,7 +376,10 @@
     "toast": {
       "toast1": "Nouvel utilisateur enregistré",
       "toast2": "Cet utilisateur existe déjà",
-      "toast3": "Playlist créée avec succès"
+      "toast3": "Playlist créée avec succès",
+      "toast4": "Liste supprimée avec succès",
+      "toast5": "Quelque chose s'est mal passé"
+      
     },
     "username": {
       "new_username_added": "Nouvel utilisateur enregistré",
@@ -477,7 +490,9 @@
       "playlist": "Playlist",
       "holder_name":"Nom de la playlist",
       "holder_des":"Description de la playlist",
-      "name": "Nom"
+      "btn": "Supprimer la playlist",
+      "text": "Cette playlist semble vide... Recherchez des chansons à ajouter à votre playlist",
+      "btn_explore": "Explorez la musique"
     }
   },
   "chn": {
@@ -524,7 +539,10 @@
     "toast": {
       "toast1": "新保存的用户",
       "toast2": "此用户已存在",
-      "toast3": "成功创建的播放列表"
+      "toast3": "成功创建的播放列表",
+      "toast4": "已成功删除列表",
+      "toast5": "出了点问题"
+      
     },
     "username": {
       "new_username_added": "新注册用户",
@@ -636,7 +654,10 @@
       "playlist": "播放列表",
       "holder_name":"播放列表名称",
       "holder_des":"播放列表的说明",
-      "name": "名字"
+      "name": "名字",
+      "btn": "删除播放列表",
+      "text": "这个播放列表看起来是空的...搜索要添加到播放列表的歌曲",
+      "btn_explore": "探索音乐"
     }
   }
 }
