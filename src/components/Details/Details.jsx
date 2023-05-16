@@ -174,7 +174,7 @@ export const Details = () => {
                         <p className="hidden md:block w-1/12">#</p>
                         <p className="w-2/12">{text.album.track_name}</p>
                         <p className="w-2/12"></p>
-                        <p className="w-2/12 md:w-3/12">Options</p>
+                        <p className="w-2/12 md:w-3/12">{text.liked.options}</p>
                         <p className="hidden md:block md:w-3/12">{text.album.album_name}</p>
                         <p className="hidden lg:block lg:w-2/12">{text.album.record_company}</p>
                         <BsClock className='w-3/12 md:w-2/12' />
@@ -209,7 +209,7 @@ export const Details = () => {
                         <p className="w-1/12">#</p>
                         <p className="w-2/12">{text.album.track_name}</p>
                         <p className="w-2/12"></p>
-                        <p className="w-3/12">Options</p>
+                        <p className="w-3/12">{text.liked.options}</p>
                         <p className="w-3/12">{text.playlists.playlist}</p>
                         <p className="w-2/12">{text.liked.gender}</p>
                         <BsClock className='w-2/12' />
@@ -236,7 +236,7 @@ export const Details = () => {
                   </>
                 )
             :
-            <p>Cargando</p>
+            <p>{text.playlists.charge}</p>
         }
       </div>
     </div>
