@@ -161,7 +161,9 @@
       "name": "Nombre",
       "btn": "Borrar Lista",
       "text": "Esta lista de reproducción parece vacía... Buscar canciones para agregar a tu lista de reproducción",
-      "btn_explore": "Explora música"
+      "btn_explore": "Explora música",
+      "span": "Crea tu nueva lista",
+      "random": "Mi música aleatoria"
       
     }
   },
@@ -328,7 +330,9 @@
       "name": "Nom",
       "btn": "Delete playlist",
       "text": "This playlist looks empty... Search songs to add to your playlist",
-      "btn_explore": "Explore music"
+      "btn_explore": "Explore music",
+      "span": "Create a new playlist",
+      "random": "My random music"
       
     }
   },
@@ -492,7 +496,9 @@
       "holder_des":"Description de la playlist",
       "btn": "Supprimer la playlist",
       "text": "Cette playlist semble vide... Recherchez des chansons à ajouter à votre playlist",
-      "btn_explore": "Explorez la musique"
+      "btn_explore": "Explorez la musique",
+      "span": "Créer une nouvelle playlist",
+      "random": "Ma musique aléatoire"
     }
   },
   "chn": {
@@ -657,7 +663,9 @@
       "name": "名字",
       "btn": "删除播放列表",
       "text": "这个播放列表看起来是空的...搜索要添加到播放列表的歌曲",
-      "btn_explore": "探索音乐"
+      "btn_explore": "探索音乐",
+      "span": "创建新的播放列表",
+      "random": "我的随机音乐"
     }
   }
 }

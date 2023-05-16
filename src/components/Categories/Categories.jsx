@@ -66,7 +66,7 @@ export const Categories = () => {
                       className="bg-deezer hover:bg-zinc-800"
                     >
                       <FaRandom size={12} className="mr-2" />
-                      My random music
+                      {text.playlists.random}
                     </Button>
                   </div>
                 </div>
@@ -82,7 +82,7 @@ export const Categories = () => {
                       <div className="grid grid-cols-6 gap-10">
                         <div className=" h-60 w-60 flex flex-col gap-2 rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200" onClick={() => setOpen(true)}>
                           <AiOutlinePlus size={40} color="black" className="hover:rounded-full hover:bg-opacity-10 hover:bg-slate-500 mt-8" />
-                          <span>Create new playlist</span>
+                          <span>{text.playlists.span}</span>
                         </div>
                         {
                           userPlaylist.map((list, index) => (
