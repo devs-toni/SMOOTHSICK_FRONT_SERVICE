@@ -62,7 +62,7 @@ export const ChangeUserNameModal = ({ setOpen, open }) => {
                     className='bg-deezer'
                     onClick={handleSubmit(onSubmitUserName)}
                   >
-                    Update
+                    {text.recover.btn_update}
                   </Button>
                 </div>
               </form>

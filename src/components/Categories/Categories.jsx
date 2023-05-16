@@ -60,7 +60,14 @@ export const Categories = () => {
                     className="w-20 md:w-32"
                   />
                   <div className="flex flex-col gap-3">
-                    <span className="text-xl md:text-2xl lg:text-4xl inline-block">{`Hello ${authState.user.firstName}!`}</span>
+                    <span className="text-xl md:text-2xl inline-block">{authState.user.firstName + " " + authState.user.lastName}</span>
+                    <Button
+                      pill={true}
+                      className="bg-deezer hover:bg-zinc-800"
+                    >
+                      <FaRandom size={12} className="mr-2" />
+                      {text.playlists.random}
+                    </Button>
                   </div>
                 </div>
                 <MenuCategories />
@@ -74,7 +81,7 @@ export const Categories = () => {
                       </div>
                       <div className="grid items-center grid-cols-3 gap-7 md:grid-cols-4 md:gap-7 lg:grid-cols-6 lg:gap-10 mb-5">
                         <div className=" w-24 h-24 md:w-36 md:h-36 lg:h-60 lg:w-60 flex flex-col text-xs md:text-lg rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200" onClick={() => setOpen(true)}>
-                          <span>Add playlist</span>
+                        <span>{text.playlists.span}</span>
                           <AiOutlinePlus size={32} color="black" className="hover:rounded-full hover:bg-opacity-10 hover:bg-slate-500" />
                         </div>
                         {

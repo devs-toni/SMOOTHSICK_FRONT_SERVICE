@@ -14,7 +14,11 @@
       "login": "Iniciar Sesión",
       "recover": "Recuperar contraseña",
       "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password",
-      "send": "Enviar correo de recuperación"
+      "send": "Enviar correo de recuperación",
+      "current_pass": "Confirme su contraseña actual",
+      "n_pass": "Nueva contraseña",
+      "ok_n_pass": "Confirme nueva contraseña",
+      "btn_create": "Crear"
     },
     "login": {
       "title": "Inicia sesión en Smoothsick",
@@ -32,11 +36,18 @@
       "submit": "Cambiar Contraseña",
       "re_mail": "Cambiar email",
       "re_send_mail": "Escribe una dirreción de correo válida",
-      "placeholder": "Añada su nuevo email"
+      "placeholder": "Añada su nuevo email",
+      "pass_notmacht": "Las contraseñas no coinciden",
+      "ok": "Escriba su contraseña",
+      "btn_update": "Actualizar",
+      "btn_ok": "Confirmar"
     },
     "toast": {
       "toast1": "Nuevo usuario guardado",
-      "toast2": "Este usuario ya existe"
+      "toast2": "Este usuario ya existe",
+      "toast3": "Lista creada con éxito",
+      "toast4": "Lista borrada correctamente",
+      "toast5": "Algo fué mal"
     },
     "username": {
       "new_username_added": "Nuevo usuario guardado",
@@ -80,7 +91,8 @@
       "backtohome": "Volver al Menú Principal"
     },
     "charts": {
-      "title": "Las mejores listas"
+      "title": "Las mejores listas",
+      "com_playlists": "Listas de la comunidad"
     },
     "home": {
       "top_artists": "Artistas Top",
@@ -94,7 +106,7 @@
     },
     "details": {
       "mix": "MIX",
-      "fans": "fans",
+      "fans": "Seguidores",
       "albums": "Discografía"
     },
     "liked": {
@@ -138,12 +150,22 @@
       "btn_save_pass": "Guarda tus cambios"
     },
     "album": {
-      "track_name": "Track",
+      "track_name": "Canción",
       "album_name": "Album",
       "record_company": "Discográfica"
     },
     "playlists": {
-      "playlist": "Playlist"
+      "playlist": "Lista de canciones",
+      "holder_name":"Nombre de la lista",
+      "holder_des":"Descripción de la lista",
+      "name": "Nombre",
+      "btn": "Borrar Lista",
+      "text": "Esta lista de reproducción parece vacía... Buscar canciones para agregar a tu lista de reproducción",
+      "btn_explore": "Explora música",
+      "span": "Crea tu nueva lista",
+      "random": "Mi música aleatoria",
+      "charge": "Cargando"
+      
     }
   },
   "en": {
@@ -161,7 +183,11 @@
       "login": "Sign in here",
       "recover": "Recover password",
       "recover_text": "Introduce tu email para recibir instrucciones para la recuperación del password",
-      "send": "Send recover email"
+      "send": "Send recover email",
+      "current_pass": "Enter your current password",
+      "n_pass": "New password",
+      "ok_n_pass": "Confirm new password",
+      "btn_create": "Create"
     },
     "login": {
       "title": "To continue, log in to Smoothsick",
@@ -179,11 +205,18 @@
       "submit": "Change Password",
       "re_mail": "Change E-mail",
       "re_send_mail": "Please write a correct e-mail adress",
-      "placeholder": "Add your new e-mail adress"
+      "placeholder": "Add your new e-mail adress",
+      "pass_notmacht": "Passwords don't match",
+      "ok": "Write your password",
+      "btn_update": "Update",
+      "btn_ok": "Confirm"
     },
     "toast": {
-      "toast1": "Nuevo usuario guardado",
-      "toast2": "Este usuario ya existe"
+      "toast1": "New saved user",
+      "toast2": "This user already exists",
+      "toast3": "Playlist created succcesfully",
+      "toast4": "Playlist deleted successfully",
+      "toast5": "Something went wrong"
     },
     "username": {
       "new_username_added": "New user saved",
@@ -227,7 +260,8 @@
       "backtohome": "Back to Home"
     },
     "charts": {
-      "title": "Top Charts"
+      "title": "Top Charts",
+      "com_playlists": "Community playlists"
     },
     "home": {
       "top_artists": "Top Artists",
@@ -242,7 +276,7 @@
     "details": {
       "mix": "MIX",
       "fans": "fans",
-      "albums": "Albums"
+      "albums": "Discography"
     },
     "liked": {
       "title": "Liked Songs",
@@ -291,7 +325,17 @@
       "record_company": "Record company"
     },
     "playlists": {
-      "playlist": "Playlist"
+      "playlist": "Playlist",
+      "holder_name":"Playlist name",
+      "holder_des":"Playlist description",
+      "name": "Nom",
+      "btn": "Delete playlist",
+      "text": "This playlist looks empty... Search songs to add to your playlist",
+      "btn_explore": "Explore music",
+      "span": "Create a new playlist",
+      "random": "My random music",
+      "charge": "Loading"
+      
     }
   },
   "fr": {
@@ -306,7 +350,11 @@
       "forget": "Mot de passe oublié?",
       "submit": "S'inscrire",
       "already": "Avez-vous déjà un compte?",
-      "login": "Se connecter"
+      "login": "Se connecter",
+      "current_pass": "Entrez votre mot de passe actuel",
+      "n_pass": "Nouveau mot de passe",
+      "ok_n_pass": "Confirmer le mot de passe",
+      "btn_create": "Créer"
     },
     "login": {
       "title": "Pour continuer connectez-vous à Smoothsick",
@@ -318,17 +366,26 @@
       "singin": "S'identifier'"
     },
     "recover": {
-      "title": "Recover your password",
-      "new1": "New Password",
-      "new2": "Repeat New Password",
-      "submit": "Change Password",
+      "title": "Récupérer votre mot de passe",
+      "new1": "Nouveau mot de passe",
+      "new2": "Répéter le nouveau mot de passe",
+      "submit": "Changer le mot de passe",
       "re_mail": "Changer l'adresse email",
       "re_send_mail": "Veuillez écrire une adresse e-mail correcte",
-      "placeholder": "Ajoutez votre nouvelle e-mail"
+      "placeholder": "Ajoutez votre nouvelle e-mail",
+      "pass_notmacht": "Les mots de passe ne correspondent pas",
+      "ok": "Confirmer le mot de passe",
+      "confirm": "Entrez votre mot de passe",
+      "btn_update": "Mettre à jour",
+      "btn_ok": "Confirmer"
     },
     "toast": {
-      "toast1": "Nuevo usuario guardado",
-      "toast2": "Este usuario ya existe"
+      "toast1": "Nouvel utilisateur enregistré",
+      "toast2": "Cet utilisateur existe déjà",
+      "toast3": "Playlist créée avec succès",
+      "toast4": "Liste supprimée avec succès",
+      "toast5": "Quelque chose s'est mal passé"
+      
     },
     "username": {
       "new_username_added": "Nouvel utilisateur enregistré",
@@ -372,7 +429,8 @@
       "backtohome": "Rentrer à la Maison"
     },
     "charts": {
-      "title": "Le hit-parade"
+      "title": "Le hit-parade",
+      "com_playlists": "Playlists communautaires"
     },
     "home": {
       "top_artists": "Top",
@@ -383,6 +441,11 @@
       "less_artists": "Más",
       "less_albums": "Más",
       "less_tracks": "Más"
+    },
+    "details": {
+      "mix": "MÉLANGER",
+      "fans": "fans",
+      "albums": "Discographie"
     },
     "liked": {
       "title": "Chansons Favoris",
@@ -402,7 +465,7 @@
       "title_table": "Titre",
       "album_table": "Album",
       "portrait": "Portrait",
-      "track": "Track",
+      "track": "Piste",
       "artist": "Artist",
       "duration": "Duration",
       "options": "Options",
@@ -415,14 +478,14 @@
       "albums": "Albums",
       "tracks": "Pistes",
       "users": "Utilisateurs",
-      "my": "My songs"
+      "my": "Mes chansons"
     },
     "changepass": {
-      "title": "Change your password",
-      "current_pass": "Current password",
-      "new_pass": "New password",
-      "r_new_pass": "Repeat new password",
-      "btn_save_pass": "Save your changes"
+      "title": "Modifier votre mot de passe",
+      "current_pass": "Mot de passe actuel",
+      "new_pass": "Nouveau mot de passe",
+      "r_new_pass": "Répéter le nouveau mot de passe",
+      "btn_save_pass": "Enregistrez vos modifications"
     },
     "album": {
       "track_name": "Chanson",
@@ -430,7 +493,15 @@
       "record_company": "Maison de disques"
     },
     "playlists": {
-      "playlist": "Playlist"
+      "playlist": "Playlist",
+      "holder_name":"Nom de la playlist",
+      "holder_des":"Description de la playlist",
+      "btn": "Supprimer la playlist",
+      "text": "Cette playlist semble vide... Recherchez des chansons à ajouter à votre playlist",
+      "btn_explore": "Explorez la musique",
+      "span": "Créer une nouvelle playlist",
+      "random": "Ma musique aléatoire",
+      "charge": "Chargement"
     }
   },
   "chn": {
@@ -445,7 +516,11 @@
       "forget": "忘记了您的密码?",
       "submit": "注册",
       "already": "已经注册了账户?",
-      "login": "在此登录"
+      "login": "在此登录",
+      "current_pass": "输入您的当前密码",
+      "n_pass": "新密码",
+      "ok_n_pass": "确认新密码",
+      "btn_create": "创造"
     },
     "login": {
       "title": "登录Smoothsick以继续",
@@ -463,11 +538,20 @@
       "submit": "更改密码",
       "re_mail": "更改电子邮件地址",
       "re_send_mail": "请填写正确的邮箱地址",
-      "placeholder": "添加您的新电子邮件"
+      "placeholder": "添加您的新电子邮件",
+      "pass_notmacht": "密码不匹配",
+      "ok": "确认密码",
+      "confirm": "确认您的密码",
+      "btn_update": "更新",
+      "btn_ok": "确认"
     },
     "toast": {
-      "toast1": "Nuevo usuario guardado",
-      "toast2": "Este usuario ya existe"
+      "toast1": "新保存的用户",
+      "toast2": "此用户已存在",
+      "toast3": "成功创建的播放列表",
+      "toast4": "已成功删除列表",
+      "toast5": "出了点问题"
+      
     },
     "username": {
       "new_username_added": "新注册用户",
@@ -511,7 +595,9 @@
       "backtohome": "回到家"
     },
     "charts": {
-      "title": "推荐歌单"
+      "title": "推荐歌单",
+      "com_playlists": "社区播放列表"
+
     },
     "home": {
       "top_artists": "Top",
@@ -522,6 +608,11 @@
       "less_artists": "Más",
       "less_albums": "Más",
       "less_tracks": "Más"
+    },
+     "details": {
+       "mix": "混合",
+       "fans": "球迷",
+       "albums": "唱片目录"
     },
     "liked": {
       "title": "喜爱的歌曲",
@@ -541,10 +632,10 @@
       "title_table": "歌曲名称",
       "album_table": "专辑",
       "portrait": "封面",
-      "track": "Track",
-      "artist": "Artist",
-      "duration": "Duration",
-      "options": "Options",
+      "track": "歌",
+      "artist": "艺术家",
+      "duration": "期间",
+      "options": "选项",
       "my_songs": "我的歌"
     },
     "filters": {
@@ -554,14 +645,14 @@
       "albums": "专辑",
       "tracks": "歌曲",
       "users": "用户",
-      "my": "My songs"
+      "my": "我的歌曲"
     },
     "changepass": {
-      "title": "Change your password",
-      "current_pass": "Current password",
-      "new_pass": "New password",
-      "r_new_pass": "Repeat new password",
-      "btn_save_pass": "Save your changes"
+      "title": "更改密码",
+      "current_pass": "当前密码",
+      "new_pass": "新密码",
+      "r_new_pass": "重复新密码",
+      "btn_save_pass": "保存更改"
     },
     "album": {
       "track_name": "曲目",
@@ -569,7 +660,16 @@
       "record_company": "标签"
     },
     "playlists": {
-      "playlist": "播放列表"
+      "playlist": "播放列表",
+      "holder_name":"播放列表名称",
+      "holder_des":"播放列表的说明",
+      "name": "名字",
+      "btn": "删除播放列表",
+      "text": "这个播放列表看起来是空的...搜索要添加到播放列表的歌曲",
+      "btn_explore": "探索音乐",
+      "span": "创建新的播放列表",
+      "random": "我的随机音乐",
+      "charge": "负荷"
     }
   }
 }

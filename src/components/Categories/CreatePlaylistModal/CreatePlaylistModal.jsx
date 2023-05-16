@@ -7,6 +7,8 @@ import { toast } from 'react-hot-toast';
 import { useUser } from '../../../context/UserContext';
 import { v4 as uuidv4 } from 'uuid';
 import { MdPlaylistAdd } from 'react-icons/md';
+import { useLanguage } from '../../../context/LanguageContext';
+
 
 const CreatePlaylistModal = ({ open, setOpen }) => {
     const { getMyPlaylists } = useUser()
@@ -14,6 +16,7 @@ const CreatePlaylistModal = ({ open, setOpen }) => {
     const { authState } = useAuth();
     const { user } = authState
     const { id } = user
+    const { text } = useLanguage();
 
 
     const onSubmit = (data) => {
@@ -21,7 +24,7 @@ const CreatePlaylistModal = ({ open, setOpen }) => {
         axios.post(import.meta.env.VITE_BACKEND + 'playlists/newPlaylist', { title, playlist_id: uuidv4(), user_id: id })
             .then(({ status }) => {
                 if (status === 201) {
-                    toast.success("Playlist created susscesfully", {
+                    toast.success(text.toast.toast3, {
                         style: {
                             borderRadius: "10px",
                             background: "#333",
@@ -50,18 +53,23 @@ const CreatePlaylistModal = ({ open, setOpen }) => {
                     <div className='flex justify-center flex-col items-center gap-5'>
                         <span className='text-white md:text-2xl'>Create playlist</span>
                         <div className=" flex flex-col gap-5">
+
                             <form onSubmit={handleSubmit(onSubmit)} className='mb-5'>
                                 <label className="text-base leading-relaxed text-gray-500 dark:text-gray-400" htmlFor="fileUpload">
                                     <MdPlaylistAdd className="text-7xl m-auto my-2 cursor-pointer" />
                                 </label>
-                                <input type="text" placeholder='Playlist name' className='bg-zinc-600 rounded mb-5'
+                                <input type="text" placeholder={text.playlists.holder_name} className='bg-zinc-600 rounded mb-5'
                                     {...register("title")}
+                                />
+                                <input type="text" placeholder={text.playlists.holder_des} className='bg-zinc-600 rounded mb-5'
+                                    {...register("description")}
                                 />
                                 <Button
                                     className='bg-deezer m-auto'
                                     onClick={handleSubmit(onSubmit)}
                                 >
-                                    Create
+                                    {text.register.btn_create}
+
                                 </Button>
                             </form>
                         </div>
