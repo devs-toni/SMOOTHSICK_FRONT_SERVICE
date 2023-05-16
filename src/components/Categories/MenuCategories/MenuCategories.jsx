@@ -6,7 +6,7 @@ export const MenuCategories = () => {
 
     return (
         <div className='border-b border-line-section w-full'>
-            <div className='flex justify-left gap-10 items-center'>
+            <div className='flex justify-left gap-10 items-center text-xs md:text-lg'>
                 <NavLink to="playlist" className={({ isActive }) => (isActive ? "border-b border-deezer " : "text-gray-400 hover:text-white hover:border-b border-white")}>
                     {text.filters.playlists}
                 </NavLink>

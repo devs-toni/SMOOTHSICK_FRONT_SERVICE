@@ -118,7 +118,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                                 </div>
                             </form>
                             <form onSubmit={handleSubmit(onSubmitNewPass)} className={`mb-5  ${hiddenNewPassword}`}>
-                                <div className="flex gap-5">
+                                <div className="flex md:flex-row flex-col gap-5">
                                     <input type="password" placeholder='New password' className="bg-zinc-600 rounded mb-5}"
                                         {...register("pass")}
                                     />
