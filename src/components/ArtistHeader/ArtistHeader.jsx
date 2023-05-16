@@ -2,16 +2,15 @@ import { Avatar } from 'flowbite-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { usePlayer } from '../../context/PlayerContext';
 import './ArtistHeader.css';
-import { FaHeart, FaPlay } from "react-icons/fa";
+import { FaHeart, FaPlay, FaPlayCircle } from "react-icons/fa";
 import { useState } from 'react';
 import { Audio } from 'react-loader-spinner'
 import { ARTIST, DETAILS } from '../../router/paths';
 import { NavLink } from 'react-router-dom';
 
 export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_name, album_picture, artist_picture, artist_name, artist_id }) => {
-  const [changeIcon, setChangeIcon] = useState(<FaPlay className='' size={20} />)
   const { text } = useLanguage();
-  const { addList, addQueue, playSong } = usePlayer();
+  const { addList, addQueue, playSong, playerState } = usePlayer();
   const handleSetNewPlaylist = () => {
     playSong({
       id: tracks[0].id,
@@ -22,18 +21,8 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
     })
     addQueue(tracks)
     addList(tracks)
-    setChangeIcon(
-      <Audio
-        height="20"
-        width="20"
-        color="white"
-        wrapperClass='mb-1 mr-0'
-      />
-    )
   }
-  const handlePause = () => {
-    setChangeIcon(<FaPlay className='' size={20} />)
-  }
+
 
   return (
     <>
@@ -62,8 +51,20 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
                 <span className='text-xs md:text-md text-neutral-500'>{fans} {text.details.fans}</span>
               </div>
               <div className='flex justify-center gap-5 items-center'>
-                <button className='w-36 inline-flex gap-5 justify-center items-center hover:bg-deezer-dark p-2 md:p-3 rounded-full bg-deezer' onClick={handleSetNewPlaylist} onPauseCapture={handlePause} >
-                  {changeIcon}
+                <button className='w-36 inline-flex gap-5 justify-center items-center hover:bg-deezer-dark p-2 md:p-3 rounded-full bg-deezer' onClick={handleSetNewPlaylist} >
+                  {
+                    playerState.isListening
+                      ?
+                      <Audio
+                        height="20"
+                        width="20"
+                        color="white"
+                        wrapperClass='mb-1 mr-0'
+                      />
+                      :
+                      <FaPlay size={20} />
+                  }
+
                   <p className='text-lg font-bold'>{text.details.mix}</p>
                 </button>
                 {/* <FaHeart className={`artist-like ${isLike && 'isLike'}`} size={44} /> */}
