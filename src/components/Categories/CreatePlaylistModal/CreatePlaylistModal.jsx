@@ -53,7 +53,7 @@ const CreatePlaylistModal = ({ open, setOpen }) => {
                         <span className='text-white'>Create playlist</span>
                         <div className=" flex flex-col gap-5">
                             <span className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                Name
+                                {text.playlists.name}
                             </span>
                             <form onSubmit={handleSubmit(onSubmit)} className='mb-5'>
                                 <input type="text" placeholder={text.playlists.holder_name} className='bg-zinc-600 rounded mb-5'
@@ -65,8 +65,8 @@ const CreatePlaylistModal = ({ open, setOpen }) => {
                                 <Button
                                     className='bg-deezer'
                                     onClick={handleSubmit(onSubmit)}
-                                >
-                                    Create
+                                >{text.register.btn_create}
+                                    
                                 </Button>
                             </form>
                         </div>

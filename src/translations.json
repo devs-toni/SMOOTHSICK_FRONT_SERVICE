@@ -155,7 +155,8 @@
     "playlists": {
       "playlist": "Lista de canciones",
       "holder_name":"Nombre de la lista",
-      "holder_des":"Descripción de la lista"
+      "holder_des":"Descripción de la lista",
+      "name": "Nombre"
       
     }
   },
@@ -316,7 +317,8 @@
     "playlists": {
       "playlist": "Playlist",
       "holder_name":"Playlist name",
-      "holder_des":"Playlist description"
+      "holder_des":"Playlist description",
+      "name": "Name"
       
     }
   },
@@ -474,7 +476,8 @@
     "playlists": {
       "playlist": "Playlist",
       "holder_name":"Nom de la playlist",
-      "holder_des":"Description de la playlist"
+      "holder_des":"Description de la playlist",
+      "name": "Nom"
     }
   },
   "chn": {
@@ -632,7 +635,8 @@
     "playlists": {
       "playlist": "播放列表",
       "holder_name":"播放列表名称",
-      "holder_des":"播放列表的说明"
+      "holder_des":"播放列表的说明",
+      "name": "名字"
     }
   }
 }
