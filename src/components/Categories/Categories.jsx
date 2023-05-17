@@ -72,7 +72,7 @@ export const Categories = () => {
                 </div>
                 <MenuCategories />
                 {
-                  path === "playlist"
+                  path === "playlists"
                     ?
                     <>
                       <div className="inline-flex items-center">
