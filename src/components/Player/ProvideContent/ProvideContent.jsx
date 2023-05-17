@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { usePlayer } from '../../../context/PlayerContext';
 import { useUser } from '../../../context/UserContext';
+import unknown from '../../../assets/imgs/UnkownAlbum.jpg';
 
 export const ProvideContent = () => {
   const { playerState, addQueue } = usePlayer();
@@ -14,7 +15,7 @@ export const ProvideContent = () => {
   const currentSongIndex = queue.indexOf(track)
   const [nextTrack, setNexTrack] = useState()
   const [prevTrack, setPrevTrack] = useState()
-  const [searchQueue, setSearchQueue] = useState()
+  const [searchQueue, setSearchQueue] = useState([])
 
 
   useEffect(() => {
@@ -41,16 +42,20 @@ export const ProvideContent = () => {
     }
     // SELECT THE CONTENT WHEN THE QUEUE REACHES THE END
     if (currentSongIndex + 1 === queue.length) {
-      addQueue(myTracks)
-      setSearchQueue({
-        id: queue[currentSongIndex + 1]?.id,
-        name: queue[currentSongIndex + 1]?.title,
-        picture: queue[currentSongIndex + 1]?.album_cover,
-        artist: queue[currentSongIndex + 1]?.artist_name,
-        preview: queue[currentSongIndex + 1]?.preview,
+      let newsTracks=[]
+      myTracks.map((item) => {
+       const newTrack = {
+        id: item.id,
+        name: item.title,
+        artist: "Owner",
+        picture: unknown,
+        preview: item.preview
+       }
+        newsTracks.push(newTrack)
       })
+      setSearchQueue(newsTracks)
+      addQueue(newsTracks)
     }
-
   }, [currentSongIndex, queue.length])
 
   return { nextTrack, prevTrack, searchQueue }
