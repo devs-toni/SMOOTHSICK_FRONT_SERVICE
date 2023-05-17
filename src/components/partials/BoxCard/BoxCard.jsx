@@ -10,6 +10,7 @@ import { FILTER_TYPES } from "../../Search/filterTypes";
 import { useAuth } from "../../../context/AuthContext";
 import { useUser } from "../../../context/UserContext";
 import { Audio } from "react-loader-spinner";
+import dfltImage from '../../../assets/imgs/UnkownAlbum.jpg'
 
 
 import { useFetchAllHomeTracks } from "../../../hooks";
@@ -69,15 +70,10 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
     }
   }
 
-
   const isTrack = type === FILTER_TYPES.TRACKS ? true : false;
   const isArtist = type === FILTER_TYPES.ARTISTS ? true : false;
   const isAlbum = type === FILTER_TYPES.ALBUMS ? true : false;
   const isPlaylist = type === FILTER_TYPES.PLAYLISTS ? true : false;
-
-
-
-
 
   return (
     <NavLink to={
@@ -114,7 +110,7 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
           }
 
           <img
-            src={data.picture}
+            src={data.picture ? data.picture : dfltImage}
             alt={data.name}
             className={`${targetClass}__img-container--img object-cover w-20`}
             style={isArtist ? { borderRadius: "50%" } : {}}

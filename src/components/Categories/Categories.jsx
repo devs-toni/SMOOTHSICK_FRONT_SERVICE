@@ -12,7 +12,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import CreatePlaylistModal from "./CreatePlaylistModal/CreatePlaylistModal";
 import { Avatar, Button } from "flowbite-react";
 import { FaRandom } from "react-icons/fa";
-import NewListCard from "./ListCard/ListCard";
+import ListCard from "./ListCard/ListCard";
 import { ComunityPlaylists } from "./ComunityPlaylists/ComunityPlaylists";
 import headPhone from "../../assets/imgs/background-headphones.jpg";
 import { opacity } from "@cloudinary/url-gen/actions/adjust";
@@ -86,9 +86,9 @@ export const Categories = () => {
                         </div>
                         {
                           userPlaylist.map((list, index) => (
-                            <NewListCard
+                            <ListCard
                               key={index}
-                              id={list._id}
+                              id={list.id}
                               title={list.title}
                             />
                           ))
