@@ -19,6 +19,8 @@ export const Details = () => {
   const [data, setData] = useState({});
   const [tracks, setTracks] = useState([]);
   const [albums, setAlbums] = useState([]);
+
+
   const getDetails = async () => {
     
     let finalData = [];
@@ -108,7 +110,8 @@ export const Details = () => {
   }
   useEffect(() => {
     getDetails();
-  }, [])
+  }, [id])
+  
   return (
     <div className='flex w-full items-center justify-center pb-12'>
       <div className="w-full h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">
