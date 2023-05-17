@@ -22,7 +22,7 @@ export const Details = () => {
 
 
   const getDetails = async () => {
-    
+
     let finalData = [];
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
       case FILTER_TYPES.ALBUMS:
@@ -74,7 +74,7 @@ export const Details = () => {
 
         break;
 
-    
+
       case FILTER_TYPES.PLAYLISTS:
         await axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
           .then(async ({ data }) => {
@@ -100,7 +100,7 @@ export const Details = () => {
                 })
             }))
             setTracks(finalData);
-           
+
           })
         break;
 
@@ -167,7 +167,8 @@ export const Details = () => {
                         artist_picture={data.artist_picture}
                         album_picture={data.album_picture}
                         total={data.total}
-                        tracks={tracks} fans={data.fans}
+                        tracks={tracks}
+                        fans={data.fans}
                         type={type}
                         isLike={true}
                         artist_id={data.id}
@@ -225,6 +226,7 @@ export const Details = () => {
                             track={track}
                             count={index}
                             playlist_id={data.id}
+                            playlistName={data.artist_name}
                             tracks={tracks}
                             isPlaylist={true}
 

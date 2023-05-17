@@ -65,6 +65,7 @@ const Home = () => {
             name={text.home.top_tracks}
             list={tracksLoaded && tracks}
             type={FILTER_TYPES.TRACKS}
+            top_tracks={tracks}
           />
           <Slider
             name={text.home.top_albums}
@@ -90,6 +91,7 @@ const Home = () => {
             name={text.home.less_tracks}
             list={lessTracksLoaded && lessTracks}
             type={FILTER_TYPES.TRACKS}
+            less_tracks={lessTracks}
           />
 
         </div>

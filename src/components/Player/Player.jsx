@@ -8,7 +8,6 @@ import { FaRandom } from 'react-icons/fa';
 import "./Player.css"
 import { ProvideContent } from './ProvideContent/ProvideContent';
 import { useUser } from '../../context/UserContext';
-import { TYPES } from '../../context/types';
 import { FILTER_TYPES } from '../Search/filterTypes';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
@@ -21,7 +20,6 @@ const Player = () => {
   const { authState } = useAuth();
   const { current, queue, list } = playerState
   const { preview, picture, name, artist } = current
-
   const [randomActive, setRandomActive] = useState(false)
   const [showDataSong, setShowDataSong] = useState("")
   const [showDataImg, setShowDataImg] = useState("")
@@ -55,28 +53,29 @@ const Player = () => {
   }
 
   const handleClickNext = () => {
-    playSong(nextTrack)
     setShowDataSong("hidden")
     setShowDataImg("hidden")
+    if (nextTrack) return playSong(nextTrack)
     setIsChanged(true)
     setIsListening(true)
   };
 
   const handleClickPrevious = () => {
-    playSong(prevTrack)
     setShowDataSong("hidden")
     setShowDataImg("hidden")
+    if (prevTrack) return playSong(prevTrack)
     setIsChanged(true)
     setIsListening(true)
   };
 
   const handleFinish = () => {
-    playSong(nextTrack)
     setShowDataSong("hidden")
     setShowDataImg("hidden")
+    if(nextTrack) return playSong(nextTrack)
     setIsChanged(true)
-    setIsListening(false)
-  }
+    setIsListening(true)
+  };
+
 
   const handleRandomSong = () => {
     const randomList = queue.toSorted(() => { return Math.random() - 0.5 });
