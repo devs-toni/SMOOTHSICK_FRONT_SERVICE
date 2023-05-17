@@ -42,25 +42,6 @@
   min-width: 100%;
 }
 
-.list__img-container--play-container {
-  opacity: 0;
-  position: absolute;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
-}
-.list__img-container--play-container:hover {
-  opacity: 1;
-}
-.list__img-container--play-container-play {
-  width: 60px;
-  height: 60px;
-}
-
 .list__data {
   margin-top: 15px;
   font-size: 1.05em;

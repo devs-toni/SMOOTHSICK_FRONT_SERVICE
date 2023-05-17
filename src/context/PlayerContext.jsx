@@ -12,14 +12,12 @@ export const usePlayer = () => {
 export const PlayerProvider = ({ children }) => {
 
   const initialState = {
-    current: {}, //1ºPRIORIDAD
-    queue: [], //2ºPRIORIDAD
-    list: [], //ULTIMA 3º PRIORIDAD
+    current: {},
+    queue: [], 
+    list: [], 
     isListening: false
   }
 
-  // SI PULSAMOS UN TRACK EN LIBRE --- SETEAMOS LA 3º PRIORIDAD EN LIST --- LAS CANCIONES QUE NOS DE LA GANA
-  // SI PULSAMOS UN TRACK O MIX EN PLAYLISTS O ALBUMS --- SETEAMOS LA 2º PRIORIDAD EN QUEUE --- LAS CANCIONES SIGUIENTES DE DICHO ALBUM O PLAYLIST
 
   const reducer = (state, action) => {
 

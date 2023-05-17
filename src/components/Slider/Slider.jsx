@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import './Slider.css';
 import BoxCard from '../partials/BoxCard/BoxCard';
 
-const Slider = ({ list, name, type, isFirstRowSection }) => {
+const Slider = ({ list, name, type, isFirstRowSection, top_tracks, less_tracks }) => {
   const divRef = useRef();
   const [rightIsMoved, setRightIsMoved] = useState(false);
   const [leftIsMoved, setLeftIsMoved] = useState(true);
@@ -46,6 +46,8 @@ const Slider = ({ list, name, type, isFirstRowSection }) => {
                       targetClass="list"
                       type={type}
                       isFirstRowSection={isFirstRowSection}
+                      top_tracks={top_tracks}
+                      less_tracks={less_tracks}
                     />
                   )
                 })

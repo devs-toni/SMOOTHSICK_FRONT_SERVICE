@@ -12,9 +12,10 @@ import { useUser } from "../../../context/UserContext";
 import { Audio } from "react-loader-spinner";
 
 
+import { useFetchAllHomeTracks } from "../../../hooks";
 
-const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
-  const { playSong, addQueue, playerState } = usePlayer();
+const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_tracks }) => {
+  const { playSong, addQueue, playerState, addList } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
   const { authState } = useAuth();
@@ -36,7 +37,6 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         preview: obj.preview,
       })
 
-
     } else if (type == FILTER_TYPES.ALBUMS) {
       setData({
         id: obj.album.id,
@@ -56,13 +56,29 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   }, [])
 
 
+  const handleSetTracks = () => {
+    playSong(data)
+    try {
+      top_tracks.find((track) => track.id === data.id)
+      addQueue(top_tracks)
+      addList(top_tracks)
+    } catch {
+      addQueue(less_tracks)
+      addList(top_tracks)
+
+    }
+  }
+
+
   const isTrack = type === FILTER_TYPES.TRACKS ? true : false;
   const isArtist = type === FILTER_TYPES.ARTISTS ? true : false;
   const isAlbum = type === FILTER_TYPES.ALBUMS ? true : false;
   const isPlaylist = type === FILTER_TYPES.PLAYLISTS ? true : false;
 
-  const currentTrack = data.find(track =>track.id === playerState.current.id )
-  console.log(currentTrack);
+
+
+
+
   return (
     <NavLink to={
       isAlbum
@@ -81,19 +97,18 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         <div className={`${targetClass}__img-container`}>
           {
             isTrack &&
-            <div className={`${targetClass}__img-container--play-container`} onClick={() => playSong(data)}>
-             
+            <div className="absolute w-full h-full flex items-center justify-center" onClick={handleSetTracks}>
               {
-                playerState.isListening
+                playerState.isListening && playerState.current.id === data.id
                   ?
                   <Audio
                     height="45"
                     width="45"
-                    color="white"
-                    wrapperClass='mb-1 mr-0'
+                    color="#ef5567"
+                    wrapperClass=''
                   />
                   :
-                  <FaPlayCircle className={`${targetClass}__img-container--play-container-play`} />
+                  <FaPlayCircle size={46} color='#ef5567' className="transition-all duration-300 ease-in-out opacity-0 hover:opacity-100" />
               }
             </div>
           }

@@ -24,7 +24,6 @@ export const AuthProvider = ({ children }) => {
           })
             .then(res => {
               const { data, status } = res
-              console.log(data);
               if (status === 200) {
                 refresh(data.id, {
                   id: data.id,
