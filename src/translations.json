@@ -40,7 +40,11 @@
       "pass_notmacht": "Las contraseñas no coinciden",
       "ok": "Escriba su contraseña",
       "btn_update": "Actualizar",
-      "btn_ok": "Confirmar"
+      "btn_ok": "Confirmar",
+      "user": "Usuario no encontrado",
+      "check": "Comprueba tu correo!!",
+      "notfound": "Usuario con este correo no encontrado",
+      "bad_email": "Correo electrónico incorrecto, compruébalo"
     },
     "toast": {
       "toast1": "Nuevo usuario guardado",
@@ -60,7 +64,7 @@
     "navbar": {
       "home": "Home",
       "playlists": "Playlists",
-      "admin": "Admin",
+      "admin": "Administrador",
       "login": "Iniciar sesión",
       "logout": "Cerrar sesión",
       "register": "Registrate",
@@ -209,7 +213,11 @@
       "pass_notmacht": "Passwords don't match",
       "ok": "Write your password",
       "btn_update": "Update",
-      "btn_ok": "Confirm"
+      "btn_ok": "Confirm",
+      "user": "User not found",
+      "check": "Check your email",
+      "notfound": "User with this email not found",
+      "bad_email": "Wrong email, check it"
     },
     "toast": {
       "toast1": "New saved user",
@@ -377,7 +385,11 @@
       "ok": "Confirmer le mot de passe",
       "confirm": "Entrez votre mot de passe",
       "btn_update": "Mettre à jour",
-      "btn_ok": "Confirmer"
+      "btn_ok": "Confirmer",
+      "user": "Utilisateur introuvable",
+      "check": "Vérifiez vos e-mails",
+      "notfound": "Utilisateur avec cet e-mail introuvable",
+      "bad_email": "Mauvais e-mail, vérifiez-le"
     },
     "toast": {
       "toast1": "Nouvel utilisateur enregistré",
@@ -543,7 +555,10 @@
       "ok": "确认密码",
       "confirm": "确认您的密码",
       "btn_update": "更新",
-      "btn_ok": "确认"
+      "btn_ok": "确认",
+      "check": "检查您的电子邮件",
+      "notfound": "未找到使用此电子邮件的用户",
+      "bad_email": "电子邮件错误，请检查"
     },
     "toast": {
       "toast1": "新保存的用户",
@@ -669,7 +684,8 @@
       "btn_explore": "探索音乐",
       "span": "创建新的播放列表",
       "random": "我的随机音乐",
-      "charge": "负荷"
+      "charge": "负荷",
+      "user": "未找到用户"
     }
   }
 }
