@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Slider.css';
 import BoxCard from '../partials/BoxCard/BoxCard';
 
@@ -10,18 +10,25 @@ const Slider = ({ list, name, type, isFirstRowSection, top_tracks, less_tracks }
   const [leftIsMoved, setLeftIsMoved] = useState(true);
 
   const handleClick = (direction) => {
-    if (direction === "forward") {
-      divRef.current.scrollLeft += divRef.current.offsetWidth - 100;
-      setRightIsMoved(true);
-      setLeftIsMoved(false);
 
-    } else if (direction === "back") {
+    const scrollLeft = divRef.current.scrollLeft;
+    const scrollWidth = divRef.current.scrollWidth;
+    const offset = divRef.current.offsetWidth;
+
+    if (direction === "forward") {
+      if ((scrollLeft + offset + 2) < scrollWidth) {
+        divRef.current.scrollLeft += divRef.current.offsetWidth - 100;
+        setLeftIsMoved(false);
+        if (scrollWidth - offset - scrollLeft < offset) setRightIsMoved(true);
+      }
+
+    } else if (direction === "back" && scrollLeft > 0) {
       divRef.current.scrollLeft -= divRef.current.offsetWidth + 100;
-      setLeftIsMoved(true);
       setRightIsMoved(false);
+      if (scrollLeft < offset) setLeftIsMoved(true);
+
     }
   }
-
 
   return (
     <div className='row'>
