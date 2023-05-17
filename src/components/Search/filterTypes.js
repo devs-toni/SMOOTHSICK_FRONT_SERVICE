@@ -4,6 +4,6 @@ export const FILTER_TYPES = {
   ALBUMS: 'Albums',
   TRACKS: 'Tracks',
   GENRES: 'Genres',
-  PLAYLISTS: 'Playlist',
+  PLAYLISTS: 'Playlists',
   USERS: 'Users',
 } 

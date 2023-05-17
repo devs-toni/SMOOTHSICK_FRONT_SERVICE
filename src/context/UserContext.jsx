@@ -15,10 +15,12 @@ export const UserProvider = ({ children }) => {
 
   // GET FAVOURITES SONGS
   const getFavourites = useCallback(() => {
-    axios.get(import.meta.env.VITE_BACKEND + 'users/favourites', { headers: { "Authorization": `${authState.token}` } })
-      .then(({ data }) => {
-        dispatch({ type: TYPES.SET_FAVOURITES, payload: data })
-      })
+    if (authState.token) {
+      axios.get(import.meta.env.VITE_BACKEND + 'users/favourites', { headers: { "Authorization": `${authState.token}` } })
+        .then(({ data }) => {
+          dispatch({ type: TYPES.SET_FAVOURITES, payload: data })
+        })
+    }
   }, [authState.token]);
 
   // GET USER TRACKS
@@ -37,7 +39,7 @@ export const UserProvider = ({ children }) => {
       })
   }, [authState.token])
 
- 
+
   // UPDATE SONGS WITH LIKES
   const toggleLike = (type, data, isLike, setIsLike) => {
     axios.patch(import.meta.env.VITE_BACKEND + type.toLowerCase() + "/like/" + data.id, {}, { headers: { "Authorization": `${authState.token}` } })
