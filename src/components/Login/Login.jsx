@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { HOME, SIGNUP } from "../../router/paths";
+import { HOME, LOGIN, SIGNUP } from "../../router/paths";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { Button, Label, TextInput } from "flowbite-react";
@@ -9,10 +9,11 @@ import defaultUserPicture from "../../assets/imgs/default_pictures/default_user_
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import RecoverModal from "../RecoverModal/RecoverModal";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
-
+  const location = useLocation();
   const { text } = useLanguage();
   const { reset, login } = useAuth();
   const navigate = useNavigate();
@@ -34,7 +35,6 @@ const Login = () => {
     try {
       await axios.post(import.meta.env.VITE_BACKEND + "users/authenticate", { userData })
         .then(({ data, status }) => {
-
           const { token, currentUser } = data;
           if (status === 200) {
             login(currentUser._id, {
@@ -105,9 +105,9 @@ const Login = () => {
     }
   };
 
+
   const setProfileOAuthGoogle = (profile) => {
     const { email, id, given_name, family_name, picture } = profile;
-    //console.log(email, id, given_name, family_name, picture);
     const user = {
       id,
       firstName: given_name,
@@ -115,18 +115,71 @@ const Login = () => {
       email,
       profilePicture: picture,
     }
-    if (profile) {
-      login(id, user);
-      localStorage.setItem(
-        "auth",
-        JSON.stringify(
-          user
-        )
-      );
+    if (user) {
+      try {
+        axios.post(import.meta.env.VITE_BACKEND + "users/authenticateGoogle", user)
+          .then(({ status, data }) => {
+            const { token, userGoogle } = data
+            if (status === 201) {
+              login(userGoogle._id, {
+                id: userGoogle._id,
+                firstName: userGoogle.name,
+                lastName: userGoogle.last_name,
+                userName: userGoogle.user_name,
+                email: userGoogle.email,
+                role: userGoogle.role,
+                profilePicture: userGoogle.picture,
+              }, token);
+              toast.success('Log in successfully!',
+                {
+                  style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                  },
+                  success: {
+                    duration: 2000
+                  }
+                }
+              )
+              localStorage.setItem("userToken", token)
+              navigate(HOME);
+            } else {
+              toast.error("Something went wrong!", {
+                style: {
+                  borderRadius: "10px",
+                  background: "#333",
+                  color: "#fff",
+                },
+                error: {
+                  duration: 2000,
+                },
+              });
+            }
+          }).catch((err) => {
+            if (err.response.status === 409) {
+              Swal.fire({
+                title: 'There is already a Smoothsick account associated with this email!',
+                text: 'Recover your password in this section',
+                width: 600,
+                icon: 'error',
+                background: '#18181b',
+                confirmButtonColor: '#ef5567',
+              })
+            }
+          })
+
+
+
+      } catch (error) {
+        console.error(error)
+      }
+
     }
-    const userG = { email, password };
-    //console.log(userG);
+
   };
+
+
   const loginG = useGoogleLogin({
 
     onSuccess: (codeResponse) => {
@@ -143,12 +196,14 @@ const Login = () => {
 
         .then((res) => {
           setProfileOAuthGoogle(res.data);
-          navigate("/");
         })
         .catch((err) => console.log(err));
     },
     onError: (error) => console.log("Login Failed:", error),
-  });
+
+  },
+
+  );
 
   const styleInput = {
     backgroundColor: "#00000000"
@@ -211,13 +266,11 @@ const Login = () => {
               </button>
             </Label>
           </div>
-
           <Button
             className="text-xs md:text-sm bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out transform text-white font-bold"
             type="submit"
           >
             {text.login.singin}
-
           </Button>
           <Button
             onClick={loginG}
@@ -226,7 +279,6 @@ const Login = () => {
           >
             {text.login.singingoogle}
           </Button>
-
         </form>
         <div className="flex item-center w-3/12 ">
         </div>

@@ -21,7 +21,7 @@ const Accountsettings = () => {
   const navigate = useNavigate()
   const { deleteUser } = useFetchUserData()
 
-  
+
 
   // try {
   //   axios.post(import.meta.env.VITE_BACKEND + "users/authorizate", { user })
@@ -71,8 +71,8 @@ const Accountsettings = () => {
             <div className="flex items-center gap-10">
               <Avatar
                 img={user.profilePicture}
-                size="lg"
-                className='border  border-neutral-500 rounded-full p-5'
+                size="xl"
+                rounded
               />
               <div className="flex flex-col gap-3">
                 <span className="text-lg md:text-2xl font-thin inline-block">{`${text.account.name} : ${user.firstName}`}</span>

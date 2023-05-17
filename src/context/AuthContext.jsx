@@ -18,12 +18,13 @@ export const AuthProvider = ({ children }) => {
       try {
         if (token) {
           axios.post(import.meta.env.VITE_BACKEND + "users/userData", {}, {
-            headers: {
-              "Authorization": token
-            }
+              headers: {
+                "Authorization": token
+              }
           })
             .then(res => {
               const { data, status } = res
+              console.log(data);
               if (status === 200) {
                 refresh(data.id, {
                   id: data.id,
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }) => {
                   email: data.email,
                   role: data.role,
                   userName: data.user_name,
-                  profilePicture: defaultUserPicture,
+                  profilePicture: data.picture ? data.picture: defaultUserPicture,
                 });
               }
             })

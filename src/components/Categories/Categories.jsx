@@ -57,7 +57,7 @@ export const Categories = () => {
                   <img
                     src={authState.user.profilePicture}
                     alt="User profile picture"
-                    className="w-20 md:w-32"
+                    className="w-20 md:w-32 rounded-full"
                   />
                   <div className="flex flex-col gap-3">
                     <span className="text-xl md:text-2xl inline-block">{authState.user.firstName + " " + authState.user.lastName}</span>
