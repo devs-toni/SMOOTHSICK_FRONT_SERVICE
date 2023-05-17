@@ -41,7 +41,7 @@ export const UserProvider = ({ children }) => {
 
   // CHECK AND RETURN USER PLAYLISTS TRACKS
   const checktUserPlaylistsTracks = (currentPlaylist) => {
-    axios.put(import.meta.env.VITE_BACKEND + 'playlists/playlistTracks', { tracklist: currentPlaylist?.tracklist })
+    axios.patch(import.meta.env.VITE_BACKEND + 'playlists/playlistTracks', { tracklist: currentPlaylist?.tracklist })
       .then(({ data }) => {
         dispatch({ type: TYPES.SET_USER_PLAYLIST_TRACKS, payload: data })
       })

@@ -12,5 +12,5 @@ export const DETAILS = '/details';
 export const CHANGEPASS = '/changepass';
 export const HOME = '/';
 export const ALBUM = '/albums';
-export const PLAYLIST = '/playlist';
+export const PLAYLIST = '/playlists';
 export const ARTIST = '/artists'
