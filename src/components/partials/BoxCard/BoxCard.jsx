@@ -9,10 +9,12 @@ import './HomeBoxCard.css';
 import { FILTER_TYPES } from "../../Search/filterTypes";
 import { useAuth } from "../../../context/AuthContext";
 import { useUser } from "../../../context/UserContext";
+import { Audio } from "react-loader-spinner";
+
+
 
 const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
-
-  const { playSong, addQueue } = usePlayer();
+  const { playSong, addQueue, playerState } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
   const { authState } = useAuth();
@@ -34,7 +36,7 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         preview: obj.preview,
       })
 
-      
+
     } else if (type == FILTER_TYPES.ALBUMS) {
       setData({
         id: obj.album.id,
@@ -42,7 +44,7 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
         artist: obj.artist.name,
         picture: obj.album.cover
       })
-      
+
 
     } else if (type == FILTER_TYPES.PLAYLISTS) {
       setData({
@@ -59,6 +61,8 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
   const isAlbum = type === FILTER_TYPES.ALBUMS ? true : false;
   const isPlaylist = type === FILTER_TYPES.PLAYLISTS ? true : false;
 
+  const currentTrack = data.find(track =>track.id === playerState.current.id )
+  console.log(currentTrack);
   return (
     <NavLink to={
       isAlbum
@@ -78,9 +82,22 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection }) => {
           {
             isTrack &&
             <div className={`${targetClass}__img-container--play-container`} onClick={() => playSong(data)}>
-              <FaPlayCircle className={`${targetClass}__img-container--play-container-play`} />
+             
+              {
+                playerState.isListening
+                  ?
+                  <Audio
+                    height="45"
+                    width="45"
+                    color="white"
+                    wrapperClass='mb-1 mr-0'
+                  />
+                  :
+                  <FaPlayCircle className={`${targetClass}__img-container--play-container-play`} />
+              }
             </div>
           }
+
           <img
             src={data.picture}
             alt={data.name}
