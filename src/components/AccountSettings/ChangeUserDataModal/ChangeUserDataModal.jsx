@@ -60,9 +60,9 @@ export const ChangeUserNameModal = ({ setOpen, open }) => {
                 <div className="mt-5 flex justify-center">
                   <Button
                     className='bg-deezer'
-                    onClick={handleSubmit(onSubmitUserName)}
+                    type="submit"
                   >
-                    Update
+                    {text.recover.btn_update}
                   </Button>
                 </div>
               </form>

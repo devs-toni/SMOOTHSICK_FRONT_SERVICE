@@ -26,7 +26,7 @@ const RecoverModal = ({ open, setOpen }) => {
           dataState.userId = id
           dataState.token = token
           setIsLoading(false)
-          toast.success("Check your email to generate a new password!", {
+          toast.success(text.recover.check , {
             style: {
               borderRadius: "10px",
               background: "#333",
@@ -41,7 +41,7 @@ const RecoverModal = ({ open, setOpen }) => {
         }
         if (status === 403) {
           setIsLoading(false)
-          toast.success("User with this email not found", {
+          toast.success(text.recover.notfound , {
             style: {
               borderRadius: "10px",
               background: "#333",
@@ -55,7 +55,7 @@ const RecoverModal = ({ open, setOpen }) => {
         }
       }).catch(err => {
         setIsLoading(false)
-        toast.error("Wrong email, check it", {
+        toast.error(text.recover.bad_email , {
           style: {
             borderRadius: "10px",
             background: "#333",

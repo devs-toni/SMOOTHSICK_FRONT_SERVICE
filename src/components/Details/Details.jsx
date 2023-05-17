@@ -9,6 +9,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { v4 as uuidv4 } from 'uuid';
 import { BsClock } from 'react-icons/bs';
 import { usePlayer } from '../../context/PlayerContext';
+import { Grid } from 'react-loader-spinner';
 
 
 export const Details = () => {
@@ -51,7 +52,7 @@ export const Details = () => {
       case FILTER_TYPES.ARTISTS:
         await axios.get(import.meta.env.VITE_BACKEND + "artists/" + id)
           .then(({ data }) => {
-            
+
             setData({
               id: data.id,
               artist_name: data.name,
@@ -71,7 +72,7 @@ export const Details = () => {
 
         break;
 
-       
+    
       case FILTER_TYPES.PLAYLISTS:
         await axios.get(import.meta.env.VITE_BACKEND + "playlists/" + id)
           .then(async ({ data }) => {
@@ -110,10 +111,10 @@ export const Details = () => {
   }, [])
   return (
     <div className='flex w-full items-center justify-center pb-12'>
-      <div className="w-[80%] h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">
+      <div className="w-full h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">
         {
           Object.keys(data).length > 0
-          
+
             ?
             FILTER_TYPES.ARTISTS === type.charAt(0).toUpperCase() + type.slice(1)
               ?
@@ -174,7 +175,7 @@ export const Details = () => {
                         <p className="hidden md:block w-1/12">#</p>
                         <p className="w-2/12">{text.album.track_name}</p>
                         <p className="w-2/12"></p>
-                        <p className="w-2/12 md:w-3/12">Options</p>
+                        <p className="w-2/12 md:w-3/12">{text.liked.options}</p>
                         <p className="hidden md:block md:w-3/12">{text.album.album_name}</p>
                         <p className="hidden lg:block lg:w-2/12">{text.album.record_company}</p>
                         <BsClock className='w-3/12 md:w-2/12' />
@@ -194,25 +195,23 @@ export const Details = () => {
                         )
                       })
                     }
-
                   </>
                 )
                 :
                 (
                   <>
-
                     <div className='mb-12'>
                       <ArtistHeader artist_picture={data.artist_picture} artist_name={data.artist_name} description={data.description} type={type} fans={data.fans} isLike={true} tracks={tracks} />
                     </div>
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
-                      <div className='flex items-center justify-between border-b border-b-gray-300'>
-                        <p className="w-1/12">#</p>
+                      <div className='flex items-center text-xs md:text-sm lg:text-lg justify-between border-b border-b-gray-300'>
+                        <p className="hidden md:block w-1/12">#</p>
                         <p className="w-2/12">{text.album.track_name}</p>
                         <p className="w-2/12"></p>
-                        <p className="w-3/12">Options</p>
-                        <p className="w-3/12">{text.playlists.playlist}</p>
-                        <p className="w-2/12">{text.liked.gender}</p>
-                        <BsClock className='w-2/12' />
+                        <p className="w-1/12 md:w-3/12">{text.liked.options}</p>
+                        <p className="hidden md:block w-3/12">{text.playlists.playlist}</p>
+                        <p className="hidden lg:block w-2/12">{text.liked.gender}</p>
+                        <BsClock className='w-3/12 md:w-2/12 ' />
                       </div>
                     </div>
                     {
@@ -222,21 +221,25 @@ export const Details = () => {
                             key={uuidv4()}
                             track={track}
                             count={index}
-                            playlistName={data.title}
+                            playlist_id={data.id}
                             tracks={tracks}
                             isPlaylist={true}
+
                           />
                         )
                       })
                     }
-
-
-
-
                   </>
                 )
             :
-            <p>Cargando</p>
+            <Grid
+              height="80"
+              width="80"
+              color="#ef5567"
+              ariaLabel="grid-loading"
+              radius="12.5"
+              visible={true}
+            />
         }
       </div>
     </div>

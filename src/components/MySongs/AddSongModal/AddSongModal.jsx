@@ -55,6 +55,7 @@ const AddSongModal = ({ open, setOpen, getMyTracks }) => {
           text: "Your file has been uploaded!",
           icon: 'success',
           background: '#18181b',
+          confirmButtonColor: '#ef5567',
         }
         )
         getMyTracks();
@@ -65,6 +66,7 @@ const AddSongModal = ({ open, setOpen, getMyTracks }) => {
         text: "Something went wrong!",
         icon: 'error',
         background: '#18181b',
+        confirmButtonColor: '#ef5567',
       }
       )
       setOpen(false);
@@ -74,7 +76,7 @@ const AddSongModal = ({ open, setOpen, getMyTracks }) => {
 
   return (
     <>
-      <Modal show={open} onClose={() => setOpen(false)} className='rounded-xl' dismissible>
+      <Modal show={open} onClose={() => setOpen(false)} className='rounded-xl' dismissible size={"md"}>
         <Modal.Body className='bg-zinc-900'>
           {
             loading ?
@@ -83,17 +85,17 @@ const AddSongModal = ({ open, setOpen, getMyTracks }) => {
               </div>
               :
               <div className='flex justify-center flex-col items-center gap-5'>
-                <span className='text-white text-3xl'>Upload Song</span>
+                <span className='text-white md:text-2xl'>Upload Song</span>
                 <div className=" flex flex-col gap-5">
                   <form onSubmit={handleSubmit} className='mb-5'>
                     <label className="text-base leading-relaxed text-gray-500 dark:text-gray-400" htmlFor="fileUpload">
-                      <BsCloudUpload className="text-7xl m-auto my-10 cursor-pointer" />
+                      <BsCloudUpload className="text-7xl m-auto my-2 cursor-pointer" />
                     </label>
-                    <input type="file" accept="image/*, audio/*" placeholder='Playlist name' id="fileUpload" className='bg-zinc-600 rounded mb-5'
+                    <input type="file" accept="image/*, audio/*" placeholder='Playlist name' id="fileUpload" className='bg-zinc-600 rounded mb-5 w-full'
                       {...register("file")}
                     />
                     <Button
-                      className='bg-deezer m-auto mt-4 text-xl'
+                      className='bg-deezer m-auto'
                       onClick={handleSubmit(onSubmit)}
                     >
                       Create

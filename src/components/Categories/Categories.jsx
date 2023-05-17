@@ -48,25 +48,25 @@ export const Categories = () => {
 
       <div className="h-full p-4 md:ml-20 lg:ml-52">
         <CreatePlaylistModal setOpen={setOpen} open={open} />
-        <div className="flex flex-col items-start justify-center ml-20 mr-20 pt-24 mb-24 gap-5">
+        <div className="flex flex-col items-start justify-center lg:ml-20 lg:mr-20 pt-24 mb-24 gap-5">
           {
             authState.isAuthenticated
               ?
               <>
                 <div className="flex items-center gap-10 mb-5">
-                  <Avatar
-                    img={authState.user.profilePicture}
-                    rounded={true}
-                    size="xl"
+                  <img
+                    src={authState.user.profilePicture}
+                    alt="User profile picture"
+                    className="w-20 md:w-32"
                   />
                   <div className="flex flex-col gap-3">
-                    <p className="text-4xl inline-block">{authState.user.firstName + " " + authState.user.lastName}</p>
+                    <span className="text-xl md:text-2xl inline-block">{authState.user.firstName + " " + authState.user.lastName}</span>
                     <Button
                       pill={true}
                       className="bg-deezer hover:bg-zinc-800"
                     >
                       <FaRandom size={12} className="mr-2" />
-                      My random music
+                      {text.playlists.random}
                     </Button>
                   </div>
                 </div>
@@ -76,13 +76,13 @@ export const Categories = () => {
                     ?
                     <>
                       <div className="inline-flex items-center">
-                        <h3 className="text-left text-4xl py-6">{text.categories.lists}</h3>
+                        <h3 className="text-left text-xl md:text-2xl lg:text-4xl md:py-4 lg:py-6">{text.categories.lists}</h3>
                         <span>{totalTracks.length}</span>
                       </div>
-                      <div className="grid grid-cols-6 gap-10">
-                        <div className=" h-60 w-60 flex flex-col gap-2 rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200" onClick={() => setOpen(true)}>
-                          <AiOutlinePlus size={40} color="black" className="hover:rounded-full hover:bg-opacity-10 hover:bg-slate-500 mt-8" />
-                          <span>Create new playlist</span>
+                      <div className="grid items-center grid-cols-3 gap-7 md:grid-cols-4 md:gap-7 lg:grid-cols-6 lg:gap-10 mb-5">
+                        <div className=" w-24 h-24 md:w-36 md:h-36 lg:h-60 lg:w-60 flex flex-col text-xs md:text-lg rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200" onClick={() => setOpen(true)}>
+                        <span>{text.playlists.span}</span>
+                          <AiOutlinePlus size={32} color="black" className="hover:rounded-full hover:bg-opacity-10 hover:bg-slate-500" />
                         </div>
                         {
                           userPlaylist.map((list, index) => (

@@ -1,19 +1,22 @@
 import { Modal, Button } from "flowbite-react"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { useAuth } from "../../../context/AuthContext"
 import axios from "axios"
 import { toast } from "react-hot-toast"
+import { useLanguage } from "../../../context/LanguageContext"
 
 export const ChangePasswordModal = ({ setOpen, open }) => {
-
-    const { register, handleSubmit, reset } = useForm()
+    const { text } = useLanguage()
+    const { register, handleSubmit, reset, formState: { errors } } = useForm()
     const [hiddenCurrentPassword, setHiddenCurrentPassword] = useState("")
     const [hiddenNewPassword, setHiddenNewPassword] = useState("hidden")
-    const [modaltitle, setModalTitle] = useState("Confirm your current password")
     const { authState } = useAuth()
     const { user } = authState
     const { id } = user
+
+
+
 
 
     const onSubmitCurrentPass = (data) => {
@@ -25,7 +28,6 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                     if (status === 201) {
                         setHiddenCurrentPassword("hidden")
                         setHiddenNewPassword("")
-                        setModalTitle("Create a new password")
                         reset()
                     } else {
                         toast.error("Incorrect password", {
@@ -64,7 +66,8 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                 axios.patch(import.meta.env.VITE_BACKEND + "users/changePassword", { pass, id })
                     .then(({ status }) => {
                         if (status === 201) {
-                            toast.success("Password changed successfully", {
+                            reset()
+                            toast.success(text.recover.pass_notmacht, {
                                 style: {
                                     borderRadius: "10px",
                                     background: "#333",
@@ -76,8 +79,8 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                             });
                             setHiddenCurrentPassword("")
                             setHiddenNewPassword("hidden")
-                            setModalTitle("Confirm your current password")
                             setOpen(false)
+
                         }
 
                     })
@@ -94,42 +97,47 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
 
     return (
         <>
-            <Modal show={open} onClose={() => setOpen(false)} className='rounded-xl' dismissible>
+            <Modal show={open} onClose={() => setOpen(false)} size="xl" dismissible>
                 <Modal.Body className='bg-zinc-900'>
                     <div className='flex justify-center flex-col items-center gap-5'>
-                        <span className='text-white'>Change password</span>
+                        <span className='text-white'>{text.recover.submit}</span>
                         <div className=" flex flex-col gap-5 items-center">
-                            <span className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {modaltitle}
-                            </span>
                             <form onSubmit={handleSubmit(onSubmitCurrentPass)} className={`mb-5  ${hiddenCurrentPassword}`}>
                                 <div className="flex gap-5">
-                                    <input type="password" placeholder='Confirm your password' className="bg-zinc-600 rounded mb-5}"
+                                    <input type="password" placeholder={text.recover.ok} required={true} className="bg-zinc-600 rounded mb-5}"
                                         {...register("currentPass")}
                                     />
                                 </div>
                                 <div className="mt-5 flex justify-center">
                                     <Button
                                         className='bg-deezer'
-                                        onClick={handleSubmit(onSubmitCurrentPass)}
+                                        type="submit"
                                     >
-                                        Confirma
+                                        {text.recover.btn_ok}
                                     </Button>
                                 </div>
                             </form>
                             <form onSubmit={handleSubmit(onSubmitNewPass)} className={`mb-5  ${hiddenNewPassword}`}>
-                                <div className="flex gap-5">
-                                    <input type="password" placeholder='New password' className="bg-zinc-600 rounded mb-5}"
-                                        {...register("pass")}
+                                <div className="flex md:flex-row flex-col gap-5">
+                                    <input type="password" placeholder={text.register.n_pass} required={true} className="bg-zinc-600 rounded mb-5}"
+                                        {...register("pass", {
+                                            pattern: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/
+                                        })}
                                     />
-                                    <input type="password" placeholder='Confirm new password' className="bg-zinc-600 rounded mb-5}"
+                                    <input type="password" placeholder={text.register.ok_n_pass} required={true} className="bg-zinc-600 rounded mb-5}"
                                         {...register("repeatPass")}
                                     />
                                 </div>
+                                {
+                                    errors?.pass?.type === "pattern" &&
+                                    <p className="text-red-500 text-xs text-center pt-4">
+                                        Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long
+                                    </p>
+                                }
                                 <div className="mt-5 flex justify-center">
                                     <Button
                                         className='bg-deezer'
-                                        onClick={handleSubmit(onSubmitNewPass)}
+                                        type="submit"
                                     >
                                         Create
                                     </Button>
