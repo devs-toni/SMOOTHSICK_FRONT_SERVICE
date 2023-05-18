@@ -12,16 +12,18 @@ import { Dropdown } from 'flowbite-react';
 import { list } from 'postcss';
 import { toast } from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
+import { useLanguage } from '../../../context/LanguageContext';
 
 export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, album_name, setId, setUpdateIsOpen, isPlaylist }) => {
-
+ 
+  const { text } = useLanguage();
   const { id, title, duration, preview, artist_name, album_cover, artist_id, likes } = track;
   const { authState } = useAuth();
   const { removeFromFavourites, removeFromMyTracks, userState, getMyPlaylists } = useUser();
   const { userPlaylist } = userState
   const { playerState, playSong, addQueue, addList } = usePlayer();
   const [isLike, setIsLike] = useState(likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false)
-
+ 
 
 
   const toggleLike = () => {
@@ -61,6 +63,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
         album_cover: !item.album_cover ? ownerImage : item.album_cover,
       }
       newList.push(newListObj)
+
     })
     addList(newList)
     addQueue(newList)
@@ -97,7 +100,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
       .then(({ status }) => {
         if (status === 201) {
           getMyPlaylists()
-          toast.success(toast.playlists.add , + listTitle, {
+          toast.success(text.playlists.add , + listTitle, {
             style: {
               borderRadius: "10px",
               background: "#333",
@@ -129,7 +132,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
         <div className='flex items-center rounded-xl hover:bg-zinc-900 h-12 md:h-16'>
           <span className='hidden md:block md:w-1/12 text-center'>{count + 1}</span>
           <div className=' flex w-2/12 items-center justify-center relative'>
-            <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} alt="image description"/>
+            <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} alt="image description" width="" height="" />
             {
               (playerState.current.name === title && playerState.isListening) ?
                 <Audio
@@ -160,7 +163,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
                   arrowIcon={false}
                 >
                   <Dropdown.Header className='text-white'>
-                   {toast.playlists.add}
+                   {text.playlists.add}
                   </Dropdown.Header>
                   {
                     userPlaylist.map((list) => (
