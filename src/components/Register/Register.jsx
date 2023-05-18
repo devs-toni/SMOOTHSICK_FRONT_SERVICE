@@ -65,7 +65,7 @@ const Register = () => {
           if (status === 200) {
             navigate(LOGIN);
           } else if (status == 204) {
-            toast.error("User already exist!", {
+            toast.error(text.toast.toast2, {
               style: {
                 borderRadius: "10px",
                 background: "#333",
@@ -76,7 +76,7 @@ const Register = () => {
               },
             });
           } else {
-            toast.error("Something went wrong!", {
+            toast.error(text.toast.toast5, {
               style: {
                 borderRadius: "10px",
                 background: "#333",
