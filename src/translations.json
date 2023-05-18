@@ -175,7 +175,8 @@
       "span": "Crea tu nueva lista",
       "random": "Mi música aleatoria",
       "charge": "Cargando",
-      "add": "Canción añadida a la lista"
+      "add": "Canción añadida a la lista",
+      "upload" : "Sube tus canciones"
       
     }
   },
@@ -356,7 +357,8 @@
       "span": "Create a new playlist",
       "random": "My random music",
       "charge": "Loading",
-      "add": "Track added to playlist"
+      "add": "Track added to playlist",
+      "upload" : "Upload your songs"
       
     }
   },
@@ -534,7 +536,8 @@
       "span": "Créer une nouvelle playlist",
       "random": "Ma musique aléatoire",
       "charge": "Chargement",
-      "add": "Piste ajoutée à la playlist"
+      "add": "Piste ajoutée à la playlist",
+      "upload" : "Téléchargez vos chansons"
     }
   },
   "chn": {
@@ -713,7 +716,8 @@
       "random": "我的随机音乐",
       "charge": "负荷",
       "user": "未找到用户",
-      "add": "曲目已添加到播放列表"
+      "add": "曲目已添加到播放列表",
+      "upload" : "上传您的歌曲"
     }
   }
 }
