@@ -64,7 +64,7 @@ export const NavBar = () => {
 
   const handleLogout = () => {
     logout(null)
-    toast.success('Log out successfully!',
+    toast.success(text.login.logout ,
       {
         style: {
           borderRadius: '10px',

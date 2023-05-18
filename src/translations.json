@@ -27,7 +27,8 @@
       "dontHaveAnAccount": "¿No tienes una cuenta de Smoothsick?",
       "register": "Registrate Gratis",
       "singingoogle": "Iniciar sesión con Google 🚀",
-      "singin": "Iniciar Sesión"
+      "singin": "Iniciar Sesión",
+      "logout" : "Has salido correctamente"
     },
     "recover": {
       "title": "Recupera tu Contraseña",
@@ -201,7 +202,8 @@
       "dontHaveAnAccount": "Don't have a Smoothsick account?",
       "register": "Register",
       "singingoogle": "Sign in with Google 🚀 ",
-      "singin": "Sign In"
+      "singin": "Sign In",
+      "logout" : "Log out successfully!"
     },
     "recover": {
       "title": "Recover your password",
@@ -373,7 +375,8 @@
       "dontHaveAnAccount": "Vous n'avez pas un compte à Smoothsick?",
       "register": "S'enregistrer",
       "singingoogle": "S'enregistrer avec Google 🚀",
-      "singin": "S'identifier'"
+      "singin": "S'identifier'",
+      "logout" : "Déconnectez-vous avec succès!"
     },
     "recover": {
       "title": "Récupérer votre mot de passe",
@@ -544,7 +547,8 @@
       "dontHaveAnAccount": "没有Smoothsick账户?",
       "register": "注册",
       "singingoogle": "用Google账户登录 🚀",
-      "singin": "登录"
+      "singin": "登录",
+      "logout" : "注销成功！"
     },
     "recover": {
       "title": "恢复你的密码",
