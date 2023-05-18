@@ -98,7 +98,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
       .then(({ status }) => {
         if (status === 201) {
           getMyPlaylists()
-          toast.success("Track added to playlist: " + listTitle, {
+          toast.success(toast.playlists.add , + listTitle, {
             style: {
               borderRadius: "10px",
               background: "#333",
@@ -109,7 +109,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
             },
           });
         } else {
-          toast.error("Something went wrong", {
+          toast.error(text.toast.toast5, {
             style: {
               borderRadius: "10px",
               background: "#333",
@@ -161,7 +161,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
                   arrowIcon={false}
                 >
                   <Dropdown.Header className='text-white'>
-                    Añadir a tus playlists:
+                   {toast.playlists.add}
                   </Dropdown.Header>
                   {
                     userPlaylist.map((list) => (
