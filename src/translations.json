@@ -28,7 +28,8 @@
       "register": "Registrate Gratis",
       "singingoogle": "Iniciar sesión con Google 🚀",
       "singin": "Iniciar Sesión",
-      "logout" : "Has salido correctamente"
+      "logout" : "Has salido correctamente",
+      "login" : "Has entrado correctamente"
     },
     "recover": {
       "title": "Recupera tu Contraseña",
@@ -52,7 +53,8 @@
       "toast2": "Este usuario ya existe",
       "toast3": "Lista creada con éxito",
       "toast4": "Lista borrada correctamente",
-      "toast5": "Algo fué mal"
+      "toast5": "Algo fué mal",
+      "toast6": "¡Datos de inicio de sesión incorrectos!"
     },
     "username": {
       "new_username_added": "Nuevo usuario guardado",
@@ -203,7 +205,8 @@
       "register": "Register",
       "singingoogle": "Sign in with Google 🚀 ",
       "singin": "Sign In",
-      "logout" : "Log out successfully!"
+      "logout" : "Log out successfully!",
+      "login" : "Log in successfully!"
     },
     "recover": {
       "title": "Recover your password",
@@ -227,7 +230,8 @@
       "toast2": "This user already exists",
       "toast3": "Playlist created succcesfully",
       "toast4": "Playlist deleted successfully",
-      "toast5": "Something went wrong"
+      "toast5": "Something went wrong",
+      "toast6": "Incorrect login data!"
     },
     "username": {
       "new_username_added": "New user saved",
@@ -376,7 +380,8 @@
       "register": "S'enregistrer",
       "singingoogle": "S'enregistrer avec Google 🚀",
       "singin": "S'identifier'",
-      "logout" : "Déconnectez-vous avec succès!"
+      "logout" : "Déconnectez-vous avec succès!",
+      "login" : "Connectez-vous avec succès!"
     },
     "recover": {
       "title": "Récupérer votre mot de passe",
@@ -401,7 +406,8 @@
       "toast2": "Cet utilisateur existe déjà",
       "toast3": "Playlist créée avec succès",
       "toast4": "Liste supprimée avec succès",
-      "toast5": "Quelque chose s'est mal passé"
+      "toast5": "Quelque chose s'est mal passé",
+      "toast6": "Données de connexion incorrectes!"
       
     },
     "username": {
@@ -548,7 +554,8 @@
       "register": "注册",
       "singingoogle": "用Google账户登录 🚀",
       "singin": "登录",
-      "logout" : "注销成功！"
+      "logout" : "注销成功！",
+      "login" : "连接成功!"
     },
     "recover": {
       "title": "恢复你的密码",
@@ -572,7 +579,8 @@
       "toast2": "此用户已存在",
       "toast3": "成功创建的播放列表",
       "toast4": "已成功删除列表",
-      "toast5": "出了点问题"
+      "toast5": "出了点问题",
+      "toast6": "登录数据不正确！"
       
     },
     "username": {
