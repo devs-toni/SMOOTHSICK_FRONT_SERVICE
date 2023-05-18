@@ -27,7 +27,9 @@
       "dontHaveAnAccount": "¿No tienes una cuenta de Smoothsick?",
       "register": "Registrate Gratis",
       "singingoogle": "Iniciar sesión con Google 🚀",
-      "singin": "Iniciar Sesión"
+      "singin": "Iniciar Sesión",
+      "logout" : "Has salido correctamente",
+      "login" : "Has entrado correctamente"
     },
     "recover": {
       "title": "Recupera tu Contraseña",
@@ -51,7 +53,9 @@
       "toast2": "Este usuario ya existe",
       "toast3": "Lista creada con éxito",
       "toast4": "Lista borrada correctamente",
-      "toast5": "Algo fué mal"
+      "toast5": "Algo fué mal",
+      "toast6": "¡Datos de inicio de sesión incorrectos!",
+      "toast7": "Las contraseñas no coinciden"
     },
     "username": {
       "new_username_added": "Nuevo usuario guardado",
@@ -151,7 +155,9 @@
       "current_pass": "Contraseña actual",
       "new_pass": "Nueva contraseña",
       "r_new_pass": "Repite nueva contraseña",
-      "btn_save_pass": "Guarda tus cambios"
+      "btn_save_pass": "Guarda tus cambios",
+      "bad_pass" : "Contraseña incorrecta",
+      "request" : " La contraseña debe contener un dígito del 1 al 9, una letra minúscula, una letra mayúscula, un carácter especial, sin espacio, y debe tener entre 8 y 16 caracteres"
     },
     "album": {
       "track_name": "Canción",
@@ -168,7 +174,8 @@
       "btn_explore": "Explora música",
       "span": "Crea tu nueva lista",
       "random": "Mi música aleatoria",
-      "charge": "Cargando"
+      "charge": "Cargando",
+      "add": "Canción añadida a la lista"
       
     }
   },
@@ -200,7 +207,9 @@
       "dontHaveAnAccount": "Don't have a Smoothsick account?",
       "register": "Register",
       "singingoogle": "Sign in with Google 🚀 ",
-      "singin": "Sign In"
+      "singin": "Sign In",
+      "logout" : "Log out successfully!",
+      "login" : "Log in successfully!"
     },
     "recover": {
       "title": "Recover your password",
@@ -224,7 +233,9 @@
       "toast2": "This user already exists",
       "toast3": "Playlist created succcesfully",
       "toast4": "Playlist deleted successfully",
-      "toast5": "Something went wrong"
+      "toast5": "Something went wrong",
+      "toast6": "Incorrect login data!",
+      "toast7": "Passwords do not match"
     },
     "username": {
       "new_username_added": "New user saved",
@@ -325,7 +336,9 @@
       "current_pass": "Current password",
       "new_pass": "New password",
       "r_new_pass": "Repeat new password",
-      "btn_save_pass": "Save your changes"
+      "btn_save_pass": "Save your changes",
+      "bad_pass" : "Incorrect password",
+      "request" : " Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long"
     },
     "album": {
       "track_name": "Track",
@@ -342,7 +355,8 @@
       "btn_explore": "Explore music",
       "span": "Create a new playlist",
       "random": "My random music",
-      "charge": "Loading"
+      "charge": "Loading",
+      "add": "Track added to playlist"
       
     }
   },
@@ -371,7 +385,9 @@
       "dontHaveAnAccount": "Vous n'avez pas un compte à Smoothsick?",
       "register": "S'enregistrer",
       "singingoogle": "S'enregistrer avec Google 🚀",
-      "singin": "S'identifier'"
+      "singin": "S'identifier'",
+      "logout" : "Déconnectez-vous avec succès!",
+      "login" : "Connectez-vous avec succès!"
     },
     "recover": {
       "title": "Récupérer votre mot de passe",
@@ -396,7 +412,9 @@
       "toast2": "Cet utilisateur existe déjà",
       "toast3": "Playlist créée avec succès",
       "toast4": "Liste supprimée avec succès",
-      "toast5": "Quelque chose s'est mal passé"
+      "toast5": "Quelque chose s'est mal passé",
+      "toast6": "Données de connexion incorrectes!",
+      "toast7": "Les mots de passe ne correspondent pas"
       
     },
     "username": {
@@ -497,7 +515,9 @@
       "current_pass": "Mot de passe actuel",
       "new_pass": "Nouveau mot de passe",
       "r_new_pass": "Répéter le nouveau mot de passe",
-      "btn_save_pass": "Enregistrez vos modifications"
+      "btn_save_pass": "Enregistrez vos modifications",
+      "bad_pass" : "Mot de passe incorrect",
+      "request" : " Le mot de passe doit contenir un chiffre de 1 à 9, une lettre minuscule, une lettre majuscule, un caractère spécial, aucun espace, et il doit comporter entre 8 et 16 caractères."
     },
     "album": {
       "track_name": "Chanson",
@@ -513,7 +533,8 @@
       "btn_explore": "Explorez la musique",
       "span": "Créer une nouvelle playlist",
       "random": "Ma musique aléatoire",
-      "charge": "Chargement"
+      "charge": "Chargement",
+      "add": "Piste ajoutée à la playlist"
     }
   },
   "chn": {
@@ -541,7 +562,9 @@
       "dontHaveAnAccount": "没有Smoothsick账户?",
       "register": "注册",
       "singingoogle": "用Google账户登录 🚀",
-      "singin": "登录"
+      "singin": "登录",
+      "logout" : "注销成功！",
+      "login" : "连接成功!"
     },
     "recover": {
       "title": "恢复你的密码",
@@ -565,7 +588,9 @@
       "toast2": "此用户已存在",
       "toast3": "成功创建的播放列表",
       "toast4": "已成功删除列表",
-      "toast5": "出了点问题"
+      "toast5": "出了点问题",
+      "toast6": "登录数据不正确！",
+      "toast7": "密码不匹配"
       
     },
     "username": {
@@ -667,7 +692,9 @@
       "current_pass": "当前密码",
       "new_pass": "新密码",
       "r_new_pass": "重复新密码",
-      "btn_save_pass": "保存更改"
+      "btn_save_pass": "保存更改",
+      "bad_pass" : "密码不正确",
+      "request" : "密码必须包含 1 到 9 之间的一位数字，一个小写字母，一个大写字母，一个特殊字符，无空格，长度必须为 8-16 个字符"
     },
     "album": {
       "track_name": "曲目",
@@ -685,7 +712,8 @@
       "span": "创建新的播放列表",
       "random": "我的随机音乐",
       "charge": "负荷",
-      "user": "未找到用户"
+      "user": "未找到用户",
+      "add": "曲目已添加到播放列表"
     }
   }
 }

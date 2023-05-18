@@ -30,7 +30,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                         setHiddenNewPassword("")
                         reset()
                     } else {
-                        toast.error("Incorrect password", {
+                        toast.error(text.changepass.bad_pass , {
                             style: {
                                 borderRadius: "10px",
                                 background: "#333",
@@ -51,7 +51,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
     const onSubmitNewPass = (data) => {
         const { pass, repeatPass } = data
         if (pass !== repeatPass) {
-            toast.error("Passwords do not match", {
+            toast.error(text.toast.toast7 , {
                 style: {
                     borderRadius: "10px",
                     background: "#333",
@@ -131,7 +131,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                                 {
                                     errors?.pass?.type === "pattern" &&
                                     <p className="text-red-500 text-xs text-center pt-4">
-                                        Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long
+                                        {text.changepass.request}
                                     </p>
                                 }
                                 <div className="mt-5 flex justify-center">
@@ -139,7 +139,7 @@ export const ChangePasswordModal = ({ setOpen, open }) => {
                                         className='bg-deezer'
                                         type="submit"
                                     >
-                                        Create
+                                        {text.register.btn_create}
                                     </Button>
                                 </div>
                             </form>

@@ -46,7 +46,7 @@ const Login = () => {
               role: currentUser.role,
               profilePicture: defaultUserPicture,
             }, token);
-            toast.success('Log in successfully!',
+            toast.success(text.login.login ,
               {
                 style: {
                   borderRadius: '10px',
@@ -62,7 +62,7 @@ const Login = () => {
             navigate(HOME);
 
           } else {
-            toast.error("Something went wrong!", {
+            toast.error(text.toast.toast5 , {
               style: {
                 borderRadius: "10px",
                 background: "#333",
@@ -75,7 +75,7 @@ const Login = () => {
           }
         }).catch((err) => {
           if (err.response.status === 401) {
-            toast.error("Incorrect login data!", {
+            toast.error(text.toast.toast6 , {
               style: {
                 borderRadius: "10px",
                 background: "#333",
@@ -87,7 +87,7 @@ const Login = () => {
             });
           }
           else {
-            toast.error("Something went wrong!", {
+            toast.error(text.toast.toast5 , {
               style: {
                 borderRadius: "10px",
                 background: "#333",
@@ -131,7 +131,7 @@ const Login = () => {
                 type: userGoogle.type,
                 profilePicture: userGoogle.picture,
               }, token);
-              toast.success('Log in successfully!',
+              toast.success(text.login.login ,
                 {
                   style: {
                     borderRadius: '10px',
@@ -146,7 +146,7 @@ const Login = () => {
               localStorage.setItem("userToken", token)
               navigate(HOME);
             } else {
-              toast.error("Something went wrong!", {
+              toast.error(text.toast.toast5 , {
                 style: {
                   borderRadius: "10px",
                   background: "#333",
