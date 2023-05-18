@@ -7,12 +7,16 @@ import { BsCloudUpload } from "react-icons/bs";
 import Swal from 'sweetalert2'
 import { useState } from "react";
 import { Bars } from "react-loader-spinner";
+import { useLanguage } from '../../../context/LanguageContext';
+
+
 
 const AddSongModal = ({ open, setOpen, getMyTracks }) => {
 
   const { register, handleSubmit } = useForm();
   const { authState } = useAuth();
   const [loading, setLoading] = useState(false);
+  const { text } = useLanguage();
 
   const onSubmit = async ({ file }) => {
     setLoading(true);

@@ -9,7 +9,7 @@ import { toast } from 'react-hot-toast'
 export const useFetchUserData = () => {
     const { authState, logout } = useAuth()
     const { user } = authState
-    const { email, userName, id } = user
+    const { id } = user
     const navigate = useNavigate()
     const [ReqAccepted, setReqAccepted] = useState(Boolean)
 

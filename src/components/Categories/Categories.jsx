@@ -21,7 +21,6 @@ import { MenuCategories } from "./MenuCategories/MenuCategories";
 import { Favourites } from "../Favourites/Favourites";
 import MySongs from "../MySongs/MySongs";
 
-
 export const Categories = () => {
   const { text } = useLanguage();
   const { path } = useParams();

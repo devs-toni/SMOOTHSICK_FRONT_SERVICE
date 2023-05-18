@@ -164,6 +164,7 @@
   display: flex;
   flex: 1 0 auto;
   justify-content: flex-end;
+  margin-right: 0.2rem;
 }
 
 .rhap_repeat-button {

@@ -2,22 +2,28 @@
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 import { usePlayer } from '../../context/PlayerContext';
 import { useEffect, useState } from 'react';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { MdQueueMusic } from 'react-icons/md';
-import { FaRandom } from 'react-icons/fa';
+import { AiOutlineHeart, AiOutlinePlus } from 'react-icons/ai';
 import "./Player.css"
 import { ProvideContent } from './ProvideContent/ProvideContent';
 import { useUser } from '../../context/UserContext';
 import { FILTER_TYPES } from '../Search/filterTypes';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
-
+import { BiShuffle } from 'react-icons/bi'
+import { useLanguage } from "../../context/LanguageContext"
+import { AddToPlaylist } from './AddToPlaylist/AddToPlaylist'
+import { v4 as uuidv4 } from 'uuid';
+import { Dropdown } from 'flowbite-react';
 
 const Player = () => {
   const { playerState, playSong, addQueue, setIsListening } = usePlayer();
+
+  const { text } = useLanguage()
   const { nextTrack, prevTrack } = ProvideContent();
-  const { toggleLike } = useUser();
+  const { handleAddToPlaylist } = AddToPlaylist()
+  const { toggleLike, userState } = useUser();
   const { authState } = useAuth();
+  const { userPlaylist } = userState
   const { current, queue, list } = playerState
   const { preview, picture, name, artist } = current
   const [randomActive, setRandomActive] = useState(false)
@@ -28,6 +34,7 @@ const Player = () => {
   const [isOwner, setIsOwner] = useState(false);
   const [isChanged, setIsChanged] = useState(false);
   const [isPlaylistSong, setIsPlaylistSong] = useState(false);
+
 
   useEffect(() => {
     (isChanged || current) &&
@@ -89,6 +96,10 @@ const Player = () => {
 
   const heartStyles = isLike ? { color: "#ef5567", } : { color: "gray" }
 
+  const onClick = (listId, listTitle, trackId,) => {
+    handleAddToPlaylist(listId, listTitle, trackId)
+  }
+
   return (
     playerState.current === null ? '' :
       <div className='pt-10 pr-6'>
@@ -122,17 +133,45 @@ const Player = () => {
                 }
               </div>,
               RHAP_UI.ADDITIONAL_CONTROLS,
-              <div className='flex md:gap-3'>
-                <FaRandom color={randomActive ? "#ef5567" : "#868686"} className='cursor-pointer' size={23} onClick={handleRandomSong} />
-              </div>,
+              <BiShuffle color={randomActive ? "#ef5567" : "#868686"} className='cursor-pointer' size={27} onClick={handleRandomSong} />,
               RHAP_UI.MAIN_CONTROLS,
-              <div className='hidden md:flex md:gap-1 items-center'>
+              <div className='hidden md:flex md:gap-2 items-center'>
                 {
                   (!isOwner && !isPlaylistSong) &&
                   <AiOutlineHeart color='#868686' size={25} style={heartStyles} className='cursor-pointer' onClick={() => toggleLike(FILTER_TYPES.TRACKS, playerState.current, isLike, setIsLike)} />
                 }
-                <MdQueueMusic color='#868686' size={25} className='cursor-pointer' />
+                {
+                  preview ?
+                    authState.isAuthenticated && current.id !== authState.id
+                      ?
+                      <Dropdown
+                        className='bg-zinc-700 border-none px-0 py-0 cursor-pointer'
+                        inline
+                        label={<AiOutlinePlus color='#868686' size={25} className='cursor-pointer' />}
+                        placement="top-start"
+                        arrowIcon={false}
+                      >
+                        <Dropdown.Header className='text-white'>
+                          {text.playlists.add}
+                        </Dropdown.Header>
+                        {
+                          userPlaylist.map((list) => (
+                            <Dropdown.Item key={uuidv4()} className='text-white' onClick={() => onClick(list.id, list.title, current.id)}>
+                              <span>{list.title}</span>
+                            </Dropdown.Item>
+                          ))
+                        }
+                      </Dropdown>
+                      :
+                      ""
+                    :
+                    ""
+
+                }
+
               </div>,
+
+
               RHAP_UI.VOLUME_CONTROLS,
             ]
           }

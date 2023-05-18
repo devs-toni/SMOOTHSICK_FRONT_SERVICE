@@ -107,7 +107,6 @@ const Accountsettings = () => {
             </div>
           </div>
           {
-
             authState.user.type === 'G-User'?
               <>
                 <div className='flex lg:gap-10 w-full pb-5 items-end'>
@@ -115,7 +114,7 @@ const Accountsettings = () => {
                     <span className='opacity-30'> {text.account.email} </span>
                     <div className='flex items-center lg:justify-between md:gap-5'>
                       <input type="email" readOnly name="userEmail" disabled defaultValue={user.email} className='bg-transparent text-lg w-64 md:w-80 lg:w-96 opacity-30' />
-                      <Button className='bg-deezer hover:bg-deezer-dark w-40' name='userEmail' onClick={handleAdviceForGoogleUser}>
+                      <Button className='bg-deezer hover:bg-deezer-dark hover:blur-sm hover:opacity-30 w-40' name='userEmail' onClick={handleAdviceForGoogleUser}>
                         <span className='text-xs md:text-sm'>
                           {text.account.button_m}
                         </span>
@@ -128,7 +127,7 @@ const Accountsettings = () => {
                     <span className='opacity-30'> {text.account.password2}</span>
                     <div className='flex items-center lg:justify-between md:gap-5'>
                       <input type="password" readOnly name="userPassword" disabled defaultValue={"*****"} className='bg-transparent text-lg w-64 md:w-80 lg:w-96 opacity-30' />
-                      <Button className='bg-deezer hover:bg-deezer-dark w-40' onClick={handleAdviceForGoogleUser}>
+                      <Button className='bg-deezer hover:bg-deezer w-40 hover:blur-sm hover:opacity-30' onClick={handleAdviceForGoogleUser}>
                         <span className='text-xs md:text-sm'>
                           {text.account.button_m}
                         </span>

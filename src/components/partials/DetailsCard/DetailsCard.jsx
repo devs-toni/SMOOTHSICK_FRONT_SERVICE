@@ -13,17 +13,21 @@ import { list } from 'postcss';
 import { toast } from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from '../../../context/LanguageContext';
+import { AddToPlaylist } from '../../Player/AddToPlaylist/AddToPlaylist'
+
+
 
 export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, album_name, setId, setUpdateIsOpen, isPlaylist }) => {
- 
+
   const { text } = useLanguage();
   const { id, title, duration, preview, artist_name, album_cover, artist_id, likes } = track;
   const { authState } = useAuth();
-  const { removeFromFavourites, removeFromMyTracks, userState, getMyPlaylists } = useUser();
+  const { removeFromFavourites, removeFromMyTracks, userState } = useUser();
   const { userPlaylist } = userState
   const { playerState, playSong, addQueue, addList } = usePlayer();
   const [isLike, setIsLike] = useState(likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false)
- 
+  const { handleAddToPlaylist } = AddToPlaylist()
+
 
 
   const toggleLike = () => {
@@ -95,36 +99,12 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
     setId(id);
   }
 
-  const handleAddToPlaylist = (listId, listTitle) => {
-    axios.post(import.meta.env.VITE_BACKEND + "playlists/addTrack", { listId, trackId: track.id })
-      .then(({ status }) => {
-        if (status === 201) {
-          getMyPlaylists()
-          toast.success(text.playlists.add , + listTitle, {
-            style: {
-              borderRadius: "10px",
-              background: "#333",
-              color: "#fff",
-            },
-            error: {
-              duration: 5000,
-            },
-          });
-        } else {
-          toast.error(text.toast.toast5, {
-            style: {
-              borderRadius: "10px",
-              background: "#333",
-              color: "#fff",
-            },
-            error: {
-              duration: 5000,
-            },
-          })
-        }
-      })
-
+  
+  const onClick = (listId, listTitle, trackId,) => {
+    handleAddToPlaylist(listId, listTitle, trackId)
   }
+
+
 
   return (
     <div className='flex w-full items-center justify-center h-full'>
@@ -163,11 +143,11 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
                   arrowIcon={false}
                 >
                   <Dropdown.Header className='text-white'>
-                   {text.playlists.add}
+                    {text.playlists.add}
                   </Dropdown.Header>
                   {
                     userPlaylist.map((list) => (
-                      <Dropdown.Item key={uuidv4()} className='text-white' onClick={() => handleAddToPlaylist(list.id, list.title)}>
+                      <Dropdown.Item key={uuidv4()} className='text-white' onClick={() => onClick(list.id, list.title, track.id)}>
                         <span>{list.title}</span>
                       </Dropdown.Item>
                     ))
