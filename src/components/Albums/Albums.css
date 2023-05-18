@@ -1,4 +1,4 @@
-.albums__title {
+/* .albums__title {
   padding: 40px 0 20px 0;
   font-size: 1.8em;
   padding-left: 10px;
@@ -11,6 +11,8 @@
 }
 
 .row__albums--item {
+  display: flex;
+  flex-direction: column;
   margin-right: 10px;
   padding: 20px 20px;
   height: 100%;
@@ -132,7 +134,6 @@
     min-width: 80px;
     max-width: 80px;
     max-height: 70px;
-    margin-right: 14px;
   }
   .albums__data {
     margin-top: 0;
@@ -158,9 +159,9 @@
     max-width: 60px;
     min-width: 60px;
     max-height: 60px;
-    margin-right: 10px;
+    
   }
   .albums__data {
     font-size: 0.7em;
   }
-}
+} */

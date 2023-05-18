@@ -43,7 +43,7 @@ const Slider = ({ list, name, type, isFirstRowSection, top_tracks, less_tracks }
                 <MdArrowForwardIos className={`row__arrows--arrow ${rightIsMoved && 'null'}`} onClick={() => handleClick("forward")} />
               </div>
             }
-            <div className='row__list' ref={divRef}>
+            <div className='row__list flex gap-2' ref={divRef}>
               {
                 list.map((obj) => {
                   return (

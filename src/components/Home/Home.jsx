@@ -22,7 +22,7 @@ const Home = () => {
   const { tracks, tracksLoaded } = useFetchAllHomeTracks();
 
   return (
-    <div className='pb-20 main-home'>
+    <div className='pb-20 main-home truncate'>
       <div className="home">
         <div className="first-row">
           <Slider

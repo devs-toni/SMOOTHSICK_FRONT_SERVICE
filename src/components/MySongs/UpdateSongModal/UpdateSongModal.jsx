@@ -49,6 +49,7 @@ const UpdateSongModal = ({ open, id, setOpen, getMyTracks }) => {
           text: "Your file has been updated!",
           icon: 'success',
           background: '#18181b',
+          confirmButtonColor: '#ef5567',
         }
         )
         reset();
@@ -58,6 +59,7 @@ const UpdateSongModal = ({ open, id, setOpen, getMyTracks }) => {
           text: "Something went wrong!",
           icon: 'error',
           background: '#18181b',
+          confirmButtonColor: '#ef5567',
         }
         )
         setOpen(false);

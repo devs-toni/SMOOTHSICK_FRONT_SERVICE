@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { Button, Modal } from 'flowbite-react'
+import { Button, Modal, TextInput } from 'flowbite-react'
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../context/AuthContext"
 import { toast } from 'react-hot-toast';
@@ -48,24 +48,23 @@ const CreatePlaylistModal = ({ open, setOpen }) => {
 
     return (
         <>
-            <Modal show={open} onClose={() => setOpen(false)} dismissible>
+            <Modal show={open} onClose={() => setOpen(false)} size={"xl"} dismissible>
                 <Modal.Body className='bg-zinc-900 rounded'>
-                    <div className='flex justify-center flex-col items-center gap-5'>
+                    <div className='flex justify-center flex-col items-center'>
                         <span className='text-white md:text-2xl'>Create playlist</span>
                         <div className=" flex flex-col gap-5">
-
-                            <form onSubmit={handleSubmit(onSubmit)} className='mb-5'>
-                                <label className="text-base leading-relaxed text-gray-500 dark:text-gray-400" htmlFor="fileUpload">
-                                    <MdPlaylistAdd className="text-7xl m-auto my-2 cursor-pointer" />
+                            <form onSubmit={handleSubmit(onSubmit)} className=' m-auto flex flex-col items-center'>
+                                <label className="text-gray-500 dark:text-gray-400" htmlFor="fileUpload">
+                                    <MdPlaylistAdd className="m-auto my-2 cursor-pointer" size={70} />
                                 </label>
-                                <input type="text" placeholder={text.playlists.holder_name} className='bg-zinc-600 rounded mb-5'
-                                    {...register("title")}
-                                />
-                                <input type="text" placeholder={text.playlists.holder_des} className='bg-zinc-600 rounded mb-5'
-                                    {...register("description")}
-                                />
+                                    <input type="text" placeholder={text.playlists.holder_name} className='bg-zinc-600 rounded mb-5 md:w-80 '
+                                        {...register("title")}
+                                    />
+                                    <textarea type="text" placeholder={text.playlists.holder_des} className='bg-zinc-600 rounded mb-5 w-60 md:w-80 resize-none'
+                                        {...register("description")}
+                                    />
                                 <Button
-                                    className='bg-deezer m-auto'
+                                    className='bg-deezer my-5'
                                     onClick={handleSubmit(onSubmit)}
                                 >
                                     {text.register.btn_create}

@@ -128,6 +128,7 @@ const Login = () => {
                 userName: userGoogle.user_name,
                 email: userGoogle.email,
                 role: userGoogle.role,
+                type: userGoogle.type,
                 profilePicture: userGoogle.picture,
               }, token);
               toast.success('Log in successfully!',

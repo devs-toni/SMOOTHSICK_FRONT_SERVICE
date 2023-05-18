@@ -15,8 +15,6 @@ export const ProvideContent = () => {
   const currentSongIndex = queue.indexOf(track)
   const [nextTrack, setNexTrack] = useState()
   const [prevTrack, setPrevTrack] = useState()
-  const [searchQueue, setSearchQueue] = useState([])
-
 
   useEffect(() => {
     if (currentSongIndex + 1 !== queue.length) {
@@ -28,35 +26,41 @@ export const ProvideContent = () => {
           picture: queue[currentSongIndex + 1]?.album_cover,
           preview: queue[currentSongIndex + 1]?.preview
         })
+    } else {
+      setNexTrack
+        ({
+          id: queue[0]?.id,
+          name: queue[0]?.title,
+          artist: queue[0]?.artist_name,
+          picture: queue[0]?.album_cover,
+          preview: queue[0]?.preview
+        })
     }
+
+
     if (currentSongIndex !== 0) {
       setPrevTrack
         ({
-          id: queue[currentSongIndex + 1]?.id,
+          id: queue[currentSongIndex - 1]?.id,
           name: queue[currentSongIndex - 1]?.title,
           artist: queue[currentSongIndex - 1]?.artist_name,
           picture: queue[currentSongIndex - 1]?.album_cover,
           preview: queue[currentSongIndex - 1]?.preview,
         })
 
-    }
-    // SELECT THE CONTENT WHEN THE QUEUE REACHES THE END
-    if (currentSongIndex + 1 === queue.length) {
-      let newsTracks=[]
-      myTracks.map((item) => {
-       const newTrack = {
-        id: item.id,
-        name: item.title,
-        artist: "Owner",
-        picture: unknown,
-        preview: item.preview
-       }
-        newsTracks.push(newTrack)
-      })
-      setSearchQueue(newsTracks)
-      addQueue(newsTracks)
+
+    } else {
+      setPrevTrack
+        ({
+          id: queue[queue.length - 1]?.id,
+          name: queue[queue.length - 1]?.title,
+          artist: queue[queue.length - 1]?.artist_name,
+          picture: queue[queue.length - 1]?.album_cover,
+          preview: queue[queue.length - 1]?.preview,
+        })
     }
   }, [currentSongIndex, queue.length])
 
-  return { nextTrack, prevTrack, searchQueue }
+
+  return { nextTrack, prevTrack }
 }

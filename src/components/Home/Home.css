@@ -4,7 +4,7 @@
 }
 
 .home {
-  max-width: 80%;
+  max-width: 90%;
   margin: 120px auto 0 auto;
   z-index: 10;
   position: relative;
@@ -77,13 +77,13 @@
     margin-left: 0;
   }
   .home {
-    max-width: 75%;
+    max-width: 79%;
   }
 }
 
 @media screen and (max-width: 470px) {
   .home {
-    max-width: 90%;
+    max-width: 91%;
   }
 }
 

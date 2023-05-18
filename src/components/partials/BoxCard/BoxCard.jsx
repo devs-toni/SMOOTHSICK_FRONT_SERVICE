@@ -2,24 +2,21 @@ import { useLayoutEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { usePlayer } from "../../../context/PlayerContext";
 import { ALBUM, ARTIST, DETAILS, PLAYLIST } from "../../../router/paths";
-import { FaHeart, FaPlayCircle } from 'react-icons/fa';
+import { FaPlayCircle } from 'react-icons/fa';
 import './HomeBox.css';
 import './ArtistBox.css';
 import './HomeBoxCard.css';
 import { FILTER_TYPES } from "../../Search/filterTypes";
 import { useAuth } from "../../../context/AuthContext";
-import { useUser } from "../../../context/UserContext";
 import { Audio } from "react-loader-spinner";
 import dfltImage from '../../../assets/imgs/UnkownAlbum.jpg'
 
-
-import { useFetchAllHomeTracks } from "../../../hooks";
 
 const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_tracks }) => {
   const { playSong, addQueue, playerState, addList } = usePlayer();
   const [canPlay, setCanPlay] = useState(false);
   const [data, setData] = useState({});
-  const { authState } = useAuth();
+
 
   useLayoutEffect(() => {
     if (type == FILTER_TYPES.ARTISTS) {
@@ -88,12 +85,15 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
           isArtist
           &&
           `${DETAILS}${ARTIST}/${data.id}`
-    } className={`${targetClass}__link`}>
-      <div className={`${!isFirstRowSection ? `row__${targetClass}--item bg-zinc-900` : `row__${targetClass}--firstItem`}`}>
-        <div className={`${targetClass}__img-container`}>
+    } className={`${targetClass}__link cursor-default`}>
+      <div className=
+        {
+          `${!isFirstRowSection ? `row__${"targetClass"}--item w-20 md:w-32 lg:w-48 flex relative flex-col gap-2 md:gap-2 lg:gap-1 rounded-lg p-1 md:p-2 lg:p-1 ${isAlbum && ' bg-zinc-900'} ${isTrack && ' bg-zinc-900'} ${isPlaylist && ' bg-zinc-900'}` : `row__${targetClass}--firstItem`} `
+        }>
+        <div className={`${targetClass}__img-container flex justify-center items-center lg:p-3`}>
           {
             isTrack &&
-            <div className="absolute w-full h-full flex items-center justify-center" onClick={handleSetTracks}>
+            <div className="absolute flex items-center justify-center" onClick={handleSetTracks}>
               {
                 playerState.isListening && playerState.current.id === data.id
                   ?
@@ -112,16 +112,14 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
           <img
             src={data.picture ? data.picture : dfltImage}
             alt={data.name}
-            className={`${targetClass}__img-container--img object-cover w-20`}
+            className={`${targetClass}__img-container--img object-cover w-16 md:w-40 rounded-md ${isArtist && 'hover:scale-110 transition ease-in-out duration-500'} cursor-pointer`}
             style={isArtist ? { borderRadius: "50%" } : {}}
-            width=""
-            height=""
           />
         </div>
         {
           !isFirstRowSection &&
-          <div className={`${targetClass}__data ${isArtist && 'text-center'}`}>
-            <p className={`truncate ${targetClass}__data--name`}>{data.name}</p>
+          <div className={`${targetClass}__data ${isArtist && 'text-center bg-gradient-to-b from-[#ef5567] transition duration-700 hover:bg-deezer hover:cursor-pointer rounded-lg flex justify-center items-center'}`}>
+            <p className={`truncate ${targetClass}__data--name w-15 text-center lg:mx-2 text-xs md:text-sm p-[0.3rem] md:p-[0.5rem] ${isAlbum && 'mr-0'}`}>{data.name}</p>
           </div>
         }
         {/*

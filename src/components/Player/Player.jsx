@@ -15,7 +15,7 @@ import { useAuth } from '../../context/AuthContext';
 
 const Player = () => {
   const { playerState, playSong, addQueue, setIsListening } = usePlayer();
-  const { nextTrack, prevTrack, searchQueue } = ProvideContent();
+  const { nextTrack, prevTrack } = ProvideContent();
   const { toggleLike } = useUser();
   const { authState } = useAuth();
   const { current, queue, list } = playerState
@@ -71,7 +71,6 @@ const Player = () => {
   const handleFinish = () => {
     setShowDataSong("hidden")
     setShowDataImg("hidden")
-    if(nextTrack) return playSong(nextTrack)
     setIsChanged(true)
     setIsListening(true)
   };

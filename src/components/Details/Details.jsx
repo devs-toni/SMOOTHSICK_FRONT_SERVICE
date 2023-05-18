@@ -111,7 +111,7 @@ export const Details = () => {
   useEffect(() => {
     getDetails();
   }, [id])
-  
+
   return (
     <div className='flex w-full items-center justify-center pb-12'>
       <div className="w-full h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">
@@ -209,12 +209,12 @@ export const Details = () => {
                     </div>
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
                       <div className='flex items-center text-xs md:text-sm lg:text-lg justify-between border-b border-b-gray-300'>
-                        <p className="hidden md:block w-1/12">#</p>
-                        <p className="w-2/12">{text.album.track_name}</p>
-                        <p className="w-2/12"></p>
-                        <p className="w-1/12 md:w-3/12">{text.liked.options}</p>
-                        <p className="hidden md:block w-3/12">{text.playlists.playlist}</p>
-                        <p className="hidden lg:block w-2/12">{text.liked.gender}</p>
+                        <span className="hidden md:block w-1/12">#</span>
+                        <span className="w-2/12">{text.album.track_name}</span>
+                        <span className="w-2/12"></span>
+                        <span className="w-1/12 md:w-3/12">{text.liked.options}</span>
+                        <span className="hidden md:block w-3/12">{text.playlists.playlist}</span>
+                        <span className="hidden lg:block w-2/12">{text.liked.gender}</span>
                         <BsClock className='w-3/12 md:w-2/12 ' />
                       </div>
                     </div>

@@ -1,4 +1,4 @@
-.artists__title {
+/* .artists__title {
   padding: 40px 0 20px 0;
   font-size: 1.8em;
   padding-left: 10px;
@@ -108,7 +108,7 @@
 }
 @media screen and (max-width: 795px) {
   .artists__section {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 @media screen and (max-width: 640px) {
@@ -119,8 +119,9 @@
   }
   .row__artists--item {
     display: flex;
-    padding: 5px 15px 5px 5px;
-    margin: auto;
+    padding: 5px 5px 5px 5px;
+    justify-items: center;
+    align-items: center;
     flex-direction: column;
     min-width: 100px;
     max-width: 100px;
@@ -132,7 +133,6 @@
     min-width: 80px;
     max-width: 80px;
     max-height: 70px;
-    margin-right: 14px;
   }
   .artists__data {
     margin-top: 0;
@@ -158,9 +158,8 @@
     max-width: 60px;
     min-width: 60px;
     max-height: 60px;
-    margin-right: 10px;
   }
   .artists__data {
     font-size: 0.7em;
   }
-}
+} */

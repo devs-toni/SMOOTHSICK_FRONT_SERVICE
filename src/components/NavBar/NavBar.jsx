@@ -52,11 +52,12 @@ export const NavBar = () => {
         ]
       )
   },
-    [authState.isAuthenticated,
-    text.navbar.home,
-    text.navbar.search,
-    text.navbar.login,
-    text.navbar.register
+    [
+      authState.isAuthenticated,
+      text.navbar.home,
+      text.navbar.search,
+      text.navbar.login,
+      text.navbar.register
     ]
   )
 
@@ -128,7 +129,7 @@ export const NavBar = () => {
                                 <span className='text-center'>{text.navbar.dashboard}</span>
                               </Dropdown.Item>
                             </NavLink>
-                            <NavLink to={FAVOURITES} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
+                            <NavLink to={`${CATEGORIES}${FAVOURITES}`} className={({ isActive }) => (isActive ? "opacity-40" : "")}>
                               <Dropdown.Item className='flex justify-center items-center bg-zinc-700 text-white px-0 py-0 h-10 hover:text-black'>
                                 <span>{text.liked.name}</span>
                               </Dropdown.Item>
@@ -198,7 +199,7 @@ export const NavBar = () => {
             <section className='flex flex-col gap-6 lg:w-full items-left text-sm  '>
               {
                 asideLinks.map((item, i) => (
-                  <NavLink key={i} to={item.path} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar" >
+                  <NavLink key={i} to={item.path} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar" >
                     <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12  justify-left '>
                       {item.icon}
                       <span className=" md:hidden lg:block">{item.text}</span>
@@ -208,7 +209,7 @@ export const NavBar = () => {
               }
               {
                 authState.user.role === "A" &&
-                <NavLink key="3" to={ADMIN} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar" >
+                <NavLink key="3" to={ADMIN} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar" >
                   <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12  justify-left '>
                     <FaKey />
                     <span className=" md:hidden lg:block">{text.navbar.admin}</span>
@@ -221,31 +222,31 @@ export const NavBar = () => {
                 authState.isAuthenticated
                   ?
                   <>
-                    <NavLink to={`${CATEGORIES}${PLAYLIST}`} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar">
+                    <NavLink to={`${CATEGORIES}${PLAYLIST}`} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar">
                       <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12 justify-left'>
                         <MdOutlinePlaylistAdd className='h-7 w-7' />
                         <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
                       </li>
                     </NavLink>
-                    <NavLink to={`${CATEGORIES}${MYSONGS}`} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar">
+                    <NavLink to={`${CATEGORIES}${MYSONGS}`} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar">
                       <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12  justify-left '>
                         <MdDriveFolderUpload className='h-6 w-6' />
                         <span className='md:hidden lg:block cursor-pointer'>{text.navbar.mysongs}</span>
                       </li>
                     </NavLink>
-                    <NavLink to={`${CATEGORIES}${FAVOURITES}`} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar">
+                    <NavLink to={`${CATEGORIES}${FAVOURITES}`} className={({ isActive }) => (isActive ? "flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar">
                       <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12 justify-left'>
                         <FaHeart className='h-6 w-5 mr-1' />
                         <span className='md:hidden lg:block cursor-pointer'>{text.liked.name}</span>
                       </li>
                     </NavLink>
-                    <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar">
+                    <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar">
                       <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12 justify-left '>
                         <IoIosPeople className='h-7 w-7' />
                         <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
                       </li>
                     </NavLink>
-                    <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar">
+                    <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar">
                       <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12 justify-left '>
                         <MdLibraryMusic className='h-6 w-6' />
                         <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
@@ -254,19 +255,19 @@ export const NavBar = () => {
                   </>
                   :
                   <>
-                    <NavLink to={`${CATEGORIES}${PLAYLIST}`} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar">
+                    <NavLink to={`${CATEGORIES}${PLAYLIST}`} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8  border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar">
                       <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12  justify-left'>
                         <MdOutlinePlaylistAdd className='h-7 w-7' />
                         <span className='md:hidden lg:block cursor-pointer'>{text.filters.playlists}</span>
                       </li>
                     </NavLink>
-                    <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar">
+                    <NavLink to={ARTIST} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar">
                       <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12 justify-left '>
                         <IoIosPeople className='h-7 w-7' />
                         <span className='md:hidden lg:block cursor-pointer'>{text.filters.artists}</span>
                       </li>
                     </NavLink>
-                    <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer")} data-drawer-hide="logo-sidebar">
+                    <NavLink to={ALBUM} className={({ isActive }) => (isActive ? " flex justify-center left-0 lg:border-l-8 border-deezer text-deezer" : "flex justify-center hover:text-deezer text-gray-400 transition duration-500 ease-in-out")} data-drawer-hide="logo-sidebar">
                       <li className='inline-flex gap-2 items-center w-full lg:w-full ml-5 md:ml-1 lg:ml-12 justify-left '>
                         <MdLibraryMusic className='h-6 w-6' />
                         <span className='md:hidden lg:block cursor-pointer'>{text.filters.albums}</span>
@@ -277,10 +278,10 @@ export const NavBar = () => {
             </section>
             {
               authState.isAuthenticated &&
-              <div className='flex flex-col items-center gap-6 md:pt-4 lg:w-full ml-2 md:ml-1 lg:ml-24   hover:text-deezer'>
-                <li className='inline-flex gap-2 items-center w-full lg:w-full justify-left ' onClick={handleLogout} data-drawer-hide="logo-sidebar">
-                  <MdOutlineLogout className="h-6 w-6" />
-                  <span className=' md:hidden lg:block'> {text.navbar.logout}</span>
+              <div className='flex flex-col items-center gap-6 md:pt-4 lg:w-full ml-2 md:ml-1 lg:ml-24'>
+                <li className='inline-flex gap-2 items-center w-full lg:w-full justify-left text-gray-400 hover:text-deezer ' onClick={handleLogout} data-drawer-hide="logo-sidebar">
+                  <MdOutlineLogout className="h-6 w-6 cursor-pointer" />
+                  <span className=' md:hidden lg:block cursor-pointer'> {text.navbar.logout}</span>
                 </li>
               </div>
             }

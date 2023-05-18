@@ -9,6 +9,7 @@ import { ChangePasswordModal } from './ChangePasswordModal/ChangePasswordModal';
 import { ChangeUserNameModal } from './ChangeUserDataModal/ChangeUserDataModal';
 import { ChangeEmailModal } from './ChangeEmailModal/ChangeEmailModal';
 import { useFetchUserData } from '../../hooks/useFetchUserData';
+import Swal from 'sweetalert2';
 
 
 const Accountsettings = () => {
@@ -55,6 +56,17 @@ const Accountsettings = () => {
     deleteUser()
   }
 
+  const handleAdviceForGoogleUser = () => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'You can not modified the user name or password for a google account',
+      background: '#18181b',
+      confirmButtonColor: '#ef5567',
+    })
+  }
+
+  console.log(authState.user.type);
 
   return (
     <>
@@ -75,8 +87,8 @@ const Accountsettings = () => {
                 rounded
               />
               <div className="flex flex-col gap-3">
-                <span className="text-lg md:text-2xl font-thin inline-block">{`${text.account.name} : ${user.firstName}`}</span>
-                <span className="text-lg md:text-2xl font-thin inline-block">{`${text.account.lastname}: ${user.lastName}`}</span>
+                <span className="text-lg md:text-xl xl:text-2xl font-thin inline-block">{`${text.account.name} : ${user.firstName}`}</span>
+                <span className="text-lg md:text-xl xl:text-2xl font-thin inline-block">{`${text.account.lastname}: ${user.lastName}`}</span>
               </div>
             </div>
             <h3 className='text-2xl lg:text-4xl'> {text.account.account} </h3>
@@ -94,32 +106,69 @@ const Accountsettings = () => {
               </div>
             </div>
           </div>
-          <div className='flex lg:gap-10 w-full pb-5 items-end'>
-            <div className='flex flex-col w-56 md:w-full gap-3 border-b border-zinc-700'>
-              <span> {text.account.email} </span>
-              <div className='flex items-center lg:justify-between md:gap-5'>
-                <input type="email" readOnly name="userEmail" defaultValue={user.email} className='bg-transparent text-lg w-64 md:w-80 lg:w-96' />
-                <Button className='bg-deezer hover:bg-deezer-dark w-40' name='userEmail' onClick={handleOpenEmaiModal}>
-                  <span className='text-xs md:text-sm'>
-                    {text.account.button_m}
-                  </span>
-                </Button>
-              </div>
-            </div>
-          </div>
-          <div className='flex lg:gap-10 w-full pb-10 items-end '>
-            <div className='flex flex-col w-56 md:w-full gap-3 border-b border-zinc-700'>
-              <span> {text.account.password2}</span>
-              <div className='flex items-center lg:justify-between md:gap-5'>
-                <input type="password" readOnly name="userPassword" defaultValue={"*****"} className='bg-transparent text-lg w-64 md:w-80 lg:w-96' />
-                <Button className='bg-deezer hover:bg-deezer-dark w-40 ' onClick={handleOpenChangePassModal}>
-                  <span className='text-xs md:text-sm'>
-                    {text.account.button_m}
-                  </span>
-                </Button>
-              </div>
-            </div>
-          </div>
+          {
+
+            authState.user.type === 'G-User'?
+              <>
+                <div className='flex lg:gap-10 w-full pb-5 items-end'>
+                  <div className='flex flex-col w-56 md:w-full gap-3 border-b border-zinc-700'>
+                    <span className='opacity-30'> {text.account.email} </span>
+                    <div className='flex items-center lg:justify-between md:gap-5'>
+                      <input type="email" readOnly name="userEmail" disabled defaultValue={user.email} className='bg-transparent text-lg w-64 md:w-80 lg:w-96 opacity-30' />
+                      <Button className='bg-deezer hover:bg-deezer-dark w-40' name='userEmail' onClick={handleAdviceForGoogleUser}>
+                        <span className='text-xs md:text-sm'>
+                          {text.account.button_m}
+                        </span>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <div className='flex lg:gap-10 w-full pb-10 items-end '>
+                  <div className='flex flex-col w-56 md:w-full gap-3 border-b border-zinc-700'>
+                    <span className='opacity-30'> {text.account.password2}</span>
+                    <div className='flex items-center lg:justify-between md:gap-5'>
+                      <input type="password" readOnly name="userPassword" disabled defaultValue={"*****"} className='bg-transparent text-lg w-64 md:w-80 lg:w-96 opacity-30' />
+                      <Button className='bg-deezer hover:bg-deezer-dark w-40' onClick={handleAdviceForGoogleUser}>
+                        <span className='text-xs md:text-sm'>
+                          {text.account.button_m}
+                        </span>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </>
+              :
+              <>
+                <div className='flex lg:gap-10 w-full pb-5 items-end'>
+                  <div className='flex flex-col w-56 md:w-full gap-3 border-b border-zinc-700'>
+                    <span> {text.account.email} </span>
+                    <div className='flex items-center lg:justify-between md:gap-5'>
+                      <input type="email" readOnly name="userEmail" defaultValue={user.email} className='bg-transparent text-lg w-64 md:w-80 lg:w-96' />
+                      <Button className='bg-deezer hover:bg-deezer-dark w-40' name='userEmail' onClick={handleOpenEmaiModal}>
+                        <span className='text-xs md:text-sm'>
+                          {text.account.button_m}
+                        </span>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <div className='flex lg:gap-10 w-full pb-10 items-end '>
+                  <div className='flex flex-col w-56 md:w-full gap-3 border-b border-zinc-700'>
+                    <span> {text.account.password2}</span>
+                    <div className='flex items-center lg:justify-between md:gap-5'>
+                      <input type="password" readOnly name="userPassword" defaultValue={"*****"} className='bg-transparent text-lg w-64 md:w-80 lg:w-96' />
+                      <Button className='bg-deezer hover:bg-deezer-dark w-40 ' onClick={handleOpenChangePassModal}>
+                        <span className='text-xs md:text-sm'>
+                          {text.account.button_m}
+                        </span>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </>
+
+          }
+
           {
             authState.user.role === "A"
               ?

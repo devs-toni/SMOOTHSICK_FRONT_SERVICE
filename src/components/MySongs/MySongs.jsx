@@ -24,9 +24,11 @@ const MySongs = () => {
         <div className="w-full h-full ">
           <UpdateSongModal id={id} setOpen={setUpdateIsOpen} open={updateIsOpen} getMyTracks={getMyTracks} />
           <AddSongModal setOpen={setAddIsOpen} open={addIsOpen} getMyTracks={getMyTracks} />
-          <div className="  w-24 h-24 md:w-36 md:h-36 lg:h-60 lg:w-60 truncate flex flex-col text-xs md:text-lg rounded-lg items-center justify-center bg-gradient-to-r from-red-200 via-orange-300 to-red-400 hover:cursor-pointer hover:from-red-400 hover:via-orange-300 hover:to-red-200 mb-6 md:mb-10 lg:mb-12" onClick={setAddIsOpen}>
-            <span>Add</span>
-            <AiOutlinePlus size={32} color="black" className="hover:rounded-full  hover:bg-opacity-10 hover:bg-slate-500 " />
+          <div className="flex flex-col gap-6 mb-14" onClick={setAddIsOpen}>
+            <div className="w-24 h-24 md:w-36 md:h-36 lg:h-60 lg:w-60 flex flex-col text-xs md:text-lg rounded-lg items-center justify-center bg-gradient-to-b from-[#ef5567]  transition duration-700 hover:bg-deezer hover:cursor-pointer">
+              <AiOutlinePlus size={32} color="black" className="hover:rounded-full  hover:bg-opacity-10 hover:bg-slate-900 " />
+            </div>
+            <span>Upload your songs</span>
           </div>
           <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
             <div className='flex items-center text-xs md:text-sm lg:text-lg justify-between border-b border-line-section'>

@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }) => {
                   role: data.role,
                   userName: data.user_name,
                   profilePicture: data.picture ? data.picture: defaultUserPicture,
+                  type: data.type,
                 });
               }
             })
@@ -57,6 +58,7 @@ export const AuthProvider = ({ children }) => {
       userName: "",
       email: "",
       profilePicture: defaultUserPicture,
+      type: "",
     },
     token: "",
     error: "",

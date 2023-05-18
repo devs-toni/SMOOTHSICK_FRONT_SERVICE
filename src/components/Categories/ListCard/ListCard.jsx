@@ -4,10 +4,9 @@ import { CATEGORIES, PLAYLIST } from '../../../router/paths'
 import { useUser } from '../../../context/UserContext'
 import dfltImage from '../../../assets/imgs/UnkownAlbum.jpg';
 import axios from 'axios';
+import { Avatar } from 'flowbite-react';
 
 const ListCard = ({ id, title }) => {
-  const { userState, checktUserPlaylistsTracks } = useUser();
-  const { userPlaylist } = userState;
   const [img, setImg] = useState("");
 
   const getPlaylistImage = async () => {
@@ -17,18 +16,23 @@ const ListCard = ({ id, title }) => {
       }).catch(err => console.error(err))
   }
 
+  console.log(img);
+
   useEffect(() => {
     getPlaylistImage();
   }, [id])
 
 
   return (
-    <Link to={`${CATEGORIES}${PLAYLIST}/${id}`}
-      className="w-24 h-24 md:w-36 md:h-36 lg:h-60 lg:w-60 text-xs md:text-lg truncate rounded-lg flex flex-row items-center justify-center"
-    >
-      <img src={img.length > 0 ? img : dfltImage} alt="" width="" height="" />
-      <span>{title}</span>
-    </Link>
+    <div className='flex flex-col gap-3'>
+      <div className="w-24 h-24 md:w-36 md:h-36 lg:h-60 lg:w-60 text-xs md:text-lg truncate rounded-lg flex flex-row items-center justify-center">
+        <Link to={`${CATEGORIES}${PLAYLIST}/${id}`}>
+          <img src={img.length > 0 ? img : dfltImage} />
+        </Link>
+      </div>
+      <span className='truncate'>{title}</span>
+    </div>
+
   )
 }
 
