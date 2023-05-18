@@ -98,7 +98,7 @@ const AddSongModal = ({ open, setOpen, getMyTracks }) => {
                       className='bg-deezer m-auto'
                       onClick={handleSubmit(onSubmit)}
                     >
-                      Create
+                      {text.register.btn_create}
                     </Button>
                   </form>
                 </div>
