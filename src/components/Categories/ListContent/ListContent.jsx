@@ -21,11 +21,10 @@ import { Audio } from 'react-loader-spinner';
 const ListContent = () => {
 
   const { text } = useLanguage();
-  const { getMyPlaylists } = useUser();
+  const { getMyPlaylists, userState } = useUser();
   const { authState } = useAuth();
   const { id } = useParams()
   const navigate = useNavigate()
-  const { userState } = useUser();
   const { userPlaylist } = userState
   const [changeIcon, setChangeIcon] = useState(<FaPlay className='hidden md:block' size={20} />)
   const { addList, addQueue, playSong, playerState } = usePlayer();
@@ -54,6 +53,7 @@ const ListContent = () => {
           await axios.get(import.meta.env.VITE_BACKEND + "tracks/image/" + id)
             .then(({ data }) => {
               if (playlistImage.length === 0) data?.album_cover ? setPlaylistImage(data.album_cover) : ""
+              
               const newData = {
                 ...data,
                 album_cover: data.album_cover,
@@ -68,7 +68,8 @@ const ListContent = () => {
 
   useEffect(() => {
     getPlaylistTracks();
-  }, [id])
+    
+  }, [id, userState.userPlaylist])
 
   const handleDeletePlaylist = () => {
     axios.delete(import.meta.env.VITE_BACKEND + 'users/deletePlaylist/' + id, { headers: { "Authorization": `${authState.token}` } })
@@ -124,7 +125,7 @@ const ListContent = () => {
               className="w-44 lg:w-52 rounded-xl object-cover"
             />
             <div className="flex flex-col gap-3">
-              <span className='text-left text-xl md:text-2xl lg:text-4xl py-3 lg:pt-11'>{userPlaylist[0]?.title}</span>
+              <span className='text-left text-xl md:text-2xl lg:text-4xl py-3 lg:pt-11'>{data.artist_name}</span>
               <div className='flex items-center gap-3'>
                 <button className='w-20 md:w-36 inline-flex gap-5 justify-center items-center hover:bg-deezer-dark p-2 md:p-3 rounded-full bg-deezer' onClick={handleDeletePlaylist}>
                   <BsTrash3Fill className='hidden md:block' size={20} />

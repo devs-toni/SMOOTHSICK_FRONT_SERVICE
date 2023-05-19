@@ -18,9 +18,9 @@ export const AuthProvider = ({ children }) => {
       try {
         if (token) {
           axios.post(import.meta.env.VITE_BACKEND + "users/userData", {}, {
-              headers: {
-                "Authorization": token
-              }
+            headers: {
+              "Authorization": token
+            }
           })
             .then(res => {
               const { data, status } = res
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
                   email: data.email,
                   role: data.role,
                   userName: data.user_name,
-                  profilePicture: data.picture ? data.picture: defaultUserPicture,
+                  profilePicture: data.picture ? data.picture : defaultUserPicture,
                   type: data.type,
                 });
               }
@@ -112,6 +112,25 @@ export const AuthProvider = ({ children }) => {
           error: ""
         };
 
+      case TYPES.CHANGE_USERNAME:
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            userName: action.payload
+
+          }
+        }
+
+      case TYPES.CHANGE_EMAIL:
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            email: action.payload
+          }
+        }
+
 
 
       default:
@@ -151,15 +170,23 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: TYPES.SET_FIRST_TIME_FALSE })
   }, [])
 
-  const authData = useMemo(() => ({
+  const changeEmail = useCallback((email) => {
+    dispatch({ type: TYPES.CHANGE_EMAIL, payload: email })
+  }, [])
 
+  const changeUserName = useCallback((userName) => {
+    dispatch({ type: TYPES.CHANGE_USERNAME, payload: userName })
+  }, [])
+  const authData = useMemo(() => ({
     authState,
     refresh,
     login,
     logout,
     reset,
-    resetFirstTime
-  }), [authState, login, logout, reset, resetFirstTime, refresh]);
+    resetFirstTime,
+    changeUserName,
+    changeEmail
+  }), [authState, login, logout, reset, resetFirstTime, refresh, changeEmail, changeUserName]);
 
   return (
     <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>

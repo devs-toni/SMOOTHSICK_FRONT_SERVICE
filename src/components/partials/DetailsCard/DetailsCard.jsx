@@ -14,6 +14,7 @@ import { toast } from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from '../../../context/LanguageContext';
 import { AddToPlaylist } from '../../Player/AddToPlaylist/AddToPlaylist'
+import defaultImage from '../../../assets/imgs/defaultImage.png'
 
 
 
@@ -21,6 +22,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
 
   const { text } = useLanguage();
   const { id, title, duration, preview, artist_name, album_cover, artist_id, likes } = track;
+
   const { authState } = useAuth();
   const { removeFromFavourites, removeFromMyTracks, userState } = useUser();
   const { userPlaylist } = userState
@@ -28,7 +30,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
   const [isLike, setIsLike] = useState(likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false)
   const { handleAddToPlaylist } = AddToPlaylist()
 
-
+  
 
   const toggleLike = () => {
     axios.patch(import.meta.env.VITE_BACKEND + "tracks/like/" + id, {}, {
@@ -99,7 +101,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
     setId(id);
   }
 
-  
+
   const onClick = (listId, listTitle, trackId,) => {
     handleAddToPlaylist(listId, listTitle, trackId)
   }
@@ -112,7 +114,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
         <div className='flex items-center rounded-xl hover:bg-zinc-900 h-12 md:h-16'>
           <span className='hidden md:block md:w-1/12 text-center'>{count + 1}</span>
           <div className=' flex w-2/12 items-center justify-center relative'>
-            <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={!ownerImage ? album_cover : ownerImage} alt="image description" width="" height="" />
+            <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={album_cover ? album_cover : ownerImage.length > 0 ? ownerImage : defaultImage} alt="image description" width="" height="" />
             {
               (playerState.current.name === title && playerState.isListening) ?
                 <Audio

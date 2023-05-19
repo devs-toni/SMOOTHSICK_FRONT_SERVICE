@@ -36,7 +36,7 @@ export const Categories = () => {
     }
   }, [userPlaylist.length])
 
-  
+
 
   return (
     <div className="w-full min-h-screen bg-no-repeat bg-cover bg-fixed"
@@ -86,6 +86,7 @@ export const Categories = () => {
                           </div>
                           <span className="truncate">{text.playlists.span}</span>
                         </div>
+                        
                         {
                           userPlaylist.map((list, index) => (
                             <ListCard

@@ -29,11 +29,10 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
       setData({
         id: obj.id,
         name: obj.title,
-        picture: obj.album_cover,
+        picture: obj.album_cover ? obj.album_cover : defaultImage,
         artist: obj.artist_name,
         preview: obj.preview,
       })
-
     } else if (type == FILTER_TYPES.ALBUMS) {
       setData({
         id: obj.album.id,

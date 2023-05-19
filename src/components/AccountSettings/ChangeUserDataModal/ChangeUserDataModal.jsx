@@ -9,7 +9,7 @@ import { useLanguage } from "../../../context/LanguageContext"
 export const ChangeUserNameModal = ({ setOpen, open }) => {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const { authState, refresh } = useAuth()
+  const { authState, changeUserName } = useAuth()
   const { user } = authState
   const { id } = user
   const { text } = useLanguage()
@@ -31,7 +31,7 @@ export const ChangeUserNameModal = ({ setOpen, open }) => {
                 duration: 5000,
               },
             });
-            user.userName = userName
+            changeUserName(userName)
             reset()
             setOpen(false)
           }
@@ -40,6 +40,8 @@ export const ChangeUserNameModal = ({ setOpen, open }) => {
       console.error(error);
     }
   }
+
+  
 
   return (
     <>

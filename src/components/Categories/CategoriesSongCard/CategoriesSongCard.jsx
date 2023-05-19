@@ -8,14 +8,16 @@ import { useUser } from "../../../context/UserContext";
 import { toast } from "react-hot-toast";
 import { FILTER_TYPES } from '../../Search/filterTypes';
 import { useState } from "react";
+import { useAuth } from "../../../context/AuthContext";
 
 
 
 export const SongCard = ({ track, tracks, index, defaultImg }) => {
   const { addList, addQueue, playSong, playerState } = usePlayer();
   const playlistId = useParams()
+  const { authState } = useAuth()
   const { getMyPlaylists, toggleLike } = useUser()
-  const [isLike, setIsLike] = useState(false);
+  const [isLike, setIsLike] = useState(track.likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false);
 
   const mins = Math.floor(track.duration % 3600 / 60)
   const secs = Math.floor(track.duration % 3600 % 60)
@@ -83,8 +85,12 @@ export const SongCard = ({ track, tracks, index, defaultImg }) => {
   }
 
   const heartStyles = isLike ? { color: "#ef5567", } : { color: "gray" }
-  
 
+
+  const handleLikesState = () => {
+    toggleLike(FILTER_TYPES.TRACKS, track, isLike, setIsLike)
+
+  }
 
   return (
     <>
@@ -114,7 +120,7 @@ export const SongCard = ({ track, tracks, index, defaultImg }) => {
             </div>
             <div className="w-3/12 flex items-center justify-center text-xs md:text-2xl rounded-full my-auto ">
               <div className='flex items-center justify-center w-full gap-3'>
-                <FaHeart className='text-lg md:text-2xl cursor-pointer' style={heartStyles}  onClick={() => toggleLike(FILTER_TYPES.TRACKS, track, isLike, setIsLike)} />
+                <FaHeart className='text-lg md:text-2xl cursor-pointer' style={heartStyles} onClick={handleLikesState} />
                 <AiFillDelete className=' text-lg md:text-2xl cursor-pointer' onClick={handleRemoveFromPlaylist} />
               </div>
             </div>

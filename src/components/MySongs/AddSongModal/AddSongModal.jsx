@@ -22,14 +22,13 @@ const AddSongModal = ({ open, setOpen, getMyTracks }) => {
     const fd = new FormData();
     fd.append("audio", uploadFile);
 
-    fetch(import.meta.env.VITE_BACKEND + "tracks/upload", {
+    fetch(import.meta.env.VITE_BACKEND + "tracks/uploadAudio", {
       method: "POST",
       body: fd,
       headers: {
         "Authorization": authState.token
       }
     }).then(response => response.json()).then(res => {
-
       const data = {
         id: uuidv4(),
         readable: true,

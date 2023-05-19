@@ -67,7 +67,6 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
 
                   <p className='text-lg font-bold'>{text.details.mix}</p>
                 </button>
-                {/* <FaHeart className={`artist-like ${isLike && 'isLike'}`} size={44} /> */}
               </div>
             </div>
           </div>

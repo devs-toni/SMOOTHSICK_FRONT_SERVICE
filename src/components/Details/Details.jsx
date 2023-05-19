@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { BsClock } from 'react-icons/bs';
 import { usePlayer } from '../../context/PlayerContext';
 import { Grid } from 'react-loader-spinner';
+import defaultImage from '../../assets/imgs/defaultImage.png'
 
 
 export const Details = () => {
@@ -19,10 +20,10 @@ export const Details = () => {
   const [data, setData] = useState({});
   const [tracks, setTracks] = useState([]);
   const [albums, setAlbums] = useState([]);
+  const [playlistImage, setPlaylistImage] = useState("")
 
 
   const getDetails = async () => {
-
     let finalData = [];
     switch (type.charAt(0).toUpperCase() + type.slice(1)) {
       case FILTER_TYPES.ALBUMS:
@@ -89,21 +90,21 @@ export const Details = () => {
               description: data.description
             });
             await Promise.all(data.tracklist.map(async (id) => {
-              await axios.get(import.meta.env.VITE_BACKEND + "tracks/" + id)
+              await axios.get(import.meta.env.VITE_BACKEND + "tracks/image/" + id)
                 .then(({ data }) => {
+                  if (playlistImage.length === 0) data?.album_cover ? setPlaylistImage(data.album_cover) : ""
                   const newData = {
                     ...data,
-                    album_cover: image,
+                    album_cover: data.album_cover,
                     title_playlist,
                   }
                   finalData.push(newData)
+                  console.log(finalData);
                 })
             }))
             setTracks(finalData);
-
           })
         break;
-
       case FILTER_TYPES.TRACKS:
         break;
     }
@@ -205,7 +206,7 @@ export const Details = () => {
                 (
                   <>
                     <div className='mb-12'>
-                      <ArtistHeader artist_picture={data.artist_picture} artist_name={data.artist_name} description={data.description} type={type} fans={data.fans} isLike={true} tracks={tracks} />
+                      <ArtistHeader artist_picture={data.artist_picture ? artist_picture : playlistImage.length > 0 ? playlistImage : defaultImage } artist_name={data.artist_name} description={data.description} type={type} fans={data.fans} isLike={true} tracks={tracks} />
                     </div>
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
                       <div className='flex items-center text-xs md:text-sm lg:text-lg justify-between border-b border-b-gray-300'>
@@ -229,6 +230,7 @@ export const Details = () => {
                             playlistName={data.artist_name}
                             tracks={tracks}
                             isPlaylist={true}
+                            ownerImage={playlistImage.length > 0 ? playlistImage : undefined}
 
                           />
                         )

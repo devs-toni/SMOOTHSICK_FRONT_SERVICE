@@ -10,16 +10,16 @@ import { useLanguage } from "../../../context/LanguageContext"
 export const ChangeEmailModal = ({ setOpen, open }) => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { authState } = useAuth()
+    const { authState, changeEmail } = useAuth()
     const { user } = authState
     const { id } = user
     const { text } = useLanguage()
-    
+
 
 
     const onSubmitEmail = (data) => {
         const { userEmail } = data
-        
+
         try {
             axios.patch(import.meta.env.VITE_BACKEND + "users/changeUserEmail", { userEmail, id })
                 .then(({ status }) => {
@@ -34,7 +34,7 @@ export const ChangeEmailModal = ({ setOpen, open }) => {
                                 duration: 5000,
                             },
                         });
-                        user.email = userEmail
+                        changeEmail(userEmail)
                         reset()
                         setOpen(false)
                     } else {
@@ -55,7 +55,8 @@ export const ChangeEmailModal = ({ setOpen, open }) => {
         }
     }
 
-    
+
+
 
     return (
         <>

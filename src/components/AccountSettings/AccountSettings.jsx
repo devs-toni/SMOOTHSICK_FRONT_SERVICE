@@ -3,7 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { HOME } from '../../router/paths'
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Avatar, Button } from 'flowbite-react';
 import { ChangePasswordModal } from './ChangePasswordModal/ChangePasswordModal';
 import { ChangeUserNameModal } from './ChangeUserDataModal/ChangeUserDataModal';
@@ -66,6 +66,7 @@ const Accountsettings = () => {
     })
   }
 
+  
 
   return (
     <>
@@ -96,7 +97,7 @@ const Accountsettings = () => {
             <div className='flex flex-col w-56 md:w-full gap-3 border-b border-zinc-700'>
               <span>{text.register.username}</span>
               <div className='flex items-center lg:justify-between md:gap-5'>
-                <input type="text" readOnly name="userName" defaultValue={user.userName} className='bg-transparent text-lg w-64 md:w-80 lg:w-96' />
+                <input type="text" readOnly name="userName" value={authState.user.userName} className='bg-transparent text-lg w-64 md:w-80 lg:w-96' />
                 <Button type='submit' className='bg-deezer hover:bg-deezer-dark w-40' name='userName' onClick={handleOpenUserDataModal}>
                   <span className='text-xs md:text-sm'>
                     {text.account.button_m}
@@ -112,7 +113,7 @@ const Accountsettings = () => {
                   <div className='flex flex-col w-56 md:w-full gap-3 border-b border-zinc-700'>
                     <span className='opacity-30'> {text.account.email} </span>
                     <div className='flex items-center lg:justify-between md:gap-5'>
-                      <input type="email" readOnly name="userEmail" disabled defaultValue={user.email} className='bg-transparent text-lg w-64 md:w-80 lg:w-96 opacity-30' />
+                      <input type="email" readOnly name="userEmail" disabled value={authState.user.email} className='bg-transparent text-lg w-64 md:w-80 lg:w-96 opacity-30' />
                       <Button className='bg-deezer hover:bg-deezer-dark hover:blur-sm hover:opacity-30 w-40' name='userEmail' onClick={handleAdviceForGoogleUser}>
                         <span className='text-xs md:text-sm'>
                           {text.account.button_m}
@@ -141,7 +142,7 @@ const Accountsettings = () => {
                   <div className='flex flex-col w-56 md:w-full gap-3 border-b border-zinc-700'>
                     <span> {text.account.email} </span>
                     <div className='flex items-center lg:justify-between md:gap-5'>
-                      <input type="email" readOnly name="userEmail" defaultValue={user.email} className='bg-transparent text-lg w-64 md:w-80 lg:w-96' />
+                      <input type="email" readOnly name="userEmail" value={authState.user.email} className='bg-transparent text-lg w-64 md:w-80 lg:w-96' />
                       <Button className='bg-deezer hover:bg-deezer-dark w-40' name='userEmail' onClick={handleOpenEmaiModal}>
                         <span className='text-xs md:text-sm'>
                           {text.account.button_m}

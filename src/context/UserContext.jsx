@@ -28,6 +28,7 @@ export const UserProvider = ({ children }) => {
     axios.get(import.meta.env.VITE_BACKEND + "tracks/my", { headers: { "Authorization": `${authState.token}` } })
       .then(({ data }) => {
         dispatch({ type: TYPES.SET_MY_TRACKS, payload: data })
+        console.log(data);
       })
   }, [authState.token]);
 
@@ -35,6 +36,7 @@ export const UserProvider = ({ children }) => {
   const getMyPlaylists = useCallback(() => {
     axios.get(import.meta.env.VITE_BACKEND + 'users/playlists', { headers: { "Authorization": `${authState.token}` } })
       .then(({ data }) => {
+       
         dispatch({ type: TYPES.SET_USER_PLAYLIST, payload: data })
       })
   }, [authState.token])
@@ -115,6 +117,7 @@ export const UserProvider = ({ children }) => {
     const filteredTracks = userState.favourites.filter(t => t.id !== trackId);
     dispatch({ type: TYPES.SET_FAVOURITES, payload: filteredTracks })
   }, [userState.favourites]);
+
 
   const removeFromMyTracks = useCallback((trackId) => {
     const filteredTracks = userState.myTracks.filter(t => t.id !== trackId);
