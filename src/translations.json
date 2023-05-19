@@ -465,14 +465,14 @@
       "com_playlists": "Playlists communautaires"
     },
     "home": {
-      "top_artists": "Top",
-      "top_playlists": "Top",
-      "top_albums": "Top",
-      "top_tracks": "Top",
-      "less_playlists": "Play",
-      "less_artists": "Más",
-      "less_albums": "Más",
-      "less_tracks": "Más"
+      "top_artists": "Meilleurs artistes",
+      "top_playlists": "Meilleurs Playlist",
+      "top_albums": "Meilleurs albums",
+      "top_tracks": "Meilleures chansons",
+      "less_playlists": "Plus de playlists",
+      "less_artists": "Plus d'artistes",
+      "less_albums": "Plus d'albums",
+      "less_tracks": "Plus de chansons"
     },
     "details": {
       "mix": "MÉLANGER",
@@ -643,14 +643,14 @@
 
     },
     "home": {
-      "top_artists": "Top",
-      "top_playlists": "Top",
-      "top_albums": "Top",
-      "top_tracks": "Top",
-      "less_playlists": "Play",
-      "less_artists": "Más",
-      "less_albums": "Más",
-      "less_tracks": "Más"
+      "top_artists": "顶级艺术家",
+      "top_playlists": "热门播放列表",
+      "top_albums": "热门专辑",
+      "top_tracks": "热门曲目",
+      "less_playlists": "马斯播放列表",
+      "less_artists": "马斯艺术家",
+      "less_albums": "马斯专辑",
+      "less_tracks": "更多歌曲"
     },
      "details": {
        "mix": "混合",
