@@ -78,6 +78,7 @@ const Player = () => {
   const handleFinish = () => {
     setShowDataSong("hidden")
     setShowDataImg("hidden")
+    playSong(nextTrack)
     setIsChanged(true)
     setIsListening(true)
   };
