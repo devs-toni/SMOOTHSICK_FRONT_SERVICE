@@ -36,7 +36,7 @@ export const Categories = () => {
     }
   }, [userPlaylist.length])
 
-
+  
 
   return (
     <div className="w-full min-h-screen bg-no-repeat bg-cover bg-fixed"

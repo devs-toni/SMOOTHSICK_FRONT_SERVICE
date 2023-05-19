@@ -133,7 +133,6 @@ const Player = () => {
                 }
               </div>,
               RHAP_UI.ADDITIONAL_CONTROLS,
-
               preview ?
                 authState.isAuthenticated && current.id !== authState.id
                   ?
@@ -168,8 +167,6 @@ const Player = () => {
                 <BiShuffle color={randomActive ? "#ef5567" : "#868686"} className='cursor-pointer' size={27} onClick={handleRandomSong} />
 
               </div>,
-
-
               RHAP_UI.VOLUME_CONTROLS
             ]
           }

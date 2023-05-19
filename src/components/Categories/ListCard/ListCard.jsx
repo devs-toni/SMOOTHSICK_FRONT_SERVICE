@@ -16,8 +16,6 @@ const ListCard = ({ id, title }) => {
       }).catch(err => console.error(err))
   }
 
-  console.log(img);
-
   useEffect(() => {
     getPlaylistImage();
   }, [id])

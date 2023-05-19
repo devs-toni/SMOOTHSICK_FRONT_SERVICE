@@ -1,18 +1,21 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { FaHeart, FaPlayCircle } from "react-icons/fa";
 import { GiMicrophone } from "react-icons/gi";
 import { SlOptions } from "react-icons/sl";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { usePlayer } from "../../../context/PlayerContext";
 import { Audio } from "react-loader-spinner";
+import { useUser } from "../../../context/UserContext";
+import { toast } from "react-hot-toast";
 
 
 
 export const SongCard = ({ track, tracks, index, defaultImg }) => {
   const { addList, addQueue, playSong, playerState } = usePlayer();
-
+  const playlistId = useParams()
+  const { getMyPlaylists } = useUser()
   const mins = Math.floor(track.duration % 3600 / 60)
   const secs = Math.floor(track.duration % 3600 % 60)
   const mDisplay = mins < 10 ? (`0${mins}`) : mins
@@ -47,7 +50,36 @@ export const SongCard = ({ track, tracks, index, defaultImg }) => {
     addQueue(newList)
   }
 
+  const handleRemoveFromPlaylist = async () => {
+    await axios.patch(import.meta.env.VITE_BACKEND + 'playlists/removeFromPlaylist', { trackId: track.id, playlistId: playlistId.id })
+      .then(({ status }) => {
+        getMyPlaylists()
+        if (status === 201) {
+          toast.success('Track removed from playlist!', {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+            error: {
+              duration: 5000,
+            },
+          });
+        } else {
+          toast.error('Something went wrong!', {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+            error: {
+              duration: 5000,
+            },
+          });
+        }
+      })
 
+  }
 
 
   return (
@@ -78,13 +110,13 @@ export const SongCard = ({ track, tracks, index, defaultImg }) => {
             </div>
             <div className="w-3/12 flex items-center justify-center text-xs md:text-2xl rounded-full my-auto ">
               <div className='flex items-center justify-center w-full gap-3'>
-                <FaHeart className='text-lg md:text-2xl' />
-                <AiFillDelete className=' text-lg md:text-2xl' />
+                <FaHeart className='text-lg md:text-2xl cursor-pointer' />
+                <AiFillDelete className=' text-lg md:text-2xl cursor-pointer' onClick={handleRemoveFromPlaylist} />
               </div>
             </div>
             <span className=" text-xs text-center font-normal hidden md:block md:w-3/12 md:text-md truncate">{track.artist_name ? track.artist_name : "Comunity playlist"}</span>
             <span className="text-xs text-center hidden lg:block lg:w-2/12 md:text-md grow truncate">{track.label}</span>
-            <span className="text-xs text-center w-2/12 md:text-md grow truncate">{`${mDisplay}:${sDisplay}`}</span>
+            <span className="text-xs text-center w-2/12 md:text-md grow truncate">{`${mDisplay}:${sDisplay} `}</span>
           </div>
         </div>
       </div>

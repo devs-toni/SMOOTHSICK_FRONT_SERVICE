@@ -162,7 +162,7 @@ const ListContent = () => {
           {
             tracks.length === 0
               ?
-              <div className='flex flex-col items-center justify-center h-full w-full gap-5 text-xs md:text-sm lg:text-lg'>
+              <div className='flex flex-col items-center justify-center h-full mt-48 w-full gap-5 text-xs md:text-sm lg:text-lg'>
                 <p>This playlist looks empty. Search for songs...</p>
                 <Link to={SEARCH} className='w-36 md:w-44 inline-flex gap-5 justify-center items-center hover:bg-deezer-dark p-2 md:p-3 rounded-full bg-deezer text-sm md:text-lg font-bold'>
                   Explore music
