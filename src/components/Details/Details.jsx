@@ -81,11 +81,14 @@ export const Details = () => {
           .then(async ({ data }) => {
             const title_playlist = data.title
             const image = data.picture
+
+            setPlaylistImage(image);
+
             setData({
               id: data.id,
               artist_name: data.title,
               total: data.nb_tracks,
-              artist_picture: data.picture,
+              artist_picture: data.picture ? data.picture : undefined,
               fans: data.fans,
               description: data.description
             });
@@ -99,7 +102,6 @@ export const Details = () => {
                     title_playlist,
                   }
                   finalData.push(newData)
-                  console.log(finalData);
                 })
             }))
             setTracks(finalData);
@@ -206,7 +208,7 @@ export const Details = () => {
                 (
                   <>
                     <div className='mb-12'>
-                      <ArtistHeader artist_picture={data.artist_picture ? artist_picture : playlistImage.length > 0 ? playlistImage : defaultImage } artist_name={data.artist_name} description={data.description} type={type} fans={data.fans} isLike={true} tracks={tracks} />
+                      <ArtistHeader artist_picture={data.artist_picture ? data.artist_picture : playlistImage?.length > 0 ? playlistImage : defaultImage } artist_name={data.artist_name} description={data.description} type={type} fans={data.fans} isLike={true} tracks={tracks} />
                     </div>
                     <div className="z-5 flex flex-col h-25 text-center justify-center w-8/6 min-w-[100%] ">
                       <div className='flex items-center text-xs md:text-sm lg:text-lg justify-between border-b border-b-gray-300'>
@@ -230,7 +232,7 @@ export const Details = () => {
                             playlistName={data.artist_name}
                             tracks={tracks}
                             isPlaylist={true}
-                            ownerImage={playlistImage.length > 0 ? playlistImage : undefined}
+                            ownerImage={playlistImage?.length > 0 ? playlistImage : undefined}
 
                           />
                         )

@@ -114,7 +114,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
         <div className='flex items-center rounded-xl hover:bg-zinc-900 h-12 md:h-16'>
           <span className='hidden md:block md:w-1/12 text-center'>{count + 1}</span>
           <div className=' flex w-2/12 items-center justify-center relative'>
-            <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={album_cover ? album_cover : ownerImage.length > 0 ? ownerImage : defaultImage} alt="image description" width="" height="" />
+            <img className="rounded-lg w-12 md:w-14 lg:w-16 cursor-pointer" src={album_cover ? album_cover : ownerImage?.length > 0 ? ownerImage : defaultImage} alt="image description" width="" height="" />
             {
               (playerState.current.name === title && playerState.isListening) ?
                 <Audio
