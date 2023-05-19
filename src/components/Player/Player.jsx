@@ -133,46 +133,44 @@ const Player = () => {
                 }
               </div>,
               RHAP_UI.ADDITIONAL_CONTROLS,
-              <BiShuffle color={randomActive ? "#ef5567" : "#868686"} className='cursor-pointer' size={27} onClick={handleRandomSong} />,
+
+              preview ?
+                authState.isAuthenticated && current.id !== authState.id
+                  ?
+                  <Dropdown
+                    className='bg-zinc-700 border-none px-0 py-0 cursor-pointer'
+                    inline
+                    label={<AiOutlinePlus color='#868686' size={25} className='cursor-pointer' />}
+                    placement="top-start"
+                    arrowIcon={false}
+                  >
+                    <Dropdown.Header className='text-white'>
+                      {text.playlists.add}
+                    </Dropdown.Header>
+                    {
+                      userPlaylist.map((list) => (
+                        <Dropdown.Item key={uuidv4()} className='text-white' onClick={() => onClick(list.id, list.title, current.id)}>
+                          <span>{list.title}</span>
+                        </Dropdown.Item>
+                      ))
+                    }
+                  </Dropdown>
+                  :
+                  ""
+                :
+                "",
               RHAP_UI.MAIN_CONTROLS,
               <div className='hidden md:flex md:gap-2 items-center'>
                 {
                   (!isOwner && !isPlaylistSong) &&
                   <AiOutlineHeart color='#868686' size={25} style={heartStyles} className='cursor-pointer' onClick={() => toggleLike(FILTER_TYPES.TRACKS, playerState.current, isLike, setIsLike)} />
                 }
-                {
-                  preview ?
-                    authState.isAuthenticated && current.id !== authState.id
-                      ?
-                      <Dropdown
-                        className='bg-zinc-700 border-none px-0 py-0 cursor-pointer'
-                        inline
-                        label={<AiOutlinePlus color='#868686' size={25} className='cursor-pointer' />}
-                        placement="top-start"
-                        arrowIcon={false}
-                      >
-                        <Dropdown.Header className='text-white'>
-                          {text.playlists.add}
-                        </Dropdown.Header>
-                        {
-                          userPlaylist.map((list) => (
-                            <Dropdown.Item key={uuidv4()} className='text-white' onClick={() => onClick(list.id, list.title, current.id)}>
-                              <span>{list.title}</span>
-                            </Dropdown.Item>
-                          ))
-                        }
-                      </Dropdown>
-                      :
-                      ""
-                    :
-                    ""
-
-                }
+                <BiShuffle color={randomActive ? "#ef5567" : "#868686"} className='cursor-pointer' size={27} onClick={handleRandomSong} />
 
               </div>,
 
 
-              RHAP_UI.VOLUME_CONTROLS,
+              RHAP_UI.VOLUME_CONTROLS
             ]
           }
         />

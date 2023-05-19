@@ -2,7 +2,7 @@ import { Dropdown } from 'flowbite-react';
 import { Toaster, toast } from "react-hot-toast";
 import { FaUserShield, FaUserPlus, FaKey, FaHeart } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai"
-import { RiFolderMusicFill, RiMenu4Fill } from "react-icons/ri"
+import { RiMenu4Fill } from "react-icons/ri"
 import { NavLink } from 'react-router-dom';
 import flagSpain from '../../assets/imgs/flags/spain.png'
 import flagEngland from '../../assets/imgs/flags/united-kingdom.png'
@@ -18,7 +18,6 @@ import { MdDriveFolderUpload, MdLibraryMusic, MdOutlineLogout, MdOutlinePlaylist
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { IoIosPeople } from 'react-icons/io'
-import uploadIcon from '../../assets/imgs/music-file.png'
 
 
 

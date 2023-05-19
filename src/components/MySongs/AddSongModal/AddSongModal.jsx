@@ -10,9 +10,7 @@ import { Bars } from "react-loader-spinner";
 import { useLanguage } from '../../../context/LanguageContext';
 
 
-
 const AddSongModal = ({ open, setOpen, getMyTracks }) => {
-
   const { register, handleSubmit } = useForm();
   const { authState } = useAuth();
   const [loading, setLoading] = useState(false);

@@ -7,9 +7,8 @@ import './HomeBox.css';
 import './ArtistBox.css';
 import './HomeBoxCard.css';
 import { FILTER_TYPES } from "../../Search/filterTypes";
-import { useAuth } from "../../../context/AuthContext";
 import { Audio } from "react-loader-spinner";
-import dfltImage from '../../../assets/imgs/UnkownAlbum.jpg'
+import defaultImage from '../../../assets/imgs/defaultImage.png'
 
 
 const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_tracks }) => {
@@ -110,7 +109,7 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
           }
 
           <img
-            src={data.picture ? data.picture : dfltImage}
+            src={data.picture ? data.picture : defaultImage}
             alt={data.name}
             className={`${targetClass}__img-container--img object-cover w-16 md:w-40 rounded-md ${isArtist && 'hover:scale-110 transition ease-in-out duration-500'} cursor-pointer`}
             style={isArtist ? { borderRadius: "50%" } : {}}

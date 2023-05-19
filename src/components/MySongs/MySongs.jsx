@@ -5,7 +5,7 @@ import { DetailsCard } from "../partials/DetailsCard/DetailsCard";
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from "../../context/LanguageContext";
 import { BsClock } from "react-icons/bs";
-import unknown from '../../assets/imgs/UnkownAlbum.jpg';
+import defaultImage from '../../assets/imgs/defaultImage.png';
 import { useUser } from "../../context/UserContext";
 import UpdateSongModal from "./UpdateSongModal/UpdateSongModal";
 
@@ -48,7 +48,7 @@ const MySongs = () => {
                   key={uuidv4()}
                   track={track}
                   count={index}
-                  ownerImage={unknown}
+                  ownerImage={defaultImage}
                   tracks={userState.myTracks}
                   playlistName="Owner"
                   setId={setId}

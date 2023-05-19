@@ -68,7 +68,7 @@ const Filters = ({ active, setActive, showNameFilter, setShowNameFilter, setResu
         filters.map(({ id, type, name }) => {
           return (
             <div key={uuidv4()} className="mb-2 mr-2 md:mr-4 text-center" onClick={handleClick}>
-              <p id={id} data-type={type} className={`border border-gray-500 px-3 py-1 md:px-3 rounded-2xl text-xs sm:text-sm md:text-lg  cursor-pointer ${active === type ? 'bg-gray-500' : ''}`}>{name}</p>
+              <p id={id} data-type={type} className={`border-zinc-500 px-3 py-1 md:px-3 rounded-2xl text-xs sm:text-sm md:text-lg cursor-pointer ${active === type ? 'border border-deezer-dark' : ''}`}>{name}</p>
             </div>
           )
         })

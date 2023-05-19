@@ -135,6 +135,7 @@ const Search = () => {
             style={styleInput}
             value={strSearch}
             onChange={handleSearch}
+            className='w-96'
           />
         </form>
         <Filters
@@ -144,7 +145,7 @@ const Search = () => {
           setShowNameFilter={setShowNameFilter}
           setResults={setResults}
         />
-        <div className='max-w-81rem'>
+        <div className='md:min-w-[28rem] lg:min-w-[85rem]'>
           {
             empty
               ?

@@ -1,7 +1,7 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { HOME, LOGIN, SIGNUP } from "../../router/paths";
+import { HOME, SIGNUP } from "../../router/paths";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { Button, Label, TextInput } from "flowbite-react";
@@ -13,7 +13,6 @@ import Swal from "sweetalert2";
 
 
 const Login = () => {
-  const location = useLocation();
   const { text } = useLanguage();
   const { reset, login } = useAuth();
   const navigate = useNavigate();

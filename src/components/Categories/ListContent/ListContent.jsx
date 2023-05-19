@@ -14,7 +14,7 @@ import { SongCard } from '../CategoriesSongCard/CategoriesSongCard';
 import { DetailsCard } from '../../partials/DetailsCard/DetailsCard';
 import { v4 as uuidv4 } from 'uuid';
 import { FaPlay } from 'react-icons/fa';
-import dfltImage from '../../../assets/imgs/UnkownAlbum.jpg';
+import defaultImage from '../../../assets/imgs/defaultImage.png';
 import { usePlayer } from '../../../context/PlayerContext';
 import { Audio } from 'react-loader-spinner';
 
@@ -119,7 +119,7 @@ const ListContent = () => {
         <div className="w-full h-full p-6 md:ml-20 lg:ml-52 mt-14 md:mt-20">
           <div className="flex flex-col md:flex-row gap-5 lg:gap-10 h-full items-center lg:justify-start mb-12">
             <img
-              src={playlistImage.length > 0 ? playlistImage : dfltImage}
+              src={playlistImage.length > 0 ? playlistImage : defaultImage}
               alt="User playlist picture"
               className="w-44 lg:w-52 rounded-xl object-cover"
             />
@@ -176,7 +176,7 @@ const ListContent = () => {
                       key={uuidv4()}
                       index={idx}
                       track={track}
-                      defaultImg={dfltImage}
+                      defaultImg={defaultImage}
                       tracks={tracks}
                     />
                   ))
