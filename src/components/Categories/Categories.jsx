@@ -27,16 +27,7 @@ export const Categories = () => {
   const { userState } = useUser();
   const { authState } = useAuth();
   const { userPlaylist } = userState
-  const [totalTracks, setTotalTracks] = useState("");
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (userPlaylist.length > 0) {
-      setTotalTracks(userPlaylist.length)
-    }
-  }, [userPlaylist.length])
-
-
 
   return (
     <div className="w-full min-h-screen bg-no-repeat bg-cover bg-fixed"
@@ -77,7 +68,6 @@ export const Categories = () => {
 
                       <div className="inline-flex items-center">
                         <h3 className="text-left text-xl md:text-2xl lg:text-4xl md:py-4 lg:py-6">{text.categories.lists}</h3>
-                        <span>{totalTracks.length}</span>
                       </div>
                       <div className="grid items-center grid-cols-3 gap-7 md:grid-cols-4 md:gap-7 lg:grid-cols-6 lg:gap-10">
                         <div className="flex flex-col gap-3">
