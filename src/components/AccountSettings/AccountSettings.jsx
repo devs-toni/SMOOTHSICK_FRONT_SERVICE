@@ -66,7 +66,6 @@ const Accountsettings = () => {
     })
   }
 
-  console.log(authState.user.type);
 
   return (
     <>

@@ -121,12 +121,6 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
             <p className={`truncate ${targetClass}__data--name w-15 text-center lg:mx-2 text-xs md:text-sm p-[0.3rem] md:p-[0.5rem] ${isAlbum && 'mr-0'}`}>{data.name}</p>
           </div>
         }
-        {/*
-          (authState.isAuthenticated && isTrack) &&
-          <div className={`${(isLike) ? "border-red-500" : "border-gray-400"} ${targetClass}__data--like`} onClick={() => toggleLike(type, data, isLike, setIsLike)}>
-            <FaHeart className={(isLike) ? "text-red-500" : "text-gray-600"} />
-          </div>
-        */}
       </div>
     </NavLink>
   )

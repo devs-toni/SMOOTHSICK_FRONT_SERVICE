@@ -9,7 +9,7 @@ import { useLanguage } from "../../../context/LanguageContext"
 export const ChangeUserNameModal = ({ setOpen, open }) => {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const { authState } = useAuth()
+  const { authState, refresh } = useAuth()
   const { user } = authState
   const { id } = user
   const { text } = useLanguage()
@@ -21,6 +21,7 @@ export const ChangeUserNameModal = ({ setOpen, open }) => {
         .then(({ status }) => {
           if (status === 201) {
             toast.success(text.username.new_username_added, {
+              
               style: {
                 borderRadius: "10px",
                 background: "#333",

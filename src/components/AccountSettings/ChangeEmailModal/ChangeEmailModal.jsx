@@ -55,6 +55,8 @@ export const ChangeEmailModal = ({ setOpen, open }) => {
         }
     }
 
+    
+
     return (
         <>
             <Modal show={open} onClose={() => setOpen(false)} dismissible>

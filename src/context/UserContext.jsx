@@ -39,13 +39,6 @@ export const UserProvider = ({ children }) => {
       })
   }, [authState.token])
 
-  // CHECK AND RETURN USER PLAYLISTS TRACKS
-/*   const checktUserPlaylistsTracks = (currentPlaylist) => {
-    axios.patch(import.meta.env.VITE_BACKEND + 'playlists/playlistTracks', { tracklist: currentPlaylist?.tracklist })
-      .then(({ data }) => {
-        dispatch({ type: TYPES.SET_USER_PLAYLIST_TRACKS, payload: data })
-      })
-  } */
 
   // UPDATE SONGS WITH LIKES
   const toggleLike = (type, data, isLike, setIsLike) => {
@@ -64,7 +57,6 @@ export const UserProvider = ({ children }) => {
       getFavourites();
       getMyTracks();
       getMyPlaylists();
-      //checktUserPlaylistsTracks();
     }
   }, [authState.token, authState.isAuthenticated])
 
@@ -80,7 +72,6 @@ export const UserProvider = ({ children }) => {
     favourites: [],
     myTracks: [],
     userPlaylist: [],
-    //userPlaylistTracks: []
   }
 
   const reducer = (state, action) => {
@@ -113,12 +104,6 @@ export const UserProvider = ({ children }) => {
           userPlaylist: action.payload
         }
 
-/*       case TYPES.SET_USER_PLAYLIST_TRACKS:
-        return {
-          ...state,
-          userPlaylistTracks: action.payload
-        } */
-
       default:
         return state
     }
@@ -142,7 +127,6 @@ export const UserProvider = ({ children }) => {
     getMyPlaylists,
     getFavourites,
     getMyTracks,
-   // checktUserPlaylistsTracks,
     removeFromFavourites,
     removeFromMyTracks,
     toggleLike,
@@ -152,7 +136,6 @@ export const UserProvider = ({ children }) => {
       getMyPlaylists,
       getFavourites,
       getMyTracks,
-     // checktUserPlaylistsTracks,
       removeFromFavourites,
       removeFromMyTracks,
       toggleLike,
