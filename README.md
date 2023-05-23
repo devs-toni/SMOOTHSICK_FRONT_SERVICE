@@ -7,15 +7,15 @@ This project is based on the page <a href="https://deezer.com">Deezer</a> and mo
 <br />
 ![lists](./src/assets/imgs/lists.smooth.jpeg)
 <br />
-![playlist](./src/assets/imgs/playlist.smooth.jpg)
+![playlist](./src/assets/imgs/playlist.smooth.jpeg)
 <br />
-![artists](./src/assets/imgs/artists.smooth.jpg)
+![artists](./src/assets/imgs/artists.smooth.jpeg)
 <br />
-![tablet_view](./src/assets/imgs/tablet_view.smooth.jpg)
+![tablet_view](./src/assets/imgs/tablet_view.smooth.jpeg)
 <br />
-![mobile](./src/assets/imgs/mobile.smooth.jpg)
+![mobile](./src/assets/imgs/mobile.smooth.jpeg)
 <br />
-![mobile2](./src/assets/imgs/mobile.smooth2.jpg)
+![mobile2](./src/assets/imgs/mobile.smooth2.jpeg)
 <br />
 
 This web application uses on <u><i>frontend</i></u>:
