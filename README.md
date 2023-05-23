@@ -1,13 +1,21 @@
 # Smoothsick
 
-This project is based on the page <a href="https://spotify.com">Spotify</a> and mocks the music platform implemented by this page, trying with this to improve my knowledge of react and another related libraries.\
+This project is based on the page <a href="https://deezer.com">Deezer</a> and mocks the music platform implemented by this page, trying with this to improve my knowledge of react and another related libraries.\
 <br />
 
 ![home](./src/assets/imgs/home.smooth.jpeg)
 <br />
-![home](./src/assets/imgs/lists.smooth.jpeg)
+![lists](./src/assets/imgs/lists.smooth.jpeg)
 <br />
-![home](./src/assets/imgs/login_smooth.png)
+![lists](./src/assets/imgs/platlist.smooth.jpeg)
+<br />
+![lists](./src/assets/imgs/artists.smooth.jpeg)
+<br />
+![tablet](./src/assets/imgs/tablet_view.smooth.jpeg)
+<br />
+![mobile](./src/assets/imgs/mobile.smooth.jpeg)
+<br />
+![mobile](./src/assets/imgs/mobile.smooth2.jpeg)
 <br />
 
 This web application uses on <u><i>frontend</i></u>:
