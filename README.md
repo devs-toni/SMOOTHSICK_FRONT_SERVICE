@@ -7,11 +7,11 @@ This project is based on the page <a href="https://deezer.com">Deezer</a> and mo
 <br />
 ![lists](./src/assets/imgs/lists.smooth.jpeg)
 <br />
-![lists](./src/assets/imgs/playlist.smooth.jpg)
+![playlist](./src/assets/imgs/playlist.smooth.jpg)
 <br />
-![lists2](./src/assets/imgs/artists.smooth.jpg)
+![artists](./src/assets/imgs/artists.smooth.jpg)
 <br />
-![tablet](./src/assets/imgs/tablet_view.smooth.jpg)
+![tablet_view](./src/assets/imgs/tablet_view.smooth.jpg)
 <br />
 ![mobile](./src/assets/imgs/mobile.smooth.jpg)
 <br />
