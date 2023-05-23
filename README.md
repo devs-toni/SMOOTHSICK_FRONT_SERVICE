@@ -1,6 +1,6 @@
 # Smoothsick
 
-This project is based on the page <a href="https://spotify.com">Spotify</a> and mocks the music platform implemented by this page, trying with this to improve my knowledge of react and another related libraries.\
+This project is based on the page <a href="https://deezer.com">Deezer</a> and mocks the music platform implemented by this page, trying with this to improve our knowledge of react and another related libraries.\
 <br />
 
 ![home](./src/assets/imgs/home.smooth.jpeg)
