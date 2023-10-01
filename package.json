@@ -52,5 +52,11 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "jest-mock-extended": "^3.0.5",
     "lint-staged": "^14.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   }
 }
