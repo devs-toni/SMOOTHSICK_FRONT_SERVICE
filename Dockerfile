@@ -7,4 +7,4 @@ COPY ./ ./
 
 RUN npm i
 
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "dev"]
