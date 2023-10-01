@@ -1,17 +1,15 @@
 {
   "name": "smoothsick",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1-SNAPSHOT.0",
   "type": "module",
   "scripts": {
-    "start:dev": "set PORT=3002 && react-scripts start",
-    "start:prod": "react-scripts start",
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext js,jsx",
     "build:prod": "npm run build && npm run zip-prod",
-    "zip-prod": "cd dist; zip -r ../bianxi-front_$npm_package_version.zip * .htaccess"
+    "lint": "eslint . --ext js,jsx",
+    "zip-prod": "cd dist; zip -r ../smoothsick-front_$npm_package_version.zip * .htaccess"
   },
   "dependencies": {
     "@cloudinary/react": "^1.11.2",
