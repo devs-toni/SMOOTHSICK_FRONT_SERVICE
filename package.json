@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx",
+    "lint": "eslint . --ext js,jsx",
     "build:prod": "npm run build && npm run zip-prod",
     "zip-prod": "cd dist; zip -r ../bianxi-front_$npm_package_version.zip * .htaccess"
   },
