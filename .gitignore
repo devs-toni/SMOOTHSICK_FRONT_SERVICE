@@ -13,7 +13,6 @@ node_modules
 pnpm-lock.yaml
 dist
 dist-ssr
-package-lock.json
 *.local
 
 # Editor directories and files
