@@ -50,11 +50,5 @@
     "lint-staged": "^14.0.1",
     "postcss": "^8.4.21",
     "vite": "^4.1.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   }
 }
