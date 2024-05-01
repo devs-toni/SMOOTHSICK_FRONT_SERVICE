@@ -124,10 +124,20 @@ export const Details = () => {
               ?
               (
                 <>
-                  <ArtistHeader artist_picture={data.artist_picture} artist_name={data.artist_name} fans={data.fans} isLike={true} type={type} />
+                  <ArtistHeader 
+                    artist_picture={data.artist_picture} 
+                    artist_name={data.artist_name} 
+                    fans={data.fans} 
+                    isLike={true} 
+                    type={type} 
+                    tracks={tracks} 
+                  />
                   <ArtistOptions />
                   <div>
-                    <Section tracks={tracks} targetClass="artists-tracks" />
+                    <Section 
+                      tracks={tracks} 
+                      targetClass="artists-tracks" 
+                    />
                   </div>
                   <div>
                     <div>

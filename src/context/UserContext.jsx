@@ -47,9 +47,10 @@ export const UserProvider = ({ children }) => {
       .then(() => {
         if (isLike) {
           setIsLike(false)
-          removeFromFavourites(data.id)
         } else
           setIsLike(true)
+        
+        removeFromFavourites(data.id)
       })
   }
 
@@ -117,7 +118,6 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: TYPES.SET_FAVOURITES, payload: filteredTracks })
     getFavourites()
   }, [userState.favourites]);
-
 
   const removeFromMyTracks = useCallback((trackId) => {
     const filteredTracks = userState.myTracks.filter(t => t.id !== trackId);

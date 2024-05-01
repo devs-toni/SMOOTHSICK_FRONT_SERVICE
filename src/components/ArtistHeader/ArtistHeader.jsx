@@ -13,7 +13,7 @@ export const ArtistHeader = ({ fans, isLike, description, tracks, type, album_na
   const { addList, addQueue, playSong, playerState } = usePlayer();
   const handleSetNewPlaylist = () => {
     playSong({
-      id: tracks[0].id,
+      id: tracks[0].Id,
       picture: tracks[0].album_cover,
       preview: tracks[0].preview,
       name: tracks[0].title,
