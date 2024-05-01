@@ -28,7 +28,6 @@ export const UserProvider = ({ children }) => {
     axios.get(import.meta.env.VITE_BACKEND + "tracks/my", { headers: { "Authorization": `${authState.token}` } })
       .then(({ data }) => {
         dispatch({ type: TYPES.SET_MY_TRACKS, payload: data })
-        console.log(data);
       })
   }, [authState.token]);
 

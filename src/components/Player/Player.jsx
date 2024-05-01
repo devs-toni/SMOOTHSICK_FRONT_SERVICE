@@ -37,7 +37,7 @@ const Player = () => {
 
 
   useEffect(() => {
-    (isChanged || current) &&
+    (isChanged && current) &&
       axios.get(import.meta.env.VITE_BACKEND + "tracks/" + current.id)
         .then(({ data }) => {
           setIsPlaylistSong(data.album_id ? false : true)

@@ -5,6 +5,7 @@ export const useFetchAllHomeArtists = () => {
 
   const [artists, setArtists] = useState([]);
   const [artistsLoaded, setArtistsLoaded] = useState(false)
+  
   const getAllArtists = () => {
     axios.get(import.meta.env.VITE_BACKEND + "artists/home")
       .then(({ data }) => {
