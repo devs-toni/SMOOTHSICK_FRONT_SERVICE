@@ -54,14 +54,13 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
 
   const handleSetTracks = () => {
     playSong(data)
+
     try {
-      top_tracks.find((track) => track.id === data.id)
       addQueue(top_tracks)
       addList(top_tracks)
     } catch {
       addQueue(less_tracks)
       addList(top_tracks)
-
     }
   }
 

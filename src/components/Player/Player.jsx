@@ -150,7 +150,7 @@ const Player = () => {
                     </Dropdown.Header>
                     {
                       userPlaylist.map((list) => (
-                        <Dropdown.Item key={uuidv4()} className='text-white' onClick={() => onClick(list.id, list.title, current.id)}>
+                        <Dropdown.Item key={uuidv4()} className='text-white' onClick={() => onClick(list.Id, list.title, current.id)}>
                           <span>{list.title}</span>
                         </Dropdown.Item>
                       ))

@@ -36,7 +36,7 @@ const ListContent = () => {
       .then(async ({ data }) => {
         const title_playlist = data.title
         setData({
-          id: data.id,
+          id: data.Id,
           artist_name: data.title,
           total: data.nb_tracks,
           artist_picture: data.picture,

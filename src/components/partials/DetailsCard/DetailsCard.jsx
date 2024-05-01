@@ -145,7 +145,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
                   </Dropdown.Header>
                   {
                     userPlaylist.map((list) => (
-                      <Dropdown.Item key={uuidv4()} className='text-white' onClick={() => onClick(list.id, list.title, track.id)}>
+                      <Dropdown.Item key={uuidv4()} className='text-white' onClick={() => onClick(list.Id, list.title, track.Id)}>
                         <span>{list.title}</span>
                       </Dropdown.Item>
                     ))

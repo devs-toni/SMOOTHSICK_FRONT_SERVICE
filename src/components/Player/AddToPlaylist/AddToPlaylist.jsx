@@ -37,12 +37,8 @@ export const AddToPlaylist = () => {
                     })
                 }
             })
-
     }
-
     return {
         handleAddToPlaylist
     }
-
-
 }

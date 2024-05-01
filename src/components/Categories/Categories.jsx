@@ -1,22 +1,15 @@
-
-import { SongCard } from "./CategoriesSongCard/CategoriesSongCard";
-import { useEffect, useState, Fragment } from "react";
+import { useState } from "react";
 import { useAuth } from '../../context/AuthContext';
 import { useUser } from '../../context/UserContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { Link, useParams } from "react-router-dom";
-import { FAVOURITES } from '../../router/paths'
-import { v4 as uuidv4 } from 'uuid';
-import { BsClock } from "react-icons/bs";
+import { useParams } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
 import CreatePlaylistModal from "./CreatePlaylistModal/CreatePlaylistModal";
-import { Avatar, Button, Card } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { FaRandom } from "react-icons/fa";
 import ListCard from "./ListCard/ListCard";
 import { ComunityPlaylists } from "./ComunityPlaylists/ComunityPlaylists";
 import headPhone from "../../assets/imgs/background-headphones.jpg";
-import { opacity } from "@cloudinary/url-gen/actions/adjust";
-import { MdDesktopAccessDisabled } from "react-icons/md";
 import { MenuCategories } from "./MenuCategories/MenuCategories";
 import { Favourites } from "../Favourites/Favourites";
 import MySongs from "../MySongs/MySongs";
@@ -81,7 +74,7 @@ export const Categories = () => {
                           userPlaylist.map((list, index) => (
                             <ListCard
                               key={index}
-                              id={list.id}
+                              id={list.Id}
                               title={list.title}
                             />
                           ))

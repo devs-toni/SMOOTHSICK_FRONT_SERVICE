@@ -54,7 +54,7 @@ export const SongCard = ({ track, tracks, index, defaultImg }) => {
   }
 
   const handleRemoveFromPlaylist = async () => {
-    await axios.patch(import.meta.env.VITE_BACKEND + 'playlists/removeFromPlaylist', { trackId: track.id, playlistId: playlistId.id })
+    await axios.patch(import.meta.env.VITE_BACKEND + 'playlists/removeFromPlaylist', { trackId: track.Id, playlistId: playlistId.id })
       .then(({ status }) => {
         getMyPlaylists()
         if (status === 201) {

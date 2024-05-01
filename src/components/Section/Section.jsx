@@ -19,6 +19,8 @@ const Section = ({ tracks, targetClass }) => {
                 obj={obj}
                 targetClass={`${targetClass ? `${targetClass}-chart` : "chart"}`}
                 type={FILTER_TYPES.TRACKS}
+                top_tracks={tracks}
+                less_tracks={tracks}
               />
             )
           })

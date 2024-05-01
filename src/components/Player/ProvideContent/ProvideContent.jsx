@@ -8,7 +8,6 @@ export const ProvideContent = () => {
   const { current } = playerState
   const { queue } = playerState
   const { userState } = useUser();
-  const { myTracks } = userState
 
 
   const track = queue.find((e) => e.preview === current.preview);
