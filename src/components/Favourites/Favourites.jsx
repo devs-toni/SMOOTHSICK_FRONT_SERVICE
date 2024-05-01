@@ -1,30 +1,16 @@
-import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { useEffect, useState } from 'react';
 import { BsClock } from 'react-icons/bs'
 import { useUser } from '../../context/UserContext';
 import { DetailsCard } from '../index';
 import { v4 as uuidv4 } from 'uuid';
-import { Avatar, Button } from 'flowbite-react';
-import { FaRandom } from 'react-icons/fa';
 
 
 
 export const Favourites = () => {
   const { userState, getFavourites } = useUser();
   const { favourites } = userState;
-  const { authState } = useAuth();
   const { text } = useLanguage();
-  const [totalTracks, setTotalTracks] = useState("");
-
-
-
-  useEffect(() => {
-    if (favourites.length > 0) {
-      setTotalTracks(favourites.length)
-    }
-    getFavourites();
-  }, [favourites.length])
 
 
 

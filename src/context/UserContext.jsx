@@ -115,6 +115,7 @@ export const UserProvider = ({ children }) => {
   const removeFromFavourites = useCallback((trackId) => {
     const filteredTracks = userState.favourites.filter(t => t.id !== trackId);
     dispatch({ type: TYPES.SET_FAVOURITES, payload: filteredTracks })
+    getFavourites()
   }, [userState.favourites]);
 
 
