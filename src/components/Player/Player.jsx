@@ -37,13 +37,14 @@ const Player = () => {
 
 
   useEffect(() => {
-    (isChanged && current) &&
+    if (isChanged || current.id) {
       axios.get(import.meta.env.VITE_BACKEND + "tracks/" + current.id)
         .then(({ data }) => {
           setIsPlaylistSong(data.album_id ? false : true)
           setIsOwner((data.disk_number === -1 && authState.user.id === data.artist_id) ? true : false)
           setIsLike(data.likes?.filter(ids => ids === authState.user.id).length > 0 ? true : false);
         })
+      }
     return setIsChanged(false);
   }, [isChanged, current])
 

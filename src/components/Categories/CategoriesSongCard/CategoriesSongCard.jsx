@@ -26,7 +26,7 @@ export const SongCard = ({ track, tracks, index, defaultImg }) => {
 
   const addSongToPlayer = () => {
     const newTrack = {
-      id: track.id,
+      id: track.Id,
       name: track.title,
       picture: track.album_cover ? track.album_cover : defaultImg,
       artist: track.artist_name,
@@ -40,7 +40,7 @@ export const SongCard = ({ track, tracks, index, defaultImg }) => {
         artist_id: item.artist_id,
         artist_name: !item.artist_name ? 'Comunity playlist' : item.artist_name,
         duration: item.duration,
-        id: item.id,
+        id: item.Id,
         likes: item.likes,
         preview: item.preview,
         readable: item.readable,

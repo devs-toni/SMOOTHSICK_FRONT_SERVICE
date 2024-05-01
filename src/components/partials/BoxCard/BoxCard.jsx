@@ -20,14 +20,14 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
   useLayoutEffect(() => {
     if (type == FILTER_TYPES.ARTISTS) {
       setData({
-        id: obj.id,
+        id: obj.Id,
         name: obj.name,
         picture: obj.picture,
       })
     } else if (type == FILTER_TYPES.TRACKS) {
       setCanPlay(true);
       setData({
-        id: obj.id,
+        id: obj.Id,
         name: obj.title,
         picture: obj.album_cover ? obj.album_cover : defaultImage,
         artist: obj.artist_name,
@@ -35,7 +35,7 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
       })
     } else if (type == FILTER_TYPES.ALBUMS) {
       setData({
-        id: obj.album.id,
+        id: obj.album.Id,
         name: obj.album.title,
         artist: obj.artist.name,
         picture: obj.album.cover
@@ -44,7 +44,7 @@ const BoxCard = ({ obj, targetClass, type, isFirstRowSection, less_tracks, top_t
 
     } else if (type == FILTER_TYPES.PLAYLISTS) {
       setData({
-        id: obj.id,
+        id: obj.Id,
         name: obj.title,
         picture: obj.picture
       })

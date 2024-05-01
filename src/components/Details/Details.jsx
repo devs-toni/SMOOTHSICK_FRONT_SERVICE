@@ -4,11 +4,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ArtistHeader, DetailsCard, BoxCard, Section } from '../index';
 import { ArtistOptions } from '../index';
-import { useFetchAllAlbums } from '../../hooks';
 import { useLanguage } from '../../context/LanguageContext';
 import { v4 as uuidv4 } from 'uuid';
 import { BsClock } from 'react-icons/bs';
-import { usePlayer } from '../../context/PlayerContext';
 import { Grid } from 'react-loader-spinner';
 import defaultImage from '../../assets/imgs/defaultImage.png'
 
@@ -57,7 +55,7 @@ export const Details = () => {
           .then(({ data }) => {
 
             setData({
-              id: data.id,
+              id: data.Id,
               artist_name: data.name,
               total: data.nb_album,
               artist_picture: data.picture,
@@ -85,7 +83,7 @@ export const Details = () => {
             setPlaylistImage(image);
 
             setData({
-              id: data.id,
+              id: data.Id,
               artist_name: data.title,
               total: data.nb_tracks,
               artist_picture: data.picture ? data.picture : undefined,

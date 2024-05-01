@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Search from '../../Search/Search'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useUser } from '../../../context/UserContext';
 import { useLanguage } from '../../../context/LanguageContext';
 import { BsClock, BsTrash3Fill } from 'react-icons/bs';
-import { Favourites } from '../../Favourites/Favourites';
-import { Avatar, Button } from 'flowbite-react';
 import { CATEGORIES, PLAYLIST, SEARCH } from '../../../router/paths';
 import { useAuth } from '../../../context/AuthContext';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import { SongCard } from '../CategoriesSongCard/CategoriesSongCard';
-import { DetailsCard } from '../../partials/DetailsCard/DetailsCard';
 import { v4 as uuidv4 } from 'uuid';
 import { FaPlay } from 'react-icons/fa';
 import defaultImage from '../../../assets/imgs/defaultImage.png';
@@ -25,7 +21,6 @@ const ListContent = () => {
   const { authState } = useAuth();
   const { id } = useParams()
   const navigate = useNavigate()
-  const { userPlaylist } = userState
   const [changeIcon, setChangeIcon] = useState(<FaPlay className='hidden md:block' size={20} />)
   const { addList, addQueue, playSong, playerState } = usePlayer();
 

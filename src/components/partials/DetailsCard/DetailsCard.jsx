@@ -1,27 +1,23 @@
-import { FaHeart, FaPencilAlt, FaPlay, FaPlayCircle } from 'react-icons/fa'
-import { SlOptions } from 'react-icons/sl'
+import { FaHeart, FaPencilAlt, FaPlayCircle } from 'react-icons/fa'
 import axios from 'axios';
 import { useAuth } from '../../../context/AuthContext';
 import { useUser } from '../../../context/UserContext';
 import { AiFillDelete, AiOutlinePlus } from 'react-icons/ai';
 import { usePlayer } from '../../../context/PlayerContext';
 import Swal from 'sweetalert2';
-import { useRef, useState } from 'react';
-import { Audio, Bars } from 'react-loader-spinner';
+import { useState } from 'react';
+import { Audio } from 'react-loader-spinner';
 import { Dropdown } from 'flowbite-react';
-import { list } from 'postcss';
-import { toast } from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from '../../../context/LanguageContext';
 import { AddToPlaylist } from '../../Player/AddToPlaylist/AddToPlaylist'
 import defaultImage from '../../../assets/imgs/defaultImage.png'
 
 
-
 export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, album_name, setId, setUpdateIsOpen, isPlaylist }) => {
 
   const { text } = useLanguage();
-  const { id, title, duration, preview, artist_name, album_cover, artist_id, likes } = track;
+  const { Id, title, duration, preview, artist_name, album_cover, artist_id, likes } = track;
 
   const { authState } = useAuth();
   const { removeFromFavourites, removeFromMyTracks, userState } = useUser();
@@ -33,21 +29,21 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
   
 
   const toggleLike = () => {
-    axios.patch(import.meta.env.VITE_BACKEND + "tracks/like/" + id, {}, {
+    axios.patch(import.meta.env.VITE_BACKEND + "tracks/like/" + Id, {}, {
       headers: {
         "Authorization": authState.token
       }
     })
       .then(({ data }) => {
         setIsLike(!isLike);
-        removeFromFavourites(id);
+        removeFromFavourites(Id);
       })
   }
 
 
   const addSongToPlayer = () => {
     const newTrack = {
-      id,
+      id: Id,
       name: title,
       picture: album_cover ? album_cover : ownerImage,
       artist: artist_name ? artist_name : playlistName,
@@ -61,7 +57,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
         artist_id: item.artist_id,
         artist_name: !item.artist_name ? playlistName : item.artist_name,
         duration: item.duration,
-        id: item.id,
+        id: item.Id,
         likes: item.likes,
         preview: item.preview,
         readable: item.readable,
@@ -88,9 +84,9 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(import.meta.env.VITE_BACKEND + "tracks/" + id, { headers: { "Authorization": authState.token } })
+        axios.delete(import.meta.env.VITE_BACKEND + "tracks/" + Id, { headers: { "Authorization": authState.token } })
           .then(({ data }) => {
-            removeFromMyTracks(id)
+            removeFromMyTracks(Id)
           })
       }
     })
@@ -98,7 +94,7 @@ export const DetailsCard = ({ track, count, ownerImage, tracks, playlistName, al
 
   const updateTrack = () => {
     setUpdateIsOpen(true)
-    setId(id);
+    setId(Id);
   }
 
 
